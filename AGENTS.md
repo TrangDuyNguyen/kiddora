@@ -113,14 +113,18 @@ lib/
 
 ## 6. End-to-End Feature Delivery Lifecycle (8-Gate SOP & Multi Sub-Agents)
 
-All feature development follows the **Four-Eyes Principle** with 9 specialized Sub-Agents:
+All feature development follows the **Four-Eyes Principle** with 9 specialized Sub-Agents & Visual Inspection:
 - **Sub-Agent PO**: Roadmap, MoSCoW, Gate 1 & Gate 7 Sign-offs.
 - **Gate 0: Tech Lead**: Architecture spikes, ADR, SLAs (Cold start <= 1.8s, 60 FPS, 0 memory leak).
 - **Gate 1: BA**: PRD, User Stories BDD (Given-When-Then), Data Dictionary.
 - **Gate 2: UI/UX Designer**: Tactile Claymorphism, Google Stitch MCP screens, 5 UI states.
-- **Gate 3: QA Tester**: Test design, BDD Gherkin scenarios, 100% Traceability.
+- **Gate 3: QA Tester & Visual QA**: Test design, BDD Gherkin scenarios, 100% Traceability, Visual Test Matrix (text scale 1.5x, 5 UI states).
 - **Gate 4: Dev FE**: Flutter Clean Architecture, Riverpod, Ponytail code.
 - **Gate 5: Reviewer**: Ponytail git diff review, ruthlessly delete bloat.
-- **Gate 6: QA Verify**: Automated tests, 0 memory leak, 60 FPS.
+- **Gate 6: QA Verify & Visual QA**: Automated tests (100% real pass), 0 memory leak, 60 FPS, 0 RenderFlex overflow / visual defects via Flutter Preview MCP & Vision AI.
 - **Gate 6.5: Security Auditor**: Child data privacy (COPPA), Parental Gate verification, zero leaks.
 - **Gate 7: Release**: Production clearance and distribution.
+
+### Real-Time Mission Control Dashboard
+- Command: `make dashboard` or `./scripts/dashboard.sh`
+- Neobrutalism web UI binds to `http://127.0.0.1:8765` for real-time sub-agent tracking, multi-sprint management, and human-in-the-loop approvals without invisible work.

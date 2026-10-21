@@ -1,0 +1,8 @@
+{
+  "project_name": "Kiddora",
+  "project_type": "Kids Learning & Live Classes Mobile App",
+  "project_description": "Cross-platform mobile app for primary learners (ages 7-10) featuring Tactile Claymorphism 3D UI and live interactive classrooms.",
+  "created_at": "2026-10-19T22:45:00Z",
+  "active_sprint": 1,
+  "sprints_dir": "docs/00-project-management/sprints"
+}

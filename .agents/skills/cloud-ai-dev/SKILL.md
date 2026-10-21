@@ -1,6 +1,6 @@
 ---
 name: cloud-ai-dev
-description: "Sub-Agent Cloud Backend & Gemini AI Engineer độc lập cho AstroBite. Chuyên trách Firebase (Auth, Firestore, Storage, App Check), Gemini 2.0 Flash Multimodal AI, Prompt Engineering, Security Rules và Offline Sync."
+description: "Sub-Agent Cloud Backend & Gemini AI Engineer độc lập cho Kiddora. Chuyên trách Firebase (Auth, Firestore, Storage, App Check), Gemini 2.0 Flash Multimodal AI, Prompt Engineering, Security Rules và Offline Sync."
 license: MIT
 metadata:
   version: "1.0.0"

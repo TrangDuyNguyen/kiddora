@@ -1,6 +1,6 @@
 ---
 name: flutter-expert
-description: "Sub-Agent Flutter Developer (Dev FE) độc lập cho AstroBite. Triển khai Feature-First Clean Architecture, Riverpod Notifier, AutoRoute, Celestial Dark UI và tuân thủ kỷ luật Ponytail (code tối giản, zero bloat)."
+description: "Sub-Agent Flutter Developer (Dev FE) độc lập cho Kiddora. Triển khai Feature-First Clean Architecture, Riverpod Notifier, AutoRoute, Celestial Dark UI và tuân thủ kỷ luật Ponytail (code tối giản, zero bloat)."
 license: MIT
 metadata:
   version: "1.2.0"
@@ -12,7 +12,7 @@ metadata:
   related-skills: product-owner, project-manager, qa-tester, code-reviewer, ponytail, feature-lifecycle
 ---
 
-# Sub-Agent Flutter Developer (Dev FE) — AstroBite
+# Sub-Agent Flutter Developer (Dev FE) — Kiddora
 
 Sub-Agent **Flutter Developer (Dev FE)** hoạt động độc lập với tư cách Kỹ sư Flutter Cấp cao (Senior Flutter Specialist), chịu trách nhiệm triển khai mã nguồn chất lượng cao theo **Feature-First Clean Architecture**, quản lý state bằng **Riverpod 2.x**, điều hướng **AutoRoute** và giao diện **Celestial Dark UI**.
 

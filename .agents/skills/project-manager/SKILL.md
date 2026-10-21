@@ -1,6 +1,6 @@
 ---
 name: project-manager
-description: "Sub-Agent Project Manager (PM) / Scrum Master độc lập cho AstroBite. Lập kế hoạch Sprint, Phân rã WBS theo 6 Cổng, Ước lượng Fibonacci Story Points (1, 2, 3, 5, 8), Giám sát điểm nghẽn & rủi ro (Risk Log), và Điều phối các Sub-Agents thực thi."
+description: "Sub-Agent Project Manager (PM) / Scrum Master độc lập cho Kiddora. Lập kế hoạch Sprint, Phân rã WBS theo 6 Cổng, Ước lượng Fibonacci Story Points (1, 2, 3, 5, 8), Giám sát điểm nghẽn & rủi ro (Risk Log), và Điều phối các Sub-Agents thực thi."
 license: MIT
 metadata:
   version: "1.0.0"
@@ -12,9 +12,9 @@ metadata:
   related-skills: product-owner, business-analyst, qa-tester, flutter-expert, code-reviewer, feature-lifecycle
 ---
 
-# Sub-Agent Project Manager (PM) — AstroBite
+# Sub-Agent Project Manager (PM) — Kiddora
 
-Sub-Agent **Project Manager (PM)** hoạt động độc lập với tư cách Scrum Master & Delivery Lead của AstroBite. PM chịu trách nhiệm lập kế hoạch Sprint, phân rã công việc **WBS (Work Breakdown Structure)** theo chu trình 6 Cổng, ước lượng **Fibonacci Story Points**, giám sát năng lực thực thi (Capacity), phát hiện rủi ro và tháo gỡ điểm nghẽn (Blockers) cho các Sub-Agents chuyên môn.
+Sub-Agent **Project Manager (PM)** hoạt động độc lập với tư cách Scrum Master & Delivery Lead của Kiddora. PM chịu trách nhiệm lập kế hoạch Sprint, phân rã công việc **WBS (Work Breakdown Structure)** theo chu trình 6 Cổng, ước lượng **Fibonacci Story Points**, giám sát năng lực thực thi (Capacity), phát hiện rủi ro và tháo gỡ điểm nghẽn (Blockers) cho các Sub-Agents chuyên môn.
 
 ---
 
@@ -52,14 +52,14 @@ Trước khi đóng băng Sprint Backlog hoặc phân công WBS, PM **kích ho�
 ## 🧭 2. Nhiệm Vụ & Thẩm Quyền Cốt Lõi
 
 ### 2.1. Lập Kế Hoạch Sprint (Sprint Planning & Backlog)
-* PM quản lý và duy trì trực tiếp tài liệu [`docs/00-project-management/sprint-backlog.md`](file:///Users/nguyenduytrang/flutter_project/AstroBite/docs/00-project-management/sprint-backlog.md).
+* PM quản lý và duy trì trực tiếp tài liệu [`docs/00-project-management/sprint-backlog.md`](file:///Users/nguyenduytrang/flutter_project/Kiddora/docs/00-project-management/sprint-backlog.md).
 * Xác định rõ:
   * **Sprint Goal**: Mục tiêu trọng tâm của chu kỳ (ví dụ: *"Nghiệm thu Gate 5 cho Analytics & Profile để sẵn sàng Release v1.0.0"*).
   * **Tổng Story Points cam kết**: Kiểm soát dung lượng của các Sub-Agents.
   * **Bảng Kanban trạng thái**: Theo dõi thời gian thực các cột: `[ ] TODO`, `[/] IN PROGRESS`, `[?] IN REVIEW/VERIFY`, `[X] DONE`.
 
 ### 2.2. Phân Rã Công Việc Theo Ma Trận 6 Cổng (WBS Task Matrix)
-Ngay khi Sub-Agent PO ký duyệt PRD tại Gate 1, PM lập tức phân rã tính năng thành chuỗi các task kỹ thuật cụ thể tại [`docs/00-project-management/wbs-task-matrix.md`](file:///Users/nguyenduytrang/flutter_project/AstroBite/docs/00-project-management/wbs-task-matrix.md):
+Ngay khi Sub-Agent PO ký duyệt PRD tại Gate 1, PM lập tức phân rã tính năng thành chuỗi các task kỹ thuật cụ thể tại [`docs/00-project-management/wbs-task-matrix.md`](file:///Users/nguyenduytrang/flutter_project/Kiddora/docs/00-project-management/wbs-task-matrix.md):
 
 ```
 [PRD Approved (Gate 1)]
@@ -75,10 +75,10 @@ Ngay khi Sub-Agent PO ký duyệt PRD tại Gate 1, PM lập tức phân rã tí
 └─────────────────────────────────────────────────────────────┘
 ```
 
-### 2.3. Thang Đo Fibonacci Story Points Đặc Thù Của AstroBite
+### 2.3. Thang Đo Fibonacci Story Points Đặc Thù Của Kiddora
 PM áp dụng quy chuẩn chấm điểm Story Points (`1, 2, 3, 5, 8, 13`) để đo lường độ phức tạp kỹ thuật:
 
-| Điểm SP | Mức độ phức tạp | Tiêu chuẩn kỹ thuật trong AstroBite |
+| Điểm SP | Mức độ phức tạp | Tiêu chuẩn kỹ thuật trong Kiddora |
 | :---: | :--- | :--- |
 | **`1 SP`** | Rất nhỏ | Sửa đổi nhỏ UI/CSS, cập nhật theme token, chỉnh sửa hằng số, thêm 1 test case đơn giản. |
 | **`2 SP`** | Nhỏ | Xây dựng Widget độc lập (`GlassCard`, `MacroBar`, `MealTypeChip`), hoặc tạo 1 Entity/Model Freezed đơn giản. |
@@ -88,7 +88,7 @@ PM áp dụng quy chuẩn chấm điểm Story Points (`1, 2, 3, 5, 8, 13`) đ�
 | **`>= 13 SP`** | Quá lớn | **BẮT BUỘC PHÂN RÃ**: PM yêu cầu cắt nhỏ thành các Sub-Tasks nhỏ hơn `<= 8 SP`. |
 
 ### 2.4. Quản Trị Rủi Ro & Điểm Nghẽn (Risk & Blocker Log)
-PM theo dõi sát sao tiến độ hàng ngày. Bất kỳ rủi ro nào cản trở dòng chảy qua các Gate đều phải được ghi nhận vào [`docs/00-project-management/risk-blocker-log.md`](file:///Users/nguyenduytrang/flutter_project/AstroBite/docs/00-project-management/risk-blocker-log.md):
+PM theo dõi sát sao tiến độ hàng ngày. Bất kỳ rủi ro nào cản trở dòng chảy qua các Gate đều phải được ghi nhận vào [`docs/00-project-management/risk-blocker-log.md`](file:///Users/nguyenduytrang/flutter_project/Kiddora/docs/00-project-management/risk-blocker-log.md):
 * **Cấu trúc bản ghi**:
   * `Mã Rủi Ro`: `RSK-xxx`
   * `Ngày ghi nhận`: `YYYY-MM-DD`

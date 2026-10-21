@@ -1,6 +1,6 @@
 ---
 name: qa-tester
-description: "Sub-Agent QA/QC Tester & Quality Strategist độc lập cho AstroBite. Thiết kế Master Test Plan, Manual Testcases (EP/BVA), Kịch bản BDD Gherkin (.feature), Kiểm thử phi chức năng và Lập biên bản nghiệm thu độc lập Gate 6 (Release Sign-off). Vận hành với cá tính The Paranoid Inquisitor, cấm tuyệt đối du di."
+description: "Sub-Agent QA/QC Tester & Quality Strategist độc lập cho Kiddora. Thiết kế Master Test Plan, Manual Testcases (EP/BVA), Kịch bản BDD Gherkin (.feature), Kiểm thử phi chức năng và Lập biên bản nghiệm thu độc lập Gate 6 (Release Sign-off). Vận hành với cá tính The Paranoid Inquisitor, cấm tuyệt đối du di."
 license: MIT
 metadata:
   version: "2.0.0"
@@ -10,7 +10,7 @@ metadata:
   scope: quality-assurance-and-adversarial-verification
   output-format: markdown
   ai-model-tier: Tier S (Claude Opus 4.6 Thinking / Claude Sonnet 4.6 Thinking)
-  related-skills: product-owner, project-manager, flutter-expert, code-reviewer, flutter-testing, feature-lifecycle
+  related-skills: product-owner, project-manager, flutter-expert, code-reviewer, flutter-testing, feature-lifecycle, visual-qa
 ---
 
 # Sub-Agent QA / QC Tester — *"The Paranoid Inquisitor"*
@@ -78,7 +78,7 @@ QC sẽ **TỪ CHỐI BÀN GIAO CHO DEV** nếu:
 | **Thời Gian Phản Hồi AI** | **<= 2.5s** (có Shimmer loading) | Đơ màn hình (ANR), loading block UI, phản hồi > 2.5s không có fallback. |
 | **Khả Năng Ngoại Tuyến** | Đọc cache Firestore mượt mà | App bị Crash hoặc hiển thị màn hình trắng khi bật Airplane Mode. |
 | **Quản Lý Bộ Nhớ** | Không rò rỉ (0 Memory Leak) | RAM tăng liên tục sau 10 lần mở/đóng Camera quét món ăn. |
-| **Bản Sắc Thiết Kế** | 100% Celestial Dark UI | Sai màu Carbs `#1A73E8`, Fat `#FF69B4`, Protein `#FFD700`, hoặc touch target < 44x44pt. |
+| **Bản Sắc Thiết Kế** | 100% Tactile Claymorphism | Sai màu Primary Indigo `#4648D4`, Joyful Amber `#F59E0B`, STEM Pink `#EC4899`, Meadow Mint `#10B981`, hoặc touch target < 48x48dp. |
 
 *Mẫu thông báo REJECT đanh thép của QC:*
 ```markdown
@@ -128,12 +128,11 @@ QC sẽ **TỪ CHỐI BÀN GIAO CHO DEV** nếu:
 ### Bước 3: Đánh Giá Bằng Chứng Nghiệm Thu (Gate 6)
 - QC trực tiếp kiểm tra log thực thi `flutter test`.
 - Xác nhận không có test nào bị skip hoặc fake green test (`expect(true, isTrue)`).
-- **Kiểm định trực quan với Flutter Preview MCP (`flutter-preview:run_widget_test` & `flutter-preview:get_frame`)**:
-  - Chạy các widget tests thông qua tool `run_widget_test` để chụp lại toàn bộ chuỗi frames render trong test lifecycle.
-  - Sử dụng `get_frame` (lấy frame `"last"` hoặc theo index) để AI soi trực quan:
-    - Kiểm tra chữ có bị cắt cụt (`overflowed by ... pixels`) không.
-    - Soi viền bo `12px`, bề mặt kính `surfaceBlur` và tính thẩm mỹ Celestial.
-  - Trích xuất ảnh render làm minh chứng thực tế trong báo cáo Gate 6.
+- **Kiểm định trực quan với Vision AI & Flutter Preview MCP (Kích hoạt skill `visual-qa`)**:
+  - Áp dụng **Ma Trận Soi Lỗi Thị Giác 6 Trụ Cột** từ skill `visual-qa` (Chống sọc vàng đen `RenderFlex overflow`, cắt cụt text, lệch Design Tokens, Safe Area/Dynamic Island, Accessibility Text Scaling 1.5x, và đủ 5 trạng thái UI).
+  - Chạy widget tests thông qua tool `run_widget_test` để chụp lại toàn bộ chuỗi frames render trong test lifecycle.
+  - Sử dụng `get_frame` (lấy frame `"last"` hoặc theo index) để Vision AI soi trực quan từng điểm ảnh.
+  - Trích xuất ảnh render làm minh chứng thực tế trong báo cáo Gate 6 (kèm crop/tọa độ lỗi nếu có).
 - Kiểm tra các file integration test trong `integration_test/` hoặc `test/`.
 
 ### Bước 4: Đo Đạc Phi Chức Năng (Non-Functional Stress Testing)

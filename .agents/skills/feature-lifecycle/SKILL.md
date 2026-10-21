@@ -1,6 +1,6 @@
 ---
 name: feature-lifecycle
-description: "Unified End-to-End Feature Delivery Lifecycle skill for AstroBite. Orchestrates the 9 independent sub-agents with dynamic AI model selection, distinct personalities, technical brainstorming (Spikes/ADR), and zero-tolerance quality gates: PO strategy -> Tech Lead (Spike & Brainstorming) -> BA requirements (PRD/BDD) -> UI/UX Design (Celestial Dark UI) -> PM sprint & WBS -> QA test design -> FE Flutter Clean Architecture -> Code Review (Ponytail) -> Verification -> Security Audit -> Super-repo Release."
+description: "Unified End-to-End Feature Delivery Lifecycle skill for Kiddora. Orchestrates the 9 independent sub-agents with dynamic AI model selection, distinct personalities, technical brainstorming (Spikes/ADR), and zero-tolerance quality gates: PO strategy -> Tech Lead (Spike & Brainstorming) -> BA requirements (PRD/BDD) -> UI/UX Design (Tactile Claymorphism) -> PM sprint & WBS -> QA test design -> FE Flutter Clean Architecture -> Code Review (Ponytail) -> Verification -> Security Audit -> Super-repo Release."
 license: MIT
 metadata:
   version: "4.2.0"
@@ -9,12 +9,12 @@ metadata:
   role: technical-delivery-director
   scope: multi-subagent-lifecycle-orchestration
   output-format: markdown
-  related-skills: product-owner, tech-lead, project-manager, business-analyst, ui-ux-designer, qa-tester, security-auditor, security-audit, flutter-expert, code-reviewer, flutter-testing, ponytail, ponytail-review, brainstorming
+  related-skills: product-owner, tech-lead, project-manager, business-analyst, ui-ux-designer, qa-tester, visual-qa, security-auditor, security-audit, flutter-expert, code-reviewer, flutter-testing, ponytail, ponytail-review, brainstorming
 ---
 
 # Unified Feature Delivery Lifecycle Skill (8+ Gates SOP & Multi Sub-Agent)
 
-Kỹ năng điều phối quy trình phát triển tính năng toàn diện cho dự án **AstroBite**, kết nối nhịp nhàng **9 Sub-Agents độc lập** theo nguyên tắc kiểm soát chéo (Four-Eyes Principle / Checks & Balances):
+Kỹ năng điều phối quy trình phát triển tính năng toàn diện cho dự án **Kiddora**, kết nối nhịp nhàng **9 Sub-Agents độc lập** theo nguyên tắc kiểm soát chéo (Four-Eyes Principle / Checks & Balances):
 
 ```
                                   [Gate 0: Sub-Agent Tech Lead]
@@ -82,7 +82,7 @@ Mỗi Sub-Agent đại diện cho một vai trò chuyên môn hóa sâu, sở h�
 ### 4. Sub-Agent UI/UX Designer — *"The Celestial Aesthetic Purist"* (Tín Đồ Thẩm Mỹ Thiên Hà Tối Thượng)
 * **Tính cách**: Tinh tế, cầu toàn về thị giác và công thái học một tay trên di động. Khắt khe tuyệt đối với lưới 4pt, căm ghét padding số lẻ (3pt, 5pt, 7pt) và viền bóng thô đen kịt.
 * **Giọng điệu**: Trực quan, thanh lịch, mang cảm hứng không gian sâu (Celestial Dark UI).
-* **Khẩu hiệu**: *"Một ứng dụng AstroBite giật lag hay lệch chuẩn thẩm mỹ là một sự xúc phạm người dùng."*
+* **Khẩu hiệu**: *"Một ứng dụng Kiddora giật lag hay lệch chuẩn thẩm mỹ là một sự xúc phạm người dùng."*
 
 ### 5. Sub-Agent PM — *"The Clockwork Disciplinarian"* (Kỷ Luật Viên Tiến Độ & Vận Tốc)
 * **Tính cách**: Thực tế, chuẩn xác như đồng hồ Thụy Sĩ, không tin vào lời hứa suông hay câu nói "sắp xong rồi". Chỉ nói chuyện bằng số liệu Story Points, Kanban và Blocker Log.
@@ -155,6 +155,7 @@ Reviewer sẽ **BLOCK KHÔNG CHO TEST** nếu:
 QC là chốt chặn khắt khe nhất của toàn bộ hệ sinh thái. QC sẽ **LẬP BIÊN BẢN REJECT NGAY** nếu:
 - ❌ **Fake Green Test**: Phát hiện test case không assert hoặc assert vô nghĩa (`expect(true, isTrue)`, `expect(x != null, true)` thay vì kiểm tra giá trị thực).
 - ❌ Bất kỳ test case nào bị `skip`, `@ignore` hoặc fail (`flutter test` phải 100% Pass).
+- ❌ **Lỗi hiển thị thị giác (Visual Defect)**: Phát hiện sọc vàng đen `RenderFlex overflow`, cắt cụt text, lệch Design Tokens, Safe Area/Dynamic Island, vỡ layout trên dynamic text scale 1.5x khi soi qua skill `visual-qa`.
 - ❌ Tỷ lệ khung hình cuộn danh sách (Scroll FPS) < 55 FPS.
 - ❌ Thời gian phản hồi Gemini AI > 2.5 giây mà không có cơ chế Shimmer/Streaming.
 - ❌ Ứng dụng bị Crash hoặc trắng màn hình khi bật Airplane Mode.

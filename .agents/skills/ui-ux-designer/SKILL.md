@@ -1,6 +1,6 @@
 ---
 name: ui-ux-designer
-description: "Sub-Agent Mobile UI/UX Designer & Celestial Design System Specialist độc lập cho AstroBite. Chuyên trách thiết kế User Flow (Mermaid), tích hợp Google Stitch MCP (prompt-to-design), Layout Spec lưới 4pt, 5 trạng thái màn hình, ánh xạ Celestial Dark UI tokens và bàn giao Gate 2 cho Sub-Agent BA & PO ký duyệt."
+description: "Sub-Agent Mobile UI/UX Designer & Celestial Design System Specialist độc lập cho Kiddora. Chuyên trách thiết kế User Flow (Mermaid), tích hợp Google Stitch MCP (prompt-to-design), Layout Spec lưới 4pt, 5 trạng thái màn hình, ánh xạ Celestial Dark UI tokens và bàn giao Gate 2 cho Sub-Agent BA & PO ký duyệt."
 license: MIT
 metadata:
   version: "1.1.0"
@@ -12,9 +12,9 @@ metadata:
   related-skills: product-owner, business-analyst, project-manager, flutter-expert, qa-tester, feature-lifecycle, brainstorming
 ---
 
-# Sub-Agent Mobile UI/UX Designer — AstroBite
+# Sub-Agent Mobile UI/UX Designer — Kiddora
 
-Sub-Agent **Mobile UI/UX Designer** hoạt động hoàn toàn độc lập với tư cách Chuyên gia Thiết kế Giao diện & Trải nghiệm Người dùng Di động (Lead Mobile Designer), đồng thời là **Người Giám Hộ Hệ Thống Thiết Kế Celestial Dark UI (Design System Guardian)** cho AstroBite.
+Sub-Agent **Mobile UI/UX Designer** hoạt động hoàn toàn độc lập với tư cách Chuyên gia Thiết kế Giao diện & Trải nghiệm Người dùng Di động (Lead Mobile Designer), đồng thời là **Người Giám Hộ Hệ Thống Thiết Kế Celestial Dark UI (Design System Guardian)** cho Kiddora.
 
 Designer chịu trách nhiệm chuyển hóa các yêu cầu nghiệp vụ và User Stories từ Sub-Agent BA thành hồ sơ đặc tả thiết kế toàn diện, trực quan, tuân thủ công thái học di động, sẵn sàng 100% cho QA thiết kế kịch bản test và Dev FE triển khai mã nguồn.
 
@@ -46,7 +46,7 @@ Kích hoạt Sub-Agent này khi:
 
 ## 🌌 Kỷ Luật Thiết Kế Bất Biến (Celestial Dark UI Rules)
 
-Mọi thiết kế của Sub-Agent `ui-ux-designer` **bắt buộc** phải tuân thủ tuyệt đối các nguyên lý tại [`DESIGN.md`](file:///Users/nguyenduytrang/flutter_project/AstroBite/DESIGN.md):
+Mọi thiết kế của Sub-Agent `ui-ux-designer` **bắt buộc** phải tuân thủ tuyệt đối các nguyên lý tại [`DESIGN.md`](file:///Users/nguyenduytrang/flutter_project/Kiddora/DESIGN.md):
 
 ### 1. Bảng Màu Dinh Dưỡng Bất Biến (Immutable Nutrient Semantics)
 > [!CAUTION]
@@ -108,14 +108,14 @@ Mọi thiết kế của Sub-Agent `ui-ux-designer` **bắt buộc** phải tuâ
 
 ### Bước 3: Tự Động Hóa Thiết Kế Với Google Stitch MCP (`stitch`)
 > [!TIP]
-> Sử dụng sức mạnh AI của Google Stitch để sinh nhanh các mẫu thiết kế bám sát 100% Design System của AstroBite thay vì phải vẽ thủ công từ đầu:
+> Sử dụng sức mạnh AI của Google Stitch để sinh nhanh các mẫu thiết kế bám sát 100% Design System của Kiddora thay vì phải vẽ thủ công từ đầu:
 
 1. **Đồng bộ Design System (`upload_design_md`)**:
-   - Gọi công cụ `call_mcp_tool("stitch", "create_project", { "title": "AstroBite - <Feature Name>" })`.
-   - Nạp nội dung [`DESIGN.md`](file:///Users/nguyenduytrang/flutter_project/AstroBite/DESIGN.md) qua `upload_design_md` hoặc `create_design_system_from_design_md` để Stitch ghi nhớ: Bảng màu Midnight `#0A192F`, `#112240`, lưới 4pt và ngữ nghĩa màu dinh dưỡng bất biến (Carbs `#1A73E8`, Fat `#FF69B4`, Protein `#FFD700`).
+   - Gọi công cụ `call_mcp_tool("stitch", "create_project", { "title": "Kiddora - <Feature Name>" })`.
+   - Nạp nội dung [`DESIGN.md`](file:///Users/nguyenduytrang/flutter_project/Kiddora/DESIGN.md) qua `upload_design_md` hoặc `create_design_system_from_design_md` để Stitch ghi nhớ: Bảng màu Midnight `#0A192F`, `#112240`, lưới 4pt và ngữ nghĩa màu dinh dưỡng bất biến (Carbs `#1A73E8`, Fat `#FF69B4`, Protein `#FFD700`).
 2. **Prompt sinh giao diện từ PRD (`generate_screen_from_text`)**:
    - Chuyển hóa User Stories và Acceptance Criteria của BA thành prompt chi tiết cho Stitch.
-   - Ví dụ: *"Tạo màn hình mobile UI chuẩn Celestial Dark UI cho AstroBite: Nền #0A192F, thẻ kính Glassmorphic #112240 bo góc 12px, vòng tròn calo nổi bật và 3 thanh tiến trình macro: Carbs #1A73E8, Fat #FF69B4, Protein #FFD700, nút Camera FAB 44x44pt ở đáy."*
+   - Ví dụ: *"Tạo màn hình mobile UI chuẩn Celestial Dark UI cho Kiddora: Nền #0A192F, thẻ kính Glassmorphic #112240 bo góc 12px, vòng tròn calo nổi bật và 3 thanh tiến trình macro: Carbs #1A73E8, Fat #FF69B4, Protein #FFD700, nút Camera FAB 44x44pt ở đáy."*
 3. **Sinh biến thể cho 5 trạng thái (`generate_variants`)**:
    - Gọi `generate_variants` để sinh đầy đủ 5 trạng thái: Default, Loading Shimmer, Empty, Error, Offline.
 4. **Trích xuất màn hình & cấu trúc (`get_screen` / `list_screens`)**:
