@@ -15,7 +15,8 @@ class HomeScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(onboardingControllerProvider);
     final profile = state.profile;
-    final nickname = profile?.nickname.isNotEmpty == true ? profile!.nickname : 'Alex';
+    final nickname =
+        profile?.nickname.isNotEmpty == true ? profile!.nickname : 'Alex';
     final avatarId = profile?.avatarId ?? 'lion';
     final stars = profile?.currentStars ?? 140;
     final streak = profile?.currentStreak ?? 5;
@@ -56,20 +57,47 @@ class HomeScreen extends ConsumerWidget {
     );
   }
 
-  Widget _buildTopHeader(String nickname, String avatarId, int stars, int streak) {
+  Widget _buildTopHeader(
+      String nickname, String avatarId, int stars, int streak) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Row(
           children: [
             Container(
-              width: 52,
-              height: 52,
+              width: 54,
+              height: 54,
               decoration: BoxDecoration(
-                color: AppColors.brandPrimary.withValues(alpha: 0.15),
                 shape: BoxShape.circle,
-                border: Border.all(color: AppColors.brandPrimary, width: 2),
+                gradient: const LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  colors: [
+                    AppColors.brandIndigoLight,
+                    AppColors.brandPrimary,
+                    AppColors.clayExtrusionIndigo,
+                  ],
+                ),
+                border: Border.all(color: Colors.white, width: 2.0),
+                boxShadow: [
+                  const BoxShadow(
+                    color: Colors.white,
+                    offset: Offset(-1, -1),
+                    blurRadius: 2,
+                  ),
+                  const BoxShadow(
+                    color: AppColors.clayExtrusionIndigo,
+                    offset: Offset(0, 2.5),
+                    blurRadius: 0,
+                  ),
+                  BoxShadow(
+                    color: AppColors.brandPrimary.withValues(alpha: 0.3),
+                    offset: const Offset(0, 5),
+                    blurRadius: 10,
+                  ),
+                ],
               ),
+              padding: const EdgeInsets.all(2),
               child: ClipOval(
                 child: Image.asset(
                   'assets/images/avatar_$avatarId.png',
@@ -124,7 +152,8 @@ class HomeScreen extends ConsumerWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Container(
-                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
                 decoration: BoxDecoration(
                   color: AppColors.brandMint,
                   borderRadius: BorderRadius.circular(AppValues.radiusPill),
@@ -146,11 +175,13 @@ class HomeScreen extends ConsumerWidget {
               ),
               const Row(
                 children: [
-                  Icon(Icons.people_alt_rounded, size: 16, color: AppColors.textSecondary),
+                  Icon(Icons.people_alt_rounded,
+                      size: 16, color: AppColors.textSecondary),
                   SizedBox(width: 4),
                   Text(
                     '24 bạn đang học',
-                    style: TextStyle(fontSize: 12, color: AppColors.textSecondary),
+                    style:
+                        TextStyle(fontSize: 12, color: AppColors.textSecondary),
                   ),
                 ],
               ),
@@ -176,7 +207,8 @@ class HomeScreen extends ConsumerWidget {
             child: ClayButton(
               label: AppStrings.enterLiveClass,
               backgroundColor: AppColors.brandPrimary,
-              icon: const Icon(Icons.play_circle_fill_rounded, color: Colors.white),
+              icon: const Icon(Icons.play_circle_fill_rounded,
+                  color: Colors.white),
               onPressed: () {},
             ),
           ),
@@ -241,7 +273,10 @@ class HomeScreen extends ConsumerWidget {
           const SizedBox(height: AppValues.space1),
           Text(
             lessonsCount,
-            style: const TextStyle(fontSize: 12, color: AppColors.textSecondary),
+            style: const TextStyle(
+              fontSize: AppValues.fontBodySm,
+              color: AppColors.textSecondary,
+            ),
           ),
         ],
       ),
@@ -250,7 +285,7 @@ class HomeScreen extends ConsumerWidget {
 
   Widget _buildDailyQuestCard(BuildContext context) {
     return ClayCard(
-      backgroundColor: const Color(0xFFF0FDF4),
+      backgroundColor: AppColors.questCardBg,
       glowColor: AppColors.brandMint.withValues(alpha: 0.2),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -259,25 +294,28 @@ class HomeScreen extends ConsumerWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               const Text(
-                'Nhiệm Vụ Hôm Nay ⭐',
+                AppStrings.dailyQuestTitle,
                 style: TextStyle(
-                  fontSize: 16,
+                  fontSize: AppValues.fontTitleLg,
                   fontWeight: FontWeight.w800,
                   color: AppColors.textPrimary,
                 ),
               ),
               Container(
-                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: AppValues.space4,
+                  vertical: AppValues.space1,
+                ),
                 decoration: BoxDecoration(
                   color: AppColors.brandMint.withValues(alpha: 0.2),
                   borderRadius: BorderRadius.circular(AppValues.radiusPill),
                 ),
                 child: const Text(
-                  '+30 Sao',
+                  AppStrings.plusThirtyStars,
                   style: TextStyle(
                     color: AppColors.brandMint,
                     fontWeight: FontWeight.w800,
-                    fontSize: 12,
+                    fontSize: AppValues.fontBodySm,
                   ),
                 ),
               ),
@@ -285,16 +323,19 @@ class HomeScreen extends ConsumerWidget {
           ),
           const SizedBox(height: AppValues.space3),
           const Text(
-            'Hoàn thành 3 câu đố tư duy toán học',
-            style: TextStyle(fontSize: 13, color: AppColors.textSecondary),
+            AppStrings.dailyQuestDescription,
+            style: TextStyle(
+              fontSize: AppValues.fontLabelMd,
+              color: AppColors.textSecondary,
+            ),
           ),
           const SizedBox(height: AppValues.space6),
           ClipRRect(
             borderRadius: BorderRadius.circular(AppValues.radiusPill),
             child: const LinearProgressIndicator(
               value: 0.66,
-              minHeight: 12,
-              backgroundColor: Color(0xFFDCFCE7),
+              minHeight: AppValues.radiusLg,
+              backgroundColor: AppColors.progressBarMintBg,
               valueColor: AlwaysStoppedAnimation<Color>(AppColors.brandMint),
             ),
           ),

@@ -74,7 +74,8 @@ void main() {
       expect(controller.state.isCompleted, isFalse);
     });
 
-    test('completeOnboarding succeeds with valid profile and persists', () async {
+    test('completeOnboarding succeeds with valid profile and persists',
+        () async {
       controller.updateNickname('Alex');
       controller.selectAge(9);
       controller.selectAvatar('bear');

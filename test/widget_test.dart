@@ -7,7 +7,8 @@ import 'package:kiddora/features/onboarding/presentation/controllers/onboarding_
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
-  testWidgets('KiddoraApp renders OnboardingScreen when first launch', (tester) async {
+  testWidgets('KiddoraApp renders OnboardingScreen when first launch',
+      (tester) async {
     SharedPreferences.setMockInitialValues({'has_completed_onboarding': false});
     final prefs = await SharedPreferences.getInstance();
 
@@ -26,7 +27,8 @@ void main() {
     expect(find.text('Fun Learning for a\nBrighter Tomorrow'), findsOneWidget);
   });
 
-  testWidgets('KiddoraApp renders HomeScreen when onboarding completed', (tester) async {
+  testWidgets('KiddoraApp renders HomeScreen when onboarding completed',
+      (tester) async {
     SharedPreferences.setMockInitialValues({
       'has_completed_onboarding': true,
       'kiddora_kid_profile':

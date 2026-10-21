@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:kiddora/core/constants/app_strings.dart';
 import 'package:kiddora/features/onboarding/presentation/controllers/onboarding_controller.dart';
 import 'package:kiddora/features/onboarding/presentation/pages/kid_profile_setup_screen.dart';
 
@@ -27,7 +28,8 @@ void main() {
   }
 
   group('KidProfileSetupScreen Widget Tests', () {
-    testWidgets('Renders sections for Nickname, Age, and Avatar', (tester) async {
+    testWidgets('Renders sections for Nickname, Age, and Avatar',
+        (tester) async {
       tester.view.physicalSize = const Size(1080, 2400);
       tester.view.devicePixelRatio = 2.0;
       addTearDown(() {
@@ -38,16 +40,16 @@ void main() {
       await tester.pumpWidget(buildTestWidget());
       await tester.pump();
 
-      expect(find.text('Tạo Hồ Sơ Bé 🎨'), findsOneWidget);
-      expect(find.text('Biệt danh của con là gì?'), findsOneWidget);
-      expect(find.text('Con mấy tuổi rồi?'), findsOneWidget);
-      expect(find.text('Chọn bạn đồng hành 3D:'), findsOneWidget);
+      expect(find.text(AppStrings.setupProfileTitle), findsOneWidget);
+      expect(find.text(AppStrings.nicknameLabel), findsOneWidget);
+      expect(find.text(AppStrings.ageQuestion), findsOneWidget);
+      expect(find.text(AppStrings.selectCompanion), findsOneWidget);
 
       // 4 Ages
-      expect(find.text('7 tuổi'), findsOneWidget);
-      expect(find.text('8 tuổi'), findsOneWidget);
-      expect(find.text('9 tuổi'), findsOneWidget);
-      expect(find.text('10 tuổi'), findsOneWidget);
+      expect(find.text('7 ${AppStrings.ageUnit}'), findsOneWidget);
+      expect(find.text('8 ${AppStrings.ageUnit}'), findsOneWidget);
+      expect(find.text('9 ${AppStrings.ageUnit}'), findsOneWidget);
+      expect(find.text('10 ${AppStrings.ageUnit}'), findsOneWidget);
 
       // 4 Mascots
       expect(find.text('Leo'), findsOneWidget);
@@ -56,7 +58,7 @@ void main() {
       expect(find.text('Bunny'), findsOneWidget);
 
       // Action button
-      expect(find.text('Khám Phá Kiddora 🚀'), findsOneWidget);
+      expect(find.text(AppStrings.readyToExplore), findsOneWidget);
     });
 
     testWidgets('Entering nickname enables action button', (tester) async {
@@ -75,7 +77,7 @@ void main() {
       await tester.pump();
 
       // Tap an age
-      await tester.tap(find.text('9 tuổi'));
+      await tester.tap(find.text('9 ${AppStrings.ageUnit}'));
       await tester.pump();
 
       // Tap a mascot
@@ -83,7 +85,7 @@ void main() {
       await tester.pump();
 
       // Ensure button is visible before tap
-      final buttonFinder = find.text('Khám Phá Kiddora 🚀');
+      final buttonFinder = find.text(AppStrings.readyToExplore);
       await tester.ensureVisible(buttonFinder);
       await tester.pumpAndSettle();
 
