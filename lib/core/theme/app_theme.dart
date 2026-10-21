@@ -25,30 +25,30 @@ class AppTheme {
         headlineLarge: baseTextTheme.headlineLarge?.copyWith(
           color: AppColors.textPrimary,
           fontWeight: FontWeight.w800,
-          fontSize: 28,
+          fontSize: AppValues.fontHeadlineXl,
         ),
         headlineMedium: baseTextTheme.headlineMedium?.copyWith(
           color: AppColors.textPrimary,
           fontWeight: FontWeight.w700,
-          fontSize: 22,
+          fontSize: AppValues.fontHeadlineMid,
         ),
         titleLarge: baseTextTheme.titleLarge?.copyWith(
           color: AppColors.textPrimary,
           fontWeight: FontWeight.w700,
-          fontSize: 18,
+          fontSize: AppValues.fontTitleHero,
         ),
         bodyLarge: baseTextTheme.bodyLarge?.copyWith(
           color: AppColors.textPrimary,
-          fontSize: 16,
+          fontSize: AppValues.fontTitleLg,
           fontWeight: FontWeight.w500,
         ),
         bodyMedium: baseTextTheme.bodyMedium?.copyWith(
           color: AppColors.textSecondary,
-          fontSize: 14,
+          fontSize: AppValues.fontBodyMd,
         ),
         labelLarge: baseTextTheme.labelLarge?.copyWith(
           fontWeight: FontWeight.w700,
-          fontSize: 16,
+          fontSize: AppValues.fontTitleLg,
         ),
       ),
       cardTheme: CardTheme(
@@ -56,7 +56,10 @@ class AppTheme {
         elevation: 0,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(AppValues.radiusXl),
-          side: const BorderSide(color: AppColors.borderDefault, width: 1.5),
+          side: const BorderSide(
+            color: AppColors.borderDefault,
+            width: AppValues.borderWidthHairline,
+          ),
         ),
       ),
       appBarTheme: const AppBarTheme(
