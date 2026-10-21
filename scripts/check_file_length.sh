@@ -1,12 +1,11 @@
 #!/usr/bin/env bash
 # ==============================================================================
-# AstroBite - Codebase File Length & Complexity Checker
-# Enforces clean architecture & Ponytail discipline by capping Dart file lines.
+# Codebase File Length & Complexity Checker (Strict Ponytail Discipline)
+# Enforces clean architecture by warning at 350 lines and capping files at 500 lines.
 # ==============================================================================
 
 set -euo pipefail
 
-# Configuration Thresholds
 WARN_THRESHOLD=350
 MAX_THRESHOLD=500
 EXIT_ON_ERROR=0
@@ -33,7 +32,7 @@ while [[ $# -gt 0 ]]; do
 done
 
 echo "========================================================================"
-echo "🚀 AstroBite File Length Checker"
+echo "🚀 Codebase File Length & Complexity Checker"
 echo "   Warning Threshold : > $WARN_THRESHOLD lines"
 echo "   Hard Cap Threshold: > $MAX_THRESHOLD lines"
 echo "========================================================================"
@@ -44,17 +43,41 @@ ERROR_COUNT=0
 
 TEMP_OUTPUT=$(mktemp)
 
-# Find all dart files in lib/, excluding machine-generated files
-find lib -name "*.dart" \
+# Tìm các thư mục source phổ biến
+SEARCH_DIRS=()
+for d in "lib" "src" "app"; do
+  if [[ -d "$d" ]]; then
+    SEARCH_DIRS+=("$d")
+  fi
+done
+
+if [[ ${#SEARCH_DIRS[@]} -eq 0 ]]; then
+  SEARCH_DIRS=(".")
+fi
+
+find "${SEARCH_DIRS[@]}" \
+  -type f \
+  \( -name "*.dart" -o -name "*.ts" -o -name "*.tsx" -o -name "*.js" -o -name "*.jsx" -o -name "*.swift" -o -name "*.kt" -o -name "*.go" -o -name "*.py" \) \
+  ! -path "*/node_modules/*" \
+  ! -path "*/.git/*" \
+  ! -path "*/build/*" \
+  ! -path "*/dist/*" \
   ! -name "*.g.dart" \
   ! -name "*.freezed.dart" \
-  ! -name "*.gr.dart" | while read -r file; do
-    lines=$(wc -l < "$file" | tr -d ' ')
+  ! -name "*.gr.dart" \
+  ! -name "*.generated.*" 2>/dev/null | while read -r file; do
+    lines=$(wc -l < "$file" | tr -d " ")
     echo "$lines $file" >> "$TEMP_OUTPUT"
 done
 
+if [[ ! -s "$TEMP_OUTPUT" ]]; then
+  echo "Không tìm thấy file mã nguồn phù hợp để quét."
+  rm -f "$TEMP_OUTPUT"
+  exit 0
+fi
+
 echo ""
-echo "📊 Top 10 Longest Files in lib/:"
+echo "📊 Top 10 Longest Source Files:"
 echo "------------------------------------------------------------------------"
 sort -nr "$TEMP_OUTPUT" | head -n 10 | while read -r lines file; do
   if [ "$lines" -gt "$MAX_THRESHOLD" ]; then

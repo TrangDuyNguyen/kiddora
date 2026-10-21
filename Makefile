@@ -15,7 +15,8 @@ help:
 	@echo "  make analyze       : Chạy flutter analyze kiểm tra 0 lỗi"
 	@echo "  make test          : Chạy toàn bộ unit/widget tests"
 	@echo "  make check-files   : Kiểm tra độ dài & độ phức tạp file (Ponytail)"
-	@echo "  make gates         : Chạy kiểm thử chất lượng qua script gate_pipeline.sh"
+	@echo "  make pipeline      : Chạy relay pipeline theo tính năng (make pipeline FEATURE=<name>)"
+	@echo "  make dashboard     : Mở Neobrutalism Mission Control web dashboard theo dõi thời gian thực"
 	@echo "  make agents        : Khởi động phiên tương tác Multi Sub-Agents"
 	@echo "======================================================="
 
@@ -59,14 +60,60 @@ test:
 check-files:
 	@bash scripts/check_file_length.sh
 
-gates:
-	@bash scripts/gate_pipeline.sh
+# =======================================================
+# End-to-End Quality Gate Pipeline (Relay Race Hand-off)
+# =======================================================
+pipeline:
+	@if [ -z "$(FEATURE)" ]; then \
+		echo "❌ Vui lòng cung cấp tên tính năng: make pipeline FEATURE=ten-tinh-nang"; \
+	else \
+		bash scripts/gate_pipeline.sh start "$(FEATURE)"; \
+	fi
 
+pipeline-status:
+	@bash scripts/gate_pipeline.sh status
+
+pipeline-next:
+	@bash scripts/gate_pipeline.sh next
+
+pipeline-reset:
+	@bash scripts/gate_pipeline.sh reset
+
+# =======================================================
+# Individual Sub-Agent CLI Session Launchers
+# =======================================================
 agents:
 	@bash scripts/launch_agent_session.sh all
 
-agent-techlead:
+agent-tech-lead:
 	@bash scripts/launch_agent_session.sh tech-lead
+
+agent-po:
+	@bash scripts/launch_agent_session.sh po
+
+agent-ba:
+	@bash scripts/launch_agent_session.sh ba
+
+agent-design:
+	@bash scripts/launch_agent_session.sh design
 
 agent-dev:
 	@bash scripts/launch_agent_session.sh dev
+
+agent-qa:
+	@bash scripts/launch_agent_session.sh qa
+
+agent-reviewer:
+	@bash scripts/launch_agent_session.sh reviewer
+
+agent-security:
+	@bash scripts/launch_agent_session.sh security
+
+agent-pm:
+	@bash scripts/launch_agent_session.sh pm
+
+# =======================================================
+# Real-Time Visual Neobrutalism Agent Mission Control
+# =======================================================
+dashboard:
+	@bash scripts/dashboard.sh
