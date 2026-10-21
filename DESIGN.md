@@ -1,3 +1,115 @@
+---
+name: Tactile Clay Learning (Kiddora)
+colors:
+  surface: '#FCF8FF'
+  surface-dim: '#F8FAFC'
+  surface-bright: '#FFFFFF'
+  surface-container-lowest: '#FFFFFF'
+  surface-container-low: '#F8FAFC'
+  surface-container: '#FFFFFF'
+  surface-container-high: '#ECEBF0'
+  surface-container-highest: '#E2E8F0'
+  on-surface: '#0D0C22'
+  on-surface-variant: '#6E6D7A'
+  inverse-surface: '#0D0C22'
+  inverse-on-surface: '#FCF8FF'
+  outline: '#E2E8F0'
+  outline-variant: '#CBD5E1'
+  surface-tint: '#6366F1'
+  primary: '#6366F1'
+  on-primary: '#FFFFFF'
+  primary-container: '#4648D4'
+  on-primary-container: '#FFFFFF'
+  inverse-primary: '#818CF8'
+  secondary: '#F59E0B'
+  on-secondary: '#FFFFFF'
+  secondary-container: '#FBBF24'
+  on-secondary-container: '#78350F'
+  tertiary: '#EC4899'
+  on-tertiary: '#FFFFFF'
+  tertiary-container: '#F472B6'
+  on-tertiary-container: '#831843'
+  error: '#EF4444'
+  on-error: '#FFFFFF'
+  error-container: '#FEE2E2'
+  on-error-container: '#991B1B'
+  mint: '#10B981'
+  on-mint: '#FFFFFF'
+  mint-container: '#D1FAE5'
+  sky: '#0EA5E9'
+  on-sky: '#FFFFFF'
+  sky-container: '#E0F2FE'
+  background: '#FCF8FF'
+  on-background: '#0D0C22'
+  surface-variant: '#FFFFFF'
+  clay-highlight: 'rgba(255, 255, 255, 0.85)'
+  clay-shade: 'rgba(13, 12, 34, 0.06)'
+  clay-shadow: 'rgba(99, 102, 241, 0.12)'
+typography:
+  display-hero:
+    fontFamily: Quicksand
+    fontSize: 32px
+    fontWeight: '800'
+    lineHeight: 40px
+    letterSpacing: -0.02em
+  headline-xl:
+    fontFamily: Quicksand
+    fontSize: 24px
+    fontWeight: '800'
+    lineHeight: 32px
+    letterSpacing: -0.02em
+  headline-lg:
+    fontFamily: Quicksand
+    fontSize: 20px
+    fontWeight: '700'
+    lineHeight: 28px
+    letterSpacing: -0.01em
+  title-lg:
+    fontFamily: Quicksand
+    fontSize: 16px
+    fontWeight: '700'
+    lineHeight: 24px
+  body-lg:
+    fontFamily: Quicksand
+    fontSize: 14px
+    fontWeight: '500'
+    lineHeight: 22px
+  label-lg:
+    fontFamily: Quicksand
+    fontSize: 13px
+    fontWeight: '600'
+    lineHeight: 20px
+  caption-sm:
+    fontFamily: Quicksand
+    fontSize: 11px
+    fontWeight: '600'
+    lineHeight: 16px
+    letterSpacing: +0.02em
+  badge-xs:
+    fontFamily: Quicksand
+    fontSize: 9px
+    fontWeight: '700'
+    lineHeight: 14px
+    letterSpacing: +0.04em
+rounded:
+  xs: 0.25rem
+  sm: 0.375rem
+  md: 0.5rem
+  lg: 0.75rem
+  xl: 1.5rem
+  full: 9999px
+spacing:
+  unit: 4px
+  micro: 6px
+  edge-margin: 16px
+  card-padding: 18px
+  gutter-md: 12px
+  gutter-lg: 16px
+  section-gap: 24px
+  touch-target: 48px
+  touch-target-primary: 56px
+---
+
 # DESIGN.md — Kiddora Design System
 
 > **Product**: Kiddora — Kids Learning & Live Classes Mobile App  

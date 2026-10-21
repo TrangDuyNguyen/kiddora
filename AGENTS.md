@@ -13,7 +13,8 @@
   - Design System Guide: [`DESIGN.md`](./DESIGN.md)
   - Project Overview: [`README.md`](./README.md)
   - Google Stitch Project ID: `11612036710163643589`
-  - Stitch Design System Asset: `assets/9652051346587888941` (`Tactile Clay Learning (Kiddora)`)
+  - Stitch Design System Asset: `assets/4f23066581b9416eb589a101d788b98a` (`Tactile Clay Learning (Kiddora)`)
+  - Stitch Design System Seed Asset: `assets/9652051346587888941`
 
 ---
 

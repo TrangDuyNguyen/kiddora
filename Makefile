@@ -1,9 +1,15 @@
-.PHONY: help setup test check-files build-android build-ios release gen analyze agents
+.PHONY: help setup test check-files build-android build-ios release gen analyze agents run run-android run-ios devices
 
 help:
 	@echo "======================================================="
 	@echo "Kiddora Workspace Management Commands"
 	@echo "======================================================="
+	@echo "  make devices       : Liệt kê các thiết bị và emulator đang kết nối"
+	@echo "  make run           : Chạy ứng dụng trên thiết bị mặc định"
+	@echo "  make run-android   : Chạy trên Android Emulator hoặc máy thật Android"
+	@echo "  make run-ios       : Mở iOS Simulator và chạy trên iOS"
+	@echo "  make build-apk     : Build file APK cài trực tiếp lên thiết bị Android"
+	@echo "  make build-ios     : Build bundle iOS"
 	@echo "  make setup         : Tải dependencies và cấu hình môi trường"
 	@echo "  make gen           : Chạy build_runner sinh mã nguồn Riverpod & AutoRoute"
 	@echo "  make analyze       : Chạy flutter analyze kiểm tra 0 lỗi"
@@ -13,11 +19,36 @@ help:
 	@echo "  make agents        : Khởi động phiên tương tác Multi Sub-Agents"
 	@echo "======================================================="
 
+devices:
+	flutter devices
+
+run:
+	flutter run
+
+run-android:
+	flutter run -d android
+
+run-ios:
+	@open -a Simulator || true
+	flutter run -d ios
+
+build-apk:
+	flutter build apk --debug
+
+build-apk-release:
+	flutter build apk --release
+
+build-appbundle:
+	flutter build appbundle --release
+
+build-ios:
+	flutter build ios --no-codesign
+
 setup:
 	flutter pub get
 
 gen:
-	dart run build_runner build --delete-conflicting-outputs
+	flutter pub run build_runner build --delete-conflicting-outputs
 
 analyze:
 	flutter analyze

@@ -11,6 +11,8 @@ class ClayButton extends StatefulWidget {
   final Widget? icon;
   final double height;
 
+  final bool isLoading;
+
   const ClayButton({
     super.key,
     required this.label,
@@ -19,6 +21,7 @@ class ClayButton extends StatefulWidget {
     this.textColor = AppColors.textInverse,
     this.icon,
     this.height = AppValues.recommendedKidTouchTarget,
+    this.isLoading = false,
   });
 
   @override
@@ -62,24 +65,34 @@ class _ClayButtonState extends State<ClayButton> {
         ),
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: AppValues.space9),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              if (widget.icon != null) ...[
-                widget.icon!,
-                const SizedBox(width: AppValues.space4),
-              ],
-              Text(
-                widget.label,
-                style: TextStyle(
-                  color: isEnabled ? widget.textColor : Colors.grey.shade600,
-                  fontSize: 16,
-                  fontWeight: FontWeight.w700,
+          child: widget.isLoading
+              ? const SizedBox(
+                  width: 24,
+                  height: 24,
+                  child: CircularProgressIndicator(
+                    strokeWidth: 2.5,
+                    valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+                  ),
+                )
+              : Row(
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    if (widget.icon != null) ...[
+                      widget.icon!,
+                      const SizedBox(width: AppValues.space4),
+                    ],
+                    Text(
+                      widget.label,
+                      style: TextStyle(
+                        color:
+                            isEnabled ? widget.textColor : Colors.grey.shade600,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                  ],
                 ),
-              ),
-            ],
-          ),
         ),
       ),
     );

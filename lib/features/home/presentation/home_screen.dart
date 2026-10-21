@@ -1,14 +1,25 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../core/constants/app_values.dart';
 import '../../../core/constants/app_strings.dart';
 import '../../../shared/ui_kit/ui_kit.dart';
+import '../../onboarding/presentation/controllers/onboarding_controller.dart';
 
-class HomeScreen extends StatelessWidget {
+@RoutePage()
+class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final state = ref.watch(onboardingControllerProvider);
+    final profile = state.profile;
+    final nickname = profile?.nickname.isNotEmpty == true ? profile!.nickname : 'Alex';
+    final avatarId = profile?.avatarId ?? 'lion';
+    final stars = profile?.currentStars ?? 140;
+    final streak = profile?.currentStreak ?? 5;
+
     return Scaffold(
       backgroundColor: AppColors.surface,
       body: SafeArea(
@@ -19,7 +30,7 @@ class HomeScreen extends StatelessWidget {
             children: [
               const SizedBox(height: AppValues.space4),
               // Header with Profile & Rewards
-              _buildTopHeader(),
+              _buildTopHeader(nickname, avatarId, stars, streak),
               const SizedBox(height: AppValues.space8),
 
               // Live Class Spotlight Card
@@ -45,37 +56,43 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildTopHeader() {
+  Widget _buildTopHeader(String nickname, String avatarId, int stars, int streak) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Row(
           children: [
             Container(
-              width: 48,
-              height: 48,
+              width: 52,
+              height: 52,
               decoration: BoxDecoration(
                 color: AppColors.brandPrimary.withValues(alpha: 0.15),
                 shape: BoxShape.circle,
                 border: Border.all(color: AppColors.brandPrimary, width: 2),
               ),
-              child: const Center(
-                child: Text('🦁', style: TextStyle(fontSize: 24)),
+              child: ClipOval(
+                child: Image.asset(
+                  'assets/images/avatar_$avatarId.png',
+                  fit: BoxFit.cover,
+                  errorBuilder: (_, __, ___) => const Center(
+                    child: Text('🦁', style: TextStyle(fontSize: 24)),
+                  ),
+                ),
               ),
             ),
             const SizedBox(width: AppValues.space5),
-            const Column(
+            Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Chào Alex! 🚀',
-                  style: TextStyle(
+                  'Chào $nickname! 🚀',
+                  style: const TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.w800,
                     color: AppColors.textPrimary,
                   ),
                 ),
-                Text(
+                const Text(
                   'Cấp độ 3 • Thám hiểm viên',
                   style: TextStyle(
                     fontSize: 12,
@@ -86,11 +103,11 @@ class HomeScreen extends StatelessWidget {
             ),
           ],
         ),
-        const Row(
+        Row(
           children: [
-            StarCounterBadge(count: 5, isStreak: true),
-            SizedBox(width: AppValues.space4),
-            StarCounterBadge(count: 140),
+            StarCounterBadge(count: streak, isStreak: true),
+            const SizedBox(width: AppValues.space4),
+            StarCounterBadge(count: stars),
           ],
         ),
       ],
