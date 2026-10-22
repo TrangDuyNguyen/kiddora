@@ -152,6 +152,7 @@ class AppValues {
   static const double sizeCircleButtonLg = 42.0;
   static const double sizeCircleButtonXl = 44.0;
   static const double sizeSocialButton = 52.0;
+  static const double sizeSocialButtonLg = 56.0;
   static const double sizeButtonPrimaryH = 54.0;
   static const double sizeLoginLogoH = 48.0;
   static const double sizeLoginHeroMascotH = 145.0;
@@ -165,9 +166,11 @@ class AppValues {
   static const double sizeGoalCheckbox = 26.0;
   static const double sizeMsLogoBox = 18.0;
   static const double sizeNotificationBadgeMin = 15.0;
+  static const double waveHeaderDipH = 28.0;
 
   // Custom Radii
   static const double radiusInput = 16.0;
+  static const double radiusPillInput = 24.0;
   static const double radiusCourseThumbnail = 14.0;
   static const double radiusCheckbox = 6.0;
   static const double radiusTaskTile = 12.0;

@@ -8,6 +8,7 @@ import '../../../core/constants/app_strings.dart';
 import '../../../core/constants/app_values.dart';
 import '../../../core/router/app_router.gr.dart';
 import '../../../shared/ui_kit/ui_kit.dart';
+import '../../onboarding/presentation/widgets/onboarding_pastel_blobs.dart';
 import 'controllers/login_controller.dart';
 import 'widgets/login_header.dart';
 import 'widgets/login_social_row.dart';
@@ -52,221 +53,262 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
     final state = ref.watch(loginControllerProvider);
 
     return Scaffold(
-      backgroundColor: AppColors.surfaceLoginCanvas,
-      body: SafeArea(
-        bottom: false,
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              // Header & 3D Mascot Section
-              const LoginHeader(),
+      backgroundColor: AppColors.surface,
+      body: Stack(
+        children: [
+          // Ambient Pastel Blobs
+          const OnboardingPastelBlobs(),
 
-              // White Porcelain Form Card
-              Container(
-                width: double.infinity,
-                padding: const EdgeInsets.symmetric(
-                  horizontal: AppValues.space8,
-                  vertical: AppValues.space8,
-                ),
-                decoration: const BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(AppValues.radiusSheetTop),
-                    topRight: Radius.circular(AppValues.radiusSheetTop),
-                  ),
-                  boxShadow: [
-                    BoxShadow(
-                      color: AppColors.shadowIndigoSubtle,
-                      offset: Offset(0, -6),
-                      blurRadius: AppValues.space8,
+          // Main Interactive Content
+          SafeArea(
+            bottom: false,
+            child: LayoutBuilder(
+              builder: (context, constraints) {
+                return SingleChildScrollView(
+                  child: ConstrainedBox(
+                    constraints: BoxConstraints(
+                      minHeight: constraints.maxHeight,
                     ),
-                  ],
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    // Email or Username Input
-                    ClayTextField(
-                      controller: _emailController,
-                      hintText: AppStrings.emailOrUsername,
-                      prefixIcon: const Icon(
-                        Icons.mail_outline_rounded,
-                        color: AppColors.brandPrimary,
-                        size: AppValues.iconSizeXl,
-                      ),
-                      onChanged: (val) => ref
-                          .read(loginControllerProvider.notifier)
-                          .updateEmail(val),
-                    ),
-                    const SizedBox(height: AppValues.space5),
+                    child: IntrinsicHeight(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          // Header & 3D Mascot Section
+                          const LoginHeader(),
 
-                    // Password Input with Visibility Toggle
-                    ClayTextField(
-                      controller: _passwordController,
-                      hintText: AppStrings.password,
-                      obscureText: state.isObscured,
-                      prefixIcon: const Icon(
-                        Icons.lock_outline_rounded,
-                        color: AppColors.brandPrimary,
-                        size: AppValues.iconSizeXl,
-                      ),
-                      suffixIcon: GestureDetector(
-                        onTap: () {
-                          HapticFeedback.selectionClick();
-                          ref
-                              .read(loginControllerProvider.notifier)
-                              .toggleObscured();
-                        },
-                        child: Icon(
-                          state.isObscured
-                              ? Icons.visibility_outlined
-                              : Icons.visibility_off_outlined,
-                          color: AppColors.textMuted,
-                          size: AppValues.iconSizeMd,
-                        ),
-                      ),
-                      onChanged: (val) => ref
-                          .read(loginControllerProvider.notifier)
-                          .updatePassword(val),
-                    ),
-                    const SizedBox(height: AppValues.space5),
+                          // White Porcelain Clay Wave Bottom Sheet
+                          Expanded(
+                            child: ClayWaveSheet(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.stretch,
+                                children: [
+                                  const SizedBox(height: AppValues.space4),
 
-                    // Remember Me & Forgot Password Row
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        GestureDetector(
-                          onTap: () {
-                            HapticFeedback.selectionClick();
-                            ref
-                                .read(loginControllerProvider.notifier)
-                                .toggleRememberMe();
-                          },
-                          child: Row(
-                            children: [
-                              AnimatedContainer(
-                                duration: AppValues.durationFeedback,
-                                width: AppValues.sizeCheckbox,
-                                height: AppValues.sizeCheckbox,
-                                decoration: BoxDecoration(
-                                  color: state.rememberMe
-                                      ? AppColors.brandPrimary
-                                      : Colors.white,
-                                  borderRadius: BorderRadius.circular(
-                                    AppValues.radiusCheckbox,
+                                  // Email or Username Input
+                                  ClayTextField(
+                                    controller: _emailController,
+                                    hintText: AppStrings.emailOrUsername,
+                                    prefixIcon: const Icon(
+                                      Icons.mail_outline_rounded,
+                                      color: AppColors.brandIndigoLight,
+                                      size: AppValues.iconSizeXl,
+                                    ),
+                                    onChanged: (val) => ref
+                                        .read(loginControllerProvider.notifier)
+                                        .updateEmail(val),
                                   ),
-                                  border: Border.all(
-                                    color: state.rememberMe
-                                        ? AppColors.brandPrimary
-                                        : AppColors.borderSubtle,
-                                    width: AppValues.borderWidthHairline,
-                                  ),
-                                  boxShadow: [
-                                    if (state.rememberMe)
-                                      BoxShadow(
-                                        color: AppColors.brandPrimary
-                                            .withValues(alpha: 0.3),
-                                        blurRadius: AppValues.radiusXs,
-                                        offset: const Offset(0, 2),
+                                  const SizedBox(height: AppValues.space6),
+
+                                  // Password Input with Visibility Toggle
+                                  ClayTextField(
+                                    controller: _passwordController,
+                                    hintText: AppStrings.password,
+                                    obscureText: state.isObscured,
+                                    prefixIcon: const Icon(
+                                      Icons.lock_outline_rounded,
+                                      color: AppColors.brandIndigoLight,
+                                      size: AppValues.iconSizeXl,
+                                    ),
+                                    suffixIcon: GestureDetector(
+                                      onTap: () {
+                                        HapticFeedback.selectionClick();
+                                        ref
+                                            .read(loginControllerProvider
+                                                .notifier)
+                                            .toggleObscured();
+                                      },
+                                      child: Icon(
+                                        state.isObscured
+                                            ? Icons.visibility_outlined
+                                            : Icons.visibility_off_outlined,
+                                        color: AppColors.textMuted,
+                                        size: AppValues.iconSizeMd,
                                       ),
-                                  ],
-                                ),
-                                child: state.rememberMe
-                                    ? const Icon(
-                                        Icons.check_rounded,
-                                        size: AppValues.iconSizeCompact,
-                                        color: Colors.white,
-                                      )
-                                    : null,
+                                    ),
+                                    onChanged: (val) => ref
+                                        .read(loginControllerProvider.notifier)
+                                        .updatePassword(val),
+                                  ),
+                                  const SizedBox(height: AppValues.space5),
+
+                                  // Remember Me & Forgot Password Row
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Flexible(
+                                        child: GestureDetector(
+                                          onTap: () {
+                                            HapticFeedback.selectionClick();
+                                            ref
+                                                .read(loginControllerProvider
+                                                    .notifier)
+                                                .toggleRememberMe();
+                                          },
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.min,
+                                            children: [
+                                              AnimatedContainer(
+                                                duration:
+                                                    AppValues.durationFeedback,
+                                                width: AppValues.sizeCheckbox,
+                                                height: AppValues.sizeCheckbox,
+                                                decoration: BoxDecoration(
+                                                  color: state.rememberMe
+                                                      ? AppColors.brandIndigoLight
+                                                      : Colors.white,
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                    AppValues.radiusCheckbox,
+                                                  ),
+                                                  border: Border.all(
+                                                    color: state.rememberMe
+                                                        ? AppColors
+                                                            .brandIndigoLight
+                                                        : AppColors.borderSubtle,
+                                                    width: AppValues
+                                                        .borderWidthHairline,
+                                                  ),
+                                                  boxShadow: [
+                                                    if (state.rememberMe)
+                                                      BoxShadow(
+                                                        color: AppColors
+                                                            .brandIndigoLight
+                                                            .withValues(
+                                                                alpha: 0.3),
+                                                        blurRadius:
+                                                            AppValues.radiusXs,
+                                                        offset:
+                                                            const Offset(0, 2),
+                                                      ),
+                                                  ],
+                                                ),
+                                                child: state.rememberMe
+                                                    ? const Icon(
+                                                        Icons.check_rounded,
+                                                        size: AppValues
+                                                            .iconSizeCompact,
+                                                        color: Colors.white,
+                                                      )
+                                                    : null,
+                                              ),
+                                              const SizedBox(
+                                                  width: AppValues.space4),
+                                              Flexible(
+                                                child: Text(
+                                                  AppStrings.rememberMe,
+                                                  style: GoogleFonts.quicksand(
+                                                    fontSize:
+                                                        AppValues.fontLabelMd,
+                                                    fontWeight: FontWeight.w600,
+                                                    color:
+                                                        AppColors.textSlateDark,
+                                                  ),
+                                                  maxLines: 1,
+                                                  overflow:
+                                                      TextOverflow.ellipsis,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                      TextButton(
+                                        onPressed: () {
+                                          HapticFeedback.lightImpact();
+                                        },
+                                        style: TextButton.styleFrom(
+                                          padding: EdgeInsets.zero,
+                                          minimumSize: Size.zero,
+                                          tapTargetSize:
+                                              MaterialTapTargetSize.shrinkWrap,
+                                        ),
+                                        child: Text(
+                                          AppStrings.forgotPassword,
+                                          style: GoogleFonts.quicksand(
+                                            fontSize: AppValues.fontLabelMd,
+                                            fontWeight: FontWeight.w700,
+                                            color: AppColors.brandIndigoLight,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  const SizedBox(height: AppValues.space7),
+
+                                  // Log In Primary Tactile Button with Trailing Arrow
+                                  ClayButton(
+                                    label: AppStrings.logIn,
+                                    onPressed:
+                                        state.isLoading ? null : _handleLogin,
+                                    isLoading: state.isLoading,
+                                    trailingIcon: const Icon(
+                                      Icons.arrow_forward_rounded,
+                                      color: Colors.white,
+                                      size: AppValues.iconSizeLg,
+                                    ),
+                                    customGradient: const LinearGradient(
+                                      begin: Alignment.topLeft,
+                                      end: Alignment.bottomRight,
+                                      colors: [
+                                        AppColors.buttonGradientStart,
+                                        AppColors.buttonGradientEnd,
+                                      ],
+                                    ),
+                                    height: AppValues.sizeButtonPrimaryH,
+                                  ),
+                                  const SizedBox(height: AppValues.space7),
+
+                                  // Social Auth Row
+                                  LoginSocialRow(onSocialTap: _handleLogin),
+                                  const SizedBox(height: AppValues.space7),
+
+                                  // Bottom Sign Up Text with Wrap
+                                  Wrap(
+                                    alignment: WrapAlignment.center,
+                                    crossAxisAlignment:
+                                        WrapCrossAlignment.center,
+                                    children: [
+                                      Text(
+                                        AppStrings.dontHaveAccount,
+                                        style: GoogleFonts.quicksand(
+                                          fontSize: AppValues.fontBodyMd,
+                                          fontWeight: FontWeight.w500,
+                                          color: AppColors.textSlate,
+                                        ),
+                                      ),
+                                      const SizedBox(width: AppValues.space2),
+                                      GestureDetector(
+                                        onTap: () {
+                                          HapticFeedback.lightImpact();
+                                          context.router
+                                              .push(const RegisterRoute());
+                                        },
+                                        child: Text(
+                                          AppStrings.signUp,
+                                          style: GoogleFonts.quicksand(
+                                            fontSize: AppValues.fontBodyMd,
+                                            fontWeight: FontWeight.w700,
+                                            color: AppColors.brandIndigoLight,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  const SizedBox(height: AppValues.space7),
+                                ],
                               ),
-                              const SizedBox(width: AppValues.space4),
-                              Text(
-                                AppStrings.rememberMe,
-                                style: GoogleFonts.quicksand(
-                                  fontSize: AppValues.fontLabelMd,
-                                  fontWeight: FontWeight.w600,
-                                  color: AppColors.textSlateDark,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        TextButton(
-                          onPressed: () {
-                            HapticFeedback.lightImpact();
-                          },
-                          style: TextButton.styleFrom(
-                            padding: EdgeInsets.zero,
-                            minimumSize: Size.zero,
-                            tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                          ),
-                          child: Text(
-                            AppStrings.forgotPassword,
-                            style: GoogleFonts.quicksand(
-                              fontSize: AppValues.fontLabelMd,
-                              fontWeight: FontWeight.w700,
-                              color: AppColors.brandPrimary,
                             ),
                           ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: AppValues.space7),
-
-                    // Log In Primary Tactile Button
-                    ClayButton(
-                      label: AppStrings.logIn,
-                      onPressed: state.isLoading ? null : _handleLogin,
-                      isLoading: state.isLoading,
-                      icon: const Icon(
-                        Icons.arrow_forward_rounded,
-                        color: Colors.white,
-                        size: AppValues.iconSizeMd,
+                        ],
                       ),
-                      backgroundColor: AppColors.brandPrimary,
-                      height: AppValues.sizeButtonPrimaryH,
                     ),
-                    const SizedBox(height: AppValues.space7),
-
-                    // Social Auth Row
-                    LoginSocialRow(onSocialTap: _handleLogin),
-                    const SizedBox(height: AppValues.space7),
-
-                    // Bottom Sign Up Text
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          AppStrings.dontHaveAccount,
-                          style: GoogleFonts.quicksand(
-                            fontSize: AppValues.fontBodyMd,
-                            fontWeight: FontWeight.w500,
-                            color: AppColors.textSlate,
-                          ),
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            HapticFeedback.lightImpact();
-                            context.router.push(const RegisterRoute());
-                          },
-                          child: Text(
-                            AppStrings.signUp,
-                            style: GoogleFonts.quicksand(
-                              fontSize: AppValues.fontBodyMd,
-                              fontWeight: FontWeight.w700,
-                              color: AppColors.brandPrimary,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: AppValues.space7),
-                  ],
-                ),
-              ),
-            ],
+                  ),
+                );
+              },
+            ),
           ),
-        ),
+        ],
       ),
     );
   }

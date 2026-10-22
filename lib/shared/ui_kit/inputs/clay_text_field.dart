@@ -60,23 +60,23 @@ class _ClayTextFieldState extends State<ClayTextField> {
     return AnimatedContainer(
       duration: AppValues.durationBounce,
       decoration: BoxDecoration(
-        color: AppColors.surfaceField,
-        borderRadius: BorderRadius.circular(AppValues.radiusInput),
+        color: _isFocused ? Colors.white : AppColors.surfaceInputPill,
+        borderRadius: BorderRadius.circular(AppValues.radiusPillInput),
         border: Border.all(
-          color: _isFocused ? AppColors.brandPrimary : AppColors.borderLight,
+          color: _isFocused ? AppColors.brandPrimary : AppColors.borderInputPill,
           width: _isFocused
               ? AppValues.borderWidthFocus
-              : AppValues.borderWidthHairline,
+              : AppValues.borderWidthThin,
         ),
         boxShadow: [
           const BoxShadow(
             color: Colors.white,
-            offset: Offset(-2, -2),
+            offset: Offset(-1.5, -1.5),
             blurRadius: AppValues.radiusXs,
           ),
           BoxShadow(
             color: AppColors.clayShadeSubtle,
-            offset: const Offset(2, 3),
+            offset: const Offset(1.5, 2.5),
             blurRadius: AppValues.space1,
           ),
           if (_isFocused)

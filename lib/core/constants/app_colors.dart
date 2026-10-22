@@ -150,6 +150,8 @@ class AppColors {
   // Sprint 3 — Core Screens Semantic Tokens
   static const Color surfaceLoginCanvas = Color(0xFFF3EEFC);
   static const Color surfaceField = Color(0xFFF8FAFC);
+  static const Color surfaceInputPill = Color(0xFFF2F2FD);
+  static const Color borderInputPill = Color(0xFFECEEF8);
   static const Color borderLight = Color(0xFFE2E8F0);
   static const Color borderSubtle = Color(0xFFCBD5E1);
   static const Color borderGoalCard = Color(0xFFFDE68A);
@@ -163,11 +165,17 @@ class AppColors {
   static const Color stateWarningAmber = Color(0xFFFBBF24);
   static const Color stateWarningContainer = Color(0xFFFEF3C7);
   static const Color socialGoogleRed = Color(0xFFEA4335);
+  static const Color socialGoogleBlue = Color(0xFF4285F4);
+  static const Color socialGoogleGreen = Color(0xFF34A853);
+  static const Color socialGoogleYellow = Color(0xFFFBBC05);
   static const Color socialAppleDark = Color(0xFF0F172A);
   static const Color socialMsOrange = Color(0xFFF25022);
   static const Color socialMsGreen = Color(0xFF7FBA00);
   static const Color socialMsBlue = Color(0xFF00A4EF);
   static const Color socialMsYellow = Color(0xFFFFB900);
+  static const Color buttonGradientStart = Color(0xFF7C5DF8);
+  static const Color buttonGradientEnd = Color(0xFF5E40E3);
+  static const Color buttonShadowPurple = Color(0x4D6C5CE7);
   static const Color heroGradientStart = Color(0xFFC084FC);
   static const Color heroGradientMid = Color(0xFFA855F7);
   static const Color heroGradientEnd = Color(0xFF8B5CF6);

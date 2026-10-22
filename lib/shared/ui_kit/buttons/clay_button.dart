@@ -17,6 +17,8 @@ class ClayButton extends StatefulWidget {
   final Color textColor;
   final Color? extrusionColor;
   final Widget? icon;
+  final Widget? trailingIcon;
+  final Gradient? customGradient;
   final double height;
   final double? width;
   final bool isLoading;
@@ -30,6 +32,8 @@ class ClayButton extends StatefulWidget {
     this.textColor = AppColors.textInverse,
     this.extrusionColor,
     this.icon,
+    this.trailingIcon,
+    this.customGradient,
     this.height = AppValues.recommendedKidTouchTarget,
     this.width,
     this.isLoading = false,
@@ -85,22 +89,23 @@ class _ClayButtonState extends State<ClayButton> {
     final baseColor =
         isEnabled ? widget.backgroundColor : AppColors.buttonDisabledBg;
 
-    final gradient = LinearGradient(
-      begin: Alignment.topLeft,
-      end: Alignment.bottomRight,
-      colors: isEnabled
-          ? [
-              Color.lerp(baseColor, Colors.white, 0.28)!,
-              baseColor,
-              Color.lerp(baseColor, Colors.black, 0.12)!,
-            ]
-          : const [
-              AppColors.buttonDisabledGradTop,
-              AppColors.buttonDisabledBg,
-              AppColors.buttonDisabledGradBottom,
-            ],
-      stops: const [0.0, 0.55, 1.0],
-    );
+    final gradient = widget.customGradient ??
+        LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: isEnabled
+              ? [
+                  Color.lerp(baseColor, Colors.white, 0.16)!,
+                  baseColor,
+                  Color.lerp(baseColor, Colors.black, 0.06)!,
+                ]
+              : const [
+                  AppColors.buttonDisabledGradTop,
+                  AppColors.buttonDisabledBg,
+                  AppColors.buttonDisabledGradBottom,
+                ],
+          stops: const [0.0, 0.55, 1.0],
+        );
 
     return GestureDetector(
       onTapDown: isEnabled ? _handleTapDown : null,
@@ -202,27 +207,58 @@ class _ClayButtonState extends State<ClayButton> {
                         ),
                       ),
                     )
-                  : Row(
-                      mainAxisSize: MainAxisSize.min,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        if (widget.icon != null) ...[
-                          widget.icon!,
-                          const SizedBox(width: AppValues.space4),
-                        ],
-                        Text(
-                          widget.label,
-                          style: GoogleFonts.quicksand(
-                            color: isEnabled
-                                ? widget.textColor
-                                : AppColors.buttonDisabledText,
-                            fontSize: AppValues.fontTitleLg,
-                            fontWeight: FontWeight.w800,
-                            letterSpacing: AppValues.letterSpacingWide,
-                          ),
+                  : widget.trailingIcon != null
+                      ? Stack(
+                          alignment: Alignment.center,
+                          children: [
+                            Row(
+                              mainAxisSize: MainAxisSize.min,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                if (widget.icon != null) ...[
+                                  widget.icon!,
+                                  const SizedBox(width: AppValues.space4),
+                                ],
+                                Text(
+                                  widget.label,
+                                  style: GoogleFonts.quicksand(
+                                    color: isEnabled
+                                        ? widget.textColor
+                                        : AppColors.buttonDisabledText,
+                                    fontSize: AppValues.fontTitleLg,
+                                    fontWeight: FontWeight.w800,
+                                    letterSpacing: AppValues.letterSpacingWide,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Align(
+                              alignment: Alignment.centerRight,
+                              child: widget.trailingIcon!,
+                            ),
+                          ],
+                        )
+                      : Row(
+                          mainAxisSize: MainAxisSize.min,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            if (widget.icon != null) ...[
+                              widget.icon!,
+                              const SizedBox(width: AppValues.space4),
+                            ],
+                            Text(
+                              widget.label,
+                              style: GoogleFonts.quicksand(
+                                color: isEnabled
+                                    ? widget.textColor
+                                    : AppColors.buttonDisabledText,
+                                fontSize: AppValues.fontTitleLg,
+                                fontWeight: FontWeight.w800,
+                                letterSpacing: AppValues.letterSpacingWide,
+                              ),
+                            ),
+                          ],
                         ),
-                      ],
-                    ),
             ),
           ),
         ),

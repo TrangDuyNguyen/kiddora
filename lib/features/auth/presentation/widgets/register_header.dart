@@ -76,11 +76,11 @@ class RegisterHeader extends StatelessWidget {
           ),
           const SizedBox(height: AppValues.space4),
 
-          // 3D Mascot Boy with Golden Crown
+          // 3D Mascot Boy with Book & Fist Pump
           SizedBox(
             height: AppValues.sizeLoginHeroMascotH,
             child: Image.asset(
-              'assets/images/mascot_boy_crown.png',
+              'assets/images/mascot_boy_register.png',
               fit: BoxFit.contain,
             ),
           ),
