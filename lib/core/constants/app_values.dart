@@ -166,7 +166,10 @@ class AppValues {
   static const double sizeGoalCheckbox = 26.0;
   static const double sizeMsLogoBox = 18.0;
   static const double sizeNotificationBadgeMin = 15.0;
-  static const double waveHeaderDipH = 28.0;
+  static const double waveHeaderDipH = 18.0;
+  static const double waveHeaderEdgeH = 14.0;
+  static const double waveHeaderCrestH = 2.0;
+  static const double waveSheetTopPadding = 48.0;
 
   // Custom Radii
   static const double radiusInput = 16.0;

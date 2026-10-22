@@ -3,7 +3,6 @@ import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../core/constants/app_values.dart';
-import '../painters/clay_inset_painter.dart';
 
 /// Universal Tactile Clay Action Button — DESIGN.md §2.5 Level 2 Clay Floating
 ///
@@ -66,46 +65,32 @@ class _ClayButtonState extends State<ClayButton> {
     }
   }
 
-  Color _getExtrusionColor(bool isEnabled) {
-    if (!isEnabled) return AppColors.clayExtrusionDisabled;
-    if (widget.extrusionColor != null) return widget.extrusionColor!;
-    if (widget.backgroundColor == AppColors.brandPrimary) {
-      return AppColors.clayExtrusionIndigo;
-    }
-    if (widget.backgroundColor == AppColors.brandSecondary) {
-      return AppColors.clayExtrusionAmber;
-    }
-    if (widget.backgroundColor == AppColors.brandMint) {
-      return AppColors.clayExtrusionMint;
-    }
-    final hsl = HSLColor.fromColor(widget.backgroundColor);
-    return hsl.withLightness((hsl.lightness - 0.16).clamp(0.0, 1.0)).toColor();
-  }
-
   @override
   Widget build(BuildContext context) {
     final isEnabled = widget.onPressed != null;
-    final extrusion = _getExtrusionColor(isEnabled);
     final baseColor =
         isEnabled ? widget.backgroundColor : AppColors.buttonDisabledBg;
 
     final gradient = widget.customGradient ??
         LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
           colors: isEnabled
               ? [
-                  Color.lerp(baseColor, Colors.white, 0.16)!,
+                  Color.lerp(baseColor, Colors.white, 0.12)!,
                   baseColor,
-                  Color.lerp(baseColor, Colors.black, 0.06)!,
+                  Color.lerp(baseColor, Colors.black, 0.08)!,
                 ]
               : const [
                   AppColors.buttonDisabledGradTop,
                   AppColors.buttonDisabledBg,
                   AppColors.buttonDisabledGradBottom,
                 ],
-          stops: const [0.0, 0.55, 1.0],
+          stops: const [0.0, 0.5, 1.0],
         );
+
+    final glowColor =
+        widget.customGradient != null ? AppColors.buttonGradientEnd : baseColor;
 
     return GestureDetector(
       onTapDown: isEnabled ? _handleTapDown : null,
@@ -126,76 +111,40 @@ class _ClayButtonState extends State<ClayButton> {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(widget.borderRadius),
             gradient: gradient,
-            border: Border.all(
-              color: isEnabled
-                  ? Colors.white.withValues(alpha: 0.5)
-                  : Colors.white.withValues(alpha: 0.7),
-              width: AppValues.borderWidthHairline,
-            ),
             boxShadow: _isPressed || !isEnabled
                 ? [
-                    // Compressed extrusion
-                    BoxShadow(
-                      color: extrusion,
-                      offset: const Offset(0, 1.2),
-                      blurRadius: 0,
-                    ),
                     BoxShadow(
                       color:
-                          baseColor.withValues(alpha: isEnabled ? 0.2 : 0.05),
+                          glowColor.withValues(alpha: isEnabled ? 0.22 : 0.05),
                       offset: const Offset(0, 2),
-                      blurRadius: 4,
+                      blurRadius: 6,
+                    ),
+                    const BoxShadow(
+                      color: AppColors.clayShadeSubtle,
+                      offset: Offset(0, 1),
+                      blurRadius: 3,
                     ),
                   ]
                 : [
-                    // Physical 3D Extruded Shelf underneath
+                    // Plush colored pillow drop glow (matching Dribbble reference)
                     BoxShadow(
-                      color: extrusion,
-                      offset: const Offset(0, 4.0),
-                      blurRadius: 0,
+                      color: glowColor.withValues(alpha: 0.38),
+                      offset: const Offset(0, 8),
+                      blurRadius: 18,
+                      spreadRadius: 0,
                     ),
-                    // L2: Outer colored pillow glow (stronger than L1)
-                    BoxShadow(
-                      color: baseColor.withValues(alpha: 0.38),
-                      offset: const Offset(0, 14),
-                      blurRadius: 24,
-                      spreadRadius: -4,
-                    ),
-                    // Ambient floor shadow
-                    BoxShadow(
-                      color: AppColors.textPrimary.withValues(alpha: 0.06),
-                      offset: const Offset(0, 6),
+                    // Ambient diffuse ground contact shadow
+                    const BoxShadow(
+                      color: AppColors.clayContactShadow,
+                      offset: Offset(0, 3),
                       blurRadius: 8,
-                      spreadRadius: -2,
+                      spreadRadius: -1,
                     ),
                   ],
           ),
-          // Inset shadow layer for Claymorphism
-          child: CustomPaint(
-            painter: _isPressed
-                ? const ClayInsetPainter(
-                    borderRadius: 0,
-                    // Active Pressed — DESIGN.md §2.5 depression
-                    highlightColor: AppColors.claySquishShade, // 18% black
-                    shadeColor: AppColors.claySquishHighlight, // 40% white
-                    highlightOffset: Offset(4, 4),
-                    shadeOffset: Offset(-2, -2),
-                    highlightBlur: 8.0,
-                    shadeBlur: 4.0,
-                  )
-                : ClayInsetPainter(
-                    borderRadius: widget.borderRadius,
-                    // Level 2 Clay Floating — DESIGN.md §2.5
-                    highlightColor: AppColors.clayHighlightStrong, // 95% white
-                    shadeColor: AppColors.clayShadeDeep, // 12% dark
-                    highlightOffset: const Offset(4, 4),
-                    shadeOffset: const Offset(-4, -4),
-                    highlightBlur: 6.0,
-                    shadeBlur: 6.0,
-                  ),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: AppValues.space9),
-              child: widget.isLoading
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: AppValues.space9),
+            child: widget.isLoading
                   ? const Center(
                       child: SizedBox(
                         width: AppValues.radiusXl,
@@ -259,7 +208,6 @@ class _ClayButtonState extends State<ClayButton> {
                             ),
                           ],
                         ),
-            ),
           ),
         ),
       ),

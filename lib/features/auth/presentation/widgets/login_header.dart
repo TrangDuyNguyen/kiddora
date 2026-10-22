@@ -19,26 +19,44 @@ class LoginHeader extends StatelessWidget {
       ),
       child: Column(
         children: [
-          // Top Back Button
-          Align(
-            alignment: Alignment.centerLeft,
-            child: ClayIconButton(
-              size: AppValues.sizeCircleButtonXl,
-              backgroundColor: Colors.white,
-              glowColor: AppColors.clayShadeSubtle,
-              onPressed: () {
-                if (context.router.canPop()) {
-                  context.router.maybePop();
-                } else {
-                  context.router.replace(const HomeRoute());
-                }
-              },
-              icon: const Icon(
-                Icons.arrow_back_ios_new_rounded,
-                size: AppValues.iconSizeSm,
-                color: AppColors.textPrimary,
+          // Top Action Bar: Back Button (Left) & Debug Onboarding Button (Right)
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              ClayIconButton(
+                size: AppValues.sizeCircleButtonXl,
+                backgroundColor: Colors.white,
+                glowColor: AppColors.clayShadeSubtle,
+                onPressed: () {
+                  if (context.router.canPop()) {
+                    context.router.maybePop();
+                  } else {
+                    context.router.replace(const HomeRoute());
+                  }
+                },
+                icon: const Icon(
+                  Icons.arrow_back_ios_new_rounded,
+                  size: AppValues.iconSizeSm,
+                  color: AppColors.textPrimary,
+                ),
               ),
-            ),
+              Tooltip(
+                message: AppStrings.debugOnboarding,
+                child: ClayIconButton(
+                  size: AppValues.sizeCircleButtonXl,
+                  backgroundColor: Colors.white,
+                  glowColor: AppColors.clayShadeSubtle,
+                  onPressed: () {
+                    context.router.push(OnboardingRoute());
+                  },
+                  icon: const Icon(
+                    Icons.auto_stories_rounded,
+                    size: AppValues.iconSizeMd,
+                    color: AppColors.brandIndigoLight,
+                  ),
+                ),
+              ),
+            ],
           ),
           const SizedBox(height: AppValues.space4),
 

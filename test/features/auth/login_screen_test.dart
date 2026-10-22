@@ -30,6 +30,7 @@ void main() {
       expect(find.text(AppStrings.logIn), findsOneWidget);
       expect(find.text(AppStrings.orContinueWith), findsOneWidget);
       expect(find.text(AppStrings.signUp), findsOneWidget);
+      expect(find.byIcon(Icons.auto_stories_rounded), findsOneWidget);
     });
 
     testWidgets('toggles password obscurity upon tapping eye icon',

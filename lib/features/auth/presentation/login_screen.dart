@@ -82,8 +82,6 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.stretch,
                                 children: [
-                                  const SizedBox(height: AppValues.space4),
-
                                   // Email or Username Input
                                   ClayTextField(
                                     controller: _emailController,

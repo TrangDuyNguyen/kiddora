@@ -16,7 +16,7 @@ class ClayWaveSheet extends StatelessWidget {
     required this.child,
     this.padding = const EdgeInsets.fromLTRB(
       AppValues.space8,
-      AppValues.space9,
+      AppValues.waveSheetTopPadding,
       AppValues.space8,
       AppValues.space8,
     ),
@@ -46,22 +46,22 @@ class ClayWaveClipper extends CustomClipper<Path> {
   @override
   Path getClip(Size size) {
     final path = Path();
-    path.moveTo(0, AppValues.waveHeaderDipH);
+    path.moveTo(0, AppValues.waveHeaderEdgeH);
     path.cubicTo(
-      size.width * 0.18,
-      AppValues.space2,
-      size.width * 0.38,
-      AppValues.waveHeaderDipH + AppValues.space5,
-      size.width * 0.58,
-      AppValues.waveHeaderDipH + AppValues.space5,
+      size.width * 0.20,
+      AppValues.waveHeaderCrestH,
+      size.width * 0.35,
+      AppValues.waveHeaderDipH,
+      size.width * 0.50,
+      AppValues.waveHeaderDipH,
     );
     path.cubicTo(
-      size.width * 0.74,
-      AppValues.waveHeaderDipH + AppValues.space5,
-      size.width * 0.86,
-      AppValues.space5,
-      size.width,
+      size.width * 0.65,
       AppValues.waveHeaderDipH,
+      size.width * 0.82,
+      AppValues.waveHeaderCrestH,
+      size.width,
+      AppValues.waveHeaderEdgeH,
     );
     path.lineTo(size.width, size.height);
     path.lineTo(0, size.height);
@@ -80,22 +80,22 @@ class ClayWaveShadowPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final path = Path();
-    path.moveTo(0, AppValues.waveHeaderDipH);
+    path.moveTo(0, AppValues.waveHeaderEdgeH);
     path.cubicTo(
-      size.width * 0.18,
-      AppValues.space2,
-      size.width * 0.38,
-      AppValues.waveHeaderDipH + AppValues.space5,
-      size.width * 0.58,
-      AppValues.waveHeaderDipH + AppValues.space5,
+      size.width * 0.20,
+      AppValues.waveHeaderCrestH,
+      size.width * 0.35,
+      AppValues.waveHeaderDipH,
+      size.width * 0.50,
+      AppValues.waveHeaderDipH,
     );
     path.cubicTo(
-      size.width * 0.74,
-      AppValues.waveHeaderDipH + AppValues.space5,
-      size.width * 0.86,
-      AppValues.space5,
-      size.width,
+      size.width * 0.65,
       AppValues.waveHeaderDipH,
+      size.width * 0.82,
+      AppValues.waveHeaderCrestH,
+      size.width,
+      AppValues.waveHeaderEdgeH,
     );
     path.lineTo(size.width, size.height);
     path.lineTo(0, size.height);
@@ -103,10 +103,10 @@ class ClayWaveShadowPainter extends CustomPainter {
 
     final shadowPaint = Paint()
       ..color = AppColors.shadowIndigoSubtle
-      ..maskFilter = const MaskFilter.blur(BlurStyle.normal, AppValues.space7);
+      ..maskFilter = const MaskFilter.blur(BlurStyle.normal, AppValues.space5);
 
     canvas.drawPath(
-      path.shift(const Offset(0, -AppValues.space2)),
+      path.shift(const Offset(0, -AppValues.space1)),
       shadowPaint,
     );
   }

@@ -105,8 +105,6 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.stretch,
                                 children: [
-                                  const SizedBox(height: AppValues.space4),
-
                                   // Full Name Field
                                   ClayTextField(
                                     controller: _nameController,

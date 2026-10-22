@@ -9,6 +9,7 @@ class AppStrings {
   static const String next = 'Tiếp tục';
   static const String startNow = 'Bắt đầu ngay';
   static const String readyToExplore = 'Sẵn sàng khám phá!';
+  static const String debugOnboarding = 'Onboarding';
 
   // Onboarding Slide 1
   static const String onboardingSlide1HeroTitle = 'Fun Learning for a\n';

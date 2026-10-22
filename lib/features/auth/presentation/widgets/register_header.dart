@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/app_strings.dart';
 import '../../../../core/constants/app_values.dart';
+import '../../../../core/router/app_router.gr.dart';
 import '../../../../shared/ui_kit/ui_kit.dart';
 
 class RegisterHeader extends StatelessWidget {
@@ -18,22 +19,40 @@ class RegisterHeader extends StatelessWidget {
       ),
       child: Column(
         children: [
-          // Top Back Button
-          Align(
-            alignment: Alignment.centerLeft,
-            child: ClayIconButton(
-              size: AppValues.sizeCircleButtonXl,
-              backgroundColor: Colors.white,
-              glowColor: AppColors.clayShadeSubtle,
-              onPressed: () {
-                context.router.maybePop();
-              },
-              icon: const Icon(
-                Icons.arrow_back_ios_new_rounded,
-                size: AppValues.iconSizeSm,
-                color: AppColors.textPrimary,
+          // Top Action Bar: Back Button (Left) & Debug Onboarding Button (Right)
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              ClayIconButton(
+                size: AppValues.sizeCircleButtonXl,
+                backgroundColor: Colors.white,
+                glowColor: AppColors.clayShadeSubtle,
+                onPressed: () {
+                  context.router.maybePop();
+                },
+                icon: const Icon(
+                  Icons.arrow_back_ios_new_rounded,
+                  size: AppValues.iconSizeSm,
+                  color: AppColors.textPrimary,
+                ),
               ),
-            ),
+              Tooltip(
+                message: AppStrings.debugOnboarding,
+                child: ClayIconButton(
+                  size: AppValues.sizeCircleButtonXl,
+                  backgroundColor: Colors.white,
+                  glowColor: AppColors.clayShadeSubtle,
+                  onPressed: () {
+                    context.router.push(OnboardingRoute());
+                  },
+                  icon: const Icon(
+                    Icons.auto_stories_rounded,
+                    size: AppValues.iconSizeMd,
+                    color: AppColors.brandIndigoLight,
+                  ),
+                ),
+              ),
+            ],
           ),
           const SizedBox(height: AppValues.space4),
 
