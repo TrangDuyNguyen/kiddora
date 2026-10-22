@@ -2,6 +2,9 @@
 class AppValues {
   AppValues._();
 
+  // Font Family
+  static const String fontFamilyQuicksand = 'Quicksand';
+
   // Spacing
   static const double space1 = 5.0;
   static const double space2 = 6.0;
@@ -180,4 +183,14 @@ class AppValues {
   // Additional Typography Tokens
   static const double fontCaptionXs = 10.0;
   static const double fontSocialG = 22.0;
+
+  // Splash Screen Tokens
+  static const Duration splashAnimDuration = Duration(milliseconds: 1800);
+  static const double splashLogoSize = 120.0;
+  static const double splashLogoRadius = 28.0;
+  static const double splashScaleStart = 0.5;
+  static const double splashTaglineOffset = 24.0;
+  static const double splashShadowBlur = 40.0;
+  static const double splashShadowOffsetY = 16.0;
+  static const String splashLogoAsset = 'assets/images/app_icon_source.jpg';
 }
