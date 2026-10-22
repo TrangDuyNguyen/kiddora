@@ -1,25 +1,35 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../core/constants/app_values.dart';
-import '../../../core/constants/app_strings.dart';
-import '../../../shared/ui_kit/ui_kit.dart';
+import '../../../core/router/app_router.gr.dart';
 import '../../onboarding/presentation/controllers/onboarding_controller.dart';
+import 'widgets/clay_bottom_nav.dart';
+import 'widgets/home_continue_learning_card.dart';
+import 'widgets/home_header.dart';
+import 'widgets/home_hero_banner.dart';
+import 'widgets/home_quick_stats_grid.dart';
+import 'widgets/home_upcoming_session_card.dart';
 
 @RoutePage()
-class HomeScreen extends ConsumerWidget {
+class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends ConsumerState<HomeScreen> {
+  int _currentNavIndex = 0;
+
+  @override
+  Widget build(BuildContext context) {
     final state = ref.watch(onboardingControllerProvider);
     final profile = state.profile;
     final nickname =
-        profile?.nickname.isNotEmpty == true ? profile!.nickname : 'Alex';
-    final avatarId = profile?.avatarId ?? 'lion';
-    final stars = profile?.currentStars ?? 140;
-    final streak = profile?.currentStreak ?? 5;
+        profile?.nickname.isNotEmpty == true ? profile!.nickname : 'Keil';
 
     return Scaffold(
       backgroundColor: AppColors.surface,
@@ -30,316 +40,73 @@ class HomeScreen extends ConsumerWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SizedBox(height: AppValues.space4),
-              // Header with Profile & Rewards
-              _buildTopHeader(nickname, avatarId, stars, streak),
-              const SizedBox(height: AppValues.space8),
 
-              // Live Class Spotlight Card
-              _buildLiveClassSpotlight(),
-              const SizedBox(height: AppValues.space9),
-
-              // Subject Worlds Hub
-              Text(
-                'Thế Giới Khám Phá',
-                style: Theme.of(context).textTheme.headlineMedium,
-              ),
-              const SizedBox(height: AppValues.space5),
-              _buildSubjectGrid(),
-              const SizedBox(height: AppValues.space9),
-
-              // Daily Quest Card
-              _buildDailyQuestCard(context),
-              const SizedBox(height: AppValues.space11),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget _buildTopHeader(
-      String nickname, String avatarId, int stars, int streak) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Row(
-          children: [
-            Container(
-              width: 54,
-              height: 54,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                gradient: const LinearGradient(
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                  colors: [
-                    AppColors.brandIndigoLight,
-                    AppColors.brandPrimary,
-                    AppColors.clayExtrusionIndigo,
-                  ],
-                ),
-                border: Border.all(color: Colors.white, width: 2.0),
-                boxShadow: [
-                  const BoxShadow(
-                    color: Colors.white,
-                    offset: Offset(-1, -1),
-                    blurRadius: 2,
-                  ),
-                  const BoxShadow(
-                    color: AppColors.clayExtrusionIndigo,
-                    offset: Offset(0, 2.5),
-                    blurRadius: 0,
-                  ),
-                  BoxShadow(
-                    color: AppColors.brandPrimary.withValues(alpha: 0.3),
-                    offset: const Offset(0, 5),
-                    blurRadius: 10,
-                  ),
-                ],
-              ),
-              padding: const EdgeInsets.all(2),
-              child: ClipOval(
-                child: Image.asset(
-                  'assets/images/avatar_$avatarId.png',
-                  fit: BoxFit.cover,
-                  errorBuilder: (_, __, ___) => const Center(
-                    child: Text('🦁', style: TextStyle(fontSize: 24)),
-                  ),
-                ),
-              ),
-            ),
-            const SizedBox(width: AppValues.space5),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'Chào $nickname! 🚀',
-                  style: const TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.w800,
-                    color: AppColors.textPrimary,
-                  ),
-                ),
-                const Text(
-                  'Cấp độ 3 • Thám hiểm viên',
-                  style: TextStyle(
-                    fontSize: 12,
-                    color: AppColors.textSecondary,
-                  ),
-                ),
-              ],
-            ),
-          ],
-        ),
-        Row(
-          children: [
-            StarCounterBadge(count: streak, isStreak: true),
-            const SizedBox(width: AppValues.space4),
-            StarCounterBadge(count: stars),
-          ],
-        ),
-      ],
-    );
-  }
-
-  Widget _buildLiveClassSpotlight() {
-    return ClayCard(
-      glowColor: AppColors.brandSky.withValues(alpha: 0.2),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Container(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-                decoration: BoxDecoration(
-                  color: AppColors.brandMint,
-                  borderRadius: BorderRadius.circular(AppValues.radiusPill),
-                ),
-                child: const Row(
-                  children: [
-                    Icon(Icons.circle, color: Colors.white, size: 8),
-                    SizedBox(width: 4),
-                    Text(
-                      'TRỰC TUYẾN',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 10,
-                        fontWeight: FontWeight.w800,
-                      ),
+              // Header: Keil's Avatar, Greeting, Notification Badge & Logout
+              HomeHeader(
+                kidName: nickname,
+                onNotificationTap: () {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text('3 thông báo mới từ Coach Sarah & Math Fun!'),
+                      duration: Duration(seconds: 2),
                     ),
-                  ],
-                ),
+                  );
+                },
+                onLogoutTap: () {
+                  HapticFeedback.mediumImpact();
+                  context.router.replace(const LoginRoute());
+                },
               ),
-              const Row(
-                children: [
-                  Icon(Icons.people_alt_rounded,
-                      size: 16, color: AppColors.textSecondary),
-                  SizedBox(width: 4),
-                  Text(
-                    '24 bạn đang học',
-                    style:
-                        TextStyle(fontSize: 12, color: AppColors.textSecondary),
-                  ),
-                ],
+              const SizedBox(height: AppValues.space6),
+
+              // Hero Banner "Keep Learning Keep Growing!"
+              HomeHeroBanner(
+                onActionTap: () {
+                  context.router.push(const TodayLearningGoalRoute());
+                },
               ),
+              const SizedBox(height: AppValues.space7),
+
+              // Quick Actions 2x2 Grid (My Progress -> TodayLearningGoalScreen)
+              HomeQuickStatsGrid(
+                onMyProgressTap: () {
+                  context.router.push(const TodayLearningGoalRoute());
+                },
+              ),
+              const SizedBox(height: AppValues.space7),
+
+              // Continue Learning Section (Amazing Animals Science)
+              HomeContinueLearningCard(
+                onTap: () {
+                  context.router.push(const TodayLearningGoalRoute());
+                },
+              ),
+              const SizedBox(height: AppValues.space7),
+
+              // Upcoming Session Section (Math Fun with Numbers - Coach Sarah)
+              HomeUpcomingSessionCard(
+                onJoinTap: () {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text('Đang tham gia lớp học với Coach Sarah...'),
+                      duration: Duration(seconds: 2),
+                    ),
+                  );
+                },
+              ),
+              const SizedBox(height: AppValues.space9),
             ],
           ),
-          const SizedBox(height: AppValues.space6),
-          const Text(
-            'Khám Phá Bí Mật Sao Hỏa 🪐',
-            style: TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.w800,
-              color: AppColors.textPrimary,
-            ),
-          ),
-          const SizedBox(height: AppValues.space2),
-          const Text(
-            'Thầy Alex • Lớp Khoa học STEM tương tác',
-            style: TextStyle(fontSize: 13, color: AppColors.textSecondary),
-          ),
-          const SizedBox(height: AppValues.space7),
-          SizedBox(
-            width: double.infinity,
-            child: ClayButton(
-              label: AppStrings.enterLiveClass,
-              backgroundColor: AppColors.brandPrimary,
-              icon: const Icon(Icons.play_circle_fill_rounded,
-                  color: Colors.white),
-              onPressed: () {},
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildSubjectGrid() {
-    return Row(
-      children: [
-        Expanded(
-          child: _buildSubjectCard(
-            title: AppStrings.mathTitle,
-            emoji: '🧮',
-            color: AppColors.brandPrimary,
-            lessonsCount: '12 Nhiệm vụ',
-          ),
         ),
-        const SizedBox(width: AppValues.space5),
-        Expanded(
-          child: _buildSubjectCard(
-            title: AppStrings.stemTitle,
-            emoji: '🔬',
-            color: AppColors.brandTertiary,
-            lessonsCount: '8 Thí nghiệm',
-          ),
-        ),
-      ],
-    );
-  }
-
-  Widget _buildSubjectCard({
-    required String title,
-    required String emoji,
-    required Color color,
-    required String lessonsCount,
-  }) {
-    return ClayCard(
-      glowColor: color.withValues(alpha: 0.15),
-      padding: const EdgeInsets.all(AppValues.space6),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            padding: const EdgeInsets.all(8),
-            decoration: BoxDecoration(
-              color: color.withValues(alpha: 0.12),
-              borderRadius: BorderRadius.circular(AppValues.radiusLg),
-            ),
-            child: Text(emoji, style: const TextStyle(fontSize: 28)),
-          ),
-          const SizedBox(height: AppValues.space5),
-          Text(
-            title,
-            style: const TextStyle(
-              fontSize: 15,
-              fontWeight: FontWeight.w800,
-              color: AppColors.textPrimary,
-            ),
-          ),
-          const SizedBox(height: AppValues.space1),
-          Text(
-            lessonsCount,
-            style: const TextStyle(
-              fontSize: AppValues.fontBodySm,
-              color: AppColors.textSecondary,
-            ),
-          ),
-        ],
       ),
-    );
-  }
-
-  Widget _buildDailyQuestCard(BuildContext context) {
-    return ClayCard(
-      backgroundColor: AppColors.questCardBg,
-      glowColor: AppColors.brandMint.withValues(alpha: 0.2),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              const Text(
-                AppStrings.dailyQuestTitle,
-                style: TextStyle(
-                  fontSize: AppValues.fontTitleLg,
-                  fontWeight: FontWeight.w800,
-                  color: AppColors.textPrimary,
-                ),
-              ),
-              Container(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: AppValues.space4,
-                  vertical: AppValues.space1,
-                ),
-                decoration: BoxDecoration(
-                  color: AppColors.brandMint.withValues(alpha: 0.2),
-                  borderRadius: BorderRadius.circular(AppValues.radiusPill),
-                ),
-                child: const Text(
-                  AppStrings.plusThirtyStars,
-                  style: TextStyle(
-                    color: AppColors.brandMint,
-                    fontWeight: FontWeight.w800,
-                    fontSize: AppValues.fontBodySm,
-                  ),
-                ),
-              ),
-            ],
-          ),
-          const SizedBox(height: AppValues.space3),
-          const Text(
-            AppStrings.dailyQuestDescription,
-            style: TextStyle(
-              fontSize: AppValues.fontLabelMd,
-              color: AppColors.textSecondary,
-            ),
-          ),
-          const SizedBox(height: AppValues.space6),
-          ClipRRect(
-            borderRadius: BorderRadius.circular(AppValues.radiusPill),
-            child: const LinearProgressIndicator(
-              value: 0.66,
-              minHeight: AppValues.radiusLg,
-              backgroundColor: AppColors.progressBarMintBg,
-              valueColor: AlwaysStoppedAnimation<Color>(AppColors.brandMint),
-            ),
-          ),
-        ],
+      bottomNavigationBar: ClayBottomNav(
+        selectedIndex: _currentNavIndex,
+        onIndexChanged: (index) {
+          setState(() => _currentNavIndex = index);
+          if (index == 2 || index == 3) {
+            context.router.push(const TodayLearningGoalRoute());
+          }
+        },
       ),
     );
   }

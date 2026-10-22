@@ -20,8 +20,14 @@ class AppRouter extends RootStackRouter {
           page: KidProfileSetupRoute.page,
         ),
         AutoRoute(
+          page: LoginRoute.page,
+        ),
+        AutoRoute(
           page: HomeRoute.page,
           initial: hasCompletedOnboarding,
+        ),
+        AutoRoute(
+          page: TodayLearningGoalRoute.page,
         ),
       ];
 }

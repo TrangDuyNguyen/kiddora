@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../../../../core/constants/app_assets.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/app_strings.dart';
 import '../../../../core/constants/app_values.dart';
@@ -11,6 +10,7 @@ import '../../../../core/router/app_router.gr.dart';
 import '../../../../shared/ui_kit/buttons/clay_button.dart';
 import '../../../../shared/ui_kit/buttons/clay_icon_button.dart';
 import '../../../../shared/ui_kit/surfaces/clay_card.dart';
+import '../../domain/models/avatar_presets.dart';
 import '../controllers/onboarding_controller.dart';
 import '../widgets/avatar_clay_pedestal.dart';
 import '../widgets/clay_age_wheel_spinner.dart';
@@ -30,128 +30,12 @@ class _KidProfileSetupScreenState extends ConsumerState<KidProfileSetupScreen> {
   late final TextEditingController _nameController;
   int _selectedCategory = 0; // 0: 12 Con Giáp, 1: Bạn Nhỏ
 
-  static const List<Map<String, dynamic>> _classicAvatars = [
-    {
-      'id': 'lion',
-      'name': AppStrings.avatarLeo,
-      'path': AppAssets.avatarLion,
-      'auraColor': AppColors.brandAmberContainer,
-    },
-    {
-      'id': 'bear',
-      'name': AppStrings.avatarBarnaby,
-      'path': AppAssets.avatarBear,
-      'auraColor': Color(0xFFFED7AA),
-    },
-    {
-      'id': 'dino',
-      'name': AppStrings.avatarDino,
-      'path': AppAssets.avatarDino,
-      'auraColor': AppColors.brandMintContainer,
-    },
-    {
-      'id': 'bunny',
-      'name': AppStrings.avatarBunny,
-      'path': AppAssets.avatarBunny,
-      'auraColor': AppColors.brandPinkContainer,
-    },
-  ];
-
-  static const List<Map<String, dynamic>> _zodiacAvatars = [
-    {
-      'id': 'zodiac_mouse',
-      'name': AppStrings.zodiacTy,
-      'path': AppAssets.zodiacMouse,
-      'auraColor': AppColors.brandAmberContainer,
-    },
-    {
-      'id': 'zodiac_buffalo',
-      'name': AppStrings.zodiacSuu,
-      'path': AppAssets.zodiacBuffalo,
-      'auraColor': AppColors.brandMintContainer,
-    },
-    {
-      'id': 'zodiac_tiger',
-      'name': AppStrings.zodiacDan,
-      'path': AppAssets.zodiacTiger,
-      'auraColor': Color(0xFFFED7AA),
-    },
-    {
-      'id': 'zodiac_cat',
-      'name': AppStrings.zodiacMao,
-      'path': AppAssets.zodiacCat,
-      'auraColor': AppColors.brandIndigoContainer,
-    },
-    {
-      'id': 'zodiac_dragon',
-      'name': AppStrings.zodiacThin,
-      'path': AppAssets.zodiacDragon,
-      'auraColor': AppColors.brandMintContainer,
-    },
-    {
-      'id': 'zodiac_snake',
-      'name': AppStrings.zodiacTy2,
-      'path': AppAssets.zodiacSnake,
-      'auraColor': Color(0xFFECFDF5),
-    },
-    {
-      'id': 'zodiac_horse',
-      'name': AppStrings.zodiacNgo,
-      'path': AppAssets.zodiacHorse,
-      'auraColor': AppColors.brandSkyContainer,
-    },
-    {
-      'id': 'zodiac_goat',
-      'name': AppStrings.zodiacMui,
-      'path': AppAssets.zodiacGoat,
-      'auraColor': Color(0xFFF3E8FF),
-    },
-    {
-      'id': 'zodiac_monkey',
-      'name': AppStrings.zodiacThan,
-      'path': AppAssets.zodiacMonkey,
-      'auraColor': Color(0xFFFED7AA),
-    },
-    {
-      'id': 'zodiac_rooster',
-      'name': AppStrings.zodiacDau,
-      'path': AppAssets.zodiacRooster,
-      'auraColor': Color(0xFFFEF08A),
-    },
-    {
-      'id': 'zodiac_dog',
-      'name': AppStrings.zodiacTuat,
-      'path': AppAssets.zodiacDog,
-      'auraColor': AppColors.brandAmberContainer,
-    },
-    {
-      'id': 'zodiac_pig',
-      'name': AppStrings.zodiacHoi,
-      'path': AppAssets.zodiacPig,
-      'auraColor': AppColors.brandPinkContainer,
-    },
-  ];
-
-  static String _suggestedZodiacForAge(int age) {
-    switch (age) {
-      case 6:
-        return 'zodiac_mouse'; // 2020 - Tý
-      case 7:
-        return 'zodiac_pig'; // 2019 - Hợi
-      case 8:
-        return 'zodiac_dog'; // 2018 - Tuất
-      case 9:
-        return 'zodiac_rooster'; // 2017 - Dậu
-      case 10:
-        return 'zodiac_monkey'; // 2016 - Thân
-      case 11:
-        return 'zodiac_goat'; // 2015 - Mùi
-      case 12:
-        return 'zodiac_horse'; // 2014 - Ngọ
-      default:
-        return 'zodiac_dragon';
-    }
-  }
+  static List<Map<String, dynamic>> get _classicAvatars =>
+      AvatarPresets.classicAvatars;
+  static List<Map<String, dynamic>> get _zodiacAvatars =>
+      AvatarPresets.zodiacAvatars;
+  static String _suggestedZodiacForAge(int age) =>
+      AvatarPresets.suggestedZodiacForAge(age);
 
   @override
   void initState() {

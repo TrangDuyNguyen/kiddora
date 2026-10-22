@@ -32,7 +32,7 @@ void main() {
     SharedPreferences.setMockInitialValues({
       'has_completed_onboarding': true,
       'kiddora_kid_profile':
-          '{"id":"kid_test","nickname":"Alex Bo","age":8,"avatarId":"lion","currentStars":140,"currentStreak":5,"createdAt":"2026-01-01T00:00:00.000"}'
+          '{"id":"kid_test","nickname":"Keil","age":8,"avatarId":"lion","currentStars":140,"currentStreak":5,"createdAt":"2026-01-01T00:00:00.000"}'
     });
     final prefs = await SharedPreferences.getInstance();
 
@@ -46,10 +46,14 @@ void main() {
     );
     await tester.pumpAndSettle();
 
-    expect(find.text('Chào Alex Bo! 🚀'), findsOneWidget);
-    expect(find.text('Thế Giới Khám Phá'), findsOneWidget);
-    expect(find.text('Toán Tư Duy'), findsOneWidget);
-    expect(find.text('Khoa Học STEM'), findsOneWidget);
-    expect(find.text('Vào lớp ngay'), findsOneWidget);
+    expect(find.text('Hi, Keil!'), findsOneWidget);
+    expect(find.text('Great to see you again!'), findsOneWidget);
+    expect(find.text('Keep Learning\nKeep Growing!'), findsOneWidget);
+    expect(find.text('My Progress'), findsOneWidget);
+    expect(find.text('Current Courses'), findsOneWidget);
+    expect(find.text('Upcoming Session'), findsNWidgets(2));
+    expect(find.text('My Badges'), findsOneWidget);
+    expect(find.text('Amazing Animals'), findsOneWidget);
+    expect(find.text('Coach Sarah'), findsOneWidget);
   });
 }
