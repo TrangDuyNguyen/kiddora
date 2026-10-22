@@ -155,6 +155,28 @@ class AppStrings {
   static const String dontHaveAccount = "Don't have an account? ";
   static const String signUp = 'Sign Up';
 
+  // Register & Sign Up
+  static const String createAccount = 'Create Account';
+  static const String createAccountSubtitle =
+      'Start your fun learning journey today!';
+  static const String fullName = 'Full Name';
+  static const String fullNamePlaceholder = 'Enter parent or child name';
+  static const String emailAddress = 'Email Address';
+  static const String emailPlaceholder = 'Enter email address';
+  static const String passwordPlaceholder = 'Create a secure password';
+  static const String confirmPassword = 'Confirm Password';
+  static const String confirmPasswordPlaceholder = 'Re-enter your password';
+  static const String agreeTerms =
+      'I agree to the Terms of Service & Privacy';
+  static const String alreadyHaveAccount = 'Already have an account? ';
+  static const String orSignUpWith = 'Or sign up with';
+  static const String pleaseFillAllFields = 'Vui lòng nhập đầy đủ thông tin';
+  static const String passwordsDoNotMatch = 'Mật khẩu xác nhận không khớp';
+  static const String mustAgreeTerms =
+      'Vui lòng đồng ý với Điều khoản & Chính sách';
+  static const String registerSuccessAlert =
+      'Tạo tài khoản thành công! Chào mừng đến với Kiddora.';
+
   // Student Home Dashboard
   static const String hiPrefix = 'Hi, ';
   static const String defaultKidName = 'Keil';

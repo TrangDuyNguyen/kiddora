@@ -23,6 +23,9 @@ class AppRouter extends RootStackRouter {
           page: LoginRoute.page,
         ),
         AutoRoute(
+          page: RegisterRoute.page,
+        ),
+        AutoRoute(
           page: HomeRoute.page,
           initial: hasCompletedOnboarding,
         ),

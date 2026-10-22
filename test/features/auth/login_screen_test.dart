@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:kiddora/core/constants/app_strings.dart';
 import 'package:kiddora/features/auth/presentation/login_screen.dart';
 
 void main() {
@@ -19,16 +20,16 @@ void main() {
       await tester.pumpWidget(buildTestableWidget());
       await tester.pumpAndSettle();
 
-      expect(find.text('Learn • Play • Achieve'), findsOneWidget);
-      expect(find.text('Welcome Back!'), findsOneWidget);
-      expect(find.text("Let's continue your learning journey"), findsOneWidget);
-      expect(find.text('Email or Username'), findsOneWidget);
-      expect(find.text('Password'), findsOneWidget);
-      expect(find.text('Remember me'), findsOneWidget);
-      expect(find.text('Forgot Password?'), findsOneWidget);
-      expect(find.text('Log In'), findsOneWidget);
-      expect(find.text('Or continue with'), findsOneWidget);
-      expect(find.text('Sign Up'), findsOneWidget);
+      expect(find.text(AppStrings.learnPlayAchieve), findsOneWidget);
+      expect(find.text(AppStrings.welcomeBack), findsOneWidget);
+      expect(find.text(AppStrings.welcomeBackSubtitle), findsOneWidget);
+      expect(find.text(AppStrings.emailOrUsername), findsOneWidget);
+      expect(find.text(AppStrings.password), findsOneWidget);
+      expect(find.text(AppStrings.rememberMe), findsOneWidget);
+      expect(find.text(AppStrings.forgotPassword), findsOneWidget);
+      expect(find.text(AppStrings.logIn), findsOneWidget);
+      expect(find.text(AppStrings.orContinueWith), findsOneWidget);
+      expect(find.text(AppStrings.signUp), findsOneWidget);
     });
 
     testWidgets('toggles password obscurity upon tapping eye icon',
@@ -51,7 +52,7 @@ void main() {
 
       expect(find.byIcon(Icons.check_rounded), findsOneWidget);
 
-      final rememberMeText = find.text('Remember me');
+      final rememberMeText = find.text(AppStrings.rememberMe);
       await tester.tap(rememberMeText);
       await tester.pumpAndSettle();
 

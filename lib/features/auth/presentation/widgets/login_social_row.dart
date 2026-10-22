@@ -7,17 +7,19 @@ import '../../../../core/constants/app_values.dart';
 
 class LoginSocialRow extends StatelessWidget {
   final VoidCallback onSocialTap;
+  final String label;
 
   const LoginSocialRow({
     super.key,
     required this.onSocialTap,
+    this.label = AppStrings.orContinueWith,
   });
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        // Divider "Or continue with"
+        // Divider "Or continue with" / "Or sign up with"
         Row(
           children: [
             const Expanded(
@@ -31,7 +33,7 @@ class LoginSocialRow extends StatelessWidget {
                 horizontal: AppValues.space6,
               ),
               child: Text(
-                AppStrings.orContinueWith,
+                label,
                 style: GoogleFonts.quicksand(
                   fontSize: AppValues.fontLabelMd,
                   fontWeight: FontWeight.w500,

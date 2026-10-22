@@ -247,7 +247,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                         GestureDetector(
                           onTap: () {
                             HapticFeedback.lightImpact();
-                            context.router.replace(OnboardingRoute());
+                            context.router.push(const RegisterRoute());
                           },
                           child: Text(
                             AppStrings.signUp,
