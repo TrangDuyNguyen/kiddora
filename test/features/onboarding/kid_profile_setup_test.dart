@@ -3,6 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:kiddora/core/constants/app_strings.dart';
+import 'package:kiddora/core/constants/app_values.dart';
 import 'package:kiddora/features/onboarding/presentation/controllers/onboarding_controller.dart';
 import 'package:kiddora/features/onboarding/presentation/pages/kid_profile_setup_screen.dart';
 
@@ -28,7 +29,7 @@ void main() {
   }
 
   group('KidProfileSetupScreen Widget Tests', () {
-    testWidgets('Renders sections for Nickname, Age, and Avatar',
+    testWidgets('Renders sections for Nickname, Quick Chips, Age Spinner, and Avatar',
         (tester) async {
       tester.view.physicalSize = const Size(1080, 2400);
       tester.view.devicePixelRatio = 2.0;
@@ -45,13 +46,29 @@ void main() {
       expect(find.text(AppStrings.ageQuestion), findsOneWidget);
       expect(find.text(AppStrings.selectCompanion), findsOneWidget);
 
-      // 4 Ages
-      expect(find.text('7 ${AppStrings.ageUnit}'), findsOneWidget);
-      expect(find.text('8 ${AppStrings.ageUnit}'), findsOneWidget);
-      expect(find.text('9 ${AppStrings.ageUnit}'), findsOneWidget);
-      expect(find.text('10 ${AppStrings.ageUnit}'), findsOneWidget);
+      // Quick Nickname chips
+      for (final nick in AppValues.quickNicknames) {
+        expect(find.text(nick), findsOneWidget);
+      }
+      expect(find.byIcon(Icons.casino_rounded), findsOneWidget);
 
-      // 4 Mascots
+      // Default curriculum hint for age 8
+      expect(find.text(AppStrings.curriculumHintForAge(8)), findsOneWidget);
+
+      // Category Switcher
+      expect(find.text(AppStrings.zodiacTabTitle), findsOneWidget);
+      expect(find.text(AppStrings.classicTabTitle), findsOneWidget);
+
+      // 12 Zodiac Mascots rendered on Zodiac tab
+      expect(find.text(AppStrings.zodiacTy), findsOneWidget);
+      expect(find.text(AppStrings.zodiacSuu), findsOneWidget);
+      expect(find.text(AppStrings.zodiacThin), findsOneWidget);
+
+      // Switch to Classic Companions tab
+      await tester.tap(find.text(AppStrings.classicTabTitle));
+      await tester.pumpAndSettle();
+
+      // 4 Classic Mascots
       expect(find.text('Leo'), findsOneWidget);
       expect(find.text('Barnaby'), findsOneWidget);
       expect(find.text('Dino'), findsOneWidget);
@@ -61,7 +78,8 @@ void main() {
       expect(find.text(AppStrings.readyToExplore), findsOneWidget);
     });
 
-    testWidgets('Entering nickname enables action button', (tester) async {
+    testWidgets('Tapping quick nickname chip fills name and enables action button',
+        (tester) async {
       tester.view.physicalSize = const Size(1080, 2400);
       tester.view.devicePixelRatio = 2.0;
       addTearDown(() {
@@ -72,16 +90,15 @@ void main() {
       await tester.pumpWidget(buildTestWidget());
       await tester.pump();
 
-      // Enter text
-      await tester.enterText(find.byType(TextField), 'Bo');
+      // Tap 'Bắp' quick chip
+      await tester.tap(find.text('Bắp'));
       await tester.pump();
 
-      // Tap an age
-      await tester.tap(find.text('9 ${AppStrings.ageUnit}'));
-      await tester.pump();
+      final textField = tester.widget<TextField>(find.byType(TextField));
+      expect(textField.controller?.text, equals('Bắp'));
 
-      // Tap a mascot
-      await tester.tap(find.text('Dino'));
+      // Tap mascot (Zodiac mascot Tý - Chuột in first row)
+      await tester.tap(find.text(AppStrings.zodiacTy));
       await tester.pump();
 
       // Ensure button is visible before tap
@@ -94,7 +111,29 @@ void main() {
 
       // Verify saved in SharedPreferences
       expect(prefs.getBool('has_completed_onboarding'), isTrue);
-      expect(prefs.getString('kiddora_kid_profile'), contains('Bo'));
+      expect(prefs.getString('kiddora_kid_profile'), contains('Bắp'));
+    });
+
+    testWidgets('Tapping dice button populates a valid random nickname',
+        (tester) async {
+      tester.view.physicalSize = const Size(1080, 2400);
+      tester.view.devicePixelRatio = 2.0;
+      addTearDown(() {
+        tester.view.resetPhysicalSize();
+        tester.view.resetDevicePixelRatio();
+      });
+
+      await tester.pumpWidget(buildTestWidget());
+      await tester.pump();
+
+      // Tap dice button
+      await tester.tap(find.byIcon(Icons.casino_rounded));
+      await tester.pump();
+
+      final textField = tester.widget<TextField>(find.byType(TextField));
+      final generatedName = textField.controller?.text ?? '';
+      expect(generatedName.isNotEmpty, isTrue);
+      expect(AppValues.randomNicknames.contains(generatedName), isTrue);
     });
   });
 }

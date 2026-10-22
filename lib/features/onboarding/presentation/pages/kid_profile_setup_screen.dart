@@ -12,8 +12,10 @@ import '../../../../shared/ui_kit/buttons/clay_button.dart';
 import '../../../../shared/ui_kit/buttons/clay_icon_button.dart';
 import '../../../../shared/ui_kit/surfaces/clay_card.dart';
 import '../controllers/onboarding_controller.dart';
-import '../widgets/age_clay_pebble.dart';
 import '../widgets/avatar_clay_pedestal.dart';
+import '../widgets/clay_age_wheel_spinner.dart';
+import '../widgets/onboarding_pastel_blobs.dart';
+import '../widgets/quick_nickname_chips.dart';
 
 @RoutePage()
 class KidProfileSetupScreen extends ConsumerStatefulWidget {
@@ -26,21 +28,130 @@ class KidProfileSetupScreen extends ConsumerStatefulWidget {
 
 class _KidProfileSetupScreenState extends ConsumerState<KidProfileSetupScreen> {
   late final TextEditingController _nameController;
+  int _selectedCategory = 0; // 0: 12 Con Giáp, 1: Bạn Nhỏ
 
-  static const List<Map<String, String>> _avatars = [
-    {'id': 'lion', 'name': AppStrings.avatarLeo, 'path': AppAssets.avatarLion},
+  static const List<Map<String, dynamic>> _classicAvatars = [
+    {
+      'id': 'lion',
+      'name': AppStrings.avatarLeo,
+      'path': AppAssets.avatarLion,
+      'auraColor': AppColors.brandAmberContainer,
+    },
     {
       'id': 'bear',
       'name': AppStrings.avatarBarnaby,
-      'path': AppAssets.avatarBear
+      'path': AppAssets.avatarBear,
+      'auraColor': Color(0xFFFED7AA),
     },
-    {'id': 'dino', 'name': AppStrings.avatarDino, 'path': AppAssets.avatarDino},
+    {
+      'id': 'dino',
+      'name': AppStrings.avatarDino,
+      'path': AppAssets.avatarDino,
+      'auraColor': AppColors.brandMintContainer,
+    },
     {
       'id': 'bunny',
       'name': AppStrings.avatarBunny,
-      'path': AppAssets.avatarBunny
+      'path': AppAssets.avatarBunny,
+      'auraColor': AppColors.brandPinkContainer,
     },
   ];
+
+  static const List<Map<String, dynamic>> _zodiacAvatars = [
+    {
+      'id': 'zodiac_mouse',
+      'name': AppStrings.zodiacTy,
+      'path': AppAssets.zodiacMouse,
+      'auraColor': AppColors.brandAmberContainer,
+    },
+    {
+      'id': 'zodiac_buffalo',
+      'name': AppStrings.zodiacSuu,
+      'path': AppAssets.zodiacBuffalo,
+      'auraColor': AppColors.brandMintContainer,
+    },
+    {
+      'id': 'zodiac_tiger',
+      'name': AppStrings.zodiacDan,
+      'path': AppAssets.zodiacTiger,
+      'auraColor': Color(0xFFFED7AA),
+    },
+    {
+      'id': 'zodiac_cat',
+      'name': AppStrings.zodiacMao,
+      'path': AppAssets.zodiacCat,
+      'auraColor': AppColors.brandIndigoContainer,
+    },
+    {
+      'id': 'zodiac_dragon',
+      'name': AppStrings.zodiacThin,
+      'path': AppAssets.zodiacDragon,
+      'auraColor': AppColors.brandMintContainer,
+    },
+    {
+      'id': 'zodiac_snake',
+      'name': AppStrings.zodiacTy2,
+      'path': AppAssets.zodiacSnake,
+      'auraColor': Color(0xFFECFDF5),
+    },
+    {
+      'id': 'zodiac_horse',
+      'name': AppStrings.zodiacNgo,
+      'path': AppAssets.zodiacHorse,
+      'auraColor': AppColors.brandSkyContainer,
+    },
+    {
+      'id': 'zodiac_goat',
+      'name': AppStrings.zodiacMui,
+      'path': AppAssets.zodiacGoat,
+      'auraColor': Color(0xFFF3E8FF),
+    },
+    {
+      'id': 'zodiac_monkey',
+      'name': AppStrings.zodiacThan,
+      'path': AppAssets.zodiacMonkey,
+      'auraColor': Color(0xFFFED7AA),
+    },
+    {
+      'id': 'zodiac_rooster',
+      'name': AppStrings.zodiacDau,
+      'path': AppAssets.zodiacRooster,
+      'auraColor': Color(0xFFFEF08A),
+    },
+    {
+      'id': 'zodiac_dog',
+      'name': AppStrings.zodiacTuat,
+      'path': AppAssets.zodiacDog,
+      'auraColor': AppColors.brandAmberContainer,
+    },
+    {
+      'id': 'zodiac_pig',
+      'name': AppStrings.zodiacHoi,
+      'path': AppAssets.zodiacPig,
+      'auraColor': AppColors.brandPinkContainer,
+    },
+  ];
+
+  static String _suggestedZodiacForAge(int age) {
+    switch (age) {
+      case 6:
+        return 'zodiac_mouse'; // 2020 - Tý
+      case 7:
+        return 'zodiac_pig'; // 2019 - Hợi
+      case 8:
+        return 'zodiac_dog'; // 2018 - Tuất
+      case 9:
+        return 'zodiac_rooster'; // 2017 - Dậu
+      case 10:
+        return 'zodiac_monkey'; // 2016 - Thân
+      case 11:
+        return 'zodiac_goat'; // 2015 - Mùi
+      case 12:
+        return 'zodiac_horse'; // 2014 - Ngọ
+      default:
+        return 'zodiac_dragon';
+    }
+  }
 
   @override
   void initState() {
@@ -102,12 +213,15 @@ class _KidProfileSetupScreenState extends ConsumerState<KidProfileSetupScreen> {
         ),
         centerTitle: true,
       ),
-      body: SafeArea(
-        child: SingleChildScrollView(
-          padding: const EdgeInsets.symmetric(horizontal: AppValues.space7),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
+      body: Stack(
+        children: [
+          const OnboardingPastelBlobs(),
+          SafeArea(
+            child: SingleChildScrollView(
+              padding: const EdgeInsets.symmetric(horizontal: AppValues.space7),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
               const SizedBox(height: AppValues.space4),
               // Section 1: Nickname Input in Sculpted Clay Capsule
               Text(
@@ -118,7 +232,7 @@ class _KidProfileSetupScreenState extends ConsumerState<KidProfileSetupScreen> {
                   color: AppColors.textPrimary,
                 ),
               ),
-              const SizedBox(height: AppValues.space3),
+              const SizedBox(height: AppValues.space6),
               ClayCard(
                 borderRadius: AppValues.radiusPill,
                 padding: const EdgeInsets.symmetric(
@@ -171,9 +285,20 @@ class _KidProfileSetupScreenState extends ConsumerState<KidProfileSetupScreen> {
                   ],
                 ),
               ),
-              const SizedBox(height: AppValues.space7),
+              const SizedBox(height: AppValues.space6),
+              QuickNicknameChips(
+                currentNickname: state.nickname,
+                onSelectNickname: (name) {
+                  _nameController.text = name;
+                  _nameController.selection = TextSelection.fromPosition(
+                    TextPosition(offset: name.length),
+                  );
+                  controller.updateNickname(name);
+                },
+              ),
+              const SizedBox(height: AppValues.space10),
 
-              // Section 2: Tactile Clay Age Selector Pebbles
+              // Section 2: Tactile Clay Age Wheel Spinner
               Text(
                 AppStrings.ageQuestion,
                 style: GoogleFonts.quicksand(
@@ -182,22 +307,12 @@ class _KidProfileSetupScreenState extends ConsumerState<KidProfileSetupScreen> {
                   color: AppColors.textPrimary,
                 ),
               ),
-              const SizedBox(height: AppValues.space3),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: AppValues.targetAges.map((age) {
-                  final isSelected = state.selectedAge == age;
-                  return AgeClayPebble(
-                    age: age,
-                    isSelected: isSelected,
-                    onTap: () {
-                      HapticFeedback.selectionClick();
-                      controller.selectAge(age);
-                    },
-                  );
-                }).toList(),
+              const SizedBox(height: AppValues.space6),
+              ClayAgeWheelSpinner(
+                selectedAge: state.selectedAge,
+                onAgeChanged: controller.selectAge,
               ),
-              const SizedBox(height: AppValues.space8),
+              const SizedBox(height: AppValues.space10),
 
               // Section 3: 3D Mascot Pedestal Grid
               Text(
@@ -208,28 +323,131 @@ class _KidProfileSetupScreenState extends ConsumerState<KidProfileSetupScreen> {
                   color: AppColors.textPrimary,
                 ),
               ),
+              const SizedBox(height: AppValues.space3),
+
+              // Tactile Segmented Category Switcher
+              Container(
+                padding: const EdgeInsets.all(3),
+                decoration: BoxDecoration(
+                  color: const Color(0xFFF1F5F9),
+                  borderRadius: BorderRadius.circular(AppValues.radiusPill),
+                  border: Border.all(color: AppColors.borderDefault),
+                ),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    _buildCategoryTab(
+                      title: AppStrings.zodiacTabTitle,
+                      isSelected: _selectedCategory == 0,
+                      onTap: () => setState(() => _selectedCategory = 0),
+                    ),
+                    _buildCategoryTab(
+                      title: AppStrings.classicTabTitle,
+                      isSelected: _selectedCategory == 1,
+                      onTap: () => setState(() => _selectedCategory = 1),
+                    ),
+                  ],
+                ),
+              ),
               const SizedBox(height: AppValues.space4),
+
+              // Smart Age-to-Zodiac Hint (When in 12 Zodiac tab)
+              if (_selectedCategory == 0) ...[
+                Builder(
+                  builder: (context) {
+                    final suggestedId =
+                        _suggestedZodiacForAge(state.selectedAge);
+                    final suggestedZodiac = _zodiacAvatars.firstWhere(
+                      (item) => item['id'] == suggestedId,
+                      orElse: () => _zodiacAvatars[0],
+                    );
+                    final isAlreadySelected =
+                        state.selectedAvatarId == suggestedId;
+
+                    return GestureDetector(
+                      onTap: () {
+                        HapticFeedback.lightImpact();
+                        controller.selectAvatar(suggestedId);
+                      },
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: AppValues.space6,
+                          vertical: AppValues.space2,
+                        ),
+                        decoration: BoxDecoration(
+                          color: isAlreadySelected
+                              ? AppColors.brandIndigoContainer
+                              : Colors.white,
+                          borderRadius:
+                              BorderRadius.circular(AppValues.radiusPill),
+                          border: Border.all(
+                            color: isAlreadySelected
+                                ? AppColors.brandPrimary
+                                : AppColors.borderDefault,
+                          ),
+                        ),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Icon(
+                              Icons.auto_awesome_rounded,
+                              size: 16,
+                              color: isAlreadySelected
+                                  ? AppColors.brandPrimary
+                                  : AppColors.brandSecondary,
+                            ),
+                            const SizedBox(width: AppValues.space2),
+                            Text(
+                              'Bé ${state.selectedAge} tuổi hợp bạn: ',
+                              style: GoogleFonts.quicksand(
+                                fontSize: AppValues.fontBodySm,
+                                fontWeight: FontWeight.w600,
+                                color: AppColors.textSecondary,
+                              ),
+                            ),
+                            Text(
+                              suggestedZodiac['name'] as String,
+                              style: GoogleFonts.quicksand(
+                                fontSize: AppValues.fontBodySm,
+                                fontWeight: FontWeight.w800,
+                                color: AppColors.brandPrimary,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    );
+                  },
+                ),
+                const SizedBox(height: AppValues.space4),
+              ],
+
+              // Avatar Grid (12 Zodiacs or 4 Classic Companions)
               GridView.count(
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
                 crossAxisCount: 2,
-                crossAxisSpacing: AppValues.space7,
-                mainAxisSpacing: AppValues.space7,
-                childAspectRatio: AppValues.avatarGridAspectRatio,
-                children: _avatars.map((item) {
+                crossAxisSpacing: AppValues.space6,
+                mainAxisSpacing: AppValues.space6,
+                childAspectRatio: 0.88,
+                children: (_selectedCategory == 0
+                        ? _zodiacAvatars
+                        : _classicAvatars)
+                    .map((item) {
                   final isSelected = state.selectedAvatarId == item['id'];
                   return AvatarClayPedestal(
-                    name: item['name']!,
-                    path: item['path']!,
+                    name: item['name'] as String,
+                    path: item['path'] as String,
+                    auraColor: item['auraColor'] as Color?,
                     isSelected: isSelected,
                     onTap: () {
                       HapticFeedback.selectionClick();
-                      controller.selectAvatar(item['id']!);
+                      controller.selectAvatar(item['id'] as String);
                     },
                   );
                 }).toList(),
               ),
-              const SizedBox(height: AppValues.space9),
+              const SizedBox(height: AppValues.space10),
 
               // Section 4: Primary CTA Button
               SizedBox(
@@ -243,6 +461,49 @@ class _KidProfileSetupScreenState extends ConsumerState<KidProfileSetupScreen> {
               ),
               const SizedBox(height: AppValues.space9),
             ],
+          ),
+        ),
+      ),
+    ],
+  ),
+);
+}
+
+  Widget _buildCategoryTab({
+    required String title,
+    required bool isSelected,
+    required VoidCallback onTap,
+  }) {
+    return GestureDetector(
+      onTap: () {
+        HapticFeedback.selectionClick();
+        onTap();
+      },
+      child: AnimatedContainer(
+        duration: AppValues.durationFast,
+        padding: const EdgeInsets.symmetric(
+          horizontal: AppValues.space4,
+          vertical: AppValues.space1,
+        ),
+        decoration: BoxDecoration(
+          color: isSelected ? AppColors.brandPrimary : Colors.transparent,
+          borderRadius: BorderRadius.circular(AppValues.radiusPill),
+          boxShadow: isSelected
+              ? [
+                  BoxShadow(
+                    color: AppColors.brandPrimary.withValues(alpha: 0.25),
+                    offset: const Offset(0, 2),
+                    blurRadius: 4,
+                  ),
+                ]
+              : null,
+        ),
+        child: Text(
+          title,
+          style: GoogleFonts.quicksand(
+            fontSize: AppValues.fontBodySm,
+            fontWeight: FontWeight.w800,
+            color: isSelected ? Colors.white : AppColors.textSecondary,
           ),
         ),
       ),

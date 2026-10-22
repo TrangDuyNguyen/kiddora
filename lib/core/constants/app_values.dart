@@ -67,6 +67,7 @@ class AppValues {
 
   // Border Widths
   static const double borderWidthThin = 1.0;
+  static const double borderWidthDefault = 1.5;
   static const double borderWidthHairline = 1.5;
   static const double borderWidthMedium = 1.8;
   static const double borderWidthThick = 2.5;
@@ -110,7 +111,25 @@ class AppValues {
   // Nickname Input
   static const double inputIconSize = 38.0;
   static const int nicknameMaxLength = 16;
+  static const List<String> quickNicknames = ['Bắp', 'Sóc', 'Tin', 'Alex'];
+  static const List<String> randomNicknames = [
+    'Miu',
+    'Ben',
+    'Sam',
+    'Đậu',
+    'Bơ',
+    'Thỏ',
+    'Tom',
+    'Kitty',
+  ];
 
-  // Target Ages
-  static const List<int> targetAges = [7, 8, 9, 10];
+  // Target Ages (From 6 to 12 years old)
+  static const int minAge = 6;
+  static const int maxAge = 12;
+  static const int defaultAge = 8;
+  static const List<int> targetAges = [6, 7, 8, 9, 10, 11, 12];
+
+  // Age Spinner Dimensions
+  static const double ageSpinnerHeight = 136.0;
+  static const double ageSpinnerItemExtent = 44.0;
 }

@@ -1,5 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import '../../../../core/constants/app_values.dart';
 import '../../data/datasources/onboarding_local_datasource.dart';
 import '../../data/repositories/onboarding_repository_impl.dart';
 import '../../domain/models/kid_profile.dart';
@@ -84,7 +85,7 @@ class OnboardingController extends StateNotifier<OnboardingState> {
   }
 
   void selectAge(int age) {
-    if (age >= 7 && age <= 10) {
+    if (age >= AppValues.minAge && age <= AppValues.maxAge) {
       state = state.copyWith(selectedAge: age);
     }
   }

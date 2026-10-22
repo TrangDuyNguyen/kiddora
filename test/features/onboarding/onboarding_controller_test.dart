@@ -54,13 +54,18 @@ void main() {
       expect(controller.state.isProfileValid, isFalse);
     });
 
-    test('Can select age within [7, 10]', () {
-      controller.selectAge(9);
-      expect(controller.state.selectedAge, equals(9));
+    test('Can select age within [6, 12]', () {
+      controller.selectAge(6);
+      expect(controller.state.selectedAge, equals(6));
+
+      controller.selectAge(12);
+      expect(controller.state.selectedAge, equals(12));
 
       // Invalid age ignored
-      controller.selectAge(15);
-      expect(controller.state.selectedAge, equals(9));
+      controller.selectAge(5);
+      expect(controller.state.selectedAge, equals(12));
+      controller.selectAge(13);
+      expect(controller.state.selectedAge, equals(12));
     });
 
     test('Can select avatar', () {
