@@ -132,3 +132,16 @@ All feature development follows the **Four-Eyes Principle** with 9 specialized S
 ### Real-Time Mission Control Dashboard
 - Command: `make dashboard` or `./scripts/dashboard.sh`
 - Neobrutalism web UI binds to `http://127.0.0.1:8765` for real-time sub-agent tracking, multi-sprint management, and human-in-the-loop approvals without invisible work.
+
+---
+
+## 7. Kỷ Luật Bất Khả Xâm Phạm: Đồng Bộ Hóa Tài Liệu (Continuous Doc-Sync & Zero Drift)
+
+> [!IMPORTANT]
+> **Code đổi là Doc phải đổi (Backward Sync)**: Mỗi khi có bất kỳ sự thay đổi nào về tính năng (logic nghiệp vụ, giao diện UI, route điều hướng, trạng thái Riverpod, data model thực thể, validation rules hoặc phạm vi scope), BẮT BUỘC $100\%$ phải cập nhật đồng thời vào hệ thống tài liệu `docs/` ngay trong cùng commit / task:
+> 1. **Doc Tính Năng (`docs/03-prd-features/<feature-name>/`)**: Bắt buộc cập nhật `prd-*.md`, `user-stories.md` (BDD Given-When-Then) và `ui-ux-screen-specs.md` (5 UI states & tokens).
+> 2. **Sổ Yêu Cầu Thay Đổi (`docs/05-change-management/change-request-log.md`)**: Ghi nhận mã CR mới với lý do và tác động.
+> 3. **Từ Điển Dữ Liệu (`docs/04-specifications/data-dictionary.md`)**: Cập nhật ngay khi thay đổi, thêm hoặc xóa trường dữ liệu entity.
+> 4. **Quản Lý Vận Hành (`docs/00-project-management/`)**: Cập nhật trạng thái `wbs-task-matrix.md` và `sprint-backlog.md` nếu phạm vi hoặc Definition of Done (DoD) thay đổi.
+> 5. **Cấm Tuyệt Đối Báo Cáo "Xong" Khi Chưa Cập Nhật Doc**: Không được báo cáo hoàn thành tính năng nếu tài liệu đặc tả chưa khớp $100\%$ với mã nguồn thực tế.
+
