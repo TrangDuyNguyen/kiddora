@@ -1,5 +1,6 @@
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../../../../core/constants/app_strings.dart';
 
 class DailyGoalTask {
   final String id;
@@ -41,32 +42,32 @@ class TodayLearningGoalController extends StateNotifier<DailyGoalState> {
             tasks: [
               DailyGoalTask(
                 id: 'task_1',
-                title: 'Watch a lesson',
-                subtitle: 'Amazing Animals',
+                title: AppStrings.taskWatchLesson,
+                subtitle: AppStrings.courseAmazingAnimals,
                 isCompleted: true,
               ),
               DailyGoalTask(
                 id: 'task_2',
-                title: 'Complete a quiz',
-                subtitle: 'Animal Facts Quiz',
+                title: AppStrings.taskCompleteQuiz,
+                subtitle: AppStrings.taskAnimalFactsQuiz,
                 isCompleted: true,
               ),
               DailyGoalTask(
                 id: 'task_3',
-                title: 'Join a live session',
-                subtitle: 'Math Fun with Numbers',
+                title: AppStrings.taskJoinLiveSession,
+                subtitle: AppStrings.mathFunWithNumbers,
                 isCompleted: true,
               ),
               DailyGoalTask(
                 id: 'task_4',
-                title: 'Read a story',
-                subtitle: 'The Mystery of Space',
+                title: AppStrings.taskReadStory,
+                subtitle: AppStrings.taskMysteryOfSpace,
                 isCompleted: false,
               ),
               DailyGoalTask(
                 id: 'task_5',
-                title: 'Earn 10 points',
-                subtitle: 'Keep going!',
+                title: AppStrings.taskEarnPoints,
+                subtitle: AppStrings.taskKeepGoing,
                 isCompleted: false,
               ),
             ],

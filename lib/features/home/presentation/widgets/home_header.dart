@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../../core/constants/app_colors.dart';
+import '../../../../core/constants/app_strings.dart';
 import '../../../../core/constants/app_values.dart';
 
 class HomeHeader extends StatelessWidget {
@@ -11,7 +12,7 @@ class HomeHeader extends StatelessWidget {
 
   const HomeHeader({
     super.key,
-    this.kidName = 'Keil',
+    this.kidName = AppStrings.defaultKidName,
     required this.onNotificationTap,
     required this.onLogoutTap,
   });
@@ -25,15 +26,18 @@ class HomeHeader extends StatelessWidget {
         Row(
           children: [
             Container(
-              width: 50,
-              height: 50,
+              width: AppValues.sizeAvatarLg,
+              height: AppValues.sizeAvatarLg,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                border: Border.all(color: Colors.white, width: 2),
+                border: Border.all(
+                  color: Colors.white,
+                  width: AppValues.borderWidthThick,
+                ),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.black.withValues(alpha: 0.08),
-                    blurRadius: 8,
+                    color: AppColors.clayShadeSubtle,
+                    blurRadius: AppValues.radiusMd,
                     offset: const Offset(0, 3),
                   ),
                 ],
@@ -45,24 +49,24 @@ class HomeHeader extends StatelessWidget {
                 ),
               ),
             ),
-            const SizedBox(width: 12),
+            const SizedBox(width: AppValues.radiusLg),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Hi, $kidName!',
+                  '${AppStrings.hiPrefix}$kidName${AppStrings.exclamationMark}',
                   style: GoogleFonts.quicksand(
-                    fontSize: 18,
+                    fontSize: AppValues.fontTitleHero,
                     fontWeight: FontWeight.w800,
-                    color: const Color(0xFF1E1B4B),
+                    color: AppColors.textDarkIndigo,
                   ),
                 ),
                 Text(
-                  'Great to see you again!',
+                  AppStrings.greatToSeeYou,
                   style: GoogleFonts.quicksand(
-                    fontSize: 12,
+                    fontSize: AppValues.fontBodySm,
                     fontWeight: FontWeight.w500,
-                    color: const Color(0xFF6E6D7A),
+                    color: AppColors.textSlate,
                   ),
                 ),
               ],
@@ -70,25 +74,25 @@ class HomeHeader extends StatelessWidget {
           ],
         ),
 
-        // Right: Notification Bell (with Badge 3) & Logout Button
+        // Right: Notification Bell (with Badge) & Logout Button
         Row(
           children: [
-            // Notification Bell with Badge 3
+            // Notification Bell with Badge
             GestureDetector(
               onTap: () {
                 HapticFeedback.lightImpact();
                 onNotificationTap();
               },
               child: Container(
-                width: 42,
-                height: 42,
+                width: AppValues.sizeCircleButtonLg,
+                height: AppValues.sizeCircleButtonLg,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   color: Colors.white,
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.black.withValues(alpha: 0.05),
-                      blurRadius: 6,
+                      color: AppColors.clayShadeSubtle,
+                      blurRadius: AppValues.radiusSm,
                       offset: const Offset(0, 2),
                     ),
                   ],
@@ -98,27 +102,27 @@ class HomeHeader extends StatelessWidget {
                   children: [
                     const Icon(
                       Icons.notifications_outlined,
-                      size: 22,
+                      size: AppValues.iconSizeXl,
                       color: AppColors.textPrimary,
                     ),
                     Positioned(
-                      top: 6,
-                      right: 6,
+                      top: AppValues.radiusSm,
+                      right: AppValues.radiusSm,
                       child: Container(
                         padding: const EdgeInsets.all(3),
                         decoration: const BoxDecoration(
-                          color: Color(0xFFEC4899),
+                          color: AppColors.brandTertiary,
                           shape: BoxShape.circle,
                         ),
                         constraints: const BoxConstraints(
-                          minWidth: 15,
-                          minHeight: 15,
+                          minWidth: AppValues.sizeNotificationBadgeMin,
+                          minHeight: AppValues.sizeNotificationBadgeMin,
                         ),
                         child: const Text(
-                          '3',
+                          AppStrings.notificationCount,
                           style: TextStyle(
                             color: Colors.white,
-                            fontSize: 9,
+                            fontSize: AppValues.fontBadgeXs,
                             fontWeight: FontWeight.w800,
                           ),
                           textAlign: TextAlign.center,
@@ -138,15 +142,15 @@ class HomeHeader extends StatelessWidget {
                 onLogoutTap();
               },
               child: Container(
-                width: 42,
-                height: 42,
+                width: AppValues.sizeCircleButtonLg,
+                height: AppValues.sizeCircleButtonLg,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   color: Colors.white,
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.black.withValues(alpha: 0.05),
-                      blurRadius: 6,
+                      color: AppColors.clayShadeSubtle,
+                      blurRadius: AppValues.radiusSm,
                       offset: const Offset(0, 2),
                     ),
                   ],
@@ -154,8 +158,8 @@ class HomeHeader extends StatelessWidget {
                 alignment: Alignment.center,
                 child: const Icon(
                   Icons.logout_rounded,
-                  size: 20,
-                  color: Color(0xFF6E6D7A),
+                  size: AppValues.iconSizeLg,
+                  color: AppColors.textSlate,
                 ),
               ),
             ),

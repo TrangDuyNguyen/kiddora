@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/constants/app_colors.dart';
+import '../../../core/constants/app_strings.dart';
 import '../../../core/constants/app_values.dart';
 import '../../../core/router/app_router.gr.dart';
 import '../../onboarding/presentation/controllers/onboarding_controller.dart';
@@ -28,8 +29,9 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
   Widget build(BuildContext context) {
     final state = ref.watch(onboardingControllerProvider);
     final profile = state.profile;
-    final nickname =
-        profile?.nickname.isNotEmpty == true ? profile!.nickname : 'Keil';
+    final nickname = profile?.nickname.isNotEmpty == true
+        ? profile!.nickname
+        : AppStrings.defaultKidName;
 
     return Scaffold(
       backgroundColor: AppColors.surface,
@@ -47,7 +49,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                 onNotificationTap: () {
                   ScaffoldMessenger.of(context).showSnackBar(
                     const SnackBar(
-                      content: Text('3 thông báo mới từ Coach Sarah & Math Fun!'),
+                      content: Text(AppStrings.notificationsAlert),
                       duration: Duration(seconds: 2),
                     ),
                   );
@@ -88,7 +90,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                 onJoinTap: () {
                   ScaffoldMessenger.of(context).showSnackBar(
                     const SnackBar(
-                      content: Text('Đang tham gia lớp học với Coach Sarah...'),
+                      content: Text(AppStrings.joiningSessionAlert),
                       duration: Duration(seconds: 2),
                     ),
                   );

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:kiddora/core/constants/app_strings.dart';
 import 'package:kiddora/features/home/presentation/today_learning_goal_screen.dart';
 
 void main() {
@@ -20,43 +21,41 @@ void main() {
       await tester.pumpWidget(buildTestableWidget());
       await tester.pumpAndSettle();
 
-      expect(find.text("Today's Learning Goal"), findsOneWidget);
-      expect(find.text('Small steps make big progress!'), findsOneWidget);
-      expect(find.text('3 of 5'), findsOneWidget);
-      expect(find.text('Tasks Completed'), findsOneWidget);
+      expect(find.text(AppStrings.todaysLearningGoal), findsOneWidget);
+      expect(find.text(AppStrings.todaysGoalSubtitle), findsOneWidget);
+      expect(find.text('3${AppStrings.ofSeparator}5'), findsOneWidget);
+      expect(find.text(AppStrings.tasksCompleted), findsOneWidget);
 
-      expect(find.text('Watch a lesson'), findsOneWidget);
-      expect(find.text('Amazing Animals'), findsOneWidget);
-      expect(find.text('Complete a quiz'), findsOneWidget);
-      expect(find.text('Animal Facts Quiz'), findsOneWidget);
-      expect(find.text('Join a live session'), findsOneWidget);
-      expect(find.text('Math Fun with Numbers'), findsOneWidget);
-      expect(find.text('Read a story'), findsOneWidget);
-      expect(find.text('The Mystery of Space'), findsOneWidget);
-      expect(find.text('Earn 10 points'), findsOneWidget);
-      expect(find.text('Keep going!'), findsOneWidget);
+      expect(find.text(AppStrings.taskWatchLesson), findsOneWidget);
+      expect(find.text(AppStrings.courseAmazingAnimals), findsOneWidget);
+      expect(find.text(AppStrings.taskCompleteQuiz), findsOneWidget);
+      expect(find.text(AppStrings.taskAnimalFactsQuiz), findsOneWidget);
+      expect(find.text(AppStrings.taskJoinLiveSession), findsOneWidget);
+      expect(find.text(AppStrings.mathFunWithNumbers), findsOneWidget);
+      expect(find.text(AppStrings.taskReadStory), findsOneWidget);
+      expect(find.text(AppStrings.taskMysteryOfSpace), findsOneWidget);
+      expect(find.text(AppStrings.taskEarnPoints), findsOneWidget);
+      expect(find.text(AppStrings.taskKeepGoing), findsOneWidget);
 
-      expect(find.text('You can do it!'), findsOneWidget);
-      expect(
-        find.text('Keep learning and reach your goal today!'),
-        findsOneWidget,
-      );
+      expect(find.text(AppStrings.youCanDoIt), findsOneWidget);
+      expect(find.text(AppStrings.reachGoalToday), findsOneWidget);
     });
 
-    testWidgets('toggles an incomplete task and dynamically updates counter to 4 of 5',
+    testWidgets(
+        'toggles an incomplete task and dynamically updates counter to 4 of 5',
         (tester) async {
       await tester.pumpWidget(buildTestableWidget());
       await tester.pumpAndSettle();
 
-      expect(find.text('3 of 5'), findsOneWidget);
+      expect(find.text('3${AppStrings.ofSeparator}5'), findsOneWidget);
 
       // Tap on incomplete task "Read a story"
-      final readStoryTask = find.text('Read a story');
+      final readStoryTask = find.text(AppStrings.taskReadStory);
       await tester.tap(readStoryTask);
       await tester.pumpAndSettle();
 
       // Should now update dynamically to "4 of 5"
-      expect(find.text('4 of 5'), findsOneWidget);
+      expect(find.text('4${AppStrings.ofSeparator}5'), findsOneWidget);
     });
   });
 }

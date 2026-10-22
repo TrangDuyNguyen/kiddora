@@ -71,6 +71,7 @@ class AppValues {
   static const double borderWidthHairline = 1.5;
   static const double borderWidthMedium = 1.8;
   static const double borderWidthThick = 2.5;
+  static const double borderWidthFocus = 3.0;
 
   // Scale & Motion
   static const double scalePressed = 0.96;
@@ -104,9 +105,14 @@ class AppValues {
   static const double avatarGridAspectRatio = 0.92;
 
   static const double actionButtonSmall = 42.0;
+  static const double iconSizeXs = 11.0;
+  static const double iconSizeCompact = 14.0;
+  static const double iconSizeTick = 16.0;
   static const double iconSizeSm = 18.0;
   static const double iconSizeMd = 20.0;
+  static const double iconSizeXl = 22.0;
   static const double iconSizeLg = 24.0;
+  static const double iconSizeSocial = 26.0;
 
   // Nickname Input
   static const double inputIconSize = 38.0;
@@ -132,4 +138,46 @@ class AppValues {
   // Age Spinner Dimensions
   static const double ageSpinnerHeight = 136.0;
   static const double ageSpinnerItemExtent = 44.0;
+
+  // Sprint 3 Dimensions & Sizes
+  static const double sizeAvatarSm = 42.0;
+  static const double sizeAvatarMd = 48.0;
+  static const double sizeAvatarLg = 50.0;
+  static const double sizeAvatarXl = 54.0;
+  static const double sizeCircleButtonSm = 36.0;
+  static const double sizeCircleButtonMd = 38.0;
+  static const double sizeCircleButtonLg = 42.0;
+  static const double sizeCircleButtonXl = 44.0;
+  static const double sizeSocialButton = 52.0;
+  static const double sizeButtonPrimaryH = 54.0;
+  static const double sizeLoginLogoH = 48.0;
+  static const double sizeLoginHeroMascotH = 145.0;
+  static const double sizeHomeHeroH = 155.0;
+  static const double sizeGoalProgressBox = 220.0;
+  static const double sizeGoalRing = 180.0;
+  static const double sizeGoalMascotStar = 52.0;
+  static const double sizeGoalThumbsMascot = 76.0;
+  static const double sizeCourseThumbnail = 62.0;
+  static const double sizeCheckbox = 22.0;
+  static const double sizeGoalCheckbox = 26.0;
+  static const double sizeMsLogoBox = 18.0;
+  static const double sizeNotificationBadgeMin = 15.0;
+
+  // Custom Radii
+  static const double radiusInput = 16.0;
+  static const double radiusCourseThumbnail = 14.0;
+  static const double radiusCheckbox = 6.0;
+  static const double radiusTaskTile = 12.0;
+  static const double radiusCardLg = 20.0;
+  static const double radiusBottomNav = 28.0;
+  static const double radiusSheetTop = 36.0;
+
+  // Stroke Widths
+  static const double strokeWidthRing = 14.0;
+  static const double strokeWidthSparkle = 3.5;
+  static const double strokeWidthCheckbox = 2.0;
+
+  // Additional Typography Tokens
+  static const double fontCaptionXs = 10.0;
+  static const double fontSocialG = 22.0;
 }

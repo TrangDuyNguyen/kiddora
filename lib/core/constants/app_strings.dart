@@ -140,4 +140,71 @@ class AppStrings {
   static const String plusThirtyStars = '+30 Sao';
   static const String dailyQuestDescription =
       'Hoàn thành 3 câu đố tư duy toán học';
+
+  // Sprint 3 — Core Screens (Login, Home Dashboard, Daily Goal)
+  static const String learnPlayAchieve = 'Learn • Play • Achieve';
+  static const String welcomeBack = 'Welcome Back!';
+  static const String welcomeBackSubtitle =
+      "Let's continue your learning journey";
+  static const String emailOrUsername = 'Email or Username';
+  static const String password = 'Password';
+  static const String rememberMe = 'Remember me';
+  static const String forgotPassword = 'Forgot Password?';
+  static const String logIn = 'Log In';
+  static const String orContinueWith = 'Or continue with';
+  static const String dontHaveAccount = "Don't have an account? ";
+  static const String signUp = 'Sign Up';
+
+  // Student Home Dashboard
+  static const String hiPrefix = 'Hi, ';
+  static const String defaultKidName = 'Keil';
+  static const String exclamationMark = '!';
+  static const String greatToSeeYou = 'Great to see you again!';
+  static const String notificationCount = '3';
+  static const String keepLearningHeroTitle = 'Keep Learning\nKeep Growing!';
+  static const String keepLearningHeroSubtitle =
+      'Small steps make\nbig dreams!';
+  static const String myProgress = 'My Progress';
+  static const String myProgressSubtitle = "You're doing great!";
+  static const String currentCourses = 'Current Courses';
+  static const String currentCoursesSubtitle = '3 Active Courses';
+  static const String upcomingSession = 'Upcoming Session';
+  static const String upcomingSessionSubtitle = 'Math with Coach Alex';
+  static const String myBadges = 'My Badges';
+  static const String myBadgesSubtitle = '5 Badges Earned';
+  static const String continueLearning = 'Continue Learning';
+  static const String seeAll = 'See All';
+  static const String courseScienceTag = 'Science';
+  static const String courseAmazingAnimals = 'Amazing Animals';
+  static const String courseLessonsProgress = '3 of 5 lessons';
+  static const String mathFunWithNumbers = 'Math Fun with Numbers';
+  static const String coachSarah = 'Coach Sarah';
+  static const String sessionTodayTime = 'Today, 4:00 PM';
+  static const String join = 'Join';
+  static const String navHome = 'Home';
+  static const String navCourses = 'Courses';
+  static const String navSessions = 'Sessions';
+  static const String navTests = 'Tests';
+  static const String navMore = 'More';
+  static const String notificationsAlert =
+      '3 thông báo mới từ Coach Sarah & Math Fun!';
+  static const String joiningSessionAlert =
+      'Đang tham gia lớp học với Coach Sarah...';
+
+  // Today's Learning Goal
+  static const String todaysLearningGoal = "Today's Learning Goal";
+  static const String todaysGoalSubtitle = 'Small steps make big progress!';
+  static const String tasksCompleted = 'Tasks Completed';
+  static const String ofSeparator = ' of ';
+  static const String taskWatchLesson = 'Watch a lesson';
+  static const String taskCompleteQuiz = 'Complete a quiz';
+  static const String taskAnimalFactsQuiz = 'Animal Facts Quiz';
+  static const String taskJoinLiveSession = 'Join a live session';
+  static const String taskReadStory = 'Read a story';
+  static const String taskMysteryOfSpace = 'The Mystery of Space';
+  static const String taskEarnPoints = 'Earn 10 points';
+  static const String taskKeepGoing = 'Keep going!';
+  static const String youCanDoIt = 'You can do it!';
+  static const String reachGoalToday =
+      'Keep learning and reach your goal today!';
 }

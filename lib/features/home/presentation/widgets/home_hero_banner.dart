@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../../../../core/constants/app_colors.dart';
+import '../../../../core/constants/app_strings.dart';
 import '../../../../core/constants/app_values.dart';
 
 class HomeHeroBanner extends StatelessWidget {
@@ -15,23 +17,23 @@ class HomeHeroBanner extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      height: 155,
+      height: AppValues.sizeHomeHeroH,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(AppValues.radiusXl),
         gradient: const LinearGradient(
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
           colors: [
-            Color(0xFFC084FC),
-            Color(0xFFA855F7),
-            Color(0xFF8B5CF6),
+            AppColors.heroGradientStart,
+            AppColors.heroGradientMid,
+            AppColors.heroGradientEnd,
           ],
         ),
         boxShadow: [
           BoxShadow(
-            color: const Color(0xFFA855F7).withValues(alpha: 0.28),
+            color: AppColors.heroGradientMid.withValues(alpha: 0.28),
             offset: const Offset(0, 8),
-            blurRadius: 18,
+            blurRadius: AppValues.space8,
           ),
         ],
       ),
@@ -51,22 +53,22 @@ class HomeHeroBanner extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Keep Learning\nKeep Growing!',
+                      AppStrings.keepLearningHeroTitle,
                       style: GoogleFonts.quicksand(
-                        fontSize: 18,
+                        fontSize: AppValues.fontTitleHero,
                         fontWeight: FontWeight.w800,
                         color: Colors.white,
-                        height: 1.15,
+                        height: AppValues.lineHeightTight,
                       ),
                     ),
-                    const SizedBox(height: 6),
+                    const SizedBox(height: AppValues.radiusSm),
                     Text(
-                      'Small steps make\nbig dreams! ✨',
+                      AppStrings.keepLearningHeroSubtitle,
                       style: GoogleFonts.quicksand(
-                        fontSize: 12,
+                        fontSize: AppValues.fontBodySm,
                         fontWeight: FontWeight.w600,
                         color: Colors.white.withValues(alpha: 0.9),
-                        height: 1.2,
+                        height: AppValues.lineHeightCompact,
                       ),
                     ),
                   ],
@@ -77,15 +79,15 @@ class HomeHeroBanner extends StatelessWidget {
                     onActionTap();
                   },
                   child: Container(
-                    width: 38,
-                    height: 38,
+                    width: AppValues.sizeCircleButtonMd,
+                    height: AppValues.sizeCircleButtonMd,
                     decoration: const BoxDecoration(
                       shape: BoxShape.circle,
                       color: Colors.white,
                       boxShadow: [
                         BoxShadow(
-                          color: Color(0x22000000),
-                          blurRadius: 4,
+                          color: AppColors.clayContactShadow,
+                          blurRadius: AppValues.radiusXs,
                           offset: Offset(0, 2),
                         ),
                       ],
@@ -93,8 +95,8 @@ class HomeHeroBanner extends StatelessWidget {
                     alignment: Alignment.center,
                     child: const Icon(
                       Icons.arrow_forward_rounded,
-                      size: 20,
-                      color: Color(0xFF1E1B4B),
+                      size: AppValues.iconSizeLg,
+                      color: AppColors.textDarkIndigo,
                     ),
                   ),
                 ),
@@ -104,9 +106,9 @@ class HomeHeroBanner extends StatelessWidget {
 
           // Right Content: Mascot Boy with Golden Crown
           Positioned(
-            right: 4,
+            right: AppValues.radiusXs,
             bottom: 0,
-            top: 2,
+            top: AppValues.borderWidthThick,
             child: Image.asset(
               'assets/images/mascot_boy_crown.png',
               fit: BoxFit.contain,

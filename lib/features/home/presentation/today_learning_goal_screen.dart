@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../core/constants/app_colors.dart';
+import '../../../core/constants/app_strings.dart';
 import '../../../core/constants/app_values.dart';
 import '../../../shared/ui_kit/ui_kit.dart';
 import 'controllers/today_learning_goal_controller.dart';
@@ -32,16 +33,16 @@ class TodayLearningGoalScreen extends ConsumerWidget {
               Align(
                 alignment: Alignment.centerLeft,
                 child: ClayIconButton(
-                  size: 44,
+                  size: AppValues.sizeCircleButtonXl,
                   backgroundColor: Colors.white,
-                  glowColor: Colors.black.withValues(alpha: 0.04),
+                  glowColor: AppColors.clayContactShadow,
                   onPressed: () {
                     HapticFeedback.lightImpact();
                     context.router.maybePop();
                   },
                   icon: const Icon(
                     Icons.arrow_back_ios_new_rounded,
-                    size: 18,
+                    size: AppValues.iconSizeSm,
                     color: AppColors.textPrimary,
                   ),
                 ),
@@ -50,21 +51,21 @@ class TodayLearningGoalScreen extends ConsumerWidget {
 
               // Title & Subtitle
               Text(
-                "Today's Learning Goal",
+                AppStrings.todaysLearningGoal,
                 style: GoogleFonts.quicksand(
-                  fontSize: 24,
+                  fontSize: AppValues.fontHeadlineLg,
                   fontWeight: FontWeight.w800,
-                  color: const Color(0xFF1E1B4B),
+                  color: AppColors.textDarkIndigo,
                 ),
                 textAlign: TextAlign.center,
               ),
-              const SizedBox(height: 4),
+              const SizedBox(height: AppValues.radiusXs),
               Text(
-                'Small steps make big progress!',
+                AppStrings.todaysGoalSubtitle,
                 style: GoogleFonts.quicksand(
-                  fontSize: 14,
+                  fontSize: AppValues.fontBodyMd,
                   fontWeight: FontWeight.w500,
-                  color: const Color(0xFF6E6D7A),
+                  color: AppColors.textSlate,
                 ),
                 textAlign: TextAlign.center,
               ),
@@ -85,9 +86,9 @@ class TodayLearningGoalScreen extends ConsumerWidget {
                   borderRadius: BorderRadius.circular(AppValues.radiusXl),
                   boxShadow: [
                     BoxShadow(
-                      color: const Color(0xFF4F46E5).withValues(alpha: 0.06),
+                      color: AppColors.shadowIndigoSubtle,
                       offset: const Offset(0, 4),
-                      blurRadius: 16,
+                      blurRadius: AppValues.space7,
                     ),
                   ],
                 ),
@@ -100,8 +101,8 @@ class TodayLearningGoalScreen extends ConsumerWidget {
                   physics: const NeverScrollableScrollPhysics(),
                   itemCount: state.tasks.length,
                   separatorBuilder: (context, index) => const Divider(
-                    color: Color(0xFFF1F5F9),
-                    height: 1,
+                    color: AppColors.dividerSubtle,
+                    height: AppValues.borderWidthThin,
                   ),
                   itemBuilder: (context, index) {
                     final task = state.tasks[index];
@@ -130,37 +131,40 @@ class TodayLearningGoalScreen extends ConsumerWidget {
   }) {
     return InkWell(
       onTap: onTap,
-      borderRadius: BorderRadius.circular(12),
+      borderRadius: BorderRadius.circular(AppValues.radiusTaskTile),
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 12.0, horizontal: 8.0),
+        padding: const EdgeInsets.symmetric(
+          vertical: AppValues.radiusLg,
+          horizontal: AppValues.space4,
+        ),
         child: Row(
           children: [
             // Checkbox Indicator
             AnimatedContainer(
-              duration: const Duration(milliseconds: 200),
-              width: 26,
-              height: 26,
+              duration: AppValues.durationBounce,
+              width: AppValues.sizeGoalCheckbox,
+              height: AppValues.sizeGoalCheckbox,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 color: task.isCompleted
-                    ? const Color(0xFF10B981)
+                    ? AppColors.stateSuccessGreen
                     : Colors.transparent,
                 border: Border.all(
                   color: task.isCompleted
-                      ? const Color(0xFF10B981)
-                      : const Color(0xFFC7D2FE),
-                  width: 2.0,
+                      ? AppColors.stateSuccessGreen
+                      : AppColors.taskCheckboxUnchecked,
+                  width: AppValues.strokeWidthCheckbox,
                 ),
               ),
               child: task.isCompleted
                   ? const Icon(
                       Icons.check_rounded,
-                      size: 16,
+                      size: AppValues.iconSizeTick,
                       color: Colors.white,
                     )
                   : null,
             ),
-            const SizedBox(width: 14),
+            const SizedBox(width: AppValues.space6),
 
             // Title & Subtitle
             Expanded(
@@ -170,17 +174,17 @@ class TodayLearningGoalScreen extends ConsumerWidget {
                   Text(
                     task.title,
                     style: GoogleFonts.quicksand(
-                      fontSize: 14,
+                      fontSize: AppValues.fontBodyMd,
                       fontWeight: FontWeight.w700,
-                      color: const Color(0xFF1E1B4B),
+                      color: AppColors.textDarkIndigo,
                     ),
                   ),
                   Text(
                     task.subtitle,
                     style: GoogleFonts.quicksand(
-                      fontSize: 12,
+                      fontSize: AppValues.fontBodySm,
                       fontWeight: FontWeight.w500,
-                      color: const Color(0xFF6E6D7A),
+                      color: AppColors.textSlate,
                     ),
                   ),
                 ],
@@ -190,8 +194,8 @@ class TodayLearningGoalScreen extends ConsumerWidget {
             // Trailing Chevron
             const Icon(
               Icons.chevron_right_rounded,
-              color: Color(0xFF94A3B8),
-              size: 22,
+              color: AppColors.textMuted,
+              size: AppValues.iconSizeXl,
             ),
           ],
         ),
@@ -203,14 +207,17 @@ class TodayLearningGoalScreen extends ConsumerWidget {
     return Container(
       width: double.infinity,
       decoration: BoxDecoration(
-        color: const Color(0xFFFEF3C7),
+        color: AppColors.stateWarningContainer,
         borderRadius: BorderRadius.circular(AppValues.radiusXl),
-        border: Border.all(color: const Color(0xFFFDE68A), width: 1.5),
+        border: Border.all(
+          color: AppColors.borderGoalCard,
+          width: AppValues.borderWidthHairline,
+        ),
         boxShadow: [
           BoxShadow(
-            color: const Color(0xFFF59E0B).withValues(alpha: 0.12),
+            color: AppColors.brandSecondary.withValues(alpha: 0.12),
             offset: const Offset(0, 4),
-            blurRadius: 12,
+            blurRadius: AppValues.radiusLg,
           ),
         ],
       ),
@@ -223,11 +230,11 @@ class TodayLearningGoalScreen extends ConsumerWidget {
           // 3D Mascot Boy Thumbs Up
           Image.asset(
             'assets/images/mascot_boy_thumbs_up.png',
-            width: 76,
-            height: 76,
+            width: AppValues.sizeGoalThumbsMascot,
+            height: AppValues.sizeGoalThumbsMascot,
             fit: BoxFit.contain,
           ),
-          const SizedBox(width: 14),
+          const SizedBox(width: AppValues.space6),
 
           // Encouraging Text
           Expanded(
@@ -235,21 +242,21 @@ class TodayLearningGoalScreen extends ConsumerWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'You can do it!',
+                  AppStrings.youCanDoIt,
                   style: GoogleFonts.quicksand(
-                    fontSize: 16,
+                    fontSize: AppValues.fontTitleLg,
                     fontWeight: FontWeight.w800,
-                    color: const Color(0xFF1E1B4B),
+                    color: AppColors.textDarkIndigo,
                   ),
                 ),
-                const SizedBox(height: 4),
+                const SizedBox(height: AppValues.radiusXs),
                 Text(
-                  'Keep learning and reach your goal today!',
+                  AppStrings.reachGoalToday,
                   style: GoogleFonts.quicksand(
-                    fontSize: 13,
+                    fontSize: AppValues.fontLabelMd,
                     fontWeight: FontWeight.w500,
-                    color: const Color(0xFF6E6D7A),
-                    height: 1.3,
+                    color: AppColors.textSlate,
+                    height: AppValues.lineHeightNormal,
                   ),
                 ),
               ],

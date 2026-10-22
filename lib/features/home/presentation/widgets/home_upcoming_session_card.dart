@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../../core/constants/app_colors.dart';
+import '../../../../core/constants/app_strings.dart';
 import '../../../../core/constants/app_values.dart';
 
 class HomeUpcomingSessionCard extends StatelessWidget {
@@ -21,11 +22,11 @@ class HomeUpcomingSessionCard extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              'Upcoming Session',
+              AppStrings.upcomingSession,
               style: GoogleFonts.quicksand(
-                fontSize: 16,
+                fontSize: AppValues.fontTitleLg,
                 fontWeight: FontWeight.w800,
-                color: const Color(0xFF1E1B4B),
+                color: AppColors.textDarkIndigo,
               ),
             ),
             GestureDetector(
@@ -33,9 +34,9 @@ class HomeUpcomingSessionCard extends StatelessWidget {
                 HapticFeedback.lightImpact();
               },
               child: Text(
-                'See All',
+                AppStrings.seeAll,
                 style: GoogleFonts.quicksand(
-                  fontSize: 13,
+                  fontSize: AppValues.fontLabelMd,
                   fontWeight: FontWeight.w700,
                   color: AppColors.brandPrimary,
                 ),
@@ -56,9 +57,9 @@ class HomeUpcomingSessionCard extends StatelessWidget {
             borderRadius: BorderRadius.circular(AppValues.radiusXl),
             boxShadow: [
               BoxShadow(
-                color: const Color(0xFF4F46E5).withValues(alpha: 0.05),
+                color: AppColors.shadowIndigoSubtle,
                 offset: const Offset(0, 4),
-                blurRadius: 12,
+                blurRadius: AppValues.radiusTaskTile,
               ),
             ],
           ),
@@ -68,12 +69,12 @@ class HomeUpcomingSessionCard extends StatelessWidget {
               ClipOval(
                 child: Image.asset(
                   'assets/images/avatar_coach_sarah.png',
-                  width: 48,
-                  height: 48,
+                  width: AppValues.sizeAvatarMd,
+                  height: AppValues.sizeAvatarMd,
                   fit: BoxFit.cover,
                 ),
               ),
-              const SizedBox(width: 12),
+              const SizedBox(width: AppValues.radiusTaskTile),
 
               // Title, Coach Name & Time
               Expanded(
@@ -81,37 +82,37 @@ class HomeUpcomingSessionCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Math Fun with Numbers',
+                      AppStrings.mathFunWithNumbers,
                       style: GoogleFonts.quicksand(
-                        fontSize: 13,
+                        fontSize: AppValues.fontLabelMd,
                         fontWeight: FontWeight.w700,
-                        color: const Color(0xFF1E1B4B),
+                        color: AppColors.textDarkIndigo,
                       ),
                     ),
-                    const SizedBox(height: 1),
+                    const SizedBox(height: AppValues.borderWidthThin),
                     Text(
-                      'Coach Sarah',
+                      AppStrings.coachSarah,
                       style: GoogleFonts.quicksand(
-                        fontSize: 11,
+                        fontSize: AppValues.fontCaptionSm,
                         fontWeight: FontWeight.w600,
-                        color: const Color(0xFF6E6D7A),
+                        color: AppColors.textSlate,
                       ),
                     ),
-                    const SizedBox(height: 3),
+                    const SizedBox(height: AppValues.borderWidthThick),
                     Row(
                       children: [
                         const Icon(
                           Icons.calendar_today_rounded,
-                          size: 11,
-                          color: Color(0xFF94A3B8),
+                          size: AppValues.iconSizeXs,
+                          color: AppColors.textMuted,
                         ),
-                        const SizedBox(width: 4),
+                        const SizedBox(width: AppValues.radiusXs),
                         Text(
-                          'Today, 4:00 PM',
+                          AppStrings.sessionTodayTime,
                           style: GoogleFonts.quicksand(
-                            fontSize: 10,
+                            fontSize: AppValues.fontCaptionXs,
                             fontWeight: FontWeight.w600,
-                            color: const Color(0xFF6E6D7A),
+                            color: AppColors.textSlate,
                           ),
                         ),
                       ],
@@ -119,7 +120,7 @@ class HomeUpcomingSessionCard extends StatelessWidget {
                   ],
                 ),
               ),
-              const SizedBox(width: 8),
+              const SizedBox(width: AppValues.space4),
 
               // Join Pill Button
               GestureDetector(
@@ -129,24 +130,24 @@ class HomeUpcomingSessionCard extends StatelessWidget {
                 },
                 child: Container(
                   padding: const EdgeInsets.symmetric(
-                    horizontal: 18,
-                    vertical: 8,
+                    horizontal: AppValues.space8,
+                    vertical: AppValues.space4,
                   ),
                   decoration: BoxDecoration(
                     color: AppColors.brandPrimary,
-                    borderRadius: BorderRadius.circular(20),
+                    borderRadius: BorderRadius.circular(AppValues.radiusCardLg),
                     boxShadow: [
                       BoxShadow(
                         color: AppColors.brandPrimary.withValues(alpha: 0.35),
                         offset: const Offset(0, 3),
-                        blurRadius: 6,
+                        blurRadius: AppValues.radiusSm,
                       ),
                     ],
                   ),
                   child: Text(
-                    'Join',
+                    AppStrings.join,
                     style: GoogleFonts.quicksand(
-                      fontSize: 13,
+                      fontSize: AppValues.fontLabelMd,
                       fontWeight: FontWeight.w700,
                       color: Colors.white,
                     ),

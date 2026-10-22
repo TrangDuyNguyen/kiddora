@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../../core/constants/app_colors.dart';
+import '../../../../core/constants/app_strings.dart';
+import '../../../../core/constants/app_values.dart';
 
 class ClayBottomNav extends StatelessWidget {
   final int selectedIndex;
@@ -19,28 +21,31 @@ class ClayBottomNav extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: const BorderRadius.only(
-          topLeft: Radius.circular(28),
-          topRight: Radius.circular(28),
+          topLeft: Radius.circular(AppValues.radiusBottomNav),
+          topRight: Radius.circular(AppValues.radiusBottomNav),
         ),
         boxShadow: [
           BoxShadow(
-            color: const Color(0xFF4F46E5).withValues(alpha: 0.08),
+            color: AppColors.brandPrimary.withValues(alpha: 0.08),
             offset: const Offset(0, -4),
-            blurRadius: 16,
+            blurRadius: AppValues.space7,
           ),
         ],
       ),
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+      padding: const EdgeInsets.symmetric(
+        horizontal: AppValues.space7,
+        vertical: AppValues.space5,
+      ),
       child: SafeArea(
         top: false,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            _buildNavItem(0, Icons.home_rounded, 'Home'),
-            _buildNavItem(1, Icons.menu_book_rounded, 'Courses'),
-            _buildNavItem(2, Icons.calendar_month_rounded, 'Sessions'),
-            _buildNavItem(3, Icons.assignment_rounded, 'Tests'),
-            _buildNavItem(4, Icons.more_horiz_rounded, 'More'),
+            _buildNavItem(0, Icons.home_rounded, AppStrings.navHome),
+            _buildNavItem(1, Icons.menu_book_rounded, AppStrings.navCourses),
+            _buildNavItem(2, Icons.calendar_month_rounded, AppStrings.navSessions),
+            _buildNavItem(3, Icons.assignment_rounded, AppStrings.navTests),
+            _buildNavItem(4, Icons.more_horiz_rounded, AppStrings.navMore),
           ],
         ),
       ),
@@ -49,7 +54,7 @@ class ClayBottomNav extends StatelessWidget {
 
   Widget _buildNavItem(int index, IconData icon, String label) {
     final isSelected = selectedIndex == index;
-    final color = isSelected ? AppColors.brandPrimary : const Color(0xFF94A3B8);
+    final color = isSelected ? AppColors.brandPrimary : AppColors.textMuted;
 
     return GestureDetector(
       onTap: () {
@@ -60,12 +65,12 @@ class ClayBottomNav extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(icon, size: 24, color: color),
-          const SizedBox(height: 3),
+          Icon(icon, size: AppValues.iconSizeLg, color: color),
+          const SizedBox(height: AppValues.borderWidthThick),
           Text(
             label,
             style: GoogleFonts.quicksand(
-              fontSize: 11,
+              fontSize: AppValues.fontCaptionSm,
               fontWeight: isSelected ? FontWeight.w700 : FontWeight.w500,
               color: color,
             ),

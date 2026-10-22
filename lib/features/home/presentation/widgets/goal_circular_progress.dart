@@ -2,6 +2,8 @@ import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../../core/constants/app_colors.dart';
+import '../../../../core/constants/app_strings.dart';
+import '../../../../core/constants/app_values.dart';
 
 class GoalCircularProgress extends StatelessWidget {
   final int completedCount;
@@ -18,25 +20,28 @@ class GoalCircularProgress extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 220,
-      height: 220,
+      width: AppValues.sizeGoalProgressBox,
+      height: AppValues.sizeGoalProgressBox,
       child: Stack(
         alignment: Alignment.center,
         children: [
-          // Whimsical yellow sparkles around ring
-          CustomPaint(
-            size: const Size(220, 220),
+          // Whimsical sparkles around ring
+          const CustomPaint(
+            size: Size(
+              AppValues.sizeGoalProgressBox,
+              AppValues.sizeGoalProgressBox,
+            ),
             painter: _SparklesPainter(),
           ),
 
           // Circular Ring Progress
           TweenAnimationBuilder<double>(
             tween: Tween<double>(begin: 0.0, end: progress),
-            duration: const Duration(milliseconds: 600),
+            duration: AppValues.durationPageTransition,
             curve: Curves.easeOutCubic,
             builder: (context, animatedValue, child) {
               return CustomPaint(
-                size: const Size(180, 180),
+                size: const Size(AppValues.sizeGoalRing, AppValues.sizeGoalRing),
                 painter: _RingProgressPainter(progress: animatedValue),
               );
             },
@@ -48,25 +53,25 @@ class GoalCircularProgress extends StatelessWidget {
             children: [
               Image.asset(
                 'assets/images/mascot_star_goal.png',
-                width: 52,
-                height: 52,
+                width: AppValues.sizeGoalMascotStar,
+                height: AppValues.sizeGoalMascotStar,
                 fit: BoxFit.contain,
               ),
-              const SizedBox(height: 4),
+              const SizedBox(height: AppValues.radiusXs),
               Text(
-                '$completedCount of $totalCount',
+                '$completedCount${AppStrings.ofSeparator}$totalCount',
                 style: GoogleFonts.quicksand(
-                  fontSize: 24,
+                  fontSize: AppValues.fontHeadlineLg,
                   fontWeight: FontWeight.w800,
-                  color: const Color(0xFF1E1B4B),
+                  color: AppColors.textDarkIndigo,
                 ),
               ),
               Text(
-                'Tasks Completed',
+                AppStrings.tasksCompleted,
                 style: GoogleFonts.quicksand(
-                  fontSize: 12,
+                  fontSize: AppValues.fontBodySm,
                   fontWeight: FontWeight.w600,
-                  color: const Color(0xFF6E6D7A),
+                  color: AppColors.textSlate,
                 ),
               ),
             ],
@@ -85,12 +90,12 @@ class _RingProgressPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final center = Offset(size.width / 2, size.height / 2);
-    final radius = (size.width - 16) / 2;
-    const strokeWidth = 14.0;
+    final radius = (size.width - AppValues.space7) / 2;
+    const strokeWidth = AppValues.strokeWidthRing;
 
     // Track Paint
     final trackPaint = Paint()
-      ..color = const Color(0xFFEDE9FE)
+      ..color = AppColors.ringTrackLavender
       ..strokeWidth = strokeWidth
       ..style = PaintingStyle.stroke
       ..strokeCap = StrokeCap.round;
@@ -104,9 +109,9 @@ class _RingProgressPainter extends CustomPainter {
         startAngle: -math.pi / 2,
         endAngle: 3 * math.pi / 2,
         colors: const [
-          Color(0xFF818CF8),
+          AppColors.ringArcPurple,
           AppColors.brandPrimary,
-          Color(0xFF4F46E5),
+          AppColors.ringArcIndigo,
         ],
       );
 
@@ -134,19 +139,21 @@ class _RingProgressPainter extends CustomPainter {
 }
 
 class _SparklesPainter extends CustomPainter {
+  const _SparklesPainter();
+
   @override
   void paint(Canvas canvas, Size size) {
     final center = Offset(size.width / 2, size.height / 2);
     final sparklePaint = Paint()
-      ..color = const Color(0xFFFBBF24)
-      ..strokeWidth = 3.5
+      ..color = AppColors.stateWarningAmber
+      ..strokeWidth = AppValues.strokeWidthSparkle
       ..strokeCap = StrokeCap.round;
 
     // Fixed confetti sparkle ray angles
     final angles = [-1.3, -0.6, 0.4, 0.9, 2.2, 2.7, 3.8];
     for (final angle in angles) {
-      final startR = (size.width / 2) - 8;
-      final endR = (size.width / 2) + 2;
+      final startR = (size.width / 2) - AppValues.radiusMd;
+      final endR = (size.width / 2) + AppValues.borderWidthThick;
       final p1 = Offset(
         center.dx + startR * math.cos(angle),
         center.dy + startR * math.sin(angle),

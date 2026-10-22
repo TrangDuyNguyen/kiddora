@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../../core/constants/app_colors.dart';
+import '../../../../core/constants/app_strings.dart';
 import '../../../../core/constants/app_values.dart';
 import '../../../../core/router/app_router.gr.dart';
 import '../../../../shared/ui_kit/ui_kit.dart';
@@ -22,9 +23,9 @@ class LoginHeader extends StatelessWidget {
           Align(
             alignment: Alignment.centerLeft,
             child: ClayIconButton(
-              size: 44,
+              size: AppValues.sizeCircleButtonXl,
               backgroundColor: Colors.white,
-              glowColor: Colors.black.withValues(alpha: 0.04),
+              glowColor: AppColors.clayShadeSubtle,
               onPressed: () {
                 if (context.router.canPop()) {
                   context.router.maybePop();
@@ -34,7 +35,7 @@ class LoginHeader extends StatelessWidget {
               },
               icon: const Icon(
                 Icons.arrow_back_ios_new_rounded,
-                size: 18,
+                size: AppValues.iconSizeSm,
                 color: AppColors.textPrimary,
               ),
             ),
@@ -44,44 +45,44 @@ class LoginHeader extends StatelessWidget {
           // Kiddora Logo & Tagline
           Image.asset(
             'assets/images/kiddora_logo.png',
-            height: 48,
+            height: AppValues.sizeLoginLogoH,
             fit: BoxFit.contain,
           ),
-          const SizedBox(height: 2),
+          const SizedBox(height: AppValues.borderWidthThick),
           Text(
-            'Learn • Play • Achieve',
+            AppStrings.learnPlayAchieve,
             style: GoogleFonts.quicksand(
-              fontSize: 12,
+              fontSize: AppValues.fontBodySm,
               fontWeight: FontWeight.w600,
-              color: const Color(0xFF6E6D7A),
-              letterSpacing: 0.5,
+              color: AppColors.textSlate,
+              letterSpacing: AppValues.letterSpacingWide,
             ),
           ),
           const SizedBox(height: AppValues.space5),
 
           // Main Title & Subtitle
           Text(
-            'Welcome Back!',
+            AppStrings.welcomeBack,
             style: GoogleFonts.quicksand(
-              fontSize: 26,
+              fontSize: AppValues.fontDisplayHero,
               fontWeight: FontWeight.w800,
-              color: const Color(0xFF1E1B4B),
+              color: AppColors.textDarkIndigo,
             ),
           ),
-          const SizedBox(height: 4),
+          const SizedBox(height: AppValues.radiusXs),
           Text(
-            "Let's continue your learning journey",
+            AppStrings.welcomeBackSubtitle,
             style: GoogleFonts.quicksand(
-              fontSize: 14,
+              fontSize: AppValues.fontBodyMd,
               fontWeight: FontWeight.w500,
-              color: const Color(0xFF6E6D7A),
+              color: AppColors.textSlate,
             ),
           ),
           const SizedBox(height: AppValues.space4),
 
           // 3D Mascot Boy Waving + Star
           SizedBox(
-            height: 145,
+            height: AppValues.sizeLoginHeroMascotH,
             child: Image.asset(
               'assets/images/login_hero_mascot.png',
               fit: BoxFit.contain,

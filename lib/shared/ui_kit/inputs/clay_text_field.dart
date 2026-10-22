@@ -58,35 +58,33 @@ class _ClayTextFieldState extends State<ClayTextField> {
   @override
   Widget build(BuildContext context) {
     return AnimatedContainer(
-      duration: const Duration(milliseconds: 180),
+      duration: AppValues.durationBounce,
       decoration: BoxDecoration(
-        color: const Color(0xFFF8FAFC),
-        borderRadius: BorderRadius.circular(AppValues.radiusLg),
+        color: AppColors.surfaceField,
+        borderRadius: BorderRadius.circular(AppValues.radiusInput),
         border: Border.all(
-          color: _isFocused
-              ? AppColors.brandPrimary
-              : const Color(0xFFE2E8F0),
-          width: _isFocused ? 2.0 : 1.5,
+          color: _isFocused ? AppColors.brandPrimary : AppColors.borderLight,
+          width: _isFocused
+              ? AppValues.borderWidthFocus
+              : AppValues.borderWidthHairline,
         ),
         boxShadow: [
-          // Specular top highlight
           const BoxShadow(
             color: Colors.white,
             offset: Offset(-2, -2),
-            blurRadius: 4,
+            blurRadius: AppValues.radiusXs,
           ),
-          // Subtle compression shadow
           BoxShadow(
-            color: const Color(0xFF0F172A).withValues(alpha: 0.04),
+            color: AppColors.clayShadeSubtle,
             offset: const Offset(2, 3),
-            blurRadius: 5,
+            blurRadius: AppValues.space1,
           ),
           if (_isFocused)
             BoxShadow(
               color: AppColors.brandPrimary.withValues(alpha: 0.15),
-              offset: const Offset(0, 0),
-              blurRadius: 8,
-              spreadRadius: 1,
+              offset: Offset.zero,
+              blurRadius: AppValues.space4,
+              spreadRadius: AppValues.borderWidthThin,
             ),
         ],
       ),
@@ -100,40 +98,44 @@ class _ClayTextFieldState extends State<ClayTextField> {
         onFieldSubmitted: widget.onSubmitted,
         validator: widget.validator,
         style: GoogleFonts.quicksand(
-          fontSize: 15,
+          fontSize: AppValues.fontTitleMd,
           fontWeight: FontWeight.w600,
           color: AppColors.textPrimary,
         ),
         decoration: InputDecoration(
           hintText: widget.hintText,
           hintStyle: GoogleFonts.quicksand(
-            fontSize: 14,
+            fontSize: AppValues.fontBodyMd,
             fontWeight: FontWeight.w500,
-            color: const Color(0xFF94A3B8),
+            color: AppColors.textMuted,
           ),
           prefixIcon: widget.prefixIcon != null
               ? Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 14.0),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: AppValues.space6,
+                  ),
                   child: widget.prefixIcon,
                 )
               : null,
           prefixIconConstraints: const BoxConstraints(
-            minWidth: 48,
-            minHeight: 48,
+            minWidth: AppValues.minTouchTarget,
+            minHeight: AppValues.minTouchTarget,
           ),
           suffixIcon: widget.suffixIcon != null
               ? Padding(
-                  padding: const EdgeInsets.only(right: 12.0),
+                  padding: const EdgeInsets.only(
+                    right: AppValues.space5,
+                  ),
                   child: widget.suffixIcon,
                 )
               : null,
           suffixIconConstraints: const BoxConstraints(
-            minWidth: 40,
-            minHeight: 40,
+            minWidth: AppValues.actionButtonSmall,
+            minHeight: AppValues.actionButtonSmall,
           ),
           contentPadding: const EdgeInsets.symmetric(
-            horizontal: 16.0,
-            vertical: 16.0,
+            horizontal: AppValues.space7,
+            vertical: AppValues.space7,
           ),
           border: InputBorder.none,
           enabledBorder: InputBorder.none,

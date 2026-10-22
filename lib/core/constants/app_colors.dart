@@ -146,4 +146,34 @@ class AppColors {
   static const Color blobRose = Color(0xFFFCE2F4);
   static const Color blobRoseTint = Color(0xFFFDF0F9);
   static const Color blobRoseFade = Color(0x00FFF8FD);
+
+  // Sprint 3 — Core Screens Semantic Tokens
+  static const Color surfaceLoginCanvas = Color(0xFFF3EEFC);
+  static const Color surfaceField = Color(0xFFF8FAFC);
+  static const Color borderLight = Color(0xFFE2E8F0);
+  static const Color borderSubtle = Color(0xFFCBD5E1);
+  static const Color borderGoalCard = Color(0xFFFDE68A);
+  static const Color textSlate = Color(0xFF6E6D7A);
+  static const Color textMuted = Color(0xFF94A3B8);
+  static const Color textDarkIndigo = Color(0xFF1E1B4B);
+  static const Color textSlateDark = Color(0xFF475569);
+  static const Color shadowIndigoSubtle = Color(0x0F4F46E5);
+  static const Color shadowCardAmbient = Color(0x0D0F172A);
+  static const Color stateSuccessGreen = Color(0xFF10B981);
+  static const Color stateWarningAmber = Color(0xFFFBBF24);
+  static const Color stateWarningContainer = Color(0xFFFEF3C7);
+  static const Color socialGoogleRed = Color(0xFFEA4335);
+  static const Color socialAppleDark = Color(0xFF0F172A);
+  static const Color socialMsOrange = Color(0xFFF25022);
+  static const Color socialMsGreen = Color(0xFF7FBA00);
+  static const Color socialMsBlue = Color(0xFF00A4EF);
+  static const Color socialMsYellow = Color(0xFFFFB900);
+  static const Color heroGradientStart = Color(0xFFC084FC);
+  static const Color heroGradientMid = Color(0xFFA855F7);
+  static const Color heroGradientEnd = Color(0xFF8B5CF6);
+  static const Color ringTrackLavender = Color(0xFFEDE9FE);
+  static const Color ringArcPurple = Color(0xFF818CF8);
+  static const Color ringArcIndigo = Color(0xFF4F46E5);
+  static const Color taskCheckboxUnchecked = Color(0xFFC7D2FE);
+  static const Color dividerSubtle = Color(0xFFF1F5F9);
 }

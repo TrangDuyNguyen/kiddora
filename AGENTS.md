@@ -108,6 +108,10 @@ lib/
 4. **State Management**: Prefer code-generation Riverpod (`@riverpod`). Keep side-effects inside Notifier methods.
 5. **Code Generation**: Run `make gen` (`dart run build_runner build --delete-conflicting-outputs`).
 6. **Testing**: Run `flutter test` before completing tasks.
+7. **Zero-Tolerance Clean Code (Nghiêm Cấm Tuyệt Đối)**:
+   - **Cấm Magic Numbers & Raw Colors**: Tuyệt đối không dùng số tự do (raw numbers) cho padding, margin, width, height, radius, font size, duration, elevation. Bắt buộc $100\%$ sử dụng token từ `AppValues` (`lib/core/constants/app_values.dart`). Không dùng mã màu hex thô (`Color(0xFF...)`) trực tiếp trong UI, bắt buộc khai báo và dùng từ `AppColors` (`lib/core/constants/app_colors.dart`).
+   - **Cấm Emoji Trong Chuỗi & Mã Nguồn**: Không được chèn emoji (`✨`, `🚀`, `👍`, `🎉`, v.v.) vào chuỗi giao diện hoặc code logic. Mọi biểu tượng cảm xúc, minh họa phải là icon (`IconData`), SVG hoặc 3D asset minh họa chuyên biệt.
+   - **Cấm Hard Text (Hardcoded Strings)**: Tuyệt đối không viết text thô (hardcoded string literals) trực tiếp trong các file presentation / widgets. $100\%$ chuỗi văn bản (tiêu đề, nhãn nút, placeholder, thông báo, câu hỏi, mô tả) phải được định nghĩa tập trung trong `AppStrings` (`lib/core/constants/app_strings.dart`).
 
 ---
 

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../../core/constants/app_colors.dart';
+import '../../../../core/constants/app_strings.dart';
 import '../../../../core/constants/app_values.dart';
 
 class HomeContinueLearningCard extends StatelessWidget {
@@ -21,11 +22,11 @@ class HomeContinueLearningCard extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              'Continue Learning',
+              AppStrings.continueLearning,
               style: GoogleFonts.quicksand(
-                fontSize: 16,
+                fontSize: AppValues.fontTitleLg,
                 fontWeight: FontWeight.w800,
-                color: const Color(0xFF1E1B4B),
+                color: AppColors.textDarkIndigo,
               ),
             ),
             GestureDetector(
@@ -33,9 +34,9 @@ class HomeContinueLearningCard extends StatelessWidget {
                 HapticFeedback.lightImpact();
               },
               child: Text(
-                'See All',
+                AppStrings.seeAll,
                 style: GoogleFonts.quicksand(
-                  fontSize: 13,
+                  fontSize: AppValues.fontLabelMd,
                   fontWeight: FontWeight.w700,
                   color: AppColors.brandPrimary,
                 ),
@@ -58,9 +59,9 @@ class HomeContinueLearningCard extends StatelessWidget {
               borderRadius: BorderRadius.circular(AppValues.radiusXl),
               boxShadow: [
                 BoxShadow(
-                  color: const Color(0xFF4F46E5).withValues(alpha: 0.05),
+                  color: AppColors.shadowIndigoSubtle,
                   offset: const Offset(0, 4),
-                  blurRadius: 12,
+                  blurRadius: AppValues.radiusTaskTile,
                 ),
               ],
             ),
@@ -68,15 +69,17 @@ class HomeContinueLearningCard extends StatelessWidget {
               children: [
                 // Dino Image Thumbnail
                 ClipRRect(
-                  borderRadius: BorderRadius.circular(14),
+                  borderRadius: BorderRadius.circular(
+                    AppValues.radiusCourseThumbnail,
+                  ),
                   child: Image.asset(
                     'assets/images/course_dino.png',
-                    width: 62,
-                    height: 62,
+                    width: AppValues.sizeCourseThumbnail,
+                    height: AppValues.sizeCourseThumbnail,
                     fit: BoxFit.cover,
                   ),
                 ),
-                const SizedBox(width: 14),
+                const SizedBox(width: AppValues.space6),
 
                 // Info: Subject, Title & Progress
                 Expanded(
@@ -84,67 +87,67 @@ class HomeContinueLearningCard extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Science',
+                        AppStrings.courseScienceTag,
                         style: GoogleFonts.quicksand(
-                          fontSize: 11,
+                          fontSize: AppValues.fontCaptionSm,
                           fontWeight: FontWeight.w600,
-                          color: const Color(0xFF94A3B8),
+                          color: AppColors.textMuted,
                         ),
                       ),
                       Text(
-                        'Amazing Animals',
+                        AppStrings.courseAmazingAnimals,
                         style: GoogleFonts.quicksand(
-                          fontSize: 14,
+                          fontSize: AppValues.fontBodyMd,
                           fontWeight: FontWeight.w700,
-                          color: const Color(0xFF1E1B4B),
+                          color: AppColors.textDarkIndigo,
                         ),
                       ),
-                      const SizedBox(height: 6),
+                      const SizedBox(height: AppValues.radiusSm),
                       // Progress Bar
                       ClipRRect(
-                        borderRadius: BorderRadius.circular(4),
+                        borderRadius: BorderRadius.circular(AppValues.radiusXs),
                         child: const LinearProgressIndicator(
                           value: 0.6,
-                          minHeight: 5,
-                          backgroundColor: Color(0xFFEDE9FE),
+                          minHeight: AppValues.space1,
+                          backgroundColor: AppColors.ringTrackLavender,
                           valueColor: AlwaysStoppedAnimation<Color>(
                             AppColors.brandPrimary,
                           ),
                         ),
                       ),
-                      const SizedBox(height: 4),
+                      const SizedBox(height: AppValues.radiusXs),
                       Text(
-                        '3 of 5 lessons',
+                        AppStrings.courseLessonsProgress,
                         style: GoogleFonts.quicksand(
-                          fontSize: 10,
+                          fontSize: AppValues.fontCaptionXs,
                           fontWeight: FontWeight.w600,
-                          color: const Color(0xFF6E6D7A),
+                          color: AppColors.textSlate,
                         ),
                       ),
                     ],
                   ),
                 ),
-                const SizedBox(width: 10),
+                const SizedBox(width: AppValues.space5),
 
                 // Action Arrow Button
                 Container(
-                  width: 36,
-                  height: 36,
+                  width: AppValues.sizeCircleButtonSm,
+                  height: AppValues.sizeCircleButtonSm,
                   decoration: const BoxDecoration(
                     shape: BoxShape.circle,
                     color: AppColors.brandPrimary,
                     boxShadow: [
                       BoxShadow(
-                        color: Color(0x334F46E5),
+                        color: AppColors.clayShadow,
                         offset: Offset(0, 3),
-                        blurRadius: 6,
+                        blurRadius: AppValues.radiusSm,
                       ),
                     ],
                   ),
                   alignment: Alignment.center,
                   child: const Icon(
                     Icons.arrow_forward_ios_rounded,
-                    size: 14,
+                    size: AppValues.iconSizeCompact,
                     color: Colors.white,
                   ),
                 ),

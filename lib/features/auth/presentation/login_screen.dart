@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../core/constants/app_colors.dart';
+import '../../../core/constants/app_strings.dart';
 import '../../../core/constants/app_values.dart';
 import '../../../core/router/app_router.gr.dart';
 import '../../../shared/ui_kit/ui_kit.dart';
@@ -51,7 +52,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
     final state = ref.watch(loginControllerProvider);
 
     return Scaffold(
-      backgroundColor: const Color(0xFFF3EEFC),
+      backgroundColor: AppColors.surfaceLoginCanvas,
       body: SafeArea(
         bottom: false,
         child: SingleChildScrollView(
@@ -70,14 +71,14 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                 decoration: const BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(36),
-                    topRight: Radius.circular(36),
+                    topLeft: Radius.circular(AppValues.radiusSheetTop),
+                    topRight: Radius.circular(AppValues.radiusSheetTop),
                   ),
                   boxShadow: [
                     BoxShadow(
-                      color: Color(0x0F4F46E5),
+                      color: AppColors.shadowIndigoSubtle,
                       offset: Offset(0, -6),
-                      blurRadius: 18,
+                      blurRadius: AppValues.space8,
                     ),
                   ],
                 ),
@@ -87,11 +88,11 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                     // Email or Username Input
                     ClayTextField(
                       controller: _emailController,
-                      hintText: 'Email or Username',
+                      hintText: AppStrings.emailOrUsername,
                       prefixIcon: const Icon(
                         Icons.mail_outline_rounded,
                         color: AppColors.brandPrimary,
-                        size: 22,
+                        size: AppValues.iconSizeXl,
                       ),
                       onChanged: (val) => ref
                           .read(loginControllerProvider.notifier)
@@ -102,12 +103,12 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                     // Password Input with Visibility Toggle
                     ClayTextField(
                       controller: _passwordController,
-                      hintText: 'Password',
+                      hintText: AppStrings.password,
                       obscureText: state.isObscured,
                       prefixIcon: const Icon(
                         Icons.lock_outline_rounded,
                         color: AppColors.brandPrimary,
-                        size: 22,
+                        size: AppValues.iconSizeXl,
                       ),
                       suffixIcon: GestureDetector(
                         onTap: () {
@@ -120,8 +121,8 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                           state.isObscured
                               ? Icons.visibility_outlined
                               : Icons.visibility_off_outlined,
-                          color: const Color(0xFF94A3B8),
-                          size: 20,
+                          color: AppColors.textMuted,
+                          size: AppValues.iconSizeMd,
                         ),
                       ),
                       onChanged: (val) => ref
@@ -144,26 +145,28 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                           child: Row(
                             children: [
                               AnimatedContainer(
-                                duration: const Duration(milliseconds: 150),
-                                width: 22,
-                                height: 22,
+                                duration: AppValues.durationFeedback,
+                                width: AppValues.sizeCheckbox,
+                                height: AppValues.sizeCheckbox,
                                 decoration: BoxDecoration(
                                   color: state.rememberMe
                                       ? AppColors.brandPrimary
                                       : Colors.white,
-                                  borderRadius: BorderRadius.circular(6),
+                                  borderRadius: BorderRadius.circular(
+                                    AppValues.radiusCheckbox,
+                                  ),
                                   border: Border.all(
                                     color: state.rememberMe
                                         ? AppColors.brandPrimary
-                                        : const Color(0xFFCBD5E1),
-                                    width: 1.5,
+                                        : AppColors.borderSubtle,
+                                    width: AppValues.borderWidthHairline,
                                   ),
                                   boxShadow: [
                                     if (state.rememberMe)
                                       BoxShadow(
                                         color: AppColors.brandPrimary
                                             .withValues(alpha: 0.3),
-                                        blurRadius: 4,
+                                        blurRadius: AppValues.radiusXs,
                                         offset: const Offset(0, 2),
                                       ),
                                   ],
@@ -171,18 +174,18 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                                 child: state.rememberMe
                                     ? const Icon(
                                         Icons.check_rounded,
-                                        size: 16,
+                                        size: AppValues.iconSizeCompact,
                                         color: Colors.white,
                                       )
                                     : null,
                               ),
-                              const SizedBox(width: 8),
+                              const SizedBox(width: AppValues.space4),
                               Text(
-                                'Remember me',
+                                AppStrings.rememberMe,
                                 style: GoogleFonts.quicksand(
-                                  fontSize: 13,
+                                  fontSize: AppValues.fontLabelMd,
                                   fontWeight: FontWeight.w600,
-                                  color: const Color(0xFF475569),
+                                  color: AppColors.textSlateDark,
                                 ),
                               ),
                             ],
@@ -198,9 +201,9 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                             tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                           ),
                           child: Text(
-                            'Forgot Password?',
+                            AppStrings.forgotPassword,
                             style: GoogleFonts.quicksand(
-                              fontSize: 13,
+                              fontSize: AppValues.fontLabelMd,
                               fontWeight: FontWeight.w700,
                               color: AppColors.brandPrimary,
                             ),
@@ -212,16 +215,16 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
 
                     // Log In Primary Tactile Button
                     ClayButton(
-                      label: 'Log In',
+                      label: AppStrings.logIn,
                       onPressed: state.isLoading ? null : _handleLogin,
                       isLoading: state.isLoading,
                       icon: const Icon(
                         Icons.arrow_forward_rounded,
                         color: Colors.white,
-                        size: 20,
+                        size: AppValues.iconSizeMd,
                       ),
                       backgroundColor: AppColors.brandPrimary,
-                      height: 54,
+                      height: AppValues.sizeButtonPrimaryH,
                     ),
                     const SizedBox(height: AppValues.space7),
 
@@ -234,11 +237,11 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          "Don't have an account? ",
+                          AppStrings.dontHaveAccount,
                           style: GoogleFonts.quicksand(
-                            fontSize: 14,
+                            fontSize: AppValues.fontBodyMd,
                             fontWeight: FontWeight.w500,
-                            color: const Color(0xFF6E6D7A),
+                            color: AppColors.textSlate,
                           ),
                         ),
                         GestureDetector(
@@ -247,9 +250,9 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                             context.router.replace(OnboardingRoute());
                           },
                           child: Text(
-                            'Sign Up',
+                            AppStrings.signUp,
                             style: GoogleFonts.quicksand(
-                              fontSize: 14,
+                              fontSize: AppValues.fontBodyMd,
                               fontWeight: FontWeight.w700,
                               color: AppColors.brandPrimary,
                             ),
