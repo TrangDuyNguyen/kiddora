@@ -13,9 +13,11 @@ class LoginHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(
-        horizontal: AppValues.space7,
-        vertical: AppValues.space4,
+      padding: const EdgeInsets.fromLTRB(
+        AppValues.space7,
+        AppValues.space4,
+        AppValues.space7,
+        0,
       ),
       child: Column(
         children: [
@@ -99,11 +101,15 @@ class LoginHeader extends StatelessWidget {
           const SizedBox(height: AppValues.space4),
 
           // 3D Mascot Boy Waving + Star
-          SizedBox(
-            height: AppValues.sizeLoginHeroMascotH,
-            child: Image.asset(
-              'assets/images/login_hero_mascot.png',
-              fit: BoxFit.contain,
+          Transform.translate(
+            offset: const Offset(0, AppValues.space5),
+            child: SizedBox(
+              height: AppValues.sizeLoginHeroMascotH,
+              child: Image.asset(
+                'assets/images/login_hero_mascot.png',
+                fit: BoxFit.contain,
+                alignment: Alignment.bottomCenter,
+              ),
             ),
           ),
         ],
