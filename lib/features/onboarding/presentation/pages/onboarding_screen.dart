@@ -103,7 +103,7 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
         curve: Curves.easeOutCubic,
       );
     } else {
-      context.router.push(const KidProfileSetupRoute());
+      context.router.push(const RegisterRoute());
     }
   }
 
@@ -166,12 +166,26 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          // Top Action Row: Cleanly hosts the "Bỏ qua" button
+          // Top Action Row: Hosts Login shortcut and "Bỏ qua" button
           SizedBox(
             height: AppValues.onboardingSkipButtonHeight,
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.end,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
+                GestureDetector(
+                  onTap: () {
+                    HapticFeedback.lightImpact();
+                    context.router.push(const LoginRoute());
+                  },
+                  child: Text(
+                    AppStrings.logIn,
+                    style: GoogleFonts.quicksand(
+                      fontSize: AppValues.fontLabelMd,
+                      fontWeight: FontWeight.w700,
+                      color: AppColors.brandIndigoLight,
+                    ),
+                  ),
+                ),
                 if (_currentPage < 2)
                   _buildSkipButton()
                 else
@@ -179,6 +193,7 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
               ],
             ),
           ),
+
 
           // Unified-height Header Region to eliminate transition jitter
           SizedBox(
@@ -333,9 +348,26 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
                 ),
               ],
             ),
+            if (_currentPage == 2) ...[
+              const SizedBox(height: AppValues.space3),
+              GestureDetector(
+                onTap: _onSkipTap,
+                child: Text(
+                  AppStrings.exploreAsGuest,
+                  style: GoogleFonts.quicksand(
+                    fontSize: AppValues.fontBodySm,
+                    fontWeight: FontWeight.w600,
+                    color: AppColors.textSecondary,
+                    decoration: TextDecoration.underline,
+                  ),
+                ),
+
+              ),
+            ],
           ],
         ),
       ),
     );
   }
+
 }

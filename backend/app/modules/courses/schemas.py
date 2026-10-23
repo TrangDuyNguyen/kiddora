@@ -2,10 +2,12 @@
 Module Courses — Pydantic Schemas (DTOs)
 """
 from typing import List, Optional
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict
 
 
 class LessonItemResponse(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
     id: str
     order_index: int
     title: str
@@ -13,11 +15,10 @@ class LessonItemResponse(BaseModel):
     video_url: Optional[str] = None
     is_completed: bool = False
 
-    class Config:
-        from_attributes = True
-
 
 class CourseCardResponse(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
     id: str
     title: str
     description: Optional[str] = None
@@ -29,9 +30,6 @@ class CourseCardResponse(BaseModel):
     review_count: int
     thumbnail_url: Optional[str] = None
     is_featured: bool = False
-
-    class Config:
-        from_attributes = True
 
 
 class CourseDetailResponse(CourseCardResponse):

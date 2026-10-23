@@ -3,7 +3,7 @@ Module Gamification — Schemas & Router
 """
 from typing import List, Optional
 from fastapi import APIRouter, Depends
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.future import select
 
@@ -14,15 +14,14 @@ router = APIRouter(prefix="/gamification", tags=["Gamification"])
 
 
 class BadgeResponse(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
     id: str
     name: str
     description: str
     icon_url: Optional[str] = None
     required_points: int
     is_earned: bool = False
-
-    class Config:
-        from_attributes = True
 
 
 @router.get("/badges", response_model=List[BadgeResponse])

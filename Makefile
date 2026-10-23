@@ -60,6 +60,28 @@ test:
 check-files:
 	@bash scripts/check_file_length.sh
 
+backend-test:
+	@if [ -d backend/.venv ]; then \
+		PYTHONPATH=backend backend/.venv/bin/pytest backend/tests -v; \
+	else \
+		PYTHONPATH=backend pytest backend/tests -v; \
+	fi
+
+db-migrate:
+	@if [ -d backend/.venv ]; then \
+		cd backend && .venv/bin/alembic upgrade head; \
+	else \
+		cd backend && alembic upgrade head; \
+	fi
+
+db-rollback:
+	@if [ -d backend/.venv ]; then \
+		cd backend && .venv/bin/alembic downgrade -1; \
+	else \
+		cd backend && alembic downgrade -1; \
+	fi
+
+
 # =======================================================
 # End-to-End Quality Gate Pipeline (Relay Race Hand-off)
 # =======================================================

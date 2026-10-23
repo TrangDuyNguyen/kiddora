@@ -10,6 +10,17 @@
         "-y",
         "@lottiefiles/creator-mcp@latest"
       ]
+    },
+    "docker": {
+      "command": "/Applications/Docker.app/Contents/Resources/bin/docker",
+      "args": [
+        "mcp",
+        "gateway",
+        "run"
+      ],
+      "env": {
+        "PATH": "/Applications/Docker.app/Contents/Resources/bin:/usr/local/bin:/usr/bin:/bin"
+      }
     }
   }
 }

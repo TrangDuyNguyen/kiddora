@@ -54,16 +54,19 @@ class KidProfile {
 
   factory KidProfile.fromMap(Map<String, dynamic> map) {
     return KidProfile(
-      id: map['id'] as String? ?? 'kid_01',
+      id: map['id']?.toString() ?? 'kid_01',
       nickname: map['nickname'] as String? ?? 'Bé Yêu',
       age: (map['age'] as num?)?.toInt() ?? 8,
-      avatarId: map['avatarId'] as String? ?? 'lion',
-      currentStars: (map['currentStars'] as num?)?.toInt() ?? 10,
-      currentStreak: (map['currentStreak'] as num?)?.toInt() ?? 1,
+      avatarId: (map['avatarId'] ?? map['mascot_id']) as String? ?? 'zodiac_dragon',
+      currentStars: ((map['currentStars'] ?? map['star_points']) as num?)?.toInt() ?? 10,
+      currentStreak: ((map['currentStreak'] ?? map['streak_days']) as num?)?.toInt() ?? 1,
       createdAt: map['createdAt'] != null
           ? DateTime.tryParse(map['createdAt'] as String) ?? DateTime.now()
-          : DateTime.now(),
+          : (map['created_at'] != null
+              ? DateTime.tryParse(map['created_at'] as String) ?? DateTime.now()
+              : DateTime.now()),
     );
+
   }
 
   String toJson() => json.encode(toMap());

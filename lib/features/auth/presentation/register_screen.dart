@@ -67,9 +67,10 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
           behavior: SnackBarBehavior.floating,
         ),
       );
-      context.router.replace(const HomeRoute());
+      context.router.replace(const KidProfileSetupRoute());
     }
   }
+
 
   @override
   Widget build(BuildContext context) {

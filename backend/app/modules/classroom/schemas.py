@@ -3,10 +3,12 @@ Module Classroom — Schemas (DTOs)
 """
 from datetime import datetime
 from typing import Optional
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict
 
 
 class LiveSessionCardResponse(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
     id: str
     title: str
     coach_name: str
@@ -15,9 +17,6 @@ class LiveSessionCardResponse(BaseModel):
     duration_mins: int
     status: str
     participant_count: int = 0
-
-    class Config:
-        from_attributes = True
 
 
 class JoinRoomTokenResponse(BaseModel):

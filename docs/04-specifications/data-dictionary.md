@@ -10,13 +10,15 @@ Lưu trữ thông tin cá nhân hóa của trẻ, lưu cục bộ trong `SharedP
 | Tên trường | Kiểu dữ liệu | Bắt buộc | Mô tả & Ràng buộc giá trị |
 | :--- | :--- | :---: | :--- |
 | `id` | String | Có | Mã định danh hồ sơ bé (UUID v4) |
-| `nickname` | String | Có | Biệt danh của bé (VD: "Leo", "Milo"), độ dài 2-20 ký tự, không chứa ký tự đặc biệt |
-| `age` | int | Có | Tuổi của bé, giá trị hợp lệ từ $6$ đến $12$ |
-| `grade_level` | String | Có | Cấp học tương ứng (VD: "Grade 1", "Grade 3") |
-| `mascot_id` | String | Có | Mã định danh 1 trong 12 con giáp (VD: "mascot_dragon", "mascot_cat") |
-| `star_points` | int | Có | Tổng số sao vàng tích lũy được (mặc định $0$) |
-| `streak_days` | int | Có | Chuỗi số ngày hoàn thành mục tiêu liên tiếp (mặc định $0$) |
-| `created_at` | DateTime | Có | Thời điểm khởi tạo hồ sơ |
+| `user_id` | String | Có | Mã định danh tài khoản phụ huynh quản lý (UUID v4) |
+| `nickname` | String | Có | Biệt danh của bé (VD: "Leo", "Keil"), độ dài 2-20 ký tự, không chứa ký tự đặc biệt |
+| `age` | int | Có | Tuổi của bé, giá trị hợp lệ từ $6$ đến $12$ (Tuân thủ COPPA) |
+| `grade_level` | String | Không | Cấp học tương ứng (VD: "Grade 1", "Grade 3") |
+| `mascot_id` | String | Có | Mã định danh 1 trong 16 linh vật: Classic (`lion`, `bear`, `dino`, `bunny`) hoặc 12 Con Giáp (`zodiac_mouse` .. `zodiac_pig`) |
+| `star_points` | int | Có | Tổng số sao vàng tích lũy được (mặc định $10$ sao quà tặng khởi đầu) |
+| `streak_days` | int | Có | Chuỗi số ngày hoàn thành mục tiêu liên tiếp (mặc định $1$ ngày khởi đầu) |
+| `created_at` | DateTime | Có | Thời điểm khởi tạo hồ sơ (UTC) |
+| `updated_at` | DateTime | Có | Thời điểm cập nhật hồ sơ gần nhất (UTC) |
 
 ---
 

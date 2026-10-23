@@ -1,4 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../../../../core/network/api_client.dart';
+import '../../data/repositories/auth_repository_impl.dart';
+import '../../domain/repositories/i_auth_repository.dart';
 
 class LoginState {
   final String email;
@@ -9,8 +12,8 @@ class LoginState {
   final String? errorMessage;
 
   const LoginState({
-    this.email = 'keil@kiddora.com',
-    this.password = 'Pass123!',
+    this.email = 'parent@kiddora.com',
+    this.password = 'Password123!',
     this.rememberMe = true,
     this.isObscured = true,
     this.isLoading = false,
@@ -37,14 +40,16 @@ class LoginState {
 }
 
 class LoginController extends StateNotifier<LoginState> {
-  LoginController() : super(const LoginState());
+  final IAuthRepository _authRepository;
+
+  LoginController(this._authRepository) : super(const LoginState());
 
   void updateEmail(String email) {
-    state = state.copyWith(email: email);
+    state = state.copyWith(email: email, errorMessage: null);
   }
 
   void updatePassword(String password) {
-    state = state.copyWith(password: password);
+    state = state.copyWith(password: password, errorMessage: null);
   }
 
   void toggleRememberMe() {
@@ -56,14 +61,29 @@ class LoginController extends StateNotifier<LoginState> {
   }
 
   Future<bool> login() async {
+    if (state.email.trim().isEmpty || state.password.trim().isEmpty) {
+      state = state.copyWith(errorMessage: 'Vui lòng nhập Email và Mật khẩu');
+      return false;
+    }
+
     state = state.copyWith(isLoading: true, errorMessage: null);
-    await Future.delayed(const Duration(milliseconds: 400));
-    state = state.copyWith(isLoading: false);
-    return true;
+    try {
+      await _authRepository.login(
+        email: state.email.trim(),
+        password: state.password,
+      );
+      state = state.copyWith(isLoading: false);
+      return true;
+    } catch (e) {
+      final msg = e is ApiException ? e.message : 'Đăng nhập không thành công';
+      state = state.copyWith(isLoading: false, errorMessage: msg);
+      return false;
+    }
   }
 }
 
 final loginControllerProvider =
     StateNotifierProvider<LoginController, LoginState>((ref) {
-  return LoginController();
+  final repo = ref.watch(authRepositoryProvider);
+  return LoginController(repo);
 });

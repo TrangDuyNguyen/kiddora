@@ -1,10 +1,10 @@
 # Sprint Backlog — Kiddora Mobile App
 
-* **Sprint Hiện Tại**: Sprint 4 (Tuần 5 & 6) — *Chuẩn bị kích hoạt*
+* **Sprint Hiện Tại**: Sprint 4 (Tuần 5 & 6) — *Đang Thực Thi*
 * **Scrum Master / PM**: Sub-Agent Project Manager (PM) — *"The Clockwork Disciplinarian"*
-* **Sprint Goal**: *"Hiện thực hóa luồng Khám phá Khóa học (Domain 04) và Chi tiết Bài giảng (Domain 05) theo chuẩn Dribbble: Tìm kiếm, bộ lọc chip đất sét đa tiêu chí, lưới khóa học 3D xúc giác và danh sách bài học tương tác."*
-* **Tổng Story Points cam kết**: **13 SP**
-* **Trạng thái Sprint**: `PLANNING`
+* **Sprint Goal**: *"Hiện thực hóa trọn gói luồng Fullstack End-to-End: Đăng ký, Đăng nhập, Onboarding và Hồ sơ bé, đồng bộ REST API FastAPI với PostgreSQL Database (Alembic Migration), hỗ trợ chế độ Khách (Guest) và chuyển đổi tài khoản."*
+* **Tổng Story Points cam kết**: **15 SP**
+* **Trạng thái Sprint**: `IN_PROGRESS`
 
 ---
 
@@ -12,12 +12,14 @@
 
 | Mã US | Hạng Mục / User Story | MoSCoW | SP | Gate Hiện Tại | Sub-Agent Phụ Trách | Trạng Thái |
 | :---: | :--- | :---: | :---: | :---: | :---: | :---: |
-| **US-08** | Spike Kiến trúc Dữ liệu Khóa học & ADR | Must-have | 1 | Gate 0 Tech Spike | `tech-lead` | `[ ] TODO` |
-| **US-09** | PRD & BDD Given-When-Then cho Khám phá & Lọc | Must-have | 2 | Gate 1 PRD | `ba` / `po` | `[ ] TODO` |
-| **US-10** | UI Layout Spec & 5 Trạng Thái Màn hình Khóa Học | Must-have | 2 | Gate 2 Design | `ui-ux-designer` | `[ ] TODO` |
-| **US-11** | Master Test Plan & Traceability Matrix | Must-have | 2 | Gate 3 QA | `qa-tester` | `[ ] TODO` |
-| **US-12** | Màn hình Courses Hub & Bộ Lọc Đa Tiêu Chí | Must-have | 3 | Gate 4 Dev | `dev` | `[ ] TODO` |
-| **US-13** | Màn hình Chi Tiết Khóa Học (Course Detail & Lessons) | Must-have | 3 | Gate 4 Dev | `dev` | `[ ] TODO` |
+| **US-08** | Khởi tạo Alembic, Migration 0001 & Seed Data PostgreSQL | Must-have | 2 | Gate 0 Tech Lead | `tech-lead` / `backend-dev` | `[x] DONE` |
+| **US-09** | FastAPI REST Endpoints (`/register`, `/login`, `/me`, `/kid-profile`) & Pytest | Must-have | 3 | Gate 4B Backend Dev | `backend-dev` | `[x] DONE` |
+| **US-10** | Cập nhật Doc PRD, BDD Gherkin & Data Dictionary Zero-Drift | Must-have | 2 | Gate 1 PRD | `ba` / `po` | `[x] DONE` |
+| **US-11** | Cài đặt Dio, SecureStorage, ApiClient & TokenStorage trên Flutter | Must-have | 2 | Gate 4A Flutter Dev | `flutter-expert` | `[x] DONE` |
+| **US-12** | Tích hợp E2E: Kết nối Register, Login, KidProfileSetup & Guest Banner | Must-have | 3 | Gate 4A Flutter Dev | `flutter-expert` | `[x] DONE` |
+| **US-13** | Code Review (Ponytail: rà soát diff, zero bloat, SLA verification) | Must-have | 1 | Gate 5 Reviewer | `code-reviewer` | `[x] DONE` |
+| **US-14** | QA Test Suite E2E (API test thực tế + Widget test Flutter + 0 Overflow) | Must-have | 2 | Gate 6 QA Verify | `qa-tester` | `[x] DONE` |
+
 
 ---
 

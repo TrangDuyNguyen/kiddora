@@ -1,6 +1,8 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../core/constants/app_strings.dart';
-import '../../../../core/constants/app_values.dart';
+import '../../../../core/network/api_client.dart';
+import '../../data/repositories/auth_repository_impl.dart';
+import '../../domain/repositories/i_auth_repository.dart';
 
 class RegisterState {
   final String fullName;
@@ -52,7 +54,9 @@ class RegisterState {
 }
 
 class RegisterController extends StateNotifier<RegisterState> {
-  RegisterController() : super(const RegisterState());
+  final IAuthRepository _authRepository;
+
+  RegisterController(this._authRepository) : super(const RegisterState());
 
   void updateFullName(String fullName) {
     state = state.copyWith(fullName: fullName, errorMessage: null);
@@ -95,6 +99,11 @@ class RegisterController extends StateNotifier<RegisterState> {
       return false;
     }
 
+    if (state.password.length < 6) {
+      state = state.copyWith(errorMessage: 'Mật khẩu phải từ 6 ký tự trở lên');
+      return false;
+    }
+
     if (state.password != state.confirmPassword) {
       state = state.copyWith(errorMessage: AppStrings.passwordsDoNotMatch);
       return false;
@@ -106,13 +115,24 @@ class RegisterController extends StateNotifier<RegisterState> {
     }
 
     state = state.copyWith(isLoading: true, errorMessage: null);
-    await Future.delayed(AppValues.durationPageTransition);
-    state = state.copyWith(isLoading: false);
-    return true;
+    try {
+      await _authRepository.register(
+        email: state.email.trim(),
+        password: state.password,
+        fullName: state.fullName.trim(),
+      );
+      state = state.copyWith(isLoading: false);
+      return true;
+    } catch (e) {
+      final msg = e is ApiException ? e.message : 'Đăng ký tài khoản thất bại';
+      state = state.copyWith(isLoading: false, errorMessage: msg);
+      return false;
+    }
   }
 }
 
 final registerControllerProvider =
     StateNotifierProvider<RegisterController, RegisterState>((ref) {
-  return RegisterController();
+  final repo = ref.watch(authRepositoryProvider);
+  return RegisterController(repo);
 });

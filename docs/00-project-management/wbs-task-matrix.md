@@ -62,20 +62,21 @@
 
 ---
 
-## 🚀 2. Kế Hoạch Sprint 4 Đề Xuất: Courses Discovery & Curriculum Hub
+## 🚀 2. Kế Hoạch Sprint 4: Fullstack E2E Auth, Onboarding & User Sync
+*Theo phê duyệt tại [CR-006](file:///Users/nguyenduytrang/flutter_project/kiddora/docs/05-change-management/change-request-log.md) & [SPEC-20261023](file:///Users/nguyenduytrang/flutter_project/kiddora/docs/04-specifications/specs/2026-10-23-fullstack-auth-onboarding-design.md)*
 
-* **Sprint Goal**: *"Hiện thực hóa trọn vẹn luồng Khám phá Khóa học (Domain 04) và Chi tiết Bài giảng (Domain 05): Tìm kiếm, lọc theo độ tuổi/môn học, lưới thẻ khóa học 3D xúc giác và lộ trình bài giảng tương tác."*
-* **Dự kiến Story Points**: **13 SP**
-* **Trạng thái**: `PLANNING` (Chờ kích hoạt Gate 1 PRD)
+* **Sprint Goal**: *"Hiện thực hóa trọn gói luồng Fullstack End-to-End: Đăng ký, Đăng nhập, Onboarding và Hồ sơ bé, đồng bộ REST API FastAPI với PostgreSQL Database (Alembic Migration), hỗ trợ chế độ Khách (Guest) và chuyển đổi tài khoản."*
+* **Tổng Story Points**: **15 SP**
+* **Trạng thái**: `IN_PROGRESS`
 
-| Task ID | Hạng Mục Công Việc | Cổng | Sub-Agent Phụ Trách | SP | Tiêu Chuẩn Hoàn Thành (DoD) |
-| :---: | :--- | :---: | :---: | :---: | :--- |
-| **WBS-S4-01** | Spike kiến trúc dữ liệu Course & Curriculum (ADR) | Gate 0 | `tech-lead` | 1 | File ADR định nghĩa Course Entity, Mock Repository, không phụ thuộc mạng ngoài. |
-| **WBS-S4-02** | PRD & BDD Scenarios cho Khám phá & Lọc khóa học | Gate 1 | `ba` / `po` | 2 | BDD Given-When-Then cho tìm kiếm, bộ lọc tuổi, và mở chi tiết khóa học. |
-| **WBS-S4-03** | Thiết kế UI Layout Spec cho Courses Hub, Search & Filter Sheet | Gate 2 | `ui-ux-designer` | 2 | Khớp 1:1 các màn hình `04_courses_01` -> `04_courses_04` và `05_course_detail`. |
-| **WBS-S4-04** | Master Test Plan & Traceability Matrix cho Courses Hub | Gate 3 | `qa-tester` | 2 | File `.feature` bao phủ tìm kiếm không kết quả, lọc đa điều kiện, chuyển tab bài học. |
-| **WBS-S4-05** | Phát triển Màn hình Courses Hub & Bộ Lọc Đất Sét Bo Cong | Gate 4 | `dev` | 3 | Thanh tìm kiếm, chip danh mục môn học, lưới khóa học 2 cột, 60 FPS. |
-| **WBS-S4-06** | Phát triển Màn hình Chi Tiết Khóa Học (Course Detail & Lessons List) | Gate 4 | `dev` | 3 | 3 tab (Lessons, About, Reviews), thẻ CTA [Start Learning], danh sách bài giảng. |
-| **WBS-S4-07** | Ponytail Diff Review, Quét Bloat & Dead Code | Gate 5 | `code-reviewer` | - | Đảm bảo không thừa abstraction, tái sử dụng `ClayCard`, `ClayButton`. |
-| **WBS-S4-08** | Kiểm thử Tự động, Đo kiểm 60 FPS & 0 Memory Leak | Gate 6 | `qa-tester` | - | 100% tests pass, zero overflow trên mọi kích cỡ màn hình. |
-| **WBS-S4-09** | Ký duyệt Release Sprint 4 | Gate 7 | `po` / `tech-lead` | - | Cấp tag `v0.4.0-courses-hub`. |
+| Task ID | Hạng Mục Công Việc | Cổng | Sub-Agent Phụ Trách | SP | Tiêu Chuẩn Hoàn Thành (DoD) | Trạng Thái |
+| :---: | :--- | :---: | :---: | :---: | :--- | :---: |
+| **WBS-S4-01** | Cấu hình Alembic Migration & PostgreSQL Schema 0001 | Gate 0 | `tech-lead` / `dev` | 2 | File `alembic.ini`, `env.py`, migration `0001` tạo bảng `users` & `kid_profiles` | `[x] DONE` |
+| **WBS-S4-02** | FastAPI REST Endpoints & Service (`/register`, `/login`, `/me`, `/kid-profile`) | Gate 4B | `backend-dev` | 3 | Tách 2 bước register/profile, JWT 7 ngày, Pydantic schemas, Pytest suite | `[x] DONE` |
+| **WBS-S4-03** | Cập nhật Doc PRD, BDD Given-When-Then & Data Dictionary Zero-Drift | Gate 1 | `ba` / `po` | 2 | Cập nhật data-dictionary, change-request-log, spec 2026-10-23 | `[x] DONE` |
+| **WBS-S4-04** | Core Network Layer Flutter (Dio ApiClient, TokenStorage test-safe) | Gate 4A | `flutter-expert` | 2 | `api_client.dart` tự gắn Bearer token, `token_storage.dart` in-memory fallback | `[x] DONE` |
+| **WBS-S4-05** | Tích hợp E2E Flutter UI: Register, Login, KidProfile, Guest Banner | Gate 4A | `flutter-expert` | 3 | Kết nối controller với API, guest explore link, guest claim banner | `[x] DONE` |
+| **WBS-S4-06** | Code Review (Ponytail: rà soát diff, zero bloat, SLA verification) | Gate 5 | `code-reviewer` | 1 | Zero bloat, tái sử dụng AppValues & AppColors, không magic numbers | `[x] DONE` |
+| **WBS-S4-07** | Kiểm thử Tự động, Đo kiểm 60 FPS & 0 Memory Leak | Gate 6 | `qa-tester` | 2 | 100% tests pass (37/37 tests flutter), 0 analyze warnings | `[x] DONE` |
+| **WBS-S4-08** | Ký duyệt Release Sprint 4 | Gate 7 | `po` / `tech-lead` | - | Bàn giao nghiệm thu v0.4.0-auth-onboarding-e2e | `[ ] READY` |
+

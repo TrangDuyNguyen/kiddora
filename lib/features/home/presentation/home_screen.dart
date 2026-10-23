@@ -8,6 +8,7 @@ import '../../../core/constants/app_values.dart';
 import '../../../core/router/app_router.gr.dart';
 import '../../onboarding/presentation/controllers/onboarding_controller.dart';
 import 'widgets/clay_bottom_nav.dart';
+import 'widgets/guest_claim_banner.dart';
 import 'widgets/home_continue_learning_card.dart';
 import 'widgets/home_header.dart';
 import 'widgets/home_hero_banner.dart';
@@ -61,7 +62,11 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               ),
               const SizedBox(height: AppValues.space6),
 
+              // Guest Claim Banner (shown only when in guest mode)
+              const GuestClaimBanner(),
+
               // Hero Banner "Keep Learning Keep Growing!"
+
               HomeHeroBanner(
                 onActionTap: () {
                   context.router.push(const TodayLearningGoalRoute());

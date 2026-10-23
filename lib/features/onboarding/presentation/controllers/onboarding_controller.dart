@@ -1,6 +1,9 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../../../core/constants/app_values.dart';
+import '../../../../core/network/token_storage.dart';
+import '../../../auth/data/repositories/auth_repository_impl.dart';
+import '../../../auth/domain/repositories/i_auth_repository.dart';
 import '../../data/datasources/onboarding_local_datasource.dart';
 import '../../data/repositories/onboarding_repository_impl.dart';
 import '../../domain/models/kid_profile.dart';
@@ -14,8 +17,12 @@ final sharedPreferencesProvider = Provider<SharedPreferences>((ref) {
 // Provider cho OnboardingLocalDataSource
 final onboardingLocalDataSourceProvider =
     Provider<OnboardingLocalDataSource>((ref) {
-  final prefs = ref.watch(sharedPreferencesProvider);
-  return OnboardingLocalDataSource(prefs);
+  try {
+    final prefs = ref.watch(sharedPreferencesProvider);
+    return OnboardingLocalDataSource(prefs);
+  } catch (_) {
+    return const OnboardingLocalDataSource();
+  }
 });
 
 // Provider cho IOnboardingRepository
@@ -35,6 +42,7 @@ class OnboardingState {
     this.isCompleted = false,
     this.profile,
   });
+
 
   final int currentSlideIndex;
   final String nickname;
@@ -69,10 +77,16 @@ class OnboardingState {
 
 // Controller quản lý tương tác và cập nhật hồ sơ bé
 class OnboardingController extends StateNotifier<OnboardingState> {
-  OnboardingController(this._repository, [OnboardingState? initialState])
-      : super(initialState ?? const OnboardingState());
+  OnboardingController(
+    this._repository, [
+    this._authRepository,
+    this._tokenStorage,
+    OnboardingState? initialState,
+  ]) : super(initialState ?? const OnboardingState());
 
   final IOnboardingRepository _repository;
+  final IAuthRepository? _authRepository;
+  final TokenStorage? _tokenStorage;
 
   void setSlideIndex(int index) {
     if (index >= 0 && index <= 2) {
@@ -99,17 +113,30 @@ class OnboardingController extends StateNotifier<OnboardingState> {
 
     state = state.copyWith(isLoading: true);
     try {
-      final profile = KidProfile(
-        id: 'kid_${DateTime.now().millisecondsSinceEpoch}',
-        nickname: state.nickname.trim(),
-        age: state.selectedAge,
-        avatarId: state.selectedAvatarId,
-        currentStars: 10,
-        currentStreak: 1,
-      );
+      final token = await _tokenStorage?.getAccessToken();
+      KidProfile profile;
 
-      await _repository.saveKidProfile(profile);
-      await _repository.setCompletedOnboarding(true);
+      if (token != null && token.isNotEmpty && _authRepository != null) {
+        // Đã đăng nhập -> Lưu lên Backend Database
+        profile = await _authRepository!.createOrUpdateKidProfile(
+          nickname: state.nickname.trim(),
+          age: state.selectedAge,
+          mascotId: state.selectedAvatarId,
+        );
+      } else {
+        // Chế độ Khách (Guest) -> Lưu Local
+        profile = KidProfile(
+          id: 'kid_${DateTime.now().millisecondsSinceEpoch}',
+          nickname: state.nickname.trim(),
+          age: state.selectedAge,
+          avatarId: state.selectedAvatarId,
+          currentStars: 10,
+          currentStreak: 1,
+        );
+        await _repository.saveKidProfile(profile);
+        await _repository.setCompletedOnboarding(true);
+        await _tokenStorage?.setGuestMode(true);
+      }
 
       state = state.copyWith(
         isLoading: false,
@@ -127,12 +154,16 @@ class OnboardingController extends StateNotifier<OnboardingState> {
 final onboardingControllerProvider =
     StateNotifierProvider<OnboardingController, OnboardingState>((ref) {
   final repo = ref.watch(onboardingRepositoryProvider);
+  final authRepo = ref.watch(authRepositoryProvider);
+  final tokenStorage = ref.watch(tokenStorageProvider);
   final localDataSource = ref.watch(onboardingLocalDataSourceProvider);
   final isCompleted = localDataSource.hasCompletedOnboarding;
   final profile = localDataSource.getKidProfile();
 
   return OnboardingController(
     repo,
+    authRepo,
+    tokenStorage,
     OnboardingState(
       isCompleted: isCompleted,
       profile: profile,
@@ -142,3 +173,5 @@ final onboardingControllerProvider =
     ),
   );
 });
+
+

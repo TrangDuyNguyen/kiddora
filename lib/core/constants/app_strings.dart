@@ -230,4 +230,15 @@ class AppStrings {
   static const String youCanDoIt = 'You can do it!';
   static const String reachGoalToday =
       'Keep learning and reach your goal today!';
+
+  // Guest Mode & Hybrid Conversion
+  static const String guestModeTitle = 'Chế độ Trải nghiệm thử';
+  static const String guestBannerTitle = 'Lưu tiến trình & sao thưởng của con!';
+  static const String guestBannerSubtitle =
+      'Đăng ký tài khoản phụ huynh để lưu giữ sao và đồng bộ khi đổi máy.';
+  static const String registerNow = 'Đăng ký ngay';
+  static const String exploreAsGuest = 'Trải nghiệm thử không cần tài khoản';
+  static const String loginToSync = 'Đã có tài khoản? Đăng nhập';
+  static const String networkError = 'Không thể kết nối đến máy chủ. Vui lòng kiểm tra lại mạng.';
 }
+
