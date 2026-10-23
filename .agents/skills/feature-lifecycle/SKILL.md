@@ -9,16 +9,16 @@ metadata:
   role: technical-delivery-director
   scope: multi-subagent-lifecycle-orchestration
   output-format: markdown
-  related-skills: product-owner, tech-lead, project-manager, business-analyst, ui-ux-designer, qa-tester, visual-qa, security-auditor, security-audit, flutter-expert, code-reviewer, flutter-testing, ponytail, ponytail-review, brainstorming
+  related-skills: product-owner, tech-lead, project-manager, business-analyst, ui-ux-designer, qa-tester, visual-qa, security-auditor, security-audit, flutter-expert, backend-dev, devops-infra, code-reviewer, flutter-testing, ponytail, ponytail-review, brainstorming
 ---
 
-# Unified Feature Delivery Lifecycle Skill (8+ Gates SOP & Multi Sub-Agent)
+# Unified Feature Delivery Lifecycle Skill (8+ Gates SOP & 11 Sub-Agents)
 
-Kỹ năng điều phối quy trình phát triển tính năng toàn diện cho dự án **Kiddora**, kết nối nhịp nhàng **9 Sub-Agents độc lập** theo nguyên tắc kiểm soát chéo (Four-Eyes Principle / Checks & Balances):
+Kỹ năng điều phối quy trình phát triển tính năng toàn diện cho dự án **Kiddora**, kết nối nhịp nhàng **11 Sub-Agents độc lập** theo nguyên tắc kiểm soát chéo (Four-Eyes Principle / Checks & Balances):
 
 ```
-                                  [Gate 0: Sub-Agent Tech Lead]
-                                  (Tech Spikes / Brainstorming / ADR)
+                                  [Gate 0: Sub-Agent Tech Lead & DevOps Infra]
+                                  (Tech Spikes / Brainstorming / ADR / Docker Compose)
                                                  │
                                                  ▼
 [Sub-Agent PO] ──────────► [Gate 1: Sub-Agent BA] ──────────► [Sub-Agent PO & Tech Lead Duyệt]
@@ -32,16 +32,28 @@ Kỹ năng điều phối quy trình phát triển tính năng toàn diện cho 
        │                                                     [BA, PO & Tech Lead Duyệt]
        │                                                     (Gate 2 Sign-Off & Review)
        ▼
-[Gate 4: Dev FE] ────────► [Gate 5: Reviewer] ───────► [Gate 6: QA Verify]
-(Flutter Clean Ponytail)   (Ponytail Diff Review)      (Automated 100% Pass)
-                                                              │
-                                                              ▼
-                                                   [Gate 6.5: Security Auditor]
-                                                   (Zero-Trust Audit & AppSec Sign-Off)
-                                                              │
-                                                              ▼
-                                                   [Gate 7: PO & PM Release]
-                                                   (Super-Repo Release Clearance)
+┌────────────────────────── Gate 4: Dual-Track Engineering ──────────────────────────┐
+│                                                                                    │
+│   [Gate 4A: Dev FE] (Flutter Clean Ponytail UI)                                    │
+│   [Gate 4B: Dev BE] (FastAPI Feature-First, SQLAlchemy 2.0, Redis, LiveKit, MinIO) │
+│                                                                                    │
+└──────────────────────────────────────────┬─────────────────────────────────────────┘
+                                           │
+                                           ▼
+                                [Gate 5: Code Reviewer]
+                                (Ponytail Diff Review FE & BE)
+                                           │
+                                           ▼
+                                [Gate 6: QA Verify & Visual QA]
+                                (Automated 100% Pass FE & Pytest BE)
+                                           │
+                                           ▼
+                                [Gate 6.5: Security Auditor]
+                                (COPPA, Container & Secret Audit Sign-Off)
+                                           │
+                                           ▼
+                                [Gate 7: PO, PM & DevOps Release]
+                                (VPS Infrastructure & Super-Repo Clearance)
 ```
 
 ---

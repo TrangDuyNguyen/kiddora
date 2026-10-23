@@ -115,19 +115,22 @@ lib/
 
 ---
 
-## 6. End-to-End Feature Delivery Lifecycle (8-Gate SOP & Multi Sub-Agents)
+## 6. End-to-End Feature Delivery Lifecycle (8-Gate SOP & 11 Specialized Sub-Agents)
 
-All feature development follows the **Four-Eyes Principle** with 9 specialized Sub-Agents & Visual Inspection:
-- **Sub-Agent PO**: Roadmap, MoSCoW, Gate 1 & Gate 7 Sign-offs.
+All feature development follows the **Four-Eyes Principle** with 11 specialized Sub-Agents & Dual-Track Gate 4 execution:
+- **Sub-Agent PO**: Roadmap, MoSCoW, OKRs, Gate 1 & Gate 7 Sign-offs.
+- **Sub-Agent PM**: Sprint planning, 6-Gate WBS breakdown, Fibonacci Story Points, Risk Log.
 - **Gate 0: Tech Lead**: Architecture spikes, ADR, SLAs (Cold start <= 1.8s, 60 FPS, 0 memory leak).
-- **Gate 1: BA**: PRD, User Stories BDD (Given-When-Then), Data Dictionary.
-- **Gate 2: UI/UX Designer**: Tactile Claymorphism, Google Stitch MCP screens, 5 UI states.
-- **Gate 3: QA Tester & Visual QA**: Test design, BDD Gherkin scenarios, 100% Traceability, Visual Test Matrix (text scale 1.5x, 5 UI states).
-- **Gate 4: Dev FE**: Flutter Clean Architecture, Riverpod, Ponytail code.
-- **Gate 5: Reviewer**: Ponytail git diff review, ruthlessly delete bloat.
-- **Gate 6: QA Verify & Visual QA**: Automated tests (100% real pass), 0 memory leak, 60 FPS, 0 RenderFlex overflow / visual defects via Flutter Preview MCP & Vision AI.
-- **Gate 6.5: Security Auditor**: Child data privacy (COPPA), Parental Gate verification, zero leaks.
-- **Gate 7: Release**: Production clearance and distribution.
+- **Gate 0 & Operations: DevOps & Infra (`devops-infra`)**: Docker Compose 6 services, Caddy v2 SSL/TLS reverse proxy, PostgreSQL backups, LiveKit SFU ports, MinIO buckets, VPS deployment readiness.
+- **Gate 1: BA**: PRD, User Stories BDD (Given-When-Then), Data Dictionary synchronization.
+- **Gate 2: UI/UX Designer**: Tactile Claymorphism, Google Stitch MCP screens, 5 UI states, 4pt grid.
+- **Gate 3: QA Tester & Visual QA**: Test design, BDD Gherkin scenarios, 100% Traceability, Visual Test Matrix.
+- **Gate 4A: Dev FE (`flutter-expert` / `flutter-core-dev`)**: Flutter Clean Architecture, Riverpod, Ponytail code, widget tests.
+- **Gate 4B: Dev BE (`backend-dev`)**: FastAPI (Python 3.12+), Feature-First Modular Monolith (`backend/app/modules/`), SQLAlchemy 2.0 Async ORM, Alembic migrations, Redis caching, Celery worker, MinIO S3, LiveKit WebRTC, Pytest suite.
+- **Gate 5: Reviewer (`code-reviewer`)**: Ponytail git diff review (FE & BE), ruthlessly delete bloat & over-engineering.
+- **Gate 6: QA Verify & Visual QA**: Automated tests (100% real pass FE & BE), 0 memory leak, 60 FPS, 0 RenderFlex overflow / visual defects via Flutter Preview MCP & Vision AI, API contract verification.
+- **Gate 6.5: Security Auditor (`security-auditor`)**: Child data privacy (COPPA), Parental Gate verification, Container & Secrets audit, Zero-Trust network rules.
+- **Gate 7: Release**: Production clearance, DevOps infrastructure verification, Git release tag.
 
 ### Real-Time Mission Control Dashboard
 - Command: `make dashboard` or `./scripts/dashboard.sh`
