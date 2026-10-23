@@ -80,3 +80,20 @@ Chi tiết từng bài học con thuộc một khóa học cụ thể.
 | `duration_mins`| int | Có | Thời lượng buổi học tính theo phút (VD: 45) |
 | `participant_count` | int | Có | Số lượng học sinh đang tham gia (VD: 812) |
 | `status` | String | Có | `"upcoming"`, `"live_now"`, `"completed"` |
+
+---
+
+## 6. Ánh Xạ Thực Thể Sang Cơ Sở Dữ Liệu Quan Hệ (PostgreSQL Schema Mapping)
+*Theo quyết định kiến trúc tại [ADR-004](file:///Users/nguyenduytrang/flutter_project/kiddora/docs/04-specifications/adr/adr-004-backend-architecture.md) & [CR-005](file:///Users/nguyenduytrang/flutter_project/kiddora/docs/05-change-management/change-request-log.md)*
+
+| Thực Thể Domain | Bảng PostgreSQL Tương Ứng | Khóa Chính (PK) | Quan Hệ Khóa Ngoại (FK) | Ghi Chú Kỹ Thuật |
+| :--- | :--- | :--- | :--- | :--- |
+| **User / Auth** | `users` | `id (UUID)` | `parent_id -> users(id)` | Hashed password bcrypt, role enum (kid/parent/coach) |
+| **KidProfile** | `kid_profiles` | `id (UUID)` | `user_id -> users(id)` | Lưu nickname, mascot_id, age, grade |
+| **Course** | `courses` | `id (VARCHAR)` | `coach_id -> users(id)` | Indexed theo category, min_age, max_age |
+| **Lesson** | `lessons` | `id (VARCHAR)` | `course_id -> courses(id)` | Video stream URL trỏ tới MinIO storage |
+| **UserProgress** | `user_progress`| `id (UUID)` | `user_id`, `lesson_id` | Unique `(user_id, lesson_id)`, tracking % hoàn thành |
+| **DailyTask** | `daily_tasks` | `id (VARCHAR)` | `user_id -> users(id)` | Reset theo ngày (cron/worker Celery) |
+| **LiveSession** | `live_sessions` | `id (VARCHAR)` | `coach_id -> users(id)` | Liên kết `livekit_channel` để học sinh join WebRTC |
+| **Participant** | `session_participants`| `id (UUID)` | `session_id`, `user_id`| Theo dõi hiện diện real-time |
+| **Badge / Reward** | `badges`, `user_badges`| `id (VARCHAR)` | `user_id`, `badge_id` | Tự động trao thưởng qua Celery queue |
