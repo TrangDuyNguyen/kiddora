@@ -240,5 +240,19 @@ class AppStrings {
   static const String exploreAsGuest = 'Trải nghiệm thử không cần tài khoản';
   static const String loginToSync = 'Đã có tài khoản? Đăng nhập';
   static const String networkError = 'Không thể kết nối đến máy chủ. Vui lòng kiểm tra lại mạng.';
+
+  // Network Debug Inspector & Logging
+  static const String networkInspectorTitle = 'Nhật ký mạng (Network Inspector)';
+  static const String copyResponse = 'Sao chép Response';
+  static const String copyCurl = 'Sao chép cURL';
+  static const String copyRequestBody = 'Sao chép Request';
+  static const String copiedToClipboard = 'Đã sao chép vào bộ nhớ tạm!';
+  static const String noNetworkLogs = 'Chưa có nhật ký mạng nào';
+  static const String clearLogs = 'Xóa nhật ký';
+  static const String close = 'Đóng';
+  static const String requestTab = 'Request';
+  static const String responseTab = 'Response';
+  static const String statusCode = 'Mã trạng thái';
+  static const String duration = 'Thời gian';
 }
 

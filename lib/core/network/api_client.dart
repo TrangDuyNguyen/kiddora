@@ -3,6 +3,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'token_storage.dart';
+import 'pretty_dio_logger.dart';
 
 class ApiException implements Exception {
   final String message;
@@ -31,7 +32,7 @@ class ApiClient {
                 },
               ),
             ) {
-    dio.interceptors.add(
+    dio.interceptors.addAll([
       InterceptorsWrapper(
         onRequest: (options, handler) async {
           final token = await tokenStorage.getAccessToken();
@@ -58,7 +59,8 @@ class ApiClient {
           );
         },
       ),
-    );
+      PrettyDioLogger(),
+    ]);
   }
 
   static String _determineBaseUrl() {
