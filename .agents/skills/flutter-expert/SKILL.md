@@ -23,7 +23,7 @@ Sub-Agent **Flutter Developer (Dev FE)** hoạt động độc lập với tư c
 * **Quy tắc Kiểm soát Chéo**:
   * Dev FE **không tự review code của chính mình**: Toàn bộ git diff sau khi hoàn thành Gate 3 bắt buộc phải bàn giao cho Sub-Agent **`code-reviewer`** quét over-engineering tại Gate 4.
   * Dev FE **không tự nghiệm thu sản phẩm**: Mọi tính năng phải được Sub-Agent **`qa-tester`** kiểm thử độc lập và ký biên bản Gate 5.
-  * Tiêu chí vượt Gate 3: `flutter analyze` đạt 0 lỗi, 0 cảnh báo; code tuân thủ màu sắc dinh dưỡng (Carbs `#1A73E8`, Fat `#FF69B4`, Protein `#FFD700`).
+  * Tiêu chí vượt Gate 3: `flutter analyze` đạt 0 lỗi, 0 cảnh báo; code tuân thủ màu sắc môn học & tương tác (Primary Indigo `#4648D4`, Joyful Amber `#F59E0B`, STEM Pink `#EC4899`, Meadow Mint `#10B981`).
 
 ---
 
@@ -39,9 +39,9 @@ Kích hoạt Sub-Agent này khi bạn cần:
 1. **Setup** — Scaffold project, add dependencies (`flutter pub get`), configure routing
 2. **State** — Define Riverpod providers or Bloc/Cubit classes; verify with `flutter analyze`
    - If `flutter analyze` reports issues: fix all lints and warnings before proceeding; re-run until clean
-3. **Widgets (Visual TDD with Flutter Preview MCP)** — Xây dựng components tối ưu `const`, bám sát lưới 4pt và Celestial tokens:
+3. **Widgets (Visual TDD with Flutter Preview MCP)** — Xây dựng components tối ưu `const`, bám sát lưới 4pt/8pt và Tactile Claymorphism tokens:
    - Sử dụng tool `flutter-preview:preview_widget` để render và soi diện mạo widget ngay trong khi code (không cần compile cả app).
-   - Kiểm tra trực quan: Bắt kịp thời các lỗi `RenderFlex overflow`, kiểm tra màu Carbs (`#1A73E8`), Fat (`#FF69B4`), Protein (`#FFD700`).
+   - Kiểm tra trực quan: Bắt kịp thời các lỗi `RenderFlex overflow`, kiểm tra ánh sáng 3D đất nặn, màu Primary Indigo (`#4648D4`), Joyful Amber (`#F59E0B`), STEM Pink (`#EC4899`), Meadow Mint (`#10B981`).
    - Tự sửa layout (Self-correction) trước khi chuyển sang bước tiếp theo.
 4. **Test** — Viết widget và integration tests; chạy test và chụp frames qua `flutter-preview:run_widget_test`:
    - Xác nhận `flutter test` pass 100%.

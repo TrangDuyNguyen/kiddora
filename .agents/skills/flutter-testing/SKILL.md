@@ -54,6 +54,7 @@ tests because they create false confidence and slow future changes.
 | Add or fix integration tests, device/browser runs, performance reports, screenshots, persistence flows, platform scenarios, or CI integration | `references/integration-testing.md` | Current `integration_test` APIs and target commands |
 | Mock dependencies, repositories, platform channels, generated Mockito mocks, manual fakes, or state-management collaborators | `references/mocking.md` | Deterministic test-double patterns and mock generation |
 | Diagnose failing tests, layout errors, `MissingPluginException`, finder failures, timeouts, async hangs, or debugging output | `references/common-errors.md` | Error-to-fix mapping without guessing |
+| Visual verification, frame captures, or RenderFlex overflow inspection | `call_mcp_tool("flutter-preview", ...)` | Instant widget preview (`preview_widget`) & captured frames (`run_widget_test`, `get_frame`) for Multimodal Vision AI review |
 | Test Flutter plugin packages, native Android/iOS code, example-app integration tests, or plugin registration/error paths | `references/plugin-testing.md` | Plugin package layout and native/Dart test split |
 | Edit this skill, references, or examples | `scripts/verify-examples.sh` | Deterministic smoke check for stale patterns and broken links |
 

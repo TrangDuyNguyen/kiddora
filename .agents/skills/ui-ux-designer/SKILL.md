@@ -44,33 +44,38 @@ Kích hoạt Sub-Agent này khi:
 
 ---
 
-## 🌌 Kỷ Luật Thiết Kế Bất Biến (Celestial Dark UI Rules)
+## 🎨 Kỷ Luật Thiết Kế Bất Biến (Tactile Claymorphism 3D UI)
 
-Mọi thiết kế của Sub-Agent `ui-ux-designer` **bắt buộc** phải tuân thủ tuyệt đối các nguyên lý tại [`DESIGN.md`](file:///Users/nguyenduytrang/flutter_project/Kiddora/DESIGN.md):
+Mọi thiết kế của Sub-Agent `ui-ux-designer` **bắt buộc** phải tuân thủ tuyệt đối các nguyên lý tại [`DESIGN.md`](file:///Users/nguyenduytrang/flutter_project/kiddora/DESIGN.md):
 
-### 1. Bảng Màu Dinh Dưỡng Bất Biến (Immutable Nutrient Semantics)
+### 1. Bảng Màu Ngữ Nghĩa Học Tập Trẻ Em (Kiddora Subject Semantics)
 > [!CAUTION]
-> Ý nghĩa ngữ nghĩa của các màu nhấn là **bất biến** trên toàn bộ ứng dụng. Tuyệt đối không hoán đổi hoặc sử dụng sai mục đích:
-- 🔵 **Primary (`#1A73E8` Electric Blue)**: Chỉ báo Carbohydrates (Carbs) + Trạng thái tương tác chính (Active Tabs, Camera FAB, Thanh tiến trình).
-- 🩷 **Secondary (`#FF69B4` Hot Pink)**: Chỉ báo Chất béo (Fat) + Đường xu hướng phân tích dữ liệu cân nặng/dinh dưỡng dài hạn.
-- 🟡 **Tertiary (`#FFD700` Gold)**: Chỉ báo Chất đạm (Protein) + Cảnh báo ngân sách calo / calo vượt ngưỡng cho phép.
+> Ý nghĩa ngữ nghĩa của các màu nhấn là **bất biến** trên toàn bộ ứng dụng:
+- 🩵 **Primary Indigo (`#4648D4` / `#6366F1`)**: Mental Math (*Toán tư duy*) + Primary controls (FAB, active nav). Tỷ lệ tương phản 8.4:1 (WCAG AAA).
+- 🌟 **Joyful Amber (`#F59E0B` / `#FBBF24`)**: Star rewards, streak counters, Live quiz buzzer.
+- 🍓 **STEM Pink (`#EC4899`)**: STEM Explorers (*Khoa học thực nghiệm*) + favorites và creative tasks.
+- 🥑 **Meadow Mint (`#10B981`)**: Success states, bài học hoàn thành, correct answers, Live active.
+- ☁️ **Sky Blue (`#0EA5E9`)**: Informational tags, online classmates count.
 
-### 2. Chiều Sâu Không Gian & Bề Mặt Kính Mờ (Surfaces & Glassmorphism)
-- **Nền chính (App Scaffold)**: `AppColors.surface` (`#0A192F` Midnight Blue) — mô phỏng bầu trời đêm, giảm mỏi mắt.
-- **Thẻ nội dung (Cards)**: `AppColors.surfaceContainer` (`#112240` Deep Navy), bo góc `12px`, padding `16pt`. Không dùng đổ bóng thô đen kịt; dùng viền mảnh ánh sao (`0x33FFFFFF`) hoặc độ sáng bề mặt để phân tách lớp.
-- **Lớp phủ mờ (Glassmorphic Overlays)**: `AppColors.surfaceBlur` (`rgba(25, 42, 70, 0.6)`) kết hợp hiệu ứng `BackdropFilter.blur(20)` cho Bottom Sheets, Dropdowns, Dialogs.
-- **Triệt tiêu ám tím**: Luôn nhắc nhở đặt `surfaceTintColor: Colors.transparent` trên AppBar và CardTheme để loại bỏ màu tím mặc định của Flutter Material 3.
+### 2. Chiều Sâu Đất Nặn & Ánh Sáng 3D (Tactile Clay Surfaces & Shading)
+- **Nền chính (Canvas)**: Porcelain Canvas `AppColors.canvasWarm` (`#FCF8FF` / `#F8FAFC`).
+- **Thẻ đất nặn (Clay Cards)**: Pure White `AppColors.clayWhite` (`#FFFFFF`), bo góc lớn hữu cơ `16px - 24px` (`AppValues.radiusL` / `radiusXL`).
+- **Công thức đổ bóng Tactile Clay**:
+  - Specular highlight trên-trái: `inset 3px 3px 5px rgba(255, 255, 255, 0.85)`
+  - Shading dưới-phải: `inset -3px -3px 5px rgba(13, 12, 34, 0.06)`
+  - Shadow bồng bềnh: `0px 8px 16px rgba(99, 102, 241, 0.12)`
+  - Active pressed state (haptic squish): `scale(0.96) translateY(3px)`
 
-### 3. Công Thái Học Di Động & Lưới 4pt (Ergonomics & 4pt Grid)
-- **Lưới 4pt nghiêm ngặt**: Tất cả padding, margin, kích thước phần tử phải thuộc tập token được duyệt:  
-  `4, 8, 12, 16, 24, 32, 44, 48`.
-- **Vùng chạm tối thiểu (Touch Target)**: Tối thiểu **44 × 44pt** cho tất cả các nút bấm, biểu tượng, thanh trượt tương tác trên thiết bị di động.
-- **Padding viền màn hình (Edge Margin)**: Luôn là `16pt` (hoặc `24pt` cho màn hình Onboarding/Auth).
+### 3. Công Thái Học Cho Trẻ Em & Lưới 4pt (Ergonomics & Touch Targets)
+- **Lưới 4pt/8pt nghiêm ngặt**: Tất cả padding, margin, kích thước phần tử phải thuộc token `AppValues`:  
+  `4, 8, 12, 16, 20, 24, 32, 48`.
+- **Vùng chạm trẻ em (Touch Target)**: Tối thiểu **48 × 48dp** (khuyến nghị **56 × 56dp** cho các nút chính như Buzzer, Play CTA).
+- **Padding viền màn hình (Edge Margin)**: Luôn là `16dp` hoặc `20dp`.
 
-### 4. Hệ Thống Chữ (Typography Scale)
-- Font chữ: **Inter** (qua package `google_fonts`). Fallback: SF Pro (iOS) / Roboto (Android).
-- Chữ số Calo nổi bật: Kích thước `18pt+`, Bold, luôn có `letterSpacing: +0.5` để số liệu hiển thị thông thoáng, không bị dính nét.
-- Phân cấp: `headlineMedium` (20pt Bold), `titleMedium` (14pt Medium), `bodyMedium` (14pt Regular), `labelMedium` (12pt Medium).
+### 4. Hệ Thống Chữ Thân Thiện (Typography Scale)
+- **Display & Headline**: **Quicksand** (Bo tròn, vui tươi, dễ đọc cho học sinh tiểu học).
+- **Body & Controls**: **Mona Sans** (Rõ nét, hỗ trợ tiếng Việt hoàn hảo).
+- Phân cấp: Display Hero (`32px` Bold 800), Headline XL (`24px` Bold 800), Title (`18px` Bold), Body (`14px` / `16px` Regular).
 
 ---
 
@@ -112,10 +117,10 @@ Mọi thiết kế của Sub-Agent `ui-ux-designer` **bắt buộc** phải tuâ
 
 1. **Đồng bộ Design System (`upload_design_md`)**:
    - Gọi công cụ `call_mcp_tool("stitch", "create_project", { "title": "Kiddora - <Feature Name>" })`.
-   - Nạp nội dung [`DESIGN.md`](file:///Users/nguyenduytrang/flutter_project/Kiddora/DESIGN.md) qua `upload_design_md` hoặc `create_design_system_from_design_md` để Stitch ghi nhớ: Bảng màu Midnight `#0A192F`, `#112240`, lưới 4pt và ngữ nghĩa màu dinh dưỡng bất biến (Carbs `#1A73E8`, Fat `#FF69B4`, Protein `#FFD700`).
+   - Nạp nội dung [`DESIGN.md`](file:///Users/nguyenduytrang/flutter_project/kiddora/DESIGN.md) qua `upload_design_md` hoặc `create_design_system_from_design_md` để Stitch ghi nhớ: Bảng màu Porcelain Canvas `#FCF8FF`, Pure White Clay Cards `#FFFFFF`, Primary Indigo `#4648D4`, Joyful Amber `#F59E0B`, STEM Pink `#EC4899`, Meadow Mint `#10B981`, lưới 4pt/8pt và bo góc đất nặn 16-24px.
 2. **Prompt sinh giao diện từ PRD (`generate_screen_from_text`)**:
    - Chuyển hóa User Stories và Acceptance Criteria của BA thành prompt chi tiết cho Stitch.
-   - Ví dụ: *"Tạo màn hình mobile UI chuẩn Celestial Dark UI cho Kiddora: Nền #0A192F, thẻ kính Glassmorphic #112240 bo góc 12px, vòng tròn calo nổi bật và 3 thanh tiến trình macro: Carbs #1A73E8, Fat #FF69B4, Protein #FFD700, nút Camera FAB 44x44pt ở đáy."*
+   - Ví dụ: *"Tạo màn hình mobile UI chuẩn Tactile Claymorphism cho Kiddora: Nền #FCF8FF, thẻ đất nặn ClayCard #FFFFFF bo góc 20px với specular highlight trắng trên-trái và bóng mờ tím nhạt 3D, tiêu đề Quicksand Bold, nút Buzzer tròn Joyful Amber #F59E0B 56x56dp ở đáy."*
 3. **Sinh biến thể cho 5 trạng thái (`generate_variants`)**:
    - Gọi `generate_variants` để sinh đầy đủ 5 trạng thái: Default, Loading Shimmer, Empty, Error, Offline.
 4. **Trích xuất màn hình & cấu trúc (`get_screen` / `list_screens`)**:
@@ -123,18 +128,18 @@ Mọi thiết kế của Sub-Agent `ui-ux-designer` **bắt buộc** phải tuâ
 
 ### Bước 4: Lập Blueprint Bố Cục Màn Hình (Screen Layout Blueprint)
 - Soạn thảo cấu trúc phân bổ màn hình dựa trên mockup của Stitch:
-  - **Thanh tiêu đề (Top Bar / AppBar)**: Nút Back, Tiêu đề màn hình, Actions (Settings/Filter).
-  - **Thân màn hình (Scrollable Body)**: Cấu trúc các khối Card, danh sách, đồ thị; xác định khoảng cách 4pt cụ thể (`margin`, `padding`, `spacing`).
-  - **Vùng hành động cố định (Bottom Action Area)**: Floating Action Button (FAB) hoặc Sticky Bottom CTA Button.
-- Kiểm tra toàn bộ các touch targets bảo đảm `>= 44x44pt`.
+  - **Thanh tiêu đề (Top Bar / AppBar)**: Nút Back, Tiêu đề màn hình, Actions (Settings/Filter, StarCounterBadge).
+  - **Thân màn hình (Scrollable Body)**: Cấu trúc các khối ClayCard, danh sách bài học, streak flame; xác định khoảng cách 4pt/8pt cụ thể (`margin`, `padding`, `spacing`).
+  - **Vùng hành động cố định (Bottom Action Area)**: Floating Action Button (FAB), ClayBuzzerButton, hoặc ClayBottomNav.
+- Kiểm tra toàn bộ các touch targets bảo đảm `>= 48x48dp` (ưu tiên `56x56dp` cho trẻ em).
 - Đặc tả chi tiết **5 trạng thái giao diện**: Default, Skeleton Shimmer, Empty, Error, Offline.
 
-### Bước 5: Ánh Xạ Token Celestial Dark UI & Trình Duyệt Gate 2 Sign-off
-- Lập bảng ánh xạ cụ thể từng thành phần UI sang biến Flutter `AppColors.*` và Theme tokens.
-- Liệt kê các Shared Widgets có thể tái sử dụng từ `shared/widgets/`: `GlassCard`, `MacroBar`, `CalorieProgressArc`, `MealTypeChip`, `SkeletonLoader`.
+### Bước 5: Ánh Xạ Token Tactile Clay & Trình Duyệt Gate 2 Sign-off
+- Lập bảng ánh xạ cụ thể từng thành phần UI sang biến Flutter `AppColors.*`, `AppValues.*` và Theme tokens.
+- Liệt kê các Shared Widgets có thể tái sử dụng từ `shared/ui_kit/`: `ClayCard`, `ClayButton`, `ClayBuzzerButton`, `ClaySheet`, `StarCounterBadge`, `StreakFlame`, `ClayProgressBar`, `ClayBottomNav`.
 - **Kiểm định trực quan qua Flutter Preview MCP (`flutter-preview:preview_widget`)**:
-  - Dựng nhanh widget snippet của các components chủ chốt (ví dụ: GlassCard mới, Empty state card, Shimmer layout) bằng công cụ `preview_widget` (set `width: 390`, `height: 844` theo chuẩn mobile viewport).
-  - Tự kiểm tra: tỷ lệ tương phản màu nền `#0A192F` / bề mặt `#112240`, độ rõ của số calo bold `+0.5 letterSpacing`, và lưới padding 4pt đối chiếu với mockup từ Stitch.
+  - Dựng nhanh widget snippet của các components chủ chốt (ví dụ: ClayCard mới, Empty state card, Shimmer layout) bằng công cụ `call_mcp_tool("flutter-preview", "preview_widget", { ... })` (set `width: 390`, `height: 844` theo chuẩn mobile viewport).
+  - Tự kiểm tra: độ nổi khối của đổ bóng 3D Tactile Clay, tỷ lệ tương phản chữ theo chuẩn WCAG 2.2 AA (>= 4.5:1), font Quicksand/Mona Sans, và lưới padding 4pt/8pt đối chiếu với mockup từ Stitch.
 - Lưu hồ sơ thiết kế vào `docs/03-prd-features/<mã-feature>/ui-ux-design-spec.md` kèm link/ảnh mockup từ Stitch.
 - Trình Sub-Agent `business-analyst` đối soát 100% User Stories và Sub-Agent `product-owner` ký duyệt **Gate 2 Sign-Off**.
 

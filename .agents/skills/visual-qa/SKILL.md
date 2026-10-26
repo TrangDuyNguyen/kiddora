@@ -66,9 +66,11 @@ Visual QA không tưởng tượng ra giao diện, mà phân tích dựa trên *
 ```
 
 ### Tầng 1: Flutter Mobile (Widget Level & Screen Level)
-1. **Flutter Preview MCP Tool**:
+1. **Flutter Preview MCP Suite**:
+   - `flutter-preview:preview_widget`: **(Nhanh nhất & Linh hoạt nhất)** Render trực tiếp bất kỳ đoạn code Dart Widget nào thành ảnh PNG trả về trực tiếp trong context cho Vision AI soi ngay mà **không cần tạo file test vật lý**. Hỗ trợ truyền `width`, `height`, `devicePixelRatio`, và `imports`.
    - `flutter-preview:run_widget_test`: Kích hoạt widget test, chụp toàn bộ chuỗi frame được render trong vòng đời test.
-   - `flutter-preview:get_frame`: Trích xuất frame (ví dụ frame `"last"` hoặc frame trạng thái chuyển động) thành ảnh để Vision model soi trực tiếp.
+   - `flutter-preview:get_frame`: Trích xuất frame (ví dụ frame `"last"` hoặc frame theo index) thành ảnh để Vision model soi trực tiếp.
+   - `flutter-preview:get_all_frames` & `list_frames`: Lấy toàn bộ chuỗi frames phục vụ kiểm tra animation chuyển động, jank khung hình, micro-interactions.
 2. **Flutter Golden Tests**:
    - Sử dụng `matchesGoldenFile('goldens/<feature>_<state>.png')` kết hợp với thư viện `golden_toolkit` hoặc `alchemist`.
    - Render widget đa thiết bị (iPhone SE, iPhone 15 Pro, Pixel 8, iPad).
@@ -93,13 +95,20 @@ Khi nhận được ảnh render từ các tầng thu hình, Visual QA quét to�
 - [ ] **Cắt cụt chữ (Text Truncation)**: Chữ không được biến mất đột ngột hoặc bị lẹm một nửa dòng. Nếu text dài hơn container, bắt buộc phải có `TextOverflow.ellipsis` (`...`) rõ ràng.
 - [ ] **Đè lớp sai (Z-Index / Layer Clashing)**: Nút bấm nổi (FAB), Bottom Navigation Bar, hoặc Modal Bottom Sheet không được đè che lấp nội dung cuộn bên dưới mà không có khoảng đệm (padding đáy).
 
-### 🎨 Trụ Cột 2: Đối Soát Bản Sắc Thiết Kế (Design System & Token Fidelity)
-- [ ] **Mã màu chuẩn xác**: Kiểm tra màu sắc thực tế hiển thị trên màn hình có khớp 100% với Design Tokens không (ví dụ: Primary, Secondary, Gradient, Text Color, Background Color).
-- [ ] **Bán kính bo góc (Border Radius)**: Kiểm tra card, dialog, input box có đúng bán kính token quy định không (ví dụ: chuẩn `12px` hoặc `16px`). Không để chỗ nhọn hoắt, chỗ bo tròn lệch điệu.
-- [ ] **Bề mặt kính & bóng đổ (Glassmorphism & Shadows)**:
-  - *Neobrutalism*: Viền đen cứng cáp (2px-3px), bóng đổ khối lệch cứng (`offset(4,4)`), màu tương phản cao.
-  - *Celestial / Glass*: Nền tối sâu thẳm, bề mặt phủ mờ (blur), viền ánh sao mảnh (`0x33FFFFFF`), không dùng đổ bóng thô đen kịt.
-- [ ] **Khoảng cách nhịp điệu (Spacing Grid)**: Bố cục tuân thủ lưới 4pt/8pt (padding `8px`, `16px`, `24px`, `32px`). Không có các khoảng cách tùy tiện (ví dụ: `13px`, `27px`).
+### 🎨 Trụ Cột 2: Đối Soát Bản Sắc Thiết Kế (Tactile Claymorphism & Token Fidelity)
+- [ ] **Mã màu ngữ nghĩa chuẩn xác**:
+  - 🩵 **Primary Indigo (`#4648D4` / `#6366F1`)**: Mental Math + Controls chính (FAB, active navigation). Contrast ratio 8.4:1 (WCAG AAA).
+  - 🌟 **Joyful Amber (`#F59E0B` / `#FBBF24`)**: Star rewards, streak counters, Live quiz buzzer.
+  - 🍓 **STEM Pink (`#EC4899`)**: STEM Explorers + favorites và creative tasks.
+  - 🥑 **Meadow Mint (`#10B981`)**: Success states, bài học hoàn thành, Live stream active.
+  - ☁️ **Sky Blue (`#0EA5E9`)**: Informational tags, sĩ số bạn học online.
+  - 🥛 **Warm Canvas**: Porcelain Canvas `#FCF8FF` / `#F8FAFC`, Pure White Clay Cards `#FFFFFF`.
+- [ ] **Bề mặt đất nặn & Công thức ánh sáng 3D (Tactile Clay Illumination)**:
+  - Vùng sáng chéo trên-trái (Specular highlight): `inset 3px 3px 5px rgba(255, 255, 255, 0.85)`.
+  - Vùng đổ bóng co nén dưới-phải (Compression shading): `inset -3px -3px 5px rgba(13, 12, 34, 0.06)`.
+  - Trạng thái nén khi bấm (Haptic squish): `scale(0.96) translateY(3px)`.
+- [ ] **Bán kính bo góc (Border Radius)**: Chuẩn đất nặn hữu cơ mềm mại `16px` đến `24px` (`AppValues.radiusL` / `radiusXL`).
+- [ ] **Khoảng cách nhịp điệu (Spacing Grid)**: Bố cục tuân thủ lưới 4pt/8pt (`AppValues.padding*`: `8px`, `12px`, `16px`, `24px`, `32px`). Không có khoảng cách tùy tiện.
 
 ### 📱 Trụ Cột 3: Công Thái Học & Vùng An Toàn Phần Cứng (Safe Area & Ergonomics)
 - [ ] **Tai thỏ & Dynamic Island**: Nội dung phần đầu trang (App Bar, Status Bar) không được bị đục thủng hoặc che khuất bởi cụm camera trước. Bắt buộc bọc `SafeArea` hoặc xử lý `WindowInsets`.
@@ -170,12 +179,21 @@ void main() {
 }
 ```
 
-Nếu dùng **Flutter Preview MCP**:
-1. Gọi tool `flutter-preview:run_widget_test` với đường dẫn file test.
-2. Gọi tool `flutter-preview:get_frame` với `frame_index: "last"` để lấy frame ảnh đã render đầy đủ.
+Nếu dùng **Flutter Preview MCP Suite**:
+1. **Cách 1: Render nhanh tức thì với `preview_widget` (Không cần file test)**:
+   - Gọi `call_mcp_tool("flutter-preview", "preview_widget", { "widgetCode": "...", "width": 390, "height": 844, "imports": [...] })`.
+   - Tool tự động render và trả về **hình ảnh frame trực tiếp trong context đính kèm log print**. Vision AI model ngay lập tức nhìn thấy và thẩm định hình ảnh.
+2. **Cách 2: Chạy bộ kịch bản test có sẵn với `run_widget_test` & `get_frame`**:
+   - Gọi `call_mcp_tool("flutter-preview", "run_widget_test", { "testPath": "test/path/to/test.dart" })`.
+   - Gọi `call_mcp_tool("flutter-preview", "get_frame", { "frame_index": "last" })` hoặc `get_all_frames` để trích xuất hình ảnh kiểm tra animation.
 
-### Bước 3: Đưa Ảnh Vào Vision AI Model Soi Lỗi
-Agent chuyển ảnh render vào Vision Model kèm prompt soi lỗi chuyên sâu theo Ma trận 6 Trụ cột ở Mục 2.
+### Bước 3: Đưa Ảnh Vào Vision AI Model Soi Lỗi (Multimodal Visual Inspection)
+Nhờ năng lực Multimodal của Model (Gemini 3.8 Flash, Claude Opus 4.6 / Sonnet 4.6), hình ảnh do `flutter-preview` kết xuất được nạp trực tiếp vào ngữ cảnh. Agent tiến hành soi từng pixel theo Ma Trận 6 Trụ Cột:
+- Sọc vàng đen `RenderFlex overflow`?
+- Cắt cụt chữ (truncation)?
+- Đổ bóng và điểm sáng nổi khối Tactile Clay 3D đúng chuẩn?
+- Touch targets đạt >= 48x48dp?
+- Đủ 5 UI states?
 
 ### Bước 4: Lập Báo Cáo Thẩm Định Thị Giác (Visual Gate Sign-Off)
 Xuất báo cáo chi tiết kèm ảnh minh chứng. Nếu phát hiện vi phạm: **REJECT VÀ CHỈ RÕ TỌA ĐỘ / PHẦN TỬ LỖI**.

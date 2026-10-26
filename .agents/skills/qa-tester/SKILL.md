@@ -128,17 +128,18 @@ QC sẽ **TỪ CHỐI BÀN GIAO CHO DEV** nếu:
 ### Bước 3: Đánh Giá Bằng Chứng Nghiệm Thu (Gate 6)
 - QC trực tiếp kiểm tra log thực thi `flutter test`.
 - Xác nhận không có test nào bị skip hoặc fake green test (`expect(true, isTrue)`).
-- **Kiểm định trực quan với Vision AI & Flutter Preview MCP (Kích hoạt skill `visual-qa`)**:
-  - Áp dụng **Ma Trận Soi Lỗi Thị Giác 6 Trụ Cột** từ skill `visual-qa` (Chống sọc vàng đen `RenderFlex overflow`, cắt cụt text, lệch Design Tokens, Safe Area/Dynamic Island, Accessibility Text Scaling 1.5x, và đủ 5 trạng thái UI).
-  - Chạy widget tests thông qua tool `run_widget_test` để chụp lại toàn bộ chuỗi frames render trong test lifecycle.
-  - Sử dụng `get_frame` (lấy frame `"last"` hoặc theo index) để Vision AI soi trực quan từng điểm ảnh.
+- **Kiểm định trực quan với Vision AI & Flutter Preview MCP Suite (Kích hoạt skill `visual-qa`)**:
+  - Áp dụng **Ma Trận Soi Lỗi Thị Giác 6 Trụ Cột** từ skill `visual-qa` (Chống sọc vàng đen `RenderFlex overflow`, cắt cụt text, lệch Design Tokens Tactile Clay, Safe Area/Dynamic Island, Accessibility Text Scaling 1.5x, và đủ 5 trạng thái UI).
+  - Sử dụng tool `call_mcp_tool("flutter-preview", "preview_widget", ...)` để render tức thì các widget nghi ngờ, mô phỏng ngay các trường hợp biên nguy hiểm (ví dụ: chuỗi ký tự UTF-8 siêu dài, viewport hẹp 320px).
+  - Chạy widget tests thông qua tool `call_mcp_tool("flutter-preview", "run_widget_test", ...)` để chụp lại chuỗi frames render trong test lifecycle.
+  - Sử dụng `get_frame` (lấy frame `"last"` hoặc theo index) và `get_all_frames` để Vision AI model soi trực quan từng điểm ảnh và kiểm tra độ mượt mà chuyển động.
   - Trích xuất ảnh render làm minh chứng thực tế trong báo cáo Gate 6 (kèm crop/tọa độ lỗi nếu có).
 - Kiểm tra các file integration test trong `integration_test/` hoặc `test/`.
 
 ### Bước 4: Đo Đạc Phi Chức Năng (Non-Functional Stress Testing)
-- Chạy widget preview kiểm tra dynamic text scale (ví dụ: cỡ chữ to 1.5x) xem có làm vỡ layout không.
-- Đo FPS khi cuộn danh sách thức ăn dài 100 món (FPS >= 55).
-- Thử nghiệm tắt Wi-Fi / 4G giữa chừng khi Gemini AI đang phân tích ảnh.
+- Gọi `preview_widget` kiểm tra dynamic text scale (ví dụ: bọc `MediaQuery(data: MediaQueryData(textScaler: TextScaler.linear(1.5)), child: ...)` ) để phát hiện ngay sọc vàng đen khi phóng to cỡ chữ.
+- Đo FPS khi cuộn danh sách (FPS >= 55–60 FPS).
+- Thử nghiệm tắt mạng / flaky network giữa chừng khi lớp học trực tuyến LiveKit hoặc Gemini AI đang kết nối.
 - Kiểm tra Firebase App Check token verification.
 
 ### Bước 5: Phán Quyết Cuối Cùng
