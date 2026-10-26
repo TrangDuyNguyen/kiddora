@@ -1,7 +1,8 @@
 # Sprint Backlog — Kiddora Mobile App
 
 * **Sprint Hiện Tại**: Sprint 4 (Tuần 5 & 6) — *Đang Thực Thi*
-* **Scrum Master / PM**: Sub-Agent Project Manager (PM) — *"The Clockwork Disciplinarian"*
+* **Project Manager (PM)**: Sub-Agent Project Manager (PM) — *"The Clockwork Disciplinarian"*
+* **Scrum Master (SM)**: Sub-Agent Scrum Master (SM) — *"The Servant Leader & Agile Coach"*
 * **Sprint Goal**: *"Hiện thực hóa trọn gói luồng Fullstack End-to-End: Đăng ký, Đăng nhập, Onboarding và Hồ sơ bé, đồng bộ REST API FastAPI với PostgreSQL Database (Alembic Migration), hỗ trợ chế độ Khách (Guest) và chuyển đổi tài khoản."*
 * **Tổng Story Points cam kết**: **15 SP**
 * **Trạng thái Sprint**: `IN_PROGRESS`

@@ -1,6 +1,7 @@
 # Ma Trận Phân Rã Công Việc WBS (Work Breakdown Structure)
 ## Kiddora Mobile App — Multi-Sprint Master Delivery Matrix
-**Scrum Master / PM**: Sub-Agent Project Manager (PM) — *"The Clockwork Disciplinarian"*  
+**Project Manager (PM)**: Sub-Agent Project Manager (PM) — *"The Clockwork Disciplinarian"*  
+**Scrum Master (SM)**: Sub-Agent Scrum Master (SM) — *"The Servant Leader & Agile Coach"*  
 **Phê duyệt Chiến lược**: Sub-Agent Product Owner (PO) — *"The Strategic Tyrant"*  
 **Cập nhật**: 2026-10-22  
 

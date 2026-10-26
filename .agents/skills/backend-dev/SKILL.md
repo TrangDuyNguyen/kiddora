@@ -9,8 +9,7 @@ metadata:
   role: backend-engineer
   scope: fastapi-feature-first-backend
   output-format: code
-  ai-model-tier: Tier 1 / Tier 2 (Claude 3.7 Sonnet / Gemini 1.5 Pro / Claude 3.5 Sonnet)
-  related-skills: devops-infra, flutter-core-dev, tech-lead, code-reviewer, qa-tester, ponytail
+  related-skills: devops-infra, flutter-core-dev, flutter-expert, tech-lead, code-reviewer, qa-tester, scrum-master, project-manager, product-owner, business-analyst, feature-lifecycle, ponytail
 ---
 
 # Sub-Agent Backend Developer — *"The Pythonic Systems Craftsman"*

@@ -155,26 +155,26 @@ QC xác định danh sách các kịch bản cần chụp ảnh thẩm định:
 QC viết hoặc yêu cầu Dev FE cung cấp kịch bản Golden Test chuẩn:
 
 ```dart
-// test/goldens/meal_card_visual_test.dart
+// test/goldens/quest_card_visual_test.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:golden_toolkit/golden_toolkit.dart';
-import 'package:my_app/features/nutrition/presentation/widgets/meal_card.dart';
+import 'package:kiddora/features/quests/presentation/widgets/quest_card.dart';
 
 void main() {
-  testGoldens('MealCard - 5 Trạng Thái & Responsive Matrix', (tester) async {
+  testGoldens('QuestCard - 5 Trạng Thái & Responsive Matrix', (tester) async {
     final builder = GoldenBuilder.grid(columns: 2, widthToHeightRatio: 1)
-      ..addScenario('1. Default', const MealCard(title: 'Bữa Trưa Xanh', calories: 520))
-      ..addScenario('2. Loading Shimmer', const MealCard.shimmer())
-      ..addScenario('3. Empty State', const MealCard.empty())
-      ..addScenario('4. Error State', const MealCard.error(message: 'Không tải được thực đơn'))
+      ..addScenario('1. Default', const QuestCard(title: 'Toán Tư Duy Cấp Tốc', stars: 50))
+      ..addScenario('2. Loading Shimmer', const QuestCard.shimmer())
+      ..addScenario('3. Empty State', const QuestCard.empty())
+      ..addScenario('4. Error State', const QuestCard.error(message: 'Không tải được nhiệm vụ'))
       ..addScenario('5. Large Text 1.5x', const MediaQuery(
           data: MediaQueryData(textScaler: TextScaler.linear(1.5)),
-          child: MealCard(title: 'Bữa Trưa Xanh Dài Hơn Bình Thường', calories: 520),
+          child: QuestCard(title: 'Nhiệm Vụ Thám Hiểm STEM Dài Hơn Bình Thường', stars: 50),
         ));
 
     await tester.pumpWidgetBuilder(builder.build(), surfaceSize: const Size(800, 1000));
-    await screenMatchesGolden(tester, 'meal_card_matrix');
+    await screenMatchesGolden(tester, 'quest_card_matrix');
   });
 }
 ```
@@ -211,23 +211,23 @@ Khi phát hiện lỗi giao diện, Visual QA xuất phiếu lỗi chuẩn xác:
 - **Công cụ phát hiện**: Flutter Preview MCP (`get_frame: last`) + Vision Inspection
 
 ### 📸 Ảnh Minh Chứng Lỗi (Visual Proof):
-![Meal Result Overflow](file:///path/to/test_artifacts/meal_result_overflow.png)
+![Quest Result Overflow](file:///path/to/test_artifacts/quest_result_overflow.png)
 
 ### ❌ Các Vi Phạm Phát Hiện Được:
 1. **Lỗi Tràn Viền (RenderFlex Overflow)**: 
-   - Vị trí: Danh sách các thành phần dinh dưỡng vi lượng (Micro-nutrients list).
+   - Vị trí: Danh sách các huy hiệu thử thách STEM (STEM Badges list).
    - Biểu hiện: Xuất hiện vạch sọc vàng đen cảnh báo `A RenderFlex overflowed by 28 pixels on the right`.
    - Nguyên nhân: Hàng `Row` chứa các badge tag không bọc `Wrap` hoặc `SingleChildScrollView`.
 2. **Cắt Cụt Tiêu Đề (Text Truncation)**:
-   - Vị trí: Tên món ăn trên thiết bị màn hình nhỏ (375pt).
-   - Biểu hiện: Chữ "Salad Ức Gà Sốt Mè Rang..." bị cắt cụt mất đuôi và không có padding phải, chạm sát mép màn hình.
+   - Vị trí: Tên thử thách trên thiết bị màn hình nhỏ (375pt).
+   - Biểu hiện: Chữ "Thám Hiểm Vũ Trụ & Tính Toán Nhanh..." bị cắt cụt mất đuôi và không có padding phải, chạm sát mép màn hình.
 3. **Sai Mã Màu Token (Design Token Mismatch)**:
-   - Chỉ số Protein đang render màu vàng `#FFA500` (Orange) thay vì màu vàng Gold `#FFD700` chuẩn của Design System.
+   - Ngôi sao phần thưởng đang render màu vàng nhạt `#FEF3C7` thay vì Joyful Amber `#F59E0B` chuẩn của Tactile Clay Design System.
 
 ### 🛠️ Đề Xuất Khắc Phục Cho Dev FE:
-1. Thay thế `Row` bằng `Wrap(spacing: 8, runSpacing: 8, children: ...)` tại `meal_result_view.dart:L85`.
-2. Bọc `Text` tên món ăn bằng `Expanded` kèm `maxLines: 2, overflow: TextOverflow.ellipsis`.
-3. Cập nhật mã màu sang `AppColors.proteinGold`.
+1. Thay thế `Row` bằng `Wrap(spacing: 8, runSpacing: 8, children: ...)` tại `quest_card.dart:L85`.
+2. Bọc `Text` tên thử thách bằng `Expanded` kèm `maxLines: 2, overflow: TextOverflow.ellipsis`.
+3. Cập nhật mã màu sang `AppColors.joyfulAmber`.
 ```
 
 ---

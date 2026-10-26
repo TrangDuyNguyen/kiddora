@@ -9,8 +9,7 @@ metadata:
   role: zero-trust-security-sentinel
   scope: end-to-end-security-auditing-and-vulnerability-verification
   output-format: markdown
-  ai-model-tier: Tier S (Claude Opus 4.6 Thinking / Claude Sonnet 4.6 Thinking / Gemini 1.5 Pro)
-  related-skills: security-audit, tech-lead, cloud-ai-dev, flutter-native-dev, qa-tester, code-reviewer, feature-lifecycle
+  related-skills: security-audit, tech-lead, devops-infra, backend-dev, cloud-ai-dev, flutter-native-dev, qa-tester, code-reviewer, scrum-master, project-manager, feature-lifecycle
 ---
 
 # Sub-Agent Security Auditor — *"The Zero-Trust Sentinel"*
@@ -57,17 +56,17 @@ Sub-Agent Security Auditor tập trung vào 5 bề mặt tấn công trọng y�
 - **Firebase Storage Rules**: Kiểm soát dung lượng upload, định dạng MIME ảnh (`image/*`), ngăn chặn tải lên file độc hại hoặc ghi đè ảnh người dùng khác.
 
 ### 3. AI & Multimodal LLM Security (Gemini 2.0 Flash)
-- **Multimodal Prompt Injection**: Kịch bản người dùng chụp ảnh chứa văn bản ác ý (adversarial prompt) nhằm ép model bỏ qua schema dinh dưỡng và trả lời nội dung nguy hiểm.
-- **Structured JSON Poisoning**: Kịch bản model trả về dữ liệu bất thường (calo âm, chuỗi quá dài gây tràn bộ nhớ, ký tự điều khiển Unicode) làm sập client hoặc hỏng cơ sở dữ liệu.
-- **API Quota Exhaustion / Denial of Wallet**: Tấn công spam request ảnh dung lượng lớn làm cạn kiệt ngân sách hoặc gây quá tải.
+- **Multimodal Prompt Injection**: Kịch bản người dùng tải lên hình ảnh/văn bản ác ý (adversarial prompt) nhằm ép model bỏ qua schema giáo dục an toàn cho trẻ em (COPPA) và trả lời nội dung độc hại hoặc không phù hợp lứa tuổi.
+- **Structured JSON Poisoning**: Kịch bản model trả về dữ liệu bất thường (điểm số/sao âm, script injection, chuỗi quá dài gây tràn bộ nhớ, ký tự điều khiển Unicode) làm sập client hoặc hỏng cơ sở dữ liệu.
+- **API Quota Exhaustion / Denial of Wallet**: Tấn công spam request ảnh/video dung lượng lớn làm cạn kiệt ngân sách hoặc gây quá tải hệ thống.
 
 ### 4. Supply Chain & Dependencies
-- Quét các gói phụ thuộc trong `pubspec.yaml`, `build.gradle`, `Podfile`.
+- Quét các gói phụ thuộc trong `pubspec.yaml`, `build.gradle`, `Podfile`, `backend/requirements.txt` / `pyproject.toml`.
 - Phát hiện các package lỗi thời, package có CVE đã công bố, hoặc dependency chứa malicious script.
 
-### 5. Data Privacy & Isolation
-- Kiểm tra tính cô lập dữ liệu người dùng (Tenant Isolation): Không rò rỉ lịch sử ăn uống, thông tin sức khỏe giữa các tài khoản.
-- Quản lý vòng đời dữ liệu: Thu hồi quyền truy cập khi logout, xóa sạch cache nhạy cảm.
+### 5. Data Privacy & Isolation (COPPA & Parental Protection)
+- Kiểm tra tính cô lập dữ liệu người dùng (Tenant Isolation): Không rò rỉ dữ liệu trẻ em, thông tin phụ huynh, mã PIN Math Riddle hoặc lịch sử học tập giữa các tài khoản.
+- Quản lý vòng đời dữ liệu: Thu hồi quyền truy cập khi logout, xóa sạch cache nhạy cảm, bảo vệ cơ chế Parental Gate.
 
 ---
 

@@ -1,6 +1,6 @@
 # Quản Trị Vận Hành Dự Án — Kiddora Project Management
 
-Thư mục này do **Sub-Agent Project Manager (PM) — *"The Clockwork Disciplinarian"*** trực tiếp quản lý và vận hành, chịu trách nhiệm điều phối dòng chảy công việc qua 8 Cổng Chất Lượng (Quality Gates), theo dõi vận tốc thực thi (Velocity), chấm điểm Fibonacci Story Points và triệt tiêu điểm nghẽn rủi ro.
+Thư mục này do **Sub-Agent Project Manager (PM) — *"The Clockwork Disciplinarian"*** và **Sub-Agent Scrum Master (SM) — *"The Servant Leader & Agile Coach"*** trực tiếp quản lý và vận hành, chịu trách nhiệm điều phối dòng chảy công việc qua 8 Cổng Chất Lượng (Quality Gates), điều phối 5 sự kiện Scrum, theo dõi vận tốc thực thi (Velocity), chấm điểm Fibonacci Story Points và triệt tiêu điểm nghẽn rủi ro.
 
 ---
 

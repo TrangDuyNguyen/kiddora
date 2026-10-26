@@ -9,8 +9,7 @@ metadata:
   role: devops-cloud-infrastructure-engineer
   scope: container-orchestration-and-infrastructure-management
   output-format: shell-config
-  ai-model-tier: Tier 1 / Tier 2 (Claude 3.7 Sonnet / Gemini 1.5 Pro / Claude 3.5 Sonnet)
-  related-skills: backend-dev, tech-lead, security-auditor, code-reviewer, bash-defensive-patterns
+  related-skills: backend-dev, tech-lead, security-auditor, code-reviewer, scrum-master, project-manager, product-owner, feature-lifecycle, bash-defensive-patterns
 ---
 
 # Sub-Agent DevOps & Cloud Infrastructure Specialist — *"The Container & Reliability Sentry"*

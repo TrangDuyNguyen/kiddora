@@ -115,11 +115,12 @@ lib/
 
 ---
 
-## 6. End-to-End Feature Delivery Lifecycle (8-Gate SOP & 11 Specialized Sub-Agents)
+## 6. End-to-End Feature Delivery Lifecycle (8-Gate SOP & 12 Specialized Sub-Agents)
 
-All feature development follows the **Four-Eyes Principle** with 11 specialized Sub-Agents & Dual-Track Gate 4 execution:
+All feature development follows the **Four-Eyes Principle** with 12 specialized Sub-Agents & Dual-Track Gate 4 execution:
 - **Sub-Agent PO**: Roadmap, MoSCoW, OKRs, Gate 1 & Gate 7 Sign-offs.
-- **Sub-Agent PM**: Sprint planning, 6-Gate WBS breakdown, Fibonacci Story Points, Risk Log.
+- **Sub-Agent PM**: WBS breakdown, Fibonacci Story Points, Risk Log, Capacity tracking, Project status reporting.
+- **Sub-Agent Scrum Master (SM)**: Sprint ceremonies facilitation (Planning, Daily, Review, Retro, Refinement), Impediment removal, Velocity optimization, Agile coaching.
 - **Gate 0: Tech Lead**: Architecture spikes, ADR, SLAs (Cold start <= 1.8s, 60 FPS, 0 memory leak).
 - **Gate 0 & Operations: DevOps & Infra (`devops-infra`)**: Docker Compose 6 services, Caddy v2 SSL/TLS reverse proxy, PostgreSQL backups, LiveKit SFU ports, MinIO buckets, VPS deployment readiness.
 - **Gate 1: BA**: PRD, User Stories BDD (Given-When-Then), Data Dictionary synchronization.
