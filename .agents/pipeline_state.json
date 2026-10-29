@@ -1,18 +1,18 @@
 {
   "feature": "sprint3-core-screens",
-  "feature_dir": "/Users/nguyenduytrang/flutter_project/kiddora/docs/gates/sprint3-core-screens",
+  "feature_dir": "docs/gates/sprint3-core-screens",
   "current_gate_index": 8,
   "created_at": "2026-10-22T05:29:53Z",
-  "updated_at": "2026-10-22T05:44:00Z",
+  "updated_at": "2026-10-29T11:00:00Z",
   "gates": {
-    "0": {"status": "PASSED", "artifact": "/Users/nguyenduytrang/flutter_project/kiddora/docs/gates/sprint3-core-screens/gate0-tech-spike-adr.md"},
-    "1": {"status": "PASSED", "artifact": "/Users/nguyenduytrang/flutter_project/kiddora/docs/gates/sprint3-core-screens/gate1-prd.md"},
-    "2": {"status": "PASSED", "artifact": "/Users/nguyenduytrang/flutter_project/kiddora/docs/gates/sprint3-core-screens/gate2-ui-ux-spec.md"},
-    "3": {"status": "PASSED", "artifact": "/Users/nguyenduytrang/flutter_project/kiddora/docs/gates/sprint3-core-screens/gate3-test-plan.feature"},
-    "4": {"status": "PASSED", "artifact": "src/"},
-    "5": {"status": "PASSED", "artifact": "/Users/nguyenduytrang/flutter_project/kiddora/docs/gates/sprint3-core-screens/gate5-ponytail-review.md"},
-    "6": {"status": "PASSED", "artifact": "/Users/nguyenduytrang/flutter_project/kiddora/docs/gates/sprint3-core-screens/gate6-qa-signoff.md"},
-    "6.5": {"status": "PASSED", "artifact": "/Users/nguyenduytrang/flutter_project/kiddora/docs/gates/sprint3-core-screens/gate6.5-security-signoff.md"},
-    "7": {"status": "PASSED", "artifact": "/Users/nguyenduytrang/flutter_project/kiddora/docs/gates/sprint3-core-screens/release-tag.txt"}
+    "0": {"status": "PASSED", "artifact": "docs/gates/sprint3-core-screens/gate0-tech-spike-adr.md"},
+    "1": {"status": "PASSED", "artifact": "docs/gates/sprint3-core-screens/gate1-prd.md"},
+    "2": {"status": "PASSED", "artifact": "docs/gates/sprint3-core-screens/gate2-ui-ux-spec.md"},
+    "3": {"status": "PASSED", "artifact": "docs/gates/sprint3-core-screens/gate3-test-plan.feature"},
+    "4": {"status": "PASSED", "artifact": "lib/"},
+    "5": {"status": "PASSED", "artifact": "docs/gates/sprint3-core-screens/gate5-ponytail-review.md"},
+    "6": {"status": "PASSED", "artifact": "docs/gates/sprint3-core-screens/gate6-qa-signoff.md"},
+    "6.5": {"status": "PASSED", "artifact": "docs/gates/sprint3-core-screens/gate6.5-security-signoff.md"},
+    "7": {"status": "PASSED", "artifact": "docs/gates/sprint3-core-screens/release-tag.txt"}
   }
 }

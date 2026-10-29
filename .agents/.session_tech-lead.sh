@@ -1,9 +1,9 @@
-# AstroBite Sub-Agent Session Init
-export WORKSPACE_DIR="/Users/nguyenduytrang/flutter_project/AstroBite"
+# Kiddora Sub-Agent Session Init
+export WORKSPACE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 export AGENT_ROLE="tech-lead"
-export AGENT_TITLE="Tech Lead __TITLE__ System Architect"
+export AGENT_TITLE="Tech Lead — System Architect"
 export AGENT_TIER="Tier S (Claude Opus 4.6 Thinking / Sonnet Thinking)"
-export AGENT_GATES="Gate 0 (Tech Spike/ADR) __GATES__ Gate 1/2 Feasibility Sign-Off"
+export AGENT_GATES="Gate 0 (Tech Spike/ADR) & Gate 1/2 Feasibility Sign-Off"
 export AGENT_SKILL=".agents/skills/tech-lead/SKILL.md"
 
 cd "$WORKSPACE_DIR"
@@ -11,7 +11,7 @@ cd "$WORKSPACE_DIR"
 # Banner hiển thị
 clear
 printf "\033[1;36m================================================================================\033[0m\n"
-printf " ✨ \033[1mASTROBITE MULTI-AGENT WORKSPACE\033[0m — [\033[1;33m%s\033[0m]\n" "$AGENT_TITLE"
+printf " ✨ \033[1mKIDDORA MULTI-AGENT WORKSPACE\033[0m — [\033[1;33m%s\033[0m]\n" "$AGENT_TITLE"
 printf "\033[1;36m================================================================================\033[0m\n"
 printf " 🤖 \033[1mAI Model Tier:\033[0m     %s\n" "$AGENT_TIER"
 printf " 🚪 \033[1mGate Phụ Trách:\033[0m    %s\n" "$AGENT_GATES"
@@ -30,8 +30,8 @@ ask() {
     printf "\033[1;31m❌ Vui lòng nhập câu hỏi hoặc nhiệm vụ: ask \"<nhiệm vụ>\"\033[0m\n"
     return 1
   fi
-  printf "\033[1;34m[AstroBite Agent] 🚀 Đang gửi yêu cầu tới %s...\033[0m\n" "$AGENT_TITLE"
-  agy-ide chat -a "$WORKSPACE_DIR/$AGENT_SKILL" -a "$WORKSPACE_DIR/AGENTS.md" "$*"
+  printf "\033[1;34m[Kiddora Agent] 🚀 Đang gửi yêu cầu tới %s...\033[0m\n" "$AGENT_TITLE"
+  agy chat -a "$WORKSPACE_DIR/$AGENT_SKILL" -a "$WORKSPACE_DIR/AGENTS.md" "$*"
 }
 
 skill() {
@@ -44,7 +44,7 @@ skill() {
 
 gates() {
   printf "\033[1;33m=== TRÍCH XUẤT TIÊU CHUẨN CỔNG TỪ AGENTS.md ===\033[0m\n"
-  grep -A 10 -E "Chốt Chặn [0-7]" "$WORKSPACE_DIR/AGENTS.md" | head -n 35
+  grep -A 10 -E "Gate [0-7]" "$WORKSPACE_DIR/AGENTS.md" | head -n 35
 }
 
 check-code() {
@@ -52,4 +52,4 @@ check-code() {
 }
 
 # Đổi prompt terminal để nhận diện agent
-export PS1="\[\033[1;35m\]astrobite\[\033[0m\]:\[\033[1;33m\]$AGENT_ROLE\[\033[0m\]$ "
+export PS1="\[\033[1;35m\]kiddora\[\033[0m\]:\[\033[1;33m\]$AGENT_ROLE\[\033[0m\]$ "

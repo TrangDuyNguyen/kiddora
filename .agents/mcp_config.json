@@ -1,27 +1,37 @@
 {
   "mcpServers": {
-    "flutter-preview": {
-      "type": "stdio",
-      "command": "/Users/nguyenduytrang/.antigravity-ide/extensions/felipefontes.flutter-widget-preview-0.1.15-universal/.mcp-scripts/run-mcp-preview.sh",
-      "args": []
+    "graphify": {
+      "command": "C:\\Users\\Admin\\AppData\\Roaming\\uv\\tools\\graphifyy\\Scripts\\python.exe",
+      "args": [
+        "-m",
+        "graphify.serve",
+        "C:\\Projects\\kiddora\\graphify-out\\graph.json"
+      ]
+    },
+    "dart-flutter": {
+      "command": "cmd",
+      "args": [
+        "/c",
+        "dart",
+        "mcp-server"
+      ]
     },
     "lottiefiles-creator": {
-      "command": "npx",
+      "command": "cmd",
       "args": [
+        "/c",
+        "npx",
         "-y",
         "@lottiefiles/creator-mcp@latest"
       ]
     },
     "docker": {
-      "command": "/Applications/Docker.app/Contents/Resources/bin/docker",
+      "command": "docker",
       "args": [
         "mcp",
         "gateway",
         "run"
-      ],
-      "env": {
-        "PATH": "/Applications/Docker.app/Contents/Resources/bin:/usr/local/bin:/usr/bin:/bin"
-      }
+      ]
     }
   }
 }

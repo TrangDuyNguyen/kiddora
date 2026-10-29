@@ -6,12 +6,14 @@ class Settings(BaseSettings):
     REDIS_URL: str = "redis://redis:6379/0"
 
     MINIO_ENDPOINT: str = "minio:9000"
+    MINIO_PUBLIC_ENDPOINT: str = ""
     MINIO_ACCESS_KEY: str = "minioadmin"
     MINIO_SECRET_KEY: str = "minioadmin123"
     MINIO_BUCKET_NAME: str = "kiddora-storage"
     MINIO_USE_SSL: bool = False
 
     LIVEKIT_URL: str = "ws://livekit:7880"
+    LIVEKIT_PUBLIC_URL: str = ""
     LIVEKIT_API_KEY: str = "devkey"
     LIVEKIT_API_SECRET: str = "devsecret"
 
@@ -19,7 +21,6 @@ class Settings(BaseSettings):
     JWT_ALGORITHM: str = "HS256"
     JWT_ACCESS_TOKEN_EXPIRE_MINUTES: int = 60 * 24 * 7  # 7 days for mobile session stability
     JWT_REFRESH_TOKEN_EXPIRE_DAYS: int = 30
-
 
     APP_ENV: str = "development"
     APP_HOST: str = "0.0.0.0"

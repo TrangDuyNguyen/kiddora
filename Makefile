@@ -1,4 +1,4 @@
-.PHONY: help setup test check-files build-android build-ios release gen analyze agents run run-android run-ios devices
+.PHONY: help setup test check-files build-android build-ios release gen analyze agents run run-android run-ios devices backend-test db-migrate db-rollback pipeline pipeline-status pipeline-next pipeline-reset dashboard
 
 help:
 	@echo "======================================================="
@@ -15,6 +15,7 @@ help:
 	@echo "  make analyze       : Chạy flutter analyze kiểm tra 0 lỗi"
 	@echo "  make test          : Chạy toàn bộ unit/widget tests"
 	@echo "  make check-files   : Kiểm tra độ dài & độ phức tạp file (Ponytail)"
+	@echo "  make backend-test  : Chạy kiểm thử Pytest cho FastAPI Backend"
 	@echo "  make pipeline      : Chạy relay pipeline theo tính năng (make pipeline FEATURE=<name>)"
 	@echo "  make dashboard     : Mở Neobrutalism Mission Control web dashboard theo dõi thời gian thực"
 	@echo "  make agents        : Khởi động phiên tương tác Multi Sub-Agents"
@@ -49,7 +50,7 @@ setup:
 	flutter pub get
 
 gen:
-	flutter pub run build_runner build --delete-conflicting-outputs
+	dart run build_runner build --delete-conflicting-outputs
 
 analyze:
 	flutter analyze
@@ -61,22 +62,28 @@ check-files:
 	@bash scripts/check_file_length.sh
 
 backend-test:
-	@if [ -d backend/.venv ]; then \
+	@if [ -x backend/.venv/bin/pytest ]; then \
 		PYTHONPATH=backend backend/.venv/bin/pytest backend/tests -v; \
+	elif [ -d backend/.venv/Lib/site-packages ]; then \
+		PYTHONPATH="backend;backend/.venv/Lib/site-packages" python -m pytest backend/tests -v; \
 	else \
 		PYTHONPATH=backend pytest backend/tests -v; \
 	fi
 
 db-migrate:
-	@if [ -d backend/.venv ]; then \
+	@if [ -x backend/.venv/bin/alembic ]; then \
 		cd backend && .venv/bin/alembic upgrade head; \
+	elif [ -d backend/.venv/Lib/site-packages ]; then \
+		cd backend && PYTHONPATH=".;.venv/Lib/site-packages" python -m alembic upgrade head; \
 	else \
 		cd backend && alembic upgrade head; \
 	fi
 
 db-rollback:
-	@if [ -d backend/.venv ]; then \
+	@if [ -x backend/.venv/bin/alembic ]; then \
 		cd backend && .venv/bin/alembic downgrade -1; \
+	elif [ -d backend/.venv/Lib/site-packages ]; then \
+		cd backend && PYTHONPATH=".;.venv/Lib/site-packages" python -m alembic downgrade -1; \
 	else \
 		cd backend && alembic downgrade -1; \
 	fi

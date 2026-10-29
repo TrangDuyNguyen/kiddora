@@ -2,7 +2,7 @@
 Module Classroom — Router Endpoints
 """
 from typing import List
-from fastapi import APIRouter, Depends, Query
+from fastapi import APIRouter, Depends, Query, Request
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.future import select
 
@@ -37,6 +37,7 @@ async def list_sessions(db: AsyncSession = Depends(get_db)):
 
 @router.post("/sessions/{room_name}/token", response_model=JoinRoomTokenResponse)
 async def get_join_token(
+    request: Request,
     room_name: str,
     participant_name: str = Query("Student", description="Tên hiển thị trong phòng học"),
     user_id: str = Depends(get_current_user_id),
@@ -46,4 +47,5 @@ async def get_join_token(
         room_name=room_name,
         participant_identity=user_id,
         participant_name=participant_name,
+        request_host=request.url.hostname,
     )

@@ -187,15 +187,16 @@ class _NetworkInspectorSheetState extends State<NetworkInspectorSheet> {
             ? AppColors.brandSecondary
             : AppColors.feedbackError);
 
-    return Container(
-      decoration: BoxDecoration(
-        color: AppColors.surfaceContainer,
+    return Material(
+      color: AppColors.surfaceContainer,
+      shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(AppValues.radiusLg),
-        border: Border.all(
+        side: BorderSide(
           color: isExpanded ? AppColors.brandPrimary : AppColors.borderDefault,
           width: AppValues.borderWidthDefault,
         ),
       ),
+      clipBehavior: Clip.antiAlias,
       child: Column(
         children: [
           ListTile(

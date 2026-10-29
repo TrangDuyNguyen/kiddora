@@ -11,6 +11,9 @@ from app.core.config import settings
 from app.core.database import Base
 # Import all models so that Base.metadata has all table definitions
 from app.modules.auth.models import User, KidProfile  # noqa: F401
+from app.modules.courses import models as courses_models  # noqa: F401
+from app.modules.classroom import models as classroom_models  # noqa: F401
+from app.modules.gamification import models as gamification_models  # noqa: F401
 
 config = context.config
 

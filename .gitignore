@@ -63,3 +63,7 @@ backend/.env
 .venv/
 backend/.venv/
 
+
+# Local server backups & setup logs
+backups/
+scripts/.server-admin-setup.log

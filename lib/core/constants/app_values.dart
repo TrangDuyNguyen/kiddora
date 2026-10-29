@@ -199,4 +199,7 @@ class AppValues {
   static const double splashShadowBlur = 40.0;
   static const double splashShadowOffsetY = 16.0;
   static const String splashLogoAsset = 'assets/images/app_icon_source.jpg';
+
+  // Network & API Tokens
+  static const Duration apiTimeout = Duration(seconds: 10);
 }

@@ -1,0 +1,9 @@
+{
+  "name": "kiddora-agents",
+  "displayName": "Kiddora Specialized Agents",
+  "version": "1.0.0",
+  "description": "12 Specialized Sub-Agents for Kiddora (PO, PM, Scrum Master, Tech Lead, BA, UI/UX, Flutter Dev, Backend Dev, QA Tester, Code Reviewer, Security Auditor, DevOps)",
+  "author": {
+    "name": "Kiddora Team"
+  }
+}

@@ -2,7 +2,25 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Kiddora (Debug)",
+      "name": "Kiddora (Remote Windows Server - LAN)",
+      "request": "launch",
+      "type": "dart",
+      "program": "lib/main.dart",
+      "args": [
+        "--dart-define=API_BASE_URL=http://192.168.3.119:8000"
+      ]
+    },
+    {
+      "name": "Kiddora (Remote Windows Server - Tailscale)",
+      "request": "launch",
+      "type": "dart",
+      "program": "lib/main.dart",
+      "args": [
+        "--dart-define=API_BASE_URL=http://100.84.117.43:8000"
+      ]
+    },
+    {
+      "name": "Kiddora (Local Debug)",
       "request": "launch",
       "type": "dart",
       "program": "lib/main.dart",

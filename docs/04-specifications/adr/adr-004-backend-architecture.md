@@ -393,6 +393,17 @@ docker compose up -d
 
 ---
 
+### 5.1. Mô Hình Hybrid Dev: Dedicated Windows Host Server + macOS Client (`CR-008`)
+
+Để giải phóng RAM/CPU cho máy lập trình **macOS** (chạy Xcode & iOS Simulator) đồng thời tận dụng máy **Windows 11 Pro** làm Dedicated Host Server chạy 24/7:
+- **Kết nối mạng kép (Option A)**: Kết hợp IP nội bộ LAN (`192.168.3.119`) và mạng riêng ảo **Tailscale Mesh VPN** (`100.64.0.0/10`), đi kèm tường lửa Zero-Trust (`scripts/setup-windows-server-admin.ps1`) và Windows OpenSSH Server (`:22`).
+- **Cấu hình động trên Flutter (`ApiClient`)**: Nhận `--dart-define=API_BASE_URL=http://<SERVER_IP>:8000` (tích hợp sẵn trong `.vscode/launch.json`), tự động fallback về `localhost` / `10.0.2.2` nếu không truyền cờ.
+- **Ký động S3v4 & WebRTC đa mạng**: `StorageService.resolve_public_endpoint` và `ClassroomService.resolve_public_url` tự động suy diễn host từ `request.url.hostname` khi `MINIO_PUBLIC_ENDPOINT` / `LIVEKIT_PUBLIC_URL` để trống, đảm bảo chữ ký S3v4 và WebSocket LiveKit hợp lệ trên cả LAN lẫn Tailscale.
+- **Bền vững dữ liệu Redis**: Kích hoạt `redis-server --appendonly yes` (AOF) trong `docker-compose.yml` và cung cấp công cụ vận hành/backup `scripts/server-ctl.ps1`.
+- **Tài liệu vận hành chi tiết**: Xem [`windows-server-macos-dev-guide.md`](../windows-server-macos-dev-guide.md).
+
+---
+
 ## 6. Flutter Dependencies (BE-related)
 
 ```yaml
