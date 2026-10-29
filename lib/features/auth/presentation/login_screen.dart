@@ -11,7 +11,6 @@ import '../../../shared/ui_kit/ui_kit.dart';
 import '../../onboarding/presentation/widgets/onboarding_pastel_blobs.dart';
 import 'controllers/login_controller.dart';
 import 'widgets/login_header.dart';
-import 'widgets/login_social_row.dart';
 
 @RoutePage()
 class LoginScreen extends ConsumerStatefulWidget {
@@ -256,10 +255,6 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                                     ),
                                     height: AppValues.sizeButtonPrimaryH,
                                   ),
-                                  const SizedBox(height: AppValues.space7),
-
-                                  // Social Auth Row
-                                  LoginSocialRow(onSocialTap: _handleLogin),
                                   const SizedBox(height: AppValues.space7),
 
                                   // Bottom Sign Up Text with Wrap

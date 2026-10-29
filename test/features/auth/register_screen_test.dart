@@ -29,7 +29,7 @@ void main() {
       expect(find.text(AppStrings.confirmPassword), findsOneWidget);
       expect(find.text(AppStrings.agreeTerms), findsOneWidget);
       expect(find.text(AppStrings.signUp), findsOneWidget);
-      expect(find.text(AppStrings.orSignUpWith), findsOneWidget);
+      expect(find.text(AppStrings.orSignUpWith), findsNothing);
       expect(find.text(AppStrings.alreadyHaveAccount), findsOneWidget);
       expect(find.text(AppStrings.logIn), findsOneWidget);
       expect(find.byIcon(Icons.auto_stories_rounded), findsOneWidget);

@@ -10,7 +10,6 @@ import '../../../core/router/app_router.gr.dart';
 import '../../../shared/ui_kit/ui_kit.dart';
 import '../../onboarding/presentation/widgets/onboarding_pastel_blobs.dart';
 import 'controllers/register_controller.dart';
-import 'widgets/login_social_row.dart';
 import 'widgets/register_header.dart';
 
 @RoutePage()
@@ -299,13 +298,6 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
                                       ],
                                     ),
                                     height: AppValues.sizeButtonPrimaryH,
-                                  ),
-                                  const SizedBox(height: AppValues.space7),
-
-                                  // Social Auth Row
-                                  LoginSocialRow(
-                                    label: AppStrings.orSignUpWith,
-                                    onSocialTap: _handleRegister,
                                   ),
                                   const SizedBox(height: AppValues.space7),
 
