@@ -1,5 +1,6 @@
-# Kế Hoạch Sprint 5 (Sprint 5 Planning)
-## Phân Hệ Khám Phá Khóa Học & Chi Tiết Lộ Trình (Courses Discovery & Curriculum)
+# Kế Hoạch Sprint 5 (Sprint 5 Planning) — Phương Án A (Approved)
+## Phân Hệ Khám Phá Khóa Học & Chi Tiết Giáo Trình (Courses Discovery & Curriculum)
+### Tái Hiện 1:1 Bộ 6 Màn Hình Dribbble Benchmark (Domain 04 & Domain 05)
 
 - **Scrum Master (SM)**: Sub-Agent Scrum Master — *"The Servant Leader & Agile Coach"*
 - **Project Manager (PM)**: Sub-Agent Project Manager — *"The Clockwork Disciplinarian"*
@@ -7,85 +8,82 @@
 - **Tech Lead**: Sub-Agent Tech Lead & System Architect
 - **Thời gian Sprint**: Tuần 7 & 8 (2 tuần)
 - **Phiên bản đích**: `v0.5.0-courses-hub`
-- **Trạng thái**: `PLANNING_AND_READY`
+- **Tổng Story Points cam kết**: **22 SP**
+- **Trạng thái**: `PLANNING_AND_READY` (Đã phê duyệt Phương án A)
 
 ---
 
-## 🧭 1. Bối Cảnh & Giả Định (Context & Assumptions)
-- **Quy mô đội ngũ**: Đội hình đầy đủ 12 Sub-Agents tinh gọn (PO, PM, SM, Tech Lead, BA, UI/UX, Dev FE, Dev BE, Reviewer, QA, AppSec, DevOps).
-- **Velocity tham chiếu**: 
-  - Sprint 1: 22 SP
-  - Sprint 2: 5 SP
-  - Sprint 3: 13 SP
-  - Sprint 4: 15 SP (+ 26 SP UI Kit mở rộng)
-  - $\rightarrow$ Velocity trung bình bền vững (không tính CR đột xuất): **16–20 SP / Sprint**.
-- **Mức cam kết Sprint 5**: **20 SP** (Vừa sức, tối ưu hóa năng lực chuyển đổi học tập).
+## 🧭 1. Bối Cảnh & Giả Định (Context & Scope Decision)
+
+- **Quyết định phạm vi (PO Decision - Phương án A)**: 
+  - Tập trung chuyên sâu vào **6 màn hình cốt lõi của Domain 04 & Domain 05** để mang lại trải nghiệm Khám phá, Tìm kiếm, Lọc đa tiêu chí và Chi tiết giáo trình đạt độ hoàn thiện 1:1 cao nhất.
+  - Cụm Domain 06 (*Self-Paced Learning & Lesson Player* gồm 3 màn hình `06_learning_01` $\rightarrow$ `06_learning_03`) được lên lịch cho Sprint tiếp theo (Sprint 6) để bảo vệ năng lực thực thi và tránh quá tải.
+- **Velocity tham chiếu**: $16–20$ SP trung bình $\rightarrow$ Cam kết **22 SP** vừa vặn và khả thi cho toàn đội ngũ 12 Sub-Agents.
 
 ---
 
-## ⚡ 2. Sức Chứa Sprint (Capacity Breakdown)
-- **Số ngày làm việc**: 10 ngày làm việc (2 tuần).
-- **Hạn mức phân bổ thời gian**:
-  - Phát triển tính năng chính (Must-have): **65%** (~13 SP)
-  - Kiểm thử, Visual QA, Tối ưu hóa 60 FPS: **20%** (~4 SP)
-  - Kaizen & Chuẩn bị Mock Seed Data (KZN-01): **15%** (~3 SP)
-- **Quy tắc bảo vệ Sprint Goal (KZN-02)**: Áp dụng cơ chế **CR Buffer Gate** — Không nhận thêm CR ngoài scope giữa chừng; mọi yêu cầu mới ghi nhận vào Backlog Sprint 5.5.
+## 📱 2. Danh Mục 6 Màn Hình Benchmark Đối Sánh 1:1
+
+Toàn bộ quá trình phát triển (FE, BE, Review, QA) bắt buộc phải đối chiếu trực tiếp với các tài sản thiết kế tại `assets/design_references/screens/`:
+
+| STT | Mã File Benchmark | Tên Màn Hình & Tiêu Đề | Thành Phần Trực Quan Bắt Buộc | User Story |
+| :---: | :--- | :--- | :--- | :---: |
+| 1 | [`04_courses_01_explore_and_categories.png`](file:///Users/nguyenduytrang/flutter_project/kiddora/assets/design_references/screens/04_courses_01_explore_and_categories.png) | Courses Hub (*"Explore, Learn and Grow!"*) | Header lời chào, `ClaySearchBar`, `ClayFilterBar` 5 chip môn học (*All, Science, Math, Language, Arts*), Lưới thẻ Popular Courses (Amazing Animals, Math Fun, Space Exploration, Creative Drawing). | **US-16** |
+| 2 | [`04_courses_02_search_courses.png`](file:///Users/nguyenduytrang/flutter_project/kiddora/assets/design_references/screens/04_courses_02_search_courses.png) | Search Results Screen (*"Search Results (12)"*) | Ô tìm kiếm có từ khóa `"Space"`, Danh sách kết quả dạng thẻ nổi xúc giác với thông tin số bài học, độ tuổi và nút mũi tên chi tiết. | **US-17** |
+| 3 | [`04_courses_03_filter_courses_sheet.png`](file:///Users/nguyenduytrang/flutter_project/kiddora/assets/design_references/screens/04_courses_03_filter_courses_sheet.png) | Filter Courses Bottom Sheet | Bộ lọc đa tiêu chí bằng chip đất sét: Ngành học (Program/Category), Độ tuổi (6–8, 9–10, 11–12), Cấp độ (Beginner, Intermediate, Advanced), Nút `[Clear All]` và `[Apply Filters]`. | **US-18** |
+| 4 | [`04_courses_04_all_courses_grid.png`](file:///Users/nguyenduytrang/flutter_project/kiddora/assets/design_references/screens/04_courses_04_all_courses_grid.png) | All Courses Grid View | Lưới 2 cột hiển thị toàn bộ khóa học kèm hình minh họa 3D, phân loại môn học, số bài giảng và nhãn lứa tuổi (Ages 7–10, 8–12). | **US-16** |
+| 5 | [`05_course_detail_01_overview_about.png`](file:///Users/nguyenduytrang/flutter_project/kiddora/assets/design_references/screens/05_course_detail_01_overview_about.png) | Course Overview (*"Amazing Animals"*) | Banner khóa học, Đánh giá 4.8 sao (320 reviews), Đoạn mô tả sinh động, 4 icon tính năng nổi (*Fun Videos, Interactive Quizzes, Activity Sheets, Earn Badges*), Nút CTA lớn `[Start Learning]`. | **US-19** |
+| 6 | [`05_course_detail_02_curriculum_lessons.png`](file:///Users/nguyenduytrang/flutter_project/kiddora/assets/design_references/screens/05_course_detail_02_curriculum_lessons.png) | Lessons Curriculum List | Bộ 3 tab (*Lessons, About, Reviews*), Danh sách từng bài học kèm thời lượng (*Meet the Animals 10 min, Animals & Habitats 15 min*), Thẻ nhắc nhở huy hiệu đặc biệt. | **US-19** |
 
 ---
 
 ## 🎯 3. Mục Tiêu Sprint (Sprint Goal)
 
-> *"Hiện thực hóa Phân hệ Khám phá Khóa học (Courses Hub & Smart Discovery) và Chi tiết Khóa học (Course Detail & Curriculum), tích hợp bộ lọc môn học ClayFilterBar, thẻ bài học xúc giác 3D, đồng bộ Mock & REST API danh mục khóa học chuẩn Freezed."*
+> *"Hiện thực hóa trọn gói 6 màn hình chuẩn 1:1 Design References Dribbble cho Phân hệ Khám phá Khóa học (Courses Hub, Search, Multi-criteria Filter) và Chi tiết Khóa học (Hero 3D, 3 Tabs, Giáo trình bài học), kết nối đồng bộ Mock Data Freezed và REST API FastAPI."*
 
 ---
 
-## 📋 4. Danh Sách Backlog Items Đưa Vào Sprint 5
+## 📋 4. Danh Sách User Stories & Phân Rã Công Việc (22 SP)
 
-| Mã US | Hạng Mục / User Story | MoSCoW | SP | Sub-Agent Phụ Trách | Tiêu Chuẩn Sẵn Sàng (DoR) & DoD |
-| :---: | :--- | :---: | :---: | :---: | :--- |
-| **US-15** | **[KZN-01] Khởi tạo Data Models Freezed & Seed Data** | Must-have | 3 | `tech-lead` / `backend-dev` | Entities `Course`, `Lesson`, `Subject` bằng `@freezed`, migration 0002 PostgreSQL, Mock Repository. |
-| **US-16** | **Màn hình Khám Phá Khóa Học (Courses Hub & Discovery)** | Must-have | 5 | `flutter-core-dev` | Màn hình lưới 2 cột, `ClaySearchBar`, `ClayFilterBar` 4 môn (Toán, STEM, Nghệ thuật, Ngôn ngữ), `StarCounterBadge`. |
-| **US-17** | **Màn hình Chi Tiết Khóa Học (Course Detail & Curriculum)** | Must-have | 5 | `flutter-core-dev` | Hero 3D Card, 3 Tabs (`Lessons`, `About`, `Reviews`), Danh sách bài học xúc giác, Nút Bắt đầu học `ClayButton`. |
-| **US-18** | **FastAPI REST Endpoints cho Courses Catalog & Pytest** | Should-have | 3 | `backend-dev` | `GET /api/v1/courses`, `GET /api/v1/courses/{id}`, lọc theo môn học và độ tuổi; Pytest suite 100% pass. |
-| **US-19** | **Ponytail Git Diff Review & Tối Giản Hóa Mã Nguồn** | Must-have | 1 | `code-reviewer` | 0 Magic numbers, 0 Emojis trong code, 100% `AppStrings`, files < 200 dòng, tái sử dụng UI Kit v2. |
-| **US-20** | **QA Test Suite E2E & Visual QA Test Matrix** | Must-have | 3 | `qa-tester` | Chống tràn trên $360\times640$ với `textScaler: 1.5x`, kiểm định 60 FPS mượt mà. |
+| Mã US | Hạng Mục / User Story | MoSCoW | SP | Sub-Agent Phụ Trách | Màn Hình Benchmark Đối Sánh | Tiêu Chuẩn Hoàn Thành (DoD) |
+| :---: | :--- | :---: | :---: | :---: | :--- | :--- |
+| **US-15** | **[KZN-01] Data Models Freezed & Seed Data** | Must-have | 3 | `tech-lead` / `backend-dev` | Hệ thống thực thể | Entities `Course`, `Lesson`, `Subject`, `CourseFilter` bằng `@freezed`; Seed data 12 khóa học mẫu; Mock Repository. |
+| **US-16** | **Courses Hub & Grid View** | Must-have | 4 | `flutter-core-dev` | `04_courses_01`, `04_courses_04` | `CoursesHubScreen`, lưới 2 cột, header *"Explore, Learn and Grow!"*, thanh tìm kiếm, dải chip môn học, tái sử dụng UI Kit v2. |
+| **US-17** | **Real-time Course Search Screen** | Must-have | 3 | `flutter-core-dev` | `04_courses_02` | `CourseSearchScreen`, tìm kiếm tức thời theo từ khóa, danh sách kết quả thẻ nổi xúc giác, hiển thị số bài học và lứa tuổi. |
+| **US-18** | **Multi-Criteria Filter Bottom Sheet** | Must-have | 3 | `flutter-core-dev` | `04_courses_03` | `CourseFilterSheet`, bộ lọc đất sét theo Môn, Tuổi (6–8, 9–10, 11–12), Cấp độ (Beginner/Intermediate/Advanced), nút Clear All & Apply. |
+| **US-19** | **Course Detail Screen & 3 Tabs Curriculum** | Must-have | 4 | `flutter-core-dev` | `05_course_detail_01`, `05_course_detail_02` | `CourseDetailScreen`, Hero 3D Card, Rating sao, 4 icon tính năng, 3 tabs (Lessons, About, Reviews), danh sách bài học có duration, nút CTA. |
+| **US-20** | **FastAPI REST Endpoints cho Courses & Pytest** | Should-have | 3 | `backend-dev` | Toàn bộ API Backend | `GET /courses`, `GET /courses/{id}`, `/subjects`, query filters (category, age, level), Pytest suite pass 100%. |
+| **US-21** | **Ponytail Git Diff Review (Zero Bloat)** | Must-have | 1 | `code-reviewer` | Toàn bộ mã nguồn | 0 Magic numbers, 0 Emojis trong code, 100% `AppStrings`, files < 200 dòng, tái sử dụng UI Kit v2. |
+| **US-22** | **QA Automated Test Suite & Visual QA Matrix** | Must-have | 1 | `qa-tester` | Cả 6 màn hình | Widget tests cho cả 6 màn hình, test matrix chống tràn $360\times640$ với `textScaler: 1.5x`, 60 FPS mượt mà. |
 
 ---
 
-## 🛡️ 5. Ma Trận Rủi Ro & Phụ Thuộc (Dependencies & Risks)
+## 🛡️ 5. Ma Trận Phụ Thuộc & Kế Hoạch Triển Khai (Execution Flow)
 
 ```mermaid
 flowchart TD
-    US15["US-15: Data Models Freezed & Seed Data (Tech Lead & BE)"] --> US16["US-16: Courses Hub Screen (FE)"]
-    US15 --> US17["US-17: Course Detail Screen (FE)"]
-    US15 --> US18["US-18: FastAPI Courses Endpoints (BE)"]
-    US16 --> US19["US-19: Ponytail Code Review"]
-    US17 --> US19
-    US19 --> US20["US-20: QA Verify & Visual QA"]
-    US20 --> GATE7["Gate 7: Release Sign-off (v0.5.0)"]
+    US15["US-15: Data Models Freezed & Seed Data (Gate 0)"]
+    US15 --> US16["US-16: Courses Hub & Grid (Gate 4A)"]
+    US15 --> US17["US-17: Search Screen (Gate 4A)"]
+    US15 --> US18["US-18: Filter Bottom Sheet (Gate 4A)"]
+    US15 --> US19["US-19: Course Detail & 3 Tabs (Gate 4A)"]
+    US15 --> US20["US-20: FastAPI Courses Endpoints (Gate 4B)"]
+    
+    US16 --> US21["US-21: Ponytail Code Review (Gate 5)"]
+    US17 --> US21
+    US18 --> US21
+    US19 --> US21
+    US20 --> US21
+    
+    US21 --> US22["US-22: QA Test Suite & Visual QA (Gate 6)"]
+    US22 --> GATE7["Gate 7: Supreme Release Sign-off (v0.5.0)"]
 ```
 
-- **Điểm phụ thuộc cốt lõi**: US-15 (Data Models Freezed) là đầu vào quyết định cho cả FE lẫn BE. Cần hoàn thành ngay trong 2 ngày đầu Sprint.
-- **Rủi ro hình ảnh khóa học**: Tránh tải ảnh quá nặng từ mạng gây giật khung hình; sử dụng cache ảnh `cached_network_image` kết hợp fallback placeholder xúc giác dạng 3D Clay.
-
 ---
 
-## 🗓️ 6. Kế Hoạch Theo Dõi & Nhịp Độ Sự Kiện Scrum
-
-1. **Daily Scrum**: 15 phút mỗi ngày lúc 09:00 sáng, tập trung vào 3 câu hỏi:
-   - Đã đóng task WBS nào?
-   - Hôm nay cam kết kéo task nào tiếp theo?
-   - Có vướng mắc (Impediment) nào cần SM tháo gỡ ngay không?
-2. **Mid-Sprint Checkpoint (Ngày 5)**: Rà soát tiến độ burndown: Nếu US-15 & US-16 hoàn thành đạt $\ge 50\%$ tiến độ, kích hoạt song song US-17 và US-18.
-3. **Sprint Review & Demo (Ngày 10)**: Demo trực tiếp luồng khám phá khóa học từ Home $\rightarrow$ Lọc môn Toán/STEM $\rightarrow$ Xem chi tiết bài giảng $\rightarrow$ Bấm xem nội dung bài học.
-4. **Sprint Retrospective (Ngày 10)**: Kiểm tra hiệu quả của 2 Kaizen Actions (KZN-01 và KZN-02).
-
----
-
-## 🏁 7. Tiêu Chuẩn Nghiệm Thu (Definition of Done - DoD)
-- [ ] 100% User Stories đáp ứng tiêu chí BDD Given-When-Then.
-- [ ] $0$ lỗi phân tích cú pháp (`flutter analyze` hoàn toàn sạch).
-- [ ] 100% unit tests và widget tests pass thực tế.
-- [ ] $0$ lỗi RenderFlex overflow trên màn hình $360\times640$ và `textScaler: 1.5x`.
-- [ ] Tuân thủ tuyệt đối quy tắc Ponytail Clean Code (Zero magic numbers, 100% `AppStrings`, 100% `AppColors`).
-- [ ] Tài liệu đồng bộ Zero-Drift: cập nhật PRD, Data Dictionary, WBS và chạy `graphify update .`.
+## 🏁 6. Tiêu Chuẩn Nghiệm Thu Áp Dụng (Definition of Done - DoD)
+- [ ] Tái hiện chính xác $100\%$ tỷ lệ, màu sắc, bóng đổ đất sét Tactile Claymorphism của cả 6 màn hình benchmark.
+- [ ] Toàn bộ $83$ tests cũ tiếp tục pass + bổ sung đầy đủ widget tests mới cho 6 màn hình.
+- [ ] $0$ lỗi `RenderFlex overflowed` trên màn hình nhỏ $360\times640$ khi bật cỡ chữ lớn `textScaler: 1.5x`.
+- [ ] Tuân thủ triệt để Ponytail Clean Code: $100\%$ chuỗi văn bản khai báo tại `AppStrings`, $100\%$ màu tại `AppColors`, $0$ Magic Numbers.
+- [ ] Áp dụng quy tắc **CR Buffer Gate (KZN-02)**: Không nhận CR phát sinh ngoài scope giữa chừng; mọi đề xuất mới chuyển vào Sprint 5.5.

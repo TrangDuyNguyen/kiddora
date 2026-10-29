@@ -1,24 +1,26 @@
 # Sprint Backlog — Kiddora Mobile App
 
-* **Sprint Hiện Tại**: Sprint 5 (Tuần 7 & 8) — *Khởi Động & Lập Kế Hoạch Thực Thi*
+* **Sprint Hiện Tại**: Sprint 5 (Tuần 7 & 8) — *Khởi Động & Lập Kế Hoạch Thực Thi (Phương Án A)*
 * **Project Manager (PM)**: Sub-Agent Project Manager (PM) — *"The Clockwork Disciplinarian"*
 * **Scrum Master (SM)**: Sub-Agent Scrum Master (SM) — *"The Servant Leader & Agile Coach"*
-* **Sprint Goal**: *"Hiện thực hóa Phân hệ Khám phá Khóa học (Courses Hub & Smart Discovery) và Chi tiết Khóa học (Course Detail & Curriculum), tích hợp bộ lọc môn học ClayFilterBar, thẻ bài học xúc giác 3D, đồng bộ Mock & REST API danh mục khóa học chuẩn Freezed."*
-* **Tổng Story Points cam kết**: **20 SP**
+* **Sprint Goal**: *"Hiện thực hóa trọn gói 6 màn hình chuẩn 1:1 Design References Dribbble cho Phân hệ Khám phá Khóa học (Courses Hub, Search, Multi-criteria Filter) và Chi tiết Khóa học (Hero 3D, 3 Tabs, Giáo trình bài học), kết nối đồng bộ Mock Data Freezed và REST API FastAPI."*
+* **Tổng Story Points cam kết**: **22 SP**
 * **Trạng thái Sprint**: `PLANNING_AND_READY`
 
 ---
 
-## 📊 Bảng Theo Dõi Kanban Thời Gian Thực (Sprint 5)
+## 📊 Bảng Theo Dõi Kanban Thời Gian Thực (Sprint 5 — Phương Án A)
 
 | Mã US | Hạng Mục / User Story | MoSCoW | SP | Gate Hiện Tại | Sub-Agent Phụ Trách | Trạng Thái |
 | :---: | :--- | :---: | :---: | :---: | :---: | :---: |
-| **US-15** | [KZN-01] Xây dựng Data Model Course/Lesson Freezed & Mock/Alembic Seed Data | Must-have | 3 | Gate 0 Tech Lead | `tech-lead` / `backend-dev` | `[ ] READY` |
-| **US-16** | Màn hình Khám Phá Khóa Học (Courses Hub, Search Bar, Subject Filter Bar) | Must-have | 5 | Gate 4A Flutter Dev | `flutter-core-dev` | `[ ] READY` |
-| **US-17** | Màn hình Chi Tiết Khóa Học (Course Detail, 3 Tabs: Lessons, About, Reviews) | Must-have | 5 | Gate 4A Flutter Dev | `flutter-core-dev` | `[ ] READY` |
-| **US-18** | FastAPI REST Endpoints (`/courses`, `/courses/{id}`, `/subjects`) & Pytest | Should-have | 3 | Gate 4B Backend Dev | `backend-dev` | `[ ] READY` |
-| **US-19** | Ponytail Git Diff Review (Zero bloat, chuẩn hóa widget UI Kit) | Must-have | 1 | Gate 5 Reviewer | `code-reviewer` | `[ ] READY` |
-| **US-20** | QA Test Suite E2E & Visual QA (0 Overflow 360×640, text scale 1.5x) | Must-have | 3 | Gate 6 QA Verify | `qa-tester` | `[ ] READY` |
+| **US-15** | [KZN-01] Data Models Freezed `Course`, `Lesson`, `Subject` & Mock Seed Data | Must-have | 3 | Gate 0 Tech Lead | `tech-lead` / `backend-dev` | `[ ] READY` |
+| **US-16** | Courses Hub & Grid View (`04_courses_01`, `04_courses_04`) | Must-have | 4 | Gate 4A Flutter Dev | `flutter-core-dev` | `[ ] READY` |
+| **US-17** | Real-time Course Search Screen (`04_courses_02`) | Must-have | 3 | Gate 4A Flutter Dev | `flutter-core-dev` | `[ ] READY` |
+| **US-18** | Multi-Criteria Filter Bottom Sheet (`04_courses_03`) | Must-have | 3 | Gate 4A Flutter Dev | `flutter-core-dev` | `[ ] READY` |
+| **US-19** | Course Detail Screen & 3 Tabs Curriculum (`05_course_detail_01`, `05_course_detail_02`) | Must-have | 4 | Gate 4A Flutter Dev | `flutter-core-dev` | `[ ] READY` |
+| **US-20** | FastAPI REST Endpoints cho Courses & Pytest Suite | Should-have | 3 | Gate 4B Backend Dev | `backend-dev` | `[ ] READY` |
+| **US-21** | Ponytail Git Diff Review (Zero Bloat, 100% AppStrings/AppColors) | Must-have | 1 | Gate 5 Reviewer | `code-reviewer` | `[ ] READY` |
+| **US-22** | QA Automated Test Suite & Visual QA Matrix 6 màn hình (0 Overflow 360×640) | Must-have | 1 | Gate 6 QA Verify | `qa-tester` | `[ ] READY` |
 
 ---
 

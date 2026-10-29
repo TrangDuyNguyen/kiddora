@@ -57,3 +57,4 @@ Theo nguyên tắc của Scrum Master: **"Chỉ chọn 1–2 hành động cụ 
 Sprint 4 là một bước tiến vượt bậc của Kiddora về mặt kỹ thuật và tính toàn vẹn của sản phẩm. Toàn đội ngũ đã chuyển mình thành công từ giai đoạn chỉ có giao diện tĩnh sang một hệ thống Fullstack thực thụ có cơ sở dữ liệu và REST API hoàn chỉnh. Tinh thần cộng tác giữa các Sub-Agents diễn ra nhịp nhàng, trung thực và minh bạch.
 
 **Sprint 4 chính thức khép lại thành công rực rỡ! Toàn đội bước vào Sprint 5 với khí thế cao nhất!**
+

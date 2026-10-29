@@ -22,3 +22,4 @@ Phán quyết phát hành:
 Sprint 4 đạt 100% mục tiêu cam kết kỹ thuật (15 SP) và mở rộng vượt bậc với Shared UI Kit v2 (26 SP) cùng kiến trúc Hybrid Dev Host Server (CR-008). Toàn bộ 83 automated tests Flutter và 13 Pytest backend đều chạy pass thực tế, 0 lỗi render overflow, 0 cảnh báo lint.
 Sản phẩm chính thức được phê chuẩn phát hành phiên bản v0.4.0-auth-onboarding-e2e!
 ================================================================================
+
