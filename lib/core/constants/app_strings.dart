@@ -287,5 +287,64 @@ class AppStrings {
       'Có vẻ thiết bị đang ngoại tuyến hoặc mạng chập chờn. Vui lòng kiểm tra kết nối Internet và thử lại nhé.';
   static const String modalRetry = 'Thử lại';
   static const String modalGoOffline = 'Học chế độ ngoại tuyến';
+
+  // Courses Hub & Smart Discovery (Domain 04)
+  static const String coursesHubTitle = 'Khám phá & Học hỏi';
+  static const String coursesHubExploreHero = 'Explore, Learn and Grow!';
+  static const String coursesSearchHint = 'Tìm khóa học, chủ đề...';
+  static const String filterTooltip = 'Lọc khóa học';
+  static const String popularCourses = 'Khóa học nổi bật';
+  static const String allCourses = 'Tất cả khóa học';
+  static const String lessonsCountSuffix = 'bài học';
+  static const String agesPrefix = 'Độ tuổi';
+
+  // Subject Category Chips
+  static const String subjectAll = 'Tất cả';
+  static const String subjectScience = 'Khoa học STEM';
+  static const String subjectMath = 'Toán tư duy';
+  static const String subjectLanguage = 'Ngôn ngữ';
+  static const String subjectArts = 'Nghệ thuật & Sáng tạo';
+  static const String subjectCoding = 'Lập trình';
+
+  // Course Search Screen (04_courses_02)
+  static const String searchResultsTitle = 'Kết quả tìm kiếm';
+  static const String noCoursesFoundTitle = 'Không tìm thấy khóa học nào!';
+  static const String noCoursesFoundSubtitle =
+      'Thử tìm kiếm với từ khóa khác như Toán, Khoa học nhé!';
+  static const String clearSearch = 'Xóa tìm kiếm';
+
+  // Course Filter Bottom Sheet (04_courses_03)
+  static const String filterCoursesTitle = 'Bộ lọc khóa học';
+  static const String filterSectionProgram = 'Chương trình / Môn học';
+  static const String filterSectionAgeGroup = 'Nhóm tuổi';
+  static const String filterSectionLevel = 'Cấp độ';
+  static const String filterAge6to8 = '6 - 8 tuổi';
+  static const String filterAge9to10 = '9 - 10 tuổi';
+  static const String filterAge11to12 = '11 - 12 tuổi';
+  static const String levelBeginner = 'Cơ bản';
+  static const String levelIntermediate = 'Trung bình';
+  static const String levelAdvanced = 'Nâng cao';
+  static const String filterClearAll = 'Xóa bộ lọc';
+  static const String filterApply = 'Áp dụng bộ lọc';
+
+  // Course Detail & Curriculum (Domain 05)
+  static const String courseDetailTitle = 'Chi tiết khóa học';
+  static const String bookmarkCourse = 'Lưu yêu thích';
+  static const String startLearning = 'Bắt đầu học ngay';
+  static const String tabLessons = 'Bài học';
+  static const String tabAbout = 'Giới thiệu';
+  static const String tabReviews = 'Đánh giá';
+  static const String reviewsCountSuffix = 'đánh giá';
+  static const String featureFunVideos = 'Fun Videos';
+  static const String featureInteractiveQuizzes = 'Interactive Quizzes';
+  static const String featureActivitySheets = 'Activity Sheets';
+  static const String featureEarnBadges = 'Earn Badges';
+  static const String whatYouWillLearn = 'Con sẽ học được gì?';
+  static const String aboutCourseHeader = 'Mục tiêu khóa học';
+  static const String coachHeader = 'Giáo viên hướng dẫn';
+  static const String verifiedEducator = 'Chuyên gia giáo dục';
+  static const String bonusBadgePrefix = 'Hoàn thành khóa học để nhận';
+  static const String lessonLockedAlert =
+      'Con hãy hoàn thành các bài học trước để mở khóa bài này nhé!';
 }
 
