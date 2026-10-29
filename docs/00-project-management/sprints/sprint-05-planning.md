@@ -8,7 +8,7 @@
 - **Tech Lead**: Sub-Agent Tech Lead & System Architect
 - **Thời gian Sprint**: Tuần 7 & 8 (2 tuần)
 - **Phiên bản đích**: `v0.5.0-courses-hub`
-- **Tổng Story Points cam kết**: **22 SP**
+- **Tổng Story Points cam kết**: **23 SP**
 - **Trạng thái**: `PLANNING_AND_READY` (Đã phê duyệt Phương án A)
 
 ---
@@ -18,7 +18,7 @@
 - **Quyết định phạm vi (PO Decision - Phương án A)**: 
   - Tập trung chuyên sâu vào **6 màn hình cốt lõi của Domain 04 & Domain 05** để mang lại trải nghiệm Khám phá, Tìm kiếm, Lọc đa tiêu chí và Chi tiết giáo trình đạt độ hoàn thiện 1:1 cao nhất.
   - Cụm Domain 06 (*Self-Paced Learning & Lesson Player* gồm 3 màn hình `06_learning_01` $\rightarrow$ `06_learning_03`) được lên lịch cho Sprint tiếp theo (Sprint 6) để bảo vệ năng lực thực thi và tránh quá tải.
-- **Velocity tham chiếu**: $16–20$ SP trung bình $\rightarrow$ Cam kết **22 SP** vừa vặn và khả thi cho toàn đội ngũ 12 Sub-Agents.
+- **Velocity tham chiếu**: $16–20$ SP trung bình $\rightarrow$ Cam kết **23 SP** vừa vặn và khả thi cho toàn đội ngũ 12 Sub-Agents.
 
 ---
 
@@ -43,12 +43,12 @@ Toàn bộ quá trình phát triển (FE, BE, Review, QA) bắt buộc phải đ
 
 ---
 
-## 📋 4. Danh Sách User Stories & Phân Rã Công Việc (22 SP)
+## 📋 4. Danh Sách User Stories & Phân Rã Công Việc (23 SP)
 
 | Mã US | Hạng Mục / User Story | MoSCoW | SP | Sub-Agent Phụ Trách | Màn Hình Benchmark Đối Sánh | Tiêu Chuẩn Hoàn Thành (DoD) |
 | :---: | :--- | :---: | :---: | :---: | :--- | :--- |
 | **US-15** | **[KZN-01] Data Models Freezed & Seed Data** | Must-have | 3 | `tech-lead` / `backend-dev` | Hệ thống thực thể | Entities `Course`, `Lesson`, `Subject`, `CourseFilter` bằng `@freezed`; Seed data 12 khóa học mẫu; Mock Repository. |
-| **US-16** | **Courses Hub & Grid View** | Must-have | 4 | `flutter-core-dev` | `04_courses_01`, `04_courses_04` | `CoursesHubScreen`, lưới 2 cột, header *"Explore, Learn and Grow!"*, thanh tìm kiếm, dải chip môn học, tái sử dụng UI Kit v2. |
+| **US-16** | **Courses Hub & Grid View** (+ tách `HomeScreen`) | Must-have | 5 | `flutter-core-dev` | `04_courses_01`, `04_courses_04` | `CoursesHubScreen`, lưới 2 cột, header *"Explore, Learn and Grow!"*, thanh tìm kiếm, dải chip môn học, tái sử dụng UI Kit v2. |
 | **US-17** | **Real-time Course Search Screen** | Must-have | 3 | `flutter-core-dev` | `04_courses_02` | `CourseSearchScreen`, tìm kiếm tức thời theo từ khóa, danh sách kết quả thẻ nổi xúc giác, hiển thị số bài học và lứa tuổi. |
 | **US-18** | **Multi-Criteria Filter Bottom Sheet** | Must-have | 3 | `flutter-core-dev` | `04_courses_03` | `CourseFilterSheet`, bộ lọc đất sét theo Môn, Tuổi (6–8, 9–10, 11–12), Cấp độ (Beginner/Intermediate/Advanced), nút Clear All & Apply. |
 | **US-19** | **Course Detail Screen & 3 Tabs Curriculum** | Must-have | 4 | `flutter-core-dev` | `05_course_detail_01`, `05_course_detail_02` | `CourseDetailScreen`, Hero 3D Card, Rating sao, 4 icon tính năng, 3 tabs (Lessons, About, Reviews), danh sách bài học có duration, nút CTA. |

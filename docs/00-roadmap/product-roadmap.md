@@ -317,7 +317,7 @@ Sprint 10 🟣  v1.0.0  Analytics + Parent Hub + 🚀  [Apr 2027]
 - Social feed / chia sẻ bài học lên mạng xã hội
 - Marketplace giáo viên tự đăng khóa học
 - Offline video download (Phase 2)
-- Multi-language UI (chỉ Tiếng Anh v1.0.0)
+- ~~Multi-language UI (chỉ Tiếng Anh v1.0.0)~~ — **HỦY khỏi Won't-Have ngày 29/10/2026**: PO chốt song ngữ Việt–Anh từ Sprint 5 (CR-015, ADR-005)
 - Web app version
 
 ---

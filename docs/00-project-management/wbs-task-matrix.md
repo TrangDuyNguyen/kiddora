@@ -88,18 +88,19 @@
 
 ---
 
-### 🚀 2. Kế Hoạch Sprint 5: Courses Hub, Discovery & Curriculum Details (22 SP — Phương Án A)
+### 🚀 2. Kế Hoạch Sprint 5: Courses Hub, Discovery & Curriculum Details (23 SP — Phương Án A, đã họp lại 29/10)
 *Theo phê duyệt tại [EPIC-06](file:///Users/nguyenduytrang/flutter_project/kiddora/docs/00-roadmap/epics-backlog.md) & [EPIC-07](file:///Users/nguyenduytrang/flutter_project/kiddora/docs/00-roadmap/epics-backlog.md)*
 *Đối sánh trực tiếp 6 màn hình benchmark:* `04_courses_01` $\rightarrow$ `04_courses_04` và `05_course_detail_01` $\rightarrow$ `05_course_detail_02`
 
 * **Sprint Goal**: *"Hiện thực hóa trọn gói 6 màn hình chuẩn 1:1 Design References Dribbble cho Phân hệ Khám phá Khóa học (Courses Hub, Search, Multi-criteria Filter) và Chi tiết Khóa học (Hero 3D, 3 Tabs, Giáo trình bài học), kết nối đồng bộ Mock Data Freezed và REST API FastAPI."*
-* **Tổng Story Points**: **22 SP**
+* **Tổng Story Points**: **23 SP**
 * **Trạng thái**: `PLANNING_AND_READY`
 
 | Task ID | Hạng Mục Công Việc | Cổng | Sub-Agent Phụ Trách | SP | Tiêu Chuẩn Hoàn Thành (DoD) & Màn Hình Benchmark | Trạng Thái |
 | :---: | :--- | :---: | :---: | :---: | :--- | :---: |
+| **WBS-S5-00** | [ADR-005] Spike kiến trúc song ngữ Việt–Anh, timebox 1 ngày; chặn mọi task UI | Gate 0 | `tech-lead` | TBD | ADR-005 + phương án migrate chuỗi cũ + ước lượng SP | `[ ] READY` |
 | **WBS-S5-01** | [KZN-01] Xây dựng Data Models Freezed `Course`, `Lesson`, `Subject` & Mock Seed Data | Gate 0 | `tech-lead` / `backend-dev` | 3 | Entities chuẩn Freezed, Alembic migration 0002 cho courses/lessons, Mock Repository | `[ ] READY` |
-| **WBS-S5-02** | Courses Hub & Grid View (`04_courses_01`, `04_courses_04`) | Gate 4A | `flutter-core-dev` | 4 | `CoursesHubScreen`, lưới 2 cột, header *"Explore, Learn and Grow!"*, thanh tìm kiếm, dải chip môn học, tái sử dụng UI Kit v2 | `[ ] READY` |
+| **WBS-S5-02** | Courses Hub & Grid View (`04_courses_01`, `04_courses_04`) + tách `HomeScreen` | Gate 4A | `flutter-core-dev` | 5 | `CoursesHubScreen`, lưới 2 cột, header *"Explore, Learn and Grow!"*, thanh tìm kiếm, dải chip môn học, tái sử dụng UI Kit v2 | `[ ] READY` |
 | **WBS-S5-03** | Real-time Course Search Screen (`04_courses_02`) | Gate 4A | `flutter-core-dev` | 3 | `CourseSearchScreen`, tìm kiếm tức thời theo từ khóa, danh sách kết quả thẻ nổi xúc giác, hiển thị số bài học và lứa tuổi | `[ ] READY` |
 | **WBS-S5-04** | Multi-Criteria Filter Bottom Sheet (`04_courses_03`) | Gate 4A | `flutter-core-dev` | 3 | `CourseFilterSheet`, bộ lọc đất sét theo Môn, Tuổi (6–8, 9–10, 11–12), Cấp độ (Beginner/Intermediate/Advanced), nút Clear All & Apply | `[ ] READY` |
 | **WBS-S5-05** | Course Detail Screen & 3 Tabs Curriculum (`05_course_detail_01`, `05_course_detail_02`) | Gate 4A | `flutter-core-dev` | 4 | `CourseDetailScreen`, Hero 3D Card, Rating sao, 4 icon tính năng, 3 tabs (Lessons, About, Reviews), danh sách bài học có duration, nút CTA | `[ ] READY` |
