@@ -32,7 +32,7 @@ void main() {
   }
 
   group('HomeScreen (Screen 2 1:1 Benchmark) Tests', () {
-    testWidgets('renders greeting, hero banner, quick stats, and bottom nav',
+    testWidgets('renders greeting, hero banner, quick stats, and 5-tab nav',
         (tester) async {
       await tester.pumpWidget(buildTestableWidget());
       await tester.pumpAndSettle();
@@ -61,18 +61,43 @@ void main() {
       expect(find.text(AppStrings.navCourses), findsOneWidget);
       expect(find.text(AppStrings.navSessions), findsOneWidget);
       expect(find.text(AppStrings.navTests), findsOneWidget);
-      expect(find.text(AppStrings.navMore), findsOneWidget);
+      expect(find.text(AppStrings.navProfile), findsOneWidget);
     });
 
-    testWidgets('bottom navigation switches tab index cleanly', (tester) async {
+    testWidgets('bottom navigation switches tab index and opens Empty Sessions modal',
+        (tester) async {
       await tester.pumpWidget(buildTestableWidget());
       await tester.pumpAndSettle();
 
-      final coursesTab = find.text(AppStrings.navCourses);
-      await tester.tap(coursesTab);
+      await tester.tap(find.text(AppStrings.navSessions));
       await tester.pumpAndSettle();
 
-      expect(find.text(AppStrings.navCourses), findsOneWidget);
+      expect(find.text(AppStrings.modalNoSessionsTitle), findsOneWidget);
+      expect(find.text(AppStrings.modalExploreCourses), findsOneWidget);
+      expect(find.text(AppStrings.modalMaybeLater), findsOneWidget);
+
+      await tester.tap(find.text(AppStrings.modalExploreCourses));
+      await tester.pumpAndSettle();
+
+      expect(find.text(AppStrings.modalNoSessionsTitle), findsNothing);
+    });
+
+    testWidgets('logout icon opens Logout confirmation modal and cancels cleanly',
+        (tester) async {
+      await tester.pumpWidget(buildTestableWidget());
+      await tester.pumpAndSettle();
+
+      await tester.tap(find.byIcon(Icons.logout_rounded));
+      await tester.pumpAndSettle();
+
+      expect(find.text(AppStrings.modalLogoutTitle), findsOneWidget);
+      expect(find.text(AppStrings.modalLogoutConfirm), findsOneWidget);
+      expect(find.text(AppStrings.modalCancel), findsOneWidget);
+
+      await tester.tap(find.text(AppStrings.modalCancel));
+      await tester.pumpAndSettle();
+
+      expect(find.text(AppStrings.modalLogoutTitle), findsNothing);
     });
   });
 }

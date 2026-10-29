@@ -19,6 +19,6 @@
 ## 📱 2. Danh Sách 5 Trạng Thái Màn Hình
 1. **Default**: Toàn bộ dữ liệu hiển thị phong phú, cuộn êm mượt 60 FPS.
 2. **Loading / Shimmer**: Hiển thị khung xương xám nhạt bóng mờ trong lúc tải dữ liệu.
-3. **Empty Learning**: Nếu bé chưa đăng ký khóa học nào, hiển thị nút [Explore Courses] lớn nổi bật.
-4. **No Upcoming Live**: Thẻ Live thông báo lịch học tiếp theo vào ngày mai.
-5. **Offline**: Hiển thị biểu tượng đám mây nhỏ báo hiệu các bài học đã tải về máy có thể học tiếp ngoại tuyến.
+3. **Empty Learning / Empty Sessions**: Khi chưa có buổi học sắp diễn ra, hiển thị `ClayDialog` Level 3 (*"Chưa có buổi học!"*, `modal_empty_sessions.png`) với CTA chính *"Khám phá khóa học"* và CTA phụ *"Để sau nhé"*.
+4. **Error / Disconnected**: Hỗ trợ hiển thị `ClayDialog.showNetworkError` (*"Mất kết nối rồi!"*, `modal_error_offline.png`) kèm nút *"Thử lại"* có icon xoay và nút phụ *"Học chế độ ngoại tuyến"*.
+5. **Offline**: Hiển thị biểu tượng đám mây 3D báo hiệu các bài học đã tải về máy có thể học tiếp ngoại tuyến.

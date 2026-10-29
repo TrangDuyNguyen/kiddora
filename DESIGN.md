@@ -307,6 +307,19 @@ Density Specifications:
 - **Anatomy**: Shield icon, mathematical challenge prompt (e.g., *"Người lớn ơi: 7 × 8 = ?"* or 4-digit PIN), 4 clay numbered circular dials (`64×64dp`), and cancel button.
 - **Accessibility**: Numeric keypad auto-focused for screen readers, full keyboard numpad support (`0-9`, `Backspace`, `Enter`).
 
+### 3.5 Level 3 Tactile Clay Modal (`ClayDialog`) & Secondary Pill (`ClayButton.secondary`)
+- **Anatomy (`ClayDialog`)**:
+  - **Scrim Backdrop**: Flat `AppColors.modalScrim` (`#850D0C22`) without offscreen blur to guarantee `60 FPS`.
+  - **Surface**: Rounded `28dp` (`AppValues.radiusModal`), `maxWidth: 348dp`, Level 3 dual-axis illumination (`ClayInsetPainter` `5dp` offset / `8dp` blur + `clayModalShadow`), wrapped in `RepaintBoundary`.
+  - **Close Trigger**: Visual `38dp` white clay sphere (`ClayIconButton`) nested inside a `48×48dp` `HitTestBehavior.opaque` accessible hit box at top-right.
+  - **Hero 3D Zone**: `128×128dp` 3D matte polymer clay illustration (`AppAssets.modalLogoutDoor`, `modalEmptySessions`, `modalErrorOffline`) decoded with `cacheWidth: 384`.
+  - **Stacked Dual CTAs**: Primary `ClayButton` (supports leading icon e.g. `Icons.refresh_rounded`) + Secondary `ClayButton.secondary` (`#F7F5FF` → `#EEEAFE` gradient, `1.5dp` `#D8D0FA` border, `#4648D4` text achieving `6.97:1` WCAG AA contrast).
+- **Shared Background Primitives**:
+  - `ClayScreenHeader`: Circular `Back` (`44dp` visual / `48dp` touch) + optional `trailing` action + Quicksand ExtraBold title & subtitle.
+  - `ClayFilterBar`: Horizontally scrollable pill tabs (`40dp` visual / `48dp` touch) with active 3D Indigo fill and inactive Porcelain White pill.
+  - `ClayListTile` & `ClayButton.compact`: Composable tactile row (`>= 48dp` height) and compact `38dp` pill (`48dp` hit target) for Profile menus, Sessions, and Tests.
+  - `ClayBottomNav`: 5-tab bar (`Home`, `Courses`, `Sessions`, `Tests`, `Profile`) in `lib/shared/ui_kit/navigation/clay_bottom_nav.dart`.
+
 ---
 
 ## 4. Accessibility Requirements (WCAG 2.2 AA)

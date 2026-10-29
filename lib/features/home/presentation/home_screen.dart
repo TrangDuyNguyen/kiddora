@@ -5,9 +5,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../core/constants/app_strings.dart';
 import '../../../core/constants/app_values.dart';
+import '../../../core/network/token_storage.dart';
 import '../../../core/router/app_router.gr.dart';
+import '../../../shared/ui_kit/ui_kit.dart';
 import '../../onboarding/presentation/controllers/onboarding_controller.dart';
-import 'widgets/clay_bottom_nav.dart';
 import 'widgets/guest_claim_banner.dart';
 import 'widgets/home_continue_learning_card.dart';
 import 'widgets/home_header.dart';
@@ -25,6 +26,38 @@ class HomeScreen extends ConsumerStatefulWidget {
 
 class _HomeScreenState extends ConsumerState<HomeScreen> {
   int _currentNavIndex = 0;
+
+  void _showSnack(String msg) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text(msg), duration: AppValues.durationSnackBar),
+    );
+  }
+
+  Future<void> _handleLogoutTap() async {
+    HapticFeedback.mediumImpact();
+    final confirmed = await ClayDialog.showLogout(context);
+    if (confirmed != true || !mounted) return;
+    final tokenStorage = ref.read(tokenStorageProvider);
+    await tokenStorage.clearTokens();
+    await tokenStorage.setGuestMode(false);
+    if (mounted) {
+      context.router.replace(const LoginRoute());
+    }
+  }
+
+  Future<void> _handleTabChanged(int index) async {
+    setState(() => _currentNavIndex = index);
+    if (index == ClayNavTab.sessions.index) {
+      final explore = await ClayDialog.showEmptySessions(context);
+      if (explore == true && mounted) {
+        setState(() => _currentNavIndex = ClayNavTab.courses.index);
+      }
+      return;
+    }
+    if (index == ClayNavTab.tests.index) {
+      context.router.push(const TodayLearningGoalRoute());
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -44,21 +77,11 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
             children: [
               const SizedBox(height: AppValues.space4),
 
-              // Header: Keil's Avatar, Greeting, Notification Badge & Logout
+              // Header: Kid's Avatar, Greeting, Notification Badge & Logout Modal Trigger
               HomeHeader(
                 kidName: nickname,
-                onNotificationTap: () {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(
-                      content: Text(AppStrings.notificationsAlert),
-                      duration: Duration(seconds: 2),
-                    ),
-                  );
-                },
-                onLogoutTap: () {
-                  HapticFeedback.mediumImpact();
-                  context.router.replace(const LoginRoute());
-                },
+                onNotificationTap: () => _showSnack(AppStrings.notificationsAlert),
+                onLogoutTap: _handleLogoutTap,
               ),
               const SizedBox(height: AppValues.space6),
 
@@ -66,7 +89,6 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               const GuestClaimBanner(),
 
               // Hero Banner "Keep Learning Keep Growing!"
-
               HomeHeroBanner(
                 onActionTap: () {
                   context.router.push(const TodayLearningGoalRoute());
@@ -92,14 +114,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
 
               // Upcoming Session Section (Math Fun with Numbers - Coach Sarah)
               HomeUpcomingSessionCard(
-                onJoinTap: () {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(
-                      content: Text(AppStrings.joiningSessionAlert),
-                      duration: Duration(seconds: 2),
-                    ),
-                  );
-                },
+                onJoinTap: () => _showSnack(AppStrings.joiningSessionAlert),
               ),
               const SizedBox(height: AppValues.space9),
             ],
@@ -108,12 +123,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       ),
       bottomNavigationBar: ClayBottomNav(
         selectedIndex: _currentNavIndex,
-        onIndexChanged: (index) {
-          setState(() => _currentNavIndex = index);
-          if (index == 2 || index == 3) {
-            context.router.push(const TodayLearningGoalRoute());
-          }
-        },
+        onIndexChanged: _handleTabChanged,
       ),
     );
   }

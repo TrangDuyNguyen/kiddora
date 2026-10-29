@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../../../../core/constants/app_assets.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/app_strings.dart';
 import '../../../../core/constants/app_values.dart';
+import '../../../../shared/ui_kit/ui_kit.dart';
 
 class HomeUpcomingSessionCard extends StatelessWidget {
   final VoidCallback onJoinTap;
@@ -13,11 +15,54 @@ class HomeUpcomingSessionCard extends StatelessWidget {
     required this.onJoinTap,
   });
 
+  Widget _buildSessionDetails() => Expanded(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              AppStrings.mathFunWithNumbers,
+              style: GoogleFonts.quicksand(
+                fontSize: AppValues.fontLabelMd,
+                fontWeight: FontWeight.w700,
+                color: AppColors.textDarkIndigo,
+              ),
+            ),
+            const SizedBox(height: AppValues.borderWidthThin),
+            Text(
+              AppStrings.coachSarah,
+              style: GoogleFonts.quicksand(
+                fontSize: AppValues.fontCaptionSm,
+                fontWeight: FontWeight.w600,
+                color: AppColors.textSlate,
+              ),
+            ),
+            const SizedBox(height: AppValues.borderWidthThick),
+            Row(
+              children: [
+                const Icon(
+                  Icons.calendar_today_rounded,
+                  size: AppValues.iconSizeXs,
+                  color: AppColors.textMuted,
+                ),
+                const SizedBox(width: AppValues.radiusXs),
+                Text(
+                  AppStrings.sessionTodayTime,
+                  style: GoogleFonts.quicksand(
+                    fontSize: AppValues.fontCaptionXs,
+                    fontWeight: FontWeight.w600,
+                    color: AppColors.textSlate,
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+      );
+
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        // Section Header
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -30,9 +75,7 @@ class HomeUpcomingSessionCard extends StatelessWidget {
               ),
             ),
             GestureDetector(
-              onTap: () {
-                HapticFeedback.lightImpact();
-              },
+              onTap: HapticFeedback.lightImpact,
               child: Text(
                 AppStrings.seeAll,
                 style: GoogleFonts.quicksand(
@@ -45,114 +88,35 @@ class HomeUpcomingSessionCard extends StatelessWidget {
           ],
         ),
         const SizedBox(height: AppValues.space4),
-
-        // Session Card
         Container(
-          padding: const EdgeInsets.symmetric(
-            horizontal: AppValues.space4,
-            vertical: AppValues.space4,
-          ),
+          padding: const EdgeInsets.all(AppValues.space4),
           decoration: BoxDecoration(
-            color: Colors.white,
+            color: AppColors.surfaceContainer,
             borderRadius: BorderRadius.circular(AppValues.radiusXl),
-            boxShadow: [
+            boxShadow: const [
               BoxShadow(
                 color: AppColors.shadowIndigoSubtle,
-                offset: const Offset(0, 4),
+                offset: Offset(0, AppValues.radiusXs),
                 blurRadius: AppValues.radiusTaskTile,
               ),
             ],
           ),
           child: Row(
             children: [
-              // Coach Avatar
               ClipOval(
                 child: Image.asset(
-                  'assets/images/avatar_coach_sarah.png',
+                  AppAssets.avatarCoachSarah,
                   width: AppValues.sizeAvatarMd,
                   height: AppValues.sizeAvatarMd,
                   fit: BoxFit.cover,
                 ),
               ),
               const SizedBox(width: AppValues.radiusTaskTile),
-
-              // Title, Coach Name & Time
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      AppStrings.mathFunWithNumbers,
-                      style: GoogleFonts.quicksand(
-                        fontSize: AppValues.fontLabelMd,
-                        fontWeight: FontWeight.w700,
-                        color: AppColors.textDarkIndigo,
-                      ),
-                    ),
-                    const SizedBox(height: AppValues.borderWidthThin),
-                    Text(
-                      AppStrings.coachSarah,
-                      style: GoogleFonts.quicksand(
-                        fontSize: AppValues.fontCaptionSm,
-                        fontWeight: FontWeight.w600,
-                        color: AppColors.textSlate,
-                      ),
-                    ),
-                    const SizedBox(height: AppValues.borderWidthThick),
-                    Row(
-                      children: [
-                        const Icon(
-                          Icons.calendar_today_rounded,
-                          size: AppValues.iconSizeXs,
-                          color: AppColors.textMuted,
-                        ),
-                        const SizedBox(width: AppValues.radiusXs),
-                        Text(
-                          AppStrings.sessionTodayTime,
-                          style: GoogleFonts.quicksand(
-                            fontSize: AppValues.fontCaptionXs,
-                            fontWeight: FontWeight.w600,
-                            color: AppColors.textSlate,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
+              _buildSessionDetails(),
               const SizedBox(width: AppValues.space4),
-
-              // Join Pill Button
-              GestureDetector(
-                onTap: () {
-                  HapticFeedback.lightImpact();
-                  onJoinTap();
-                },
-                child: Container(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: AppValues.space8,
-                    vertical: AppValues.space4,
-                  ),
-                  decoration: BoxDecoration(
-                    color: AppColors.brandPrimary,
-                    borderRadius: BorderRadius.circular(AppValues.radiusCardLg),
-                    boxShadow: [
-                      BoxShadow(
-                        color: AppColors.brandPrimary.withValues(alpha: 0.35),
-                        offset: const Offset(0, 3),
-                        blurRadius: AppValues.radiusSm,
-                      ),
-                    ],
-                  ),
-                  child: Text(
-                    AppStrings.join,
-                    style: GoogleFonts.quicksand(
-                      fontSize: AppValues.fontLabelMd,
-                      fontWeight: FontWeight.w700,
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
+              ClayButton.compact(
+                label: AppStrings.join,
+                onPressed: onJoinTap,
               ),
             ],
           ),

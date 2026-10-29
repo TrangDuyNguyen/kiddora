@@ -14,3 +14,7 @@
 | `RSK-004` | Major | `tech-lead` | Spam click mascot audio gây lag main thread | Debounce 300ms & Haptic squish engine nhẹ | 🟢 RESOLVED |
 | `RSK-005` | Major | `pm` / `po` | Nhúng 57 ảnh benchmark màn hình làm phình APK | Tách riêng assets/design_references ra khỏi runtime bundle | 🟢 RESOLVED |
 | `RSK-006` | Medium | `qa-tester` | Mock data khóa học cần khớp với 14 domains Dribbble | Xây dựng domain entities chuẩn Freezed & mock repository | 🟡 IN_PROGRESS |
+| `RSK-007` | Major | `ui-ux-designer` | Lệch style 3D Clay hoặc dính viền trắng khi tách nền PNG | Tách nền flood-fill + color unmixing RGBA 32-bit, kiểm định trên nền tím | 🟢 RESOLVED |
+| `RSK-008` | Critical | `qa-tester` | RenderFlex overflow trong `ClayDialog` trên màn `360×640` & `textScaler: 1.5x` | `ConstrainedBox(maxHeight: 0.86 * screenH)` + `Flexible` + `SingleChildScrollView` | 🟢 RESOLVED |
+| `RSK-009` | Major | `ui-ux-designer` | Vùng chạm nút `Close (×)`, `Filter Pill`, `Compact Button` nhỏ hơn `48×48dp` | Bọc ngoài bằng `SizedBox`/`ConstrainedBox` `48×48dp` với `HitTestBehavior.opaque` | 🟢 RESOLVED |
+| `RSK-010` | Major | `pm` / `ba` | Trôi lệch tài liệu khi mở rộng `shared/ui_kit/` và đổi Tab 5 sang `Profile` | Đồng bộ đầy đủ `DESIGN.md`, `CR-013`, PRD `FEAT-04`, WBS & `graphify update .` | 🟢 RESOLVED |

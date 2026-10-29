@@ -26,4 +26,22 @@ class AppAssets {
   static const String zodiacRooster = 'assets/images/zodiac_rooster.png';
   static const String zodiacDog = 'assets/images/zodiac_dog.png';
   static const String zodiacPig = 'assets/images/zodiac_pig.png';
+
+  // Tactile 3D Modal Hero Illustrations
+  static const String modalLogoutDoor = 'assets/images/modal_logout_door.png';
+  static const String modalEmptySessions =
+      'assets/images/modal_empty_sessions.png';
+  static const String modalErrorOffline =
+      'assets/images/modal_error_offline.png';
+
+  // Tactile 3D Micro-Assets & Portraits
+  static const String iconCrown3d = 'assets/images/icon_crown_3d.png';
+  static const String iconStarCoin3d = 'assets/images/icon_star_coin_3d.png';
+  static const String iconTestBag3d = 'assets/images/icon_test_bag_3d.png';
+  static const String avatarStudentBoy =
+      'assets/images/avatar_student_boy.png';
+  static const String avatarCoachSarah =
+      'assets/images/avatar_coach_sarah.png';
+  static const String mascotBoyThumbsUp =
+      'assets/images/mascot_boy_thumbs_up.png';
 }

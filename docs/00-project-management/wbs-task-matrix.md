@@ -81,3 +81,16 @@
 | **WBS-S4-07** | Kiểm thử Tự động, Đo kiểm 60 FPS & 0 Memory Leak | Gate 6 | `qa-tester` | 2 | 100% tests pass (37/37 tests flutter), 0 analyze warnings | `[x] DONE` |
 | **WBS-S4-08** | Ký duyệt Release Sprint 4 | Gate 7 | `po` / `tech-lead` | - | Bàn giao nghiệm thu v0.4.0-auth-onboarding-e2e | `[ ] READY` |
 
+---
+
+## 🎨 3. Gói Mở Rộng Hệ Thống UI Kit & 3D Assets (Phase 1 + Phase 2 — CR-013: 26 SP) — `COMPLETED`
+
+| Task ID | Hạng Mục Công Việc | Cổng | Sub-Agent Phụ Trách | SP | Tiêu Chuẩn Hoàn Thành (DoD) | Trạng Thái |
+| :---: | :--- | :---: | :---: | :---: | :--- | :---: |
+| **WBS-UI1-01** | Spec & Tokens cho `ClayDialog` + `ClayButton.secondary` (Việt hóa `AppStrings`) | Gate 0-1 | `tech-lead` / `ba` | 1 | 0 magic numbers, 0 raw colors, 0 hard text | `[x] DONE` |
+| **WBS-UI1-02** | Generate & tách nền RGBA 32-bit cho 7 Assets 3D Tactile Clay (`modal_*`, `icon_*`, `avatar_student_boy`) | Gate 2 | `image-generator` / `ui-ux-designer` | 5 | Nền trong suốt không viền trắng, chuẩn `@3x` PNG | `[x] DONE` |
+| **WBS-UI1-03** | Thiết kế & thực thi bộ Test Matrix chống tràn `360×640` + `textScaler: 1.5x` | Gate 3 | `qa-tester` | 4 | Bao phủ cả 3 Modal, FilterBar, Header, ListTile, Badges | `[x] DONE` |
+| **WBS-UI1-04** | Triển khai `ClayDialog`, `ClayButton.secondary` & `compact`, đấu nối `HomeScreen` Logout/Empty Sessions | Gate 4A | `flutter-core-dev` | 5 | Mọi file `< 200 dòng`, `RepaintBoundary`, xóa sạch `TokenStorage` | `[x] DONE` |
+| **WBS-UI2-03** | Chuẩn hóa `ClayBottomNav` 5-tab (`Profile`) về `shared/ui_kit/navigation/`, xây dựng `ClayScreenHeader`, `ClayFilterBar`, `ClayListTile`, `StarCounterBadge.custom` | Gate 4A | `flutter-core-dev` | 6 | Tái sử dụng trực tiếp tại `HomeScreen`, `HomeUpcomingSessionCard`, `TodayLearningGoalScreen` | `[x] DONE` |
+| **WBS-UI2-05** | Ponytail Git Diff Review, Visual QA (`flutter-preview`), `flutter test` (82/82 Pass) & Continuous Doc-Sync | Gate 5-6 | `code-reviewer` / `qa-tester` | 5 | `flutter analyze` 0 lỗi, 82/82 tests pass, cập nhật đủ `docs/` & `graphify` | `[x] DONE` |
+

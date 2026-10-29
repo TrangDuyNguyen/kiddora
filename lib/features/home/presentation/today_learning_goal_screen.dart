@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../../../core/constants/app_assets.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../core/constants/app_strings.dart';
 import '../../../core/constants/app_values.dart';
@@ -28,99 +29,68 @@ class TodayLearningGoalScreen extends ConsumerWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               const SizedBox(height: AppValues.space4),
-
-              // Top App Bar with Circular Back Button
-              Align(
-                alignment: Alignment.centerLeft,
-                child: ClayIconButton(
-                  size: AppValues.sizeCircleButtonXl,
-                  backgroundColor: Colors.white,
-                  glowColor: AppColors.clayContactShadow,
-                  onPressed: () {
-                    HapticFeedback.lightImpact();
-                    context.router.maybePop();
-                  },
-                  icon: const Icon(
-                    Icons.arrow_back_ios_new_rounded,
-                    size: AppValues.iconSizeSm,
-                    color: AppColors.textPrimary,
-                  ),
-                ),
-              ),
-              const SizedBox(height: AppValues.space4),
-
-              // Title & Subtitle
-              Text(
-                AppStrings.todaysLearningGoal,
-                style: GoogleFonts.quicksand(
-                  fontSize: AppValues.fontHeadlineLg,
-                  fontWeight: FontWeight.w800,
-                  color: AppColors.textDarkIndigo,
-                ),
-                textAlign: TextAlign.center,
-              ),
-              const SizedBox(height: AppValues.radiusXs),
-              Text(
-                AppStrings.todaysGoalSubtitle,
-                style: GoogleFonts.quicksand(
-                  fontSize: AppValues.fontBodyMd,
-                  fontWeight: FontWeight.w500,
-                  color: AppColors.textSlate,
-                ),
-                textAlign: TextAlign.center,
+              ClayScreenHeader(
+                title: AppStrings.todaysLearningGoal,
+                subtitle: AppStrings.todaysGoalSubtitle,
+                centerTitle: true,
+                onBackPressed: () {
+                  HapticFeedback.lightImpact();
+                  context.router.maybePop();
+                },
               ),
               const SizedBox(height: AppValues.space7),
-
-              // Center Circular Progress Ring
               GoalCircularProgress(
                 completedCount: state.completedCount,
                 totalCount: state.totalCount,
                 progress: state.progressRatio,
               ),
               const SizedBox(height: AppValues.space8),
-
-              // White Porcelain Task Checklist Card
-              Container(
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(AppValues.radiusXl),
-                  boxShadow: [
-                    BoxShadow(
-                      color: AppColors.shadowIndigoSubtle,
-                      offset: const Offset(0, 4),
-                      blurRadius: AppValues.space7,
-                    ),
-                  ],
-                ),
-                padding: const EdgeInsets.symmetric(
-                  horizontal: AppValues.space5,
-                  vertical: AppValues.space4,
-                ),
-                child: ListView.separated(
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  itemCount: state.tasks.length,
-                  separatorBuilder: (context, index) => const Divider(
-                    color: AppColors.dividerSubtle,
-                    height: AppValues.borderWidthThin,
-                  ),
-                  itemBuilder: (context, index) {
-                    final task = state.tasks[index];
-                    return _buildTaskRow(
-                      task: task,
-                      onTap: () => controller.toggleTask(task.id),
-                    );
-                  },
-                ),
-              ),
+              _buildChecklistCard(state.tasks, controller.toggleTask),
               const SizedBox(height: AppValues.space7),
-
-              // Bottom Motivation Card
               _buildMotivationCard(),
               const SizedBox(height: AppValues.space8),
             ],
           ),
         ),
+      ),
+    );
+  }
+
+  Widget _buildChecklistCard(
+    List<DailyGoalTask> tasks,
+    ValueChanged<String> onToggle,
+  ) {
+    return Container(
+      decoration: BoxDecoration(
+        color: AppColors.surfaceContainer,
+        borderRadius: BorderRadius.circular(AppValues.radiusXl),
+        boxShadow: const [
+          BoxShadow(
+            color: AppColors.shadowIndigoSubtle,
+            offset: Offset(0, AppValues.radiusXs),
+            blurRadius: AppValues.space7,
+          ),
+        ],
+      ),
+      padding: const EdgeInsets.symmetric(
+        horizontal: AppValues.space5,
+        vertical: AppValues.space4,
+      ),
+      child: ListView.separated(
+        shrinkWrap: true,
+        physics: const NeverScrollableScrollPhysics(),
+        itemCount: tasks.length,
+        separatorBuilder: (context, index) => const Divider(
+          color: AppColors.dividerSubtle,
+          height: AppValues.borderWidthThin,
+        ),
+        itemBuilder: (context, index) {
+          final task = tasks[index];
+          return _buildTaskRow(
+            task: task,
+            onTap: () => onToggle(task.id),
+          );
+        },
       ),
     );
   }
@@ -160,7 +130,7 @@ class TodayLearningGoalScreen extends ConsumerWidget {
                   ? const Icon(
                       Icons.check_rounded,
                       size: AppValues.iconSizeTick,
-                      color: Colors.white,
+                      color: AppColors.textInverse,
                     )
                   : null,
             ),
@@ -213,10 +183,10 @@ class TodayLearningGoalScreen extends ConsumerWidget {
           color: AppColors.borderGoalCard,
           width: AppValues.borderWidthHairline,
         ),
-        boxShadow: [
+        boxShadow: const [
           BoxShadow(
-            color: AppColors.brandSecondary.withValues(alpha: 0.12),
-            offset: const Offset(0, 4),
+            color: AppColors.shadowAmberSubtle,
+            offset: Offset(0, AppValues.radiusXs),
             blurRadius: AppValues.radiusLg,
           ),
         ],
@@ -229,7 +199,7 @@ class TodayLearningGoalScreen extends ConsumerWidget {
         children: [
           // 3D Mascot Boy Thumbs Up
           Image.asset(
-            'assets/images/mascot_boy_thumbs_up.png',
+            AppAssets.mascotBoyThumbsUp,
             width: AppValues.sizeGoalThumbsMascot,
             height: AppValues.sizeGoalThumbsMascot,
             fit: BoxFit.contain,

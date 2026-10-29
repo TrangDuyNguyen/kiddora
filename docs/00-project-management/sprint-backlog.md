@@ -32,7 +32,8 @@
 | **Sprint 2** | Tactile Kid Profile Setup v2 Enhancement | 5 SP | 5 SP | `RELEASED` | `v0.2.0-profile-v2` |
 | **Sprint 3** | 3 Core Screens (Login, Home, Today's Goal) | 13 SP | 13 SP | `RELEASED` | `v0.3.0-core-screens` |
 | **Hardening** | Clean Code Ponytail, Register Screen, Splash & 57 Assets | 8 SP | 8 SP | `COMPLETED` | `main` |
-| **Tổng Cộng** | **Lũy kế giá trị đã bàn giao** | **48 SP** | **48 SP** | **100% On-Track** | **3 Releases** |
+| **UI Kit v2 (CR-013)** | Full Phase 1 + Phase 2 Tactile Clay Modal, Shared UI Kit & 7 3D Assets | 26 SP | 26 SP | `COMPLETED` | `CR-013` |
+| **Tổng Cộng** | **Lũy kế giá trị đã bàn giao** | **74 SP** | **74 SP** | **100% On-Track** | **3 Releases + CR-013** |
 
 ---
 

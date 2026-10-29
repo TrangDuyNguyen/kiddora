@@ -208,7 +208,7 @@ class AppStrings {
   static const String navCourses = 'Courses';
   static const String navSessions = 'Sessions';
   static const String navTests = 'Tests';
-  static const String navMore = 'More';
+  static const String navProfile = 'Profile';
   static const String notificationsAlert =
       '3 thông báo mới từ Coach Sarah & Math Fun!';
   static const String joiningSessionAlert =
@@ -265,5 +265,27 @@ class AppStrings {
   static const String responseTab = 'Response';
   static const String statusCode = 'Mã trạng thái';
   static const String duration = 'Thời gian';
+
+  // Tactile Clay Modal System (Vietnamese Kid-Friendly Copy)
+  static const String closeDialogLabel = 'Đóng hộp thoại';
+  static const String backButtonLabel = 'Quay lại';
+
+  static const String modalLogoutTitle = 'Đăng xuất?';
+  static const String modalLogoutBody =
+      'Con có chắc muốn đăng xuất không? Con luôn có thể đăng nhập lại bất cứ lúc nào để tiếp tục hành trình học tập nhé.';
+  static const String modalLogoutConfirm = 'Đồng ý đăng xuất';
+  static const String modalCancel = 'Hủy bỏ';
+
+  static const String modalNoSessionsTitle = 'Chưa có buổi học!';
+  static const String modalNoSessionsBody =
+      'Hiện chưa có buổi học trực tuyến nào sắp diễn ra. Khám phá khóa học và đặt lịch ngay để bắt đầu nhé!';
+  static const String modalExploreCourses = 'Khám phá khóa học';
+  static const String modalMaybeLater = 'Để sau nhé';
+
+  static const String modalErrorTitle = 'Mất kết nối rồi!';
+  static const String modalErrorBody =
+      'Có vẻ thiết bị đang ngoại tuyến hoặc mạng chập chờn. Vui lòng kiểm tra kết nối Internet và thử lại nhé.';
+  static const String modalRetry = 'Thử lại';
+  static const String modalGoOffline = 'Học chế độ ngoại tuyến';
 }
 

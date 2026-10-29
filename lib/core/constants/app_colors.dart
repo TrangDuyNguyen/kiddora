@@ -184,4 +184,16 @@ class AppColors {
   static const Color ringArcIndigo = Color(0xFF4F46E5);
   static const Color taskCheckboxUnchecked = Color(0xFFC7D2FE);
   static const Color dividerSubtle = Color(0xFFF1F5F9);
+
+  // Modal Level 3, Secondary Button & UI Kit Shadow Tokens
+  static const Color modalScrim = Color(0x850D0C22);
+  static const Color clayModalShadow = Color(0x330F172A);
+  static const Color clayModalShade = Color(0x260D0C22);
+  static const Color buttonSecondaryGradTop = Color(0xFFF7F5FF);
+  static const Color buttonSecondaryGradBottom = Color(0xFFEEEAFE);
+  static const Color buttonSecondaryBorder = Color(0xFFD8D0FA);
+  static const Color clayBottomNavShadow = Color(0x144648D4);
+  static const Color clayFilterActiveShadow = Color(0x474648D4);
+  static const Color clayBadgePrimaryBorder = Color(0x40FFFFFF);
+  static const Color shadowAmberSubtle = Color(0x1FF59E0B);
 }

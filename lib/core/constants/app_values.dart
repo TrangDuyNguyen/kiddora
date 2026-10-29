@@ -202,4 +202,33 @@ class AppValues {
 
   // Network & API Tokens
   static const Duration apiTimeout = Duration(seconds: 10);
+
+  // Modal Dialog & Shared UI Kit Expansion Tokens
+  static const Duration durationSnackBar = Duration(seconds: 2);
+  static const double radiusModal = 28.0;
+  static const double modalMaxWidth = 348.0;
+  static const double modalMaxHeightFactor = 0.86;
+  static const double modalIllustrationSize = 128.0;
+  static const int modalImageCachePx = 384;
+  static const double modalInsetOffset = 5.0;
+  static const double modalInsetBlur = 8.0;
+  static const double modalShadowBlur = 38.0;
+  static const double modalShadowOffsetY = 24.0;
+  static const double modalScaleStart = 0.92;
+  static const double modalCloseOffset = 10.0;
+  static const double sizeButtonCompactH = 38.0;
+  static const double sizeFilterChipH = 40.0;
+  static const double sizeMenuIconCircle = 36.0;
+  static const double sizeBadgeMicroIcon = 18.0;
+  static const double offsetY2 = 2.0;
+  static const double offsetY3 = 3.0;
+  static const double spreadSubtle = -1.0;
+  static const double spreadModal = -4.0;
+  static const double alphaGlowResting = 0.35;
+  static const double alphaGlowPressed = 0.22;
+  static const double alphaGlowDisabled = 0.05;
+  static const double lerpHighlight = 0.12;
+  static const double lerpShade = 0.08;
+  static const double badgeInsetOffset = 2.0;
+  static const double badgeInsetBlur = 3.0;
 }
