@@ -449,6 +449,8 @@ dependencies:
 
 ## 8. Lộ Trình Học BE Song Song Với Sprint
 
+> **Cập nhật 29/10/2026**: số sprint bên dưới là bản gốc. Sau re-baseline roadmap (+1 sprint, Sprint 4 dành cho Auth), `/courses` làm ở Sprint 5, LiveKit ở Sprint 7, Redis + Celery ở Sprint 8.
+
 ```
 Sprint 4 → Học FastAPI + PostgreSQL
   Tuần 1: Cài Python, Docker Desktop. Đọc FastAPI tutorial chính thức.

@@ -15,7 +15,7 @@
 | P1 | Ngôn ngữ | **Song ngữ Việt–Anh từ Sprint 5** | Gỡ "Multi-language UI" khỏi Won't-Have (CR-015). Cần ADR-005 trước khi làm UI. |
 | P2 | Phạm vi | **Cam kết đủ 6 màn = 23 SP** (US-16 lên 5 SP) | CR-016. Rủi ro trễ đã được PO chấp nhận. |
 | P3 | Bài học / asset | Chỉ demo, placeholder | Đã ghi tại PRD FEAT-07 mục 3. |
-| P4 | Re-baseline roadmap (Learning Player + dịch sprint sau) | **CHƯA QUYẾT** | Không chặn Sprint 5. Xem mục 4. |
+| P4 | Re-baseline roadmap (Learning Player + dịch sprint sau) | **Phương án 1: dịch +1 sprint, Sprint 6 = Learning Player** | Roadmap và epics-backlog đã sửa. v1.0.0 thành **Sprint 12** (xem đính chính mục 4). |
 
 ## 2. Quyết Định Của Đội (Thuộc Thẩm Quyền Kỹ Thuật)
 
@@ -52,8 +52,8 @@
 1. **Dung lượng**: 23 SP đã vượt velocity gần nhất (Sprint 4 = 15 SP, trung bình bền vững 16–20 SP). Song ngữ **chưa nằm trong 23 SP**. Tổng thực tế có thể 26–30 SP.
 2. **Thứ tự cắt đã thống nhất nếu trễ**: nhóm lọc `Course Duration` → màn Filter → màn Search. PO có quyền đổi thứ tự này.
 3. **Chặn trình tự**: `WBS-S5-00` (spike ADR-005) phải xong trước mọi task UI vì cách khai báo chuỗi ảnh hưởng toàn bộ code.
-4. **Roadmap đang lệch nhau**: phần đầu file đã dịch sprint (+1) nhưng phần thân vẫn ghi `Sprint 4 = Courses + Learning Player`, `Sprint 5 = Live`. Chưa sửa vì phụ thuộc P4.
-5. **Learning Player (Domain 06) chưa có chỗ trong roadmap** sau khi bị loại khỏi Sprint 5.
+4. **Đính chính số sprint**: khi đưa phương án 1 tôi ghi v1.0.0 là Sprint 11, **tính lại đúng là Sprint 12** (roadmap gốc 10 sprint, nay thêm Sprint 4 Auth và Sprint 6 Learning Player). Mốc "tháng 4/2027" cũ không còn đáng tin, PM tính lại sau khi có velocity Sprint 5.
+5. **Learning Player (Domain 06)** đã có chỗ ở Sprint 6 (~10 SP sơ bộ, PM xác nhận).
 
 ## 5. Ánh Xạ Mã Story
 
@@ -70,7 +70,8 @@
 | STT | Việc | Người | Hạn |
 | :---: | :--- | :---: | :---: |
 | A1 | Spike và ADR-005 song ngữ, kèm ước lượng SP | Tech Lead | Ngày 1 |
-| A2 | Chốt P4 (re-baseline roadmap) | PO | Trước Sprint Review |
-| A3 | Sửa phần thân roadmap theo P4 | PM | Sau A2 |
+| A2 | ~~Chốt P4~~ Đã chốt phương án 1 | PO | Xong |
+| A3 | Roadmap và epics-backlog đã sửa theo P4; PM tính lại mốc ngày | PM | Sau velocity Sprint 5 |
 | A4 | Cập nhật chuỗi `AppStrings` theo ADR-005 | Dev FE | Sau A1 |
 | A5 | Dev FE bắt đầu US-16 | Dev FE | Sau A1 |
+
