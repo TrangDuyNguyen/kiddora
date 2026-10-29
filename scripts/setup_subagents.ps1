@@ -78,7 +78,8 @@ foreach ($ag in $agents) {
     $desc = "Specialized Sub-Agent for Kiddora"
     if ($rawContent -match 'description:\s*"([^"]+)"') {
         $desc = $matches[1]
-    } elseif ($rawContent -match "description:\s*'([^']+)'") {
+    }
+    elseif ($rawContent -match "description:\s*'([^']+)'") {
         $desc = $matches[1]
     }
 
