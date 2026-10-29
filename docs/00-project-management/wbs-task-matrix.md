@@ -94,17 +94,16 @@
 
 * **Sprint Goal**: *"Hiện thực hóa trọn gói 6 màn hình chuẩn 1:1 Design References Dribbble cho Phân hệ Khám phá Khóa học (Courses Hub, Search, Multi-criteria Filter) và Chi tiết Khóa học (Hero 3D, 3 Tabs, Giáo trình bài học), kết nối đồng bộ Mock Data Freezed và REST API FastAPI."*
 * **Tổng Story Points**: **23 SP**
-* **Trạng thái**: `PLANNING_AND_READY`
+* **Trạng thái**: `IN_PROGRESS`
 
 | Task ID | Hạng Mục Công Việc | Cổng | Sub-Agent Phụ Trách | SP | Tiêu Chuẩn Hoàn Thành (DoD) & Màn Hình Benchmark | Trạng Thái |
 | :---: | :--- | :---: | :---: | :---: | :--- | :---: |
-| **WBS-S5-00** | [ADR-005] Spike kiến trúc song ngữ Việt–Anh, timebox 1 ngày; chặn mọi task UI | Gate 0 | `tech-lead` | TBD | ADR-005 + phương án migrate chuỗi cũ + ước lượng SP | `[ ] READY` |
-| **WBS-S5-01** | [KZN-01] Xây dựng Data Models Freezed `Course`, `Lesson`, `Subject` & Mock Seed Data | Gate 0 | `tech-lead` / `backend-dev` | 3 | Entities chuẩn Freezed, Alembic migration 0002 cho courses/lessons, Mock Repository | `[ ] READY` |
-| **WBS-S5-02** | Courses Hub & Grid View (`04_courses_01`, `04_courses_04`) + tách `HomeScreen` | Gate 4A | `flutter-core-dev` | 5 | `CoursesHubScreen`, lưới 2 cột, header *"Explore, Learn and Grow!"*, thanh tìm kiếm, dải chip môn học, tái sử dụng UI Kit v2 | `[ ] READY` |
+| **WBS-S5-01** | [KZN-01] Xây dựng Data Models Freezed `Course`, `Lesson`, `Subject` & Mock Seed Data | Gate 0 / 4A | `tech-lead` / `flutter-core-dev` | 3 | Entities chuẩn Freezed, Mock Repository, kết nối đồng bộ 100% AppStrings | 🟡 `IN_PROGRESS` |
+| **WBS-S5-06** | FastAPI REST Endpoints cho Courses, Alembic Migration 0002 & Pytest Suite | Gate 4B | `backend-dev` | 3 | `GET /courses`, `GET /courses/{id}`, query filters (category, age, level), Pytest suite pass 100% | 🟡 `IN_PROGRESS` |
+| **WBS-S5-02** | Courses Hub & Grid View (`04_courses_01`, `04_courses_04`) + tách `HomeScreen` | Gate 4A | `flutter-core-dev` | 5 | `CoursesHubScreen`, lưới 2 cột, header *"Explore, Learn and Grow!"*, nút tìm kiếm, dải chip môn học, tái sử dụng UI Kit v2 | `[ ] READY` |
 | **WBS-S5-03** | Real-time Course Search Screen (`04_courses_02`) | Gate 4A | `flutter-core-dev` | 3 | `CourseSearchScreen`, tìm kiếm tức thời theo từ khóa, danh sách kết quả thẻ nổi xúc giác, hiển thị số bài học và lứa tuổi | `[ ] READY` |
-| **WBS-S5-04** | Multi-Criteria Filter Bottom Sheet (`04_courses_03`) | Gate 4A | `flutter-core-dev` | 3 | `CourseFilterSheet`, bộ lọc đất sét theo Môn, Tuổi (6–8, 9–10, 11–12), Cấp độ (Beginner/Intermediate/Advanced), nút Clear All & Apply | `[ ] READY` |
-| **WBS-S5-05** | Course Detail Screen & 3 Tabs Curriculum (`05_course_detail_01`, `05_course_detail_02`) | Gate 4A | `flutter-core-dev` | 4 | `CourseDetailScreen`, Hero 3D Card, Rating sao, 4 icon tính năng, 3 tabs (Lessons, About, Reviews), danh sách bài học có duration, nút CTA | `[ ] READY` |
-| **WBS-S5-06** | FastAPI REST Endpoints cho Courses & Pytest Suite | Gate 4B | `backend-dev` | 3 | `GET /courses`, `GET /courses/{id}`, `/subjects`, query filters (category, age, level), Pytest suite pass 100% | `[ ] READY` |
+| **WBS-S5-04** | Multi-Criteria Filter Bottom Sheet (`04_courses_03`) | Gate 4A | `flutter-core-dev` | 3 | `CourseFilterSheet`, bộ lọc đất sét theo Môn, Tuổi (6–8, 9–10, 11–12), Cấp độ, nút Xóa bộ lọc & Áp dụng | `[ ] READY` |
+| **WBS-S5-05** | Course Detail Screen & 3 Tabs Curriculum (`05_course_detail_01`, `05_course_detail_02`) | Gate 4A | `flutter-core-dev` | 4 | `CourseDetailScreen`, Hero 3D Card, Rating sao, 4 icon tính năng, 3 tabs (Bài học, Giới thiệu, Đánh giá), nút Bắt đầu học | `[ ] READY` |
 | **WBS-S5-07** | Ponytail Git Diff Review (Zero Bloat) | Gate 5 | `code-reviewer` | 1 | File < 200 dòng, không magic numbers, 100% AppStrings/AppColors, tái sử dụng UI Kit v2 | `[ ] READY` |
 | **WBS-S5-08** | QA Automated Test Suite & Visual QA Matrix 6 màn hình (0 Overflow 360×640) | Gate 6 | `qa-tester` | 1 | 100% tests pass, 0 overflow 360×640 với text scale 1.5x, 60 FPS | `[ ] READY` |
 | **WBS-S5-09** | Ký duyệt Release Sprint 5 (v0.5.0-courses-hub) | Gate 7 | `po` / `tech-lead` | - | Biên bản Gate 7 & Release Tag `v0.5.0-courses-hub` | `[ ] READY` |
