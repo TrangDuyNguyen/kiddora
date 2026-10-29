@@ -288,62 +288,80 @@ class AppStrings {
   static const String modalRetry = 'Thử lại';
   static const String modalGoOffline = 'Học chế độ ngoại tuyến';
 
-  // Courses Hub & Smart Discovery (Domain 04)
-  static const String coursesHubTitle = 'Khám phá & Học hỏi';
+  // Courses Hub & Smart Discovery (Domain 04 — 1:1 Benchmark & Localized)
+  static const String coursesHubTitle = 'Courses';
   static const String coursesHubExploreHero = 'Explore, Learn and Grow!';
-  static const String coursesSearchHint = 'Tìm khóa học, chủ đề...';
-  static const String filterTooltip = 'Lọc khóa học';
-  static const String popularCourses = 'Khóa học nổi bật';
-  static const String allCourses = 'Tất cả khóa học';
-  static const String lessonsCountSuffix = 'bài học';
-  static const String agesPrefix = 'Độ tuổi';
+  static const String coursesHeroBannerText =
+      'A Brighter\nFuture\nStarts\nHere!';
+  static const String coursesSearchHint = 'Search courses, topics...';
+  static const String filterTooltip = 'Filter Courses';
+  static const String popularCourses = 'Popular Courses';
+  static const String allCourses = 'All Courses';
+  static const String allCoursesSubtitle =
+      'Explore and find your favorite courses!';
+  static const String lessonsCountSuffix = 'Lessons';
+  static const String agesPrefix = 'Ages';
 
-  // Subject Category Chips
-  static const String subjectAll = 'Tất cả';
-  static const String subjectScience = 'Khoa học STEM';
-  static const String subjectMath = 'Toán tư duy';
-  static const String subjectLanguage = 'Ngôn ngữ';
-  static const String subjectArts = 'Nghệ thuật & Sáng tạo';
-  static const String subjectCoding = 'Lập trình';
+  // Subject Category Chips (1:1 Benchmark)
+  static const String subjectAll = 'All';
+  static const String subjectScience = 'Science';
+  static const String subjectMath = 'Math';
+  static const String subjectMathematics = 'Mathematics';
+  static const String subjectLanguage = 'Language';
+  static const String subjectArts = 'Arts';
+  static const String subjectArtsCreativity = 'Arts & Creativity';
+  static const String subjectTechnology = 'Technology';
+  static const String subjectLifeSkills = 'Life Skills';
+  static const String subjectSocialStudies = 'Social Studies';
 
   // Course Search Screen (04_courses_02)
-  static const String searchResultsTitle = 'Kết quả tìm kiếm';
+  static const String searchCoursesTitle = 'Search Courses';
+  static const String searchCoursesSubtitle =
+      'Find the perfect course for you!';
+  static const String searchResultsTitle = 'Search Results';
   static const String noCoursesFoundTitle = 'Không tìm thấy khóa học nào!';
   static const String noCoursesFoundSubtitle =
       'Thử tìm kiếm với từ khóa khác như Toán, Khoa học nhé!';
   static const String clearSearch = 'Xóa tìm kiếm';
 
-  // Course Filter Bottom Sheet (04_courses_03)
-  static const String filterCoursesTitle = 'Bộ lọc khóa học';
-  static const String filterSectionProgram = 'Chương trình / Môn học';
-  static const String filterSectionAgeGroup = 'Nhóm tuổi';
-  static const String filterSectionLevel = 'Cấp độ';
-  static const String filterAge6to8 = '6 - 8 tuổi';
-  static const String filterAge9to10 = '9 - 10 tuổi';
-  static const String filterAge11to12 = '11 - 12 tuổi';
-  static const String levelBeginner = 'Cơ bản';
-  static const String levelIntermediate = 'Trung bình';
-  static const String levelAdvanced = 'Nâng cao';
-  static const String filterClearAll = 'Xóa bộ lọc';
-  static const String filterApply = 'Áp dụng bộ lọc';
+  // Course Filter Screen / Sheet (04_courses_03 — 4 Filter Dimensions)
+  static const String filterCoursesTitle = 'Filter Courses';
+  static const String filterSectionProgram = 'Program / Category';
+  static const String filterSectionAgeGroup = 'Age Group';
+  static const String filterSectionLevel = 'Difficulty Level';
+  static const String filterSectionDuration = 'Course Duration';
+  static const String filterAge7to8 = '7 – 8';
+  static const String filterAge9to10 = '9 – 10';
+  static const String filterAge11to12 = '11 – 12';
+  static const String levelBeginner = 'Beginner';
+  static const String levelIntermediate = 'Intermediate';
+  static const String levelAdvanced = 'Advanced';
+  static const String durationShort = 'Short (1–3 lessons)';
+  static const String durationMedium = 'Medium (4–6 lessons)';
+  static const String durationLong = 'Long (7+ lessons)';
+  static const String filterClearAll = 'Clear All';
+  static const String filterApply = 'Apply Filters';
 
-  // Course Detail & Curriculum (Domain 05)
-  static const String courseDetailTitle = 'Chi tiết khóa học';
-  static const String bookmarkCourse = 'Lưu yêu thích';
-  static const String startLearning = 'Bắt đầu học ngay';
-  static const String tabLessons = 'Bài học';
-  static const String tabAbout = 'Giới thiệu';
-  static const String tabReviews = 'Đánh giá';
-  static const String reviewsCountSuffix = 'đánh giá';
-  static const String featureFunVideos = 'Fun Videos';
-  static const String featureInteractiveQuizzes = 'Interactive Quizzes';
-  static const String featureActivitySheets = 'Activity Sheets';
-  static const String featureEarnBadges = 'Earn Badges';
-  static const String whatYouWillLearn = 'Con sẽ học được gì?';
-  static const String aboutCourseHeader = 'Mục tiêu khóa học';
-  static const String coachHeader = 'Giáo viên hướng dẫn';
-  static const String verifiedEducator = 'Chuyên gia giáo dục';
-  static const String bonusBadgePrefix = 'Hoàn thành khóa học để nhận';
+  // Course Detail & Curriculum (Domain 05 — 05_01 & 05_02)
+  static const String courseDetailTitle = 'Course Detail';
+  static const String bookmarkCourse = 'Favorite Course';
+  static const String amazingAnimalsSubtitle =
+      'Discover the wonderful world of animals and their habitats!';
+  static const String aboutThisCourseHeader = 'About This Course';
+  static const String amazingAnimalsAboutBody =
+      'Join us on an exciting journey to learn about different animals, their habitats, and how they live in our amazing world. This course is designed to be fun, interactive, and easy to understand!';
+  static const String startLearning = 'Start Learning';
+  static const String tabLessons = 'Lessons';
+  static const String tabAbout = 'About';
+  static const String tabReviews = 'Reviews';
+  static const String reviewsCountSuffix = 'reviews';
+  static const String featureFunVideos = 'Fun\nVideos';
+  static const String featureInteractiveQuizzes = 'Interactive\nQuizzes';
+  static const String featureActivitySheets = 'Activity\nSheets';
+  static const String featureEarnBadges = 'Earn\nBadges';
+  static const String minSuffix = 'min';
+  static const String completeLessonsBadgeBanner =
+      'Complete all lessons\nto earn a special badge!';
   static const String lessonLockedAlert =
       'Con hãy hoàn thành các bài học trước để mở khóa bài này nhé!';
 }

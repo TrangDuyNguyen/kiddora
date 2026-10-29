@@ -29,15 +29,17 @@ Lưu trữ thông tin cá nhân hóa của trẻ, lưu cục bộ trong `SharedP
 | :--- | :--- | :---: | :--- |
 | `id` | String | Có | Mã định danh khóa học (VD: "course_amazing_animals") |
 | `title` | String | Có | Tiêu đề khóa học (VD: "Amazing Animals") |
-| `description` | String | Có | Đoạn mô tả nội dung khóa học |
-| `category` | String | Có | Phân loại môn học: `"science"`, `"math"`, `"arts"`, `"language"` |
+| `subtitle` | String | Không | Câu giới thiệu ngắn dưới tiêu đề ở màn Overview (chỉ trả ở endpoint chi tiết) |
+| `description` | String | Có | Đoạn mô tả nội dung khóa học (mục "About This Course") |
+| `category` | String | Có | `"science"`, `"math"`, `"language"`, `"arts"`, `"technology"`, `"life_skills"`, `"social_studies"` |
 | `min_age` | int | Có | Độ tuổi tối thiểu khuyến nghị (VD: 7) |
 | `max_age` | int | Có | Độ tuổi tối đa khuyến nghị (VD: 10) |
-| `total_lessons`| int | Có | Tổng số bài giảng trong khóa học |
+| `level` | String | Có | `"beginner"`, `"intermediate"`, `"advanced"` (phục vụ bộ lọc Difficulty Level) |
+| `total_lessons`| int | Có | Tổng số bài giảng; phục vụ bộ lọc Duration: short 1–3, medium 4–6, long 7+ |
 | `rating` | double | Có | Điểm đánh giá trung bình (VD: 4.8) |
 | `review_count` | int | Có | Số lượng đánh giá từ phụ huynh (VD: 320) |
-| `thumbnail_url`| String | Có | Đường dẫn ảnh minh họa 3D đại diện |
-| `is_featured` | bool | Có | Đánh dấu hiển thị tại mục Popular Courses trên Home |
+| `thumbnail_url`| String | Có | Asset ảnh 3D cục bộ (`assets/images/...`) |
+| `is_featured` | bool | Có | Hiển thị tại mục Popular Courses |
 
 ---
 
@@ -51,8 +53,9 @@ Chi tiết từng bài học con thuộc một khóa học cụ thể.
 | `order_index` | int | Có | Thứ tự bài giảng trong khóa (1, 2, 3...) |
 | `title` | String | Có | Tên bài học (VD: "Meet the Animals") |
 | `duration_mins`| int | Có | Thời lượng ước tính tính bằng phút (VD: 10) |
-| `is_unlocked` | bool | Có | Trạng thái mở khóa bài học |
-| `is_completed`| bool | Có | Đã học xong hay chưa |
+| `thumbnail_url`| String | Có | Ảnh 3D minh họa từng bài (hiện ở màn Curriculum) |
+| `is_unlocked` | bool | Có | Sprint 5: giá trị seed tĩnh; cá nhân hóa theo `user_progress` ở Sprint 6 |
+| `is_completed`| bool | Có | Sprint 5: giá trị seed tĩnh; cá nhân hóa theo `user_progress` ở Sprint 6 |
 
 ---
 

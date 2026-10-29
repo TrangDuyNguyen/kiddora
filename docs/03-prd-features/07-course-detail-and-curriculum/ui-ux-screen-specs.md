@@ -1,26 +1,33 @@
 # Đặc Tả Giao Diện UI/UX Specs: Chi Tiết Khóa Học (FEAT-07)
 
 - **Feature**: `FEAT-07`
-- **Sub-Agent**: Sub-Agent UI/UX Designer
-- **Asset đối sánh Dribbble**: `assets/design_references/screens/05_course_detail_01_overview_about.png` và `05_course_detail_02_curriculum_lessons.png`
+- **Sub-Agent**: UI/UX Designer, rà soát bởi Tech Lead
+- **Asset đối sánh**: `05_course_detail_01_overview_about.png`, `05_course_detail_02_curriculum_lessons.png`
+- **Nguyên tắc**: kích thước/màu lấy từ `AppValues`/`AppColors`, không magic number.
 
 ---
 
-## 🎨 1. Tokens & Bố Cục Màn Hình Chi Tiết
+## 1. Ánh Xạ Component Tái Sử Dụng
 
-- **Top App Bar**: Nút Back đất sét tròn $44\text{ dp}$ và nút Bookmark lưu khóa học yêu thích (STEM Pink `#EC4899`).
-- **Course Banner Image**: Chiều cao $200\text{ dp}$, bo góc dưới $24\text{ dp}$, phủ lớp bóng đổ mờ nhẹ.
-- **Rating & Metadata**: Xếp hạng sao vàng Joyful Amber `#F59E0B`, số lượng review và nhãn độ tuổi phù hợp.
-- **Feature Icons Row**: 4 vòng tròn màu pastel đường kính $44\text{ dp}$, icon biểu trưng tương tác.
-- **3-Segment Tabs**: Chiều cao $44\text{ dp}$, nền xám sứ `#F3F4F6`, bo góc $22\text{ dp}$, tab active có nền trắng và bóng đổ nảy nhẹ.
-- **Lessons List Item**: Chiều cao $68\text{ dp}$, bo góc $14\text{ dp}$, vòng tròn số thứ tự bài học, icon play nhỏ, nhãn thời lượng $12\text{ sp}$.
-- **Sticky Bottom CTA**: Nút [Start Learning] chiều cao $54\text{ dp}$, bo góc $16\text{ dp}$, màu Primary Indigo `#4648D4`.
+| Thành phần trên ảnh | Component | Ghi chú |
+| :--- | :--- | :--- |
+| Nút Back / tim tròn nổi trên ảnh | `ClayIconButton` | Vùng chạm $\ge 48\text{dp}$ |
+| Thẻ nội dung trắng bo góc trên (`05_01`) | `ClayWaveSheet` hoặc `ClayCard` | Chọn loại đã có sẵn trong `surfaces/` |
+| Header thu gọn (`05_02`) | `ClayScreenHeader` | Thêm thumbnail qua `trailing`/leading nếu cần, không viết header mới |
+| 3 tab pill `Lessons/About/Reviews` | `ClayFilterBar` (3 mục) | Dùng lại thay vì viết `TabBar` mới |
+| Nút `Start Learning` | `ClayButton` primary | Full-width, sticky đáy |
+| Thẻ bài học | `ClayListTile` (leading = số + thumbnail, trailing = trạng thái) | |
+| Pill thông số (`Science`, `Ages`, `Lessons`) | **Mới**: `CourseMetaPill` | Nhỏ, dùng chung Hub + Detail |
+| Banner huy hiệu cuối danh sách | **Mới**: `CourseBadgeBanner` | |
 
----
+## 2. Trạng Thái Bài Học (3 Biến Thể Trailing)
+- **Hoàn thành**: vòng tròn xanh `Meadow Mint` + dấu tick.
+- **Đang mở**: vòng tròn `Primary Indigo` + chevron.
+- **Khóa**: vòng tròn xám + ổ khóa; chạm hiển thị `lessonLockedAlert`.
 
-## 📱 2. Danh Sách 5 Trạng Thái Màn Hình
-1. **Default**: Hiển thị đầy đủ thông tin khóa học và danh sách bài giảng.
-2. **Switching Tabs**: Hiệu ứng chuyển động fade mượt mà giữa các tab.
-3. **Completed Course State**: Nếu khóa học đã học xong $100\%$, nút CTA đổi thành [Review Course / Certificate].
-4. **Offline Mode**: Các bài học chưa tải về có icon đám mây nhỏ cho phép tải về máy.
-5. **Loading**: Hiển thị banner shimmer và các khung xám bài học đang nạp.
+## 3. Năm Trạng Thái Màn Hình
+1. **Default**.
+2. **Loading**: shimmer ảnh bìa và 5 hàng bài học.
+3. **Course không tồn tại (404)**: hiển thị `detail` từ Backend (nguyên tắc CR-010).
+4. **Đã hoàn thành 100%**: CTA đổi nhãn (chỉ nếu PO chốt, mặc định chưa làm).
+5. **Offline**: dùng `ClayDialog` lỗi mạng sẵn có.

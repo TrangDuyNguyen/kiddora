@@ -1,23 +1,32 @@
 # Đặc Tả Giao Diện UI/UX Specs: Khám Phá Khóa Học (FEAT-06)
 
 - **Feature**: `FEAT-06`
-- **Sub-Agent**: Sub-Agent UI/UX Designer
-- **Asset đối sánh Dribbble**: `assets/design_references/screens/04_courses_01_explore_and_categories.png` đến `04_courses_04_all_courses_grid.png`
+- **Sub-Agent**: UI/UX Designer, rà soát bởi Tech Lead
+- **Asset đối sánh**: `assets/design_references/screens/04_courses_01` → `04_courses_04`
+- **Nguyên tắc**: mọi kích thước/màu phải lấy từ `AppValues`/`AppColors`; các số dp bên dưới chỉ là **tham chiếu thiết kế**, Dev phải ánh xạ sang token sẵn có (không tạo magic number).
 
 ---
 
-## 🎨 1. Tokens & Bố Cục Lưới Khóa Học
+## 1. Ánh Xạ Component Tái Sử Dụng (`shared/ui_kit`)
 
-- **Search Bar**: Chiều cao $50\text{ dp}$, bo góc $25\text{ dp}$, nền xám sứ `#F3F4F6`, viền `#E5E7EB`, nút icon Filter màu Indigo `#4648D4`.
-- **Category Chips**: Chiều cao $38\text{ dp}$, bo góc tròn $19\text{ dp}$. Trạng thái active: nền Primary Indigo `#4648D4`, chữ trắng, bóng nổi nhẹ.
-- **2-Column Course Cards**: Lưới 2 cột với tỷ lệ khung hình `aspectRatio: 0.78`, thẻ đất sét trắng bo góc $18\text{ dp}$, hình minh họa bo tròn $12\text{ dp}$, huy hiệu số bài học và độ tuổi nhỏ gọn.
-- **Filter Bottom Sheet**: Bo tròn 2 góc trên $24\text{ dp}$, thanh kéo bo tròn phía trên, các nhóm chip lựa chọn xếp theo hàng ngang, nút lớn [Apply Filters] full-width.
+| Thành phần trên ảnh | Component | Ghi chú |
+| :--- | :--- | :--- |
+| Header `Courses` + nút kính lúp | `ClayScreenHeader` (`trailing`) + `ClayIconButton` | Màn Hub không có Back |
+| Header Search / Filter | `ClayScreenHeader` có Back | |
+| Chip môn học ngang (`04_04`) | `ClayFilterBar` | Dùng nguyên, không viết lại |
+| Hàng kết quả tìm kiếm | `ClayListTile` hoặc `ClayCard` | Cần thumbnail trái, chevron phải |
+| Nút `Apply Filters`, `Clear All` | `ClayButton` primary / secondary | |
+| Thẻ khóa học lưới | **Mới**: `CourseClayCard` (feature widget) | Bọc `RepaintBoundary`; chỉ tạo mới vì chưa có card tương đương |
+| Category card dọc (`04_01`) | **Mới**: `CourseCategoryCard` (feature widget) | Khác `ClayFilterBar` (chip ngang) |
 
----
+## 2. Quy Tắc Bố Cục
+- Lưới 2 cột, tỉ lệ thẻ ~0.78 (đo trên ảnh), khoảng cách theo thang 4pt.
+- Mọi vùng chạm $\ge 48\times48\text{dp}$ (nút tròn `>`, tim, kính lúp, chip).
+- Chip lọc cuộn ngang, không được gây overflow ở $360\times640$ với `textScaler: 1.5x`.
 
-## 📱 2. Danh Sách 5 Trạng Thái Màn Hình
-1. **Default**: Hiển thị lưới toàn bộ khóa học phổ biến (Popular Courses).
-2. **Filtering / Searching**: Hiển thị kết quả tìm kiếm thời gian thực.
-3. **Empty Results**: Hiển thị hình minh họa đất sét ngộ nghĩnh kèm câu *"No courses found! Try searching something else."*.
-4. **Bottom Sheet Open**: Nền mờ `rgba(0,0,0,0.4)` phía sau, bảng bộ lọc trượt lên êm ái.
-5. **Loading**: Hiển thị 4 thẻ shimmer xám nhạt trong lúc nạp danh sách khóa học.
+## 3. Năm Trạng Thái Màn Hình
+1. **Default**: dữ liệu đầy đủ.
+2. **Loading**: shimmer 4 thẻ.
+3. **Empty (Search)**: minh họa linh vật + `Không tìm thấy khóa học nào!`.
+4. **Error**: dùng `ClayDialog` lỗi mạng sẵn có (`modalErrorTitle`).
+5. **Filter đang áp dụng**: hiển thị số bộ lọc đang bật trên nút lọc (chỉ khi có >= 1 bộ lọc khác `All`).
