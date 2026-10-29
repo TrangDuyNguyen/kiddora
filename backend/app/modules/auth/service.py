@@ -5,6 +5,7 @@ import uuid
 from fastapi import HTTPException, status
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.future import select
+from sqlalchemy import func
 from sqlalchemy.orm import selectinload
 
 from app.core.security import get_password_hash, verify_password, create_access_token, create_refresh_token
@@ -26,8 +27,9 @@ class AuthService:
         self.db = db
 
     async def register(self, req: UserRegisterRequest) -> TokenResponse:
-        # Kiểm tra email trùng
-        stmt = select(User).where(User.email == req.email)
+        # Chuẩn hoá email chữ thường & cắt khoảng trắng
+        normalized_email = req.email.strip().lower()
+        stmt = select(User).where(func.lower(User.email) == normalized_email)
         res = await self.db.execute(stmt)
         if res.scalars().first():
             raise HTTPException(
@@ -37,7 +39,7 @@ class AuthService:
 
         # Tạo User (Mặc định vai trò phụ huynh bảo hộ)
         user = User(
-            email=req.email,
+            email=normalized_email,
             hashed_password=get_password_hash(req.password),
             full_name=req.full_name,
             role=req.role or "parent",
@@ -62,7 +64,8 @@ class AuthService:
         )
 
     async def login(self, req: UserLoginRequest) -> TokenResponse:
-        stmt = select(User).options(selectinload(User.profile)).where(User.email == req.email)
+        normalized_email = req.email.strip().lower()
+        stmt = select(User).options(selectinload(User.profile)).where(func.lower(User.email) == normalized_email)
         res = await self.db.execute(stmt)
         user = res.scalars().first()
 

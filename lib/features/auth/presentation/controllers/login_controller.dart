@@ -71,7 +71,7 @@ class LoginController extends StateNotifier<LoginState> {
     state = state.copyWith(isLoading: true, errorMessage: null);
     try {
       await _authRepository.login(
-        email: state.email.trim(),
+        email: state.email.trim().toLowerCase(),
         password: state.password,
       );
       state = state.copyWith(isLoading: false);

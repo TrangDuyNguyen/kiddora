@@ -85,6 +85,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                                   ClayTextField(
                                     controller: _emailController,
                                     hintText: AppStrings.emailOrUsername,
+                                    keyboardType: TextInputType.emailAddress,
                                     prefixIcon: const Icon(
                                       Icons.mail_outline_rounded,
                                       color: AppColors.brandIndigoLight,

@@ -118,7 +118,7 @@ class RegisterController extends StateNotifier<RegisterState> {
     state = state.copyWith(isLoading: true, errorMessage: null);
     try {
       await _authRepository.register(
-        email: state.email.trim(),
+        email: state.email.trim().toLowerCase(),
         password: state.password,
         fullName: state.fullName.trim(),
       );

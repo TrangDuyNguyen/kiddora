@@ -29,7 +29,7 @@ class AuthRemoteDataSource {
       final res = await _client.dio.post(
         '/api/v1/auth/register',
         data: {
-          'email': email.trim(),
+          'email': email.trim().toLowerCase(),
           'password': password,
           'full_name': fullName?.trim(),
         },
@@ -55,7 +55,7 @@ class AuthRemoteDataSource {
       final res = await _client.dio.post(
         '/api/v1/auth/login',
         data: {
-          'email': email.trim(),
+          'email': email.trim().toLowerCase(),
           'password': password,
         },
       );
