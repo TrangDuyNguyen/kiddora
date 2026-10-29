@@ -12,27 +12,27 @@
 
 ```
 +------------------------------------------------------------------------+
-|  🟢 CHAN TROI 1: HISTORICAL (v0.1.0 - v0.3.0) - DA HOAN THANH        |
-|  Sprint 1: Onboarding 3 Slides + AutoRoute + UI Kit Nen Tang           |
-|  Sprint 2: Kid Profile v2 (Age Spinner, 12 Mascot Con Giap)            |
-|  Sprint 3: Login + Student Home Dashboard + Today's Learning Goals     |
+|  🟢 CHAN TROI 1: HISTORICAL (v0.1.0 - v0.4.0) - DA HOAN THANH        |
+|  Sprint 1: Onboarding 3 Slides + AutoRoute + UI Kit Nen Tang (v0.1.0)  |
+|  Sprint 2: Kid Profile v2 (Age Spinner, 12 Mascot Con Giap) (v0.2.0)   |
+|  Sprint 3: Login + Student Home Dashboard + Today's Goals (v0.3.0)     |
 |  Hardening: Register, Splash, Refactor 0 magic, 60 screens ingested   |
+|  Sprint 4: Fullstack E2E Auth, Onboarding & UI Kit v2 (v0.4.0)        |
 +----------------------------------+-------------------------------------+
                                    |
                                    v
 +------------------------------------------------------------------------+
-|  🟡 CHAN TROI 2: NOW (v0.4.0 - v0.6.0) - SPRINT 4 -> 6               |
-|  Sprint 4 (v0.4.0): Kham pha Khoa hoc · Chi tiet · Trinh phat Bai     |
-|  Sprint 5 (v0.5.0): Live Interactive Classroom - 11 man hinh           |
-|  Sprint 6 (v0.6.0): Tests & Quizzes Hub - 9 man hinh                  |
+|  🟡 CHAN TROI 2: NOW (v0.5.0 - v0.7.0) - SPRINT 5 -> 7               |
+|  Sprint 5 (v0.5.0): Kham pha Khoa hoc · Chi tiet · Trinh phat Bai     |
+|  Sprint 6 (v0.6.0): Live Interactive Classroom - 11 man hinh           |
+|  Sprint 7 (v0.7.0): Tests & Quizzes Hub - 9 man hinh                  |
 +----------------------------------+-------------------------------------+
                                    |
                                    v
 +------------------------------------------------------------------------+
-|  🟣 CHAN TROI 3: LATER (v0.7.0 - v1.0.0) - SPRINT 7 -> 10            |
-|  Sprint 7 (v0.7.0): Gamification · Badges · Rewards · Streaks          |
-|  Sprint 8 (v0.8.0): Chat Coach + Notifications Center                 |
-|  Sprint 9 (v0.9.0): Profile · Settings · Learning Journey             |
+|  🟣 CHAN TROI 3: LATER (v0.8.0 - v1.0.0) - SPRINT 8 -> 10            |
+|  Sprint 8 (v0.8.0): Gamification · Badges · Rewards · Streaks          |
+|  Sprint 9 (v0.9.0): Chat Coach + Notifications Center                 |
 |  Sprint 10 (v1.0.0): Analytics · Parent Hub · App Store Release       |
 +------------------------------------------------------------------------+
 ```
@@ -44,18 +44,18 @@
 | Domain | Tên | Số Màn Hình | Sprint | Phiên Bản | Trạng Thái |
 |--------|-----|:-----------:|:------:|:---------:|:----------:|
 | 01 | Onboarding (Welcome · Discover · Live Coaches) | 3 | S1 | v0.1.0 | ✅ Done |
-| 02 | Auth (Login · Register) | 1+1 | S1+S3 | v0.1.0→v0.3.0 | ✅ Done |
-| 03 | Home (Student Dashboard · Today's Goals) | 2 | S3 | v0.3.0 | ✅ Done |
-| 04 | Courses (Explore · Search · Filter · Grid) | 4 | S4 | v0.4.0 | 🔥 NOW |
-| 05 | Course Detail (Overview · Curriculum) | 2 | S4 | v0.4.0 | 🔥 NOW |
-| 06 | Learning (Lesson Player · Tracker · Celebration) | 3 | S4 | v0.4.0 | 🔥 NOW |
-| 07 | Live Classroom (11 màn hình đầy đủ) | 11 | S5 | v0.5.0 | 🟡 NEXT |
-| 08 | Tests & Quizzes (9 màn hình đầy đủ) | 9 | S6 | v0.6.0 | 🟡 NEXT |
-| 09 | Gamification (Badges · Rewards · Streak) | 8 | S7 | v0.7.0 | 🟣 LATER |
-| 10 | Chat (Inbox · Coach Directory · DM) | 4 | S8 | v0.8.0 | 🟣 LATER |
-| 11 | Notifications (Center · Reminder Detail) | 2 | S8 | v0.8.0 | 🟣 LATER |
+| 02 | Auth & Onboarding E2E (Login · Register · Kid Profile Sync) | 1+1+1 | S1-S4 | v0.4.0 | ✅ Done |
+| 03 | Home (Student Dashboard · Today's Goals · Logout Dialog) | 2 | S3-S4 | v0.4.0 | ✅ Done |
+| 04 | Courses (Explore · Search · Filter · Grid) | 4 | S5 | v0.5.0 | 🔥 NOW |
+| 05 | Course Detail (Overview · Curriculum) | 2 | S5 | v0.5.0 | 🔥 NOW |
+| 06 | Learning (Lesson Player · Tracker · Celebration) | 3 | S5 | v0.5.0 | 🔥 NOW |
+| 07 | Live Classroom (11 màn hình đầy đủ) | 11 | S6 | v0.6.0 | 🟡 NEXT |
+| 08 | Tests & Quizzes (9 màn hình đầy đủ) | 9 | S7 | v0.7.0 | 🟡 NEXT |
+| 09 | Gamification (Badges · Rewards · Streak) | 8 | S8 | v0.8.0 | 🟣 LATER |
+| 10 | Chat (Inbox · Coach Directory · DM) | 4 | S9 | v0.9.0 | 🟣 LATER |
+| 11 | Notifications (Center · Reminder Detail) | 2 | S9 | v0.9.0 | 🟣 LATER |
 | 12 | Profile (Stats · Edit · Learning Journey · Tabs) | 6 | S9 | v0.9.0 | 🟣 LATER |
-| 13 | Settings (Preferences · Notifications · Help) | 3 | S9 | v0.9.0 | 🟣 LATER |
+| 13 | Settings (Preferences · Notifications · Help) | 3 | S10 | v1.0.0 | 🟣 LATER |
 | 14 | Analytics (Monthly Progress · Test Analysis) | 2 | S10 | v1.0.0 | 🟣 LATER |
 | **TOTAL** | | **60** | **10** | | |
 

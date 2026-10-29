@@ -3,7 +3,7 @@
 **Project Manager (PM)**: Sub-Agent Project Manager (PM) — *"The Clockwork Disciplinarian"*  
 **Scrum Master (SM)**: Sub-Agent Scrum Master (SM) — *"The Servant Leader & Agile Coach"*  
 **Phê duyệt Chiến lược**: Sub-Agent Product Owner (PO) — *"The Strategic Tyrant"*  
-**Cập nhật**: 2026-10-22  
+**Cập nhật**: 2026-10-29  
 
 ```
 [PRD Approved (Gate 1)] 
@@ -61,14 +61,9 @@
 | **WBS-HD-03** | SplashScreen: Native Splash, App Icon & Route Guard Architecture | Gates 1-6 | `dev` | 1 | `[x] DONE` |
 | **WBS-HD-04** | Catalog hóa & bóc tách 57 Màn hình Dribbble Benchmark qua 14 Domains | Gate 2 | `design` / `po` | 2 | `[x] DONE` |
 
----
-
-## 🚀 2. Kế Hoạch Sprint 4: Fullstack E2E Auth, Onboarding & User Sync
+### Sprint 4: Fullstack E2E Auth, Onboarding & User Sync (15 SP) — `RELEASED (v0.4.0)`
 *Theo phê duyệt tại [CR-006](file:///Users/nguyenduytrang/flutter_project/kiddora/docs/05-change-management/change-request-log.md) & [SPEC-20261023](file:///Users/nguyenduytrang/flutter_project/kiddora/docs/04-specifications/specs/2026-10-23-fullstack-auth-onboarding-design.md)*
-
-* **Sprint Goal**: *"Hiện thực hóa trọn gói luồng Fullstack End-to-End: Đăng ký, Đăng nhập, Onboarding và Hồ sơ bé, đồng bộ REST API FastAPI với PostgreSQL Database (Alembic Migration), hỗ trợ chế độ Khách (Guest) và chuyển đổi tài khoản."*
-* **Tổng Story Points**: **15 SP**
-* **Trạng thái**: `IN_PROGRESS`
+* **Release Tag**: `v0.4.0-auth-onboarding-e2e` (29/10/2026)
 
 | Task ID | Hạng Mục Công Việc | Cổng | Sub-Agent Phụ Trách | SP | Tiêu Chuẩn Hoàn Thành (DoD) | Trạng Thái |
 | :---: | :--- | :---: | :---: | :---: | :--- | :---: |
@@ -78,13 +73,10 @@
 | **WBS-S4-04** | Core Network Layer Flutter (Dio ApiClient, TokenStorage test-safe) | Gate 4A | `flutter-expert` | 2 | `api_client.dart` tự gắn Bearer token, `token_storage.dart` in-memory fallback | `[x] DONE` |
 | **WBS-S4-05** | Tích hợp E2E Flutter UI: Register, Login, KidProfile, Guest Banner | Gate 4A | `flutter-expert` | 3 | Kết nối controller với API, guest explore link, guest claim banner | `[x] DONE` |
 | **WBS-S4-06** | Code Review (Ponytail: rà soát diff, zero bloat, SLA verification) | Gate 5 | `code-reviewer` | 1 | Zero bloat, tái sử dụng AppValues & AppColors, không magic numbers | `[x] DONE` |
-| **WBS-S4-07** | Kiểm thử Tự động, Đo kiểm 60 FPS & 0 Memory Leak | Gate 6 | `qa-tester` | 2 | 100% tests pass (37/37 tests flutter), 0 analyze warnings | `[x] DONE` |
-| **WBS-S4-08** | Ký duyệt Release Sprint 4 | Gate 7 | `po` / `tech-lead` | - | Bàn giao nghiệm thu v0.4.0-auth-onboarding-e2e | `[ ] READY` |
+| **WBS-S4-07** | Kiểm thử Tự động, Đo kiểm 60 FPS & 0 Memory Leak | Gate 6 | `qa-tester` | 2 | 100% tests pass (83/83 tests flutter), 0 analyze warnings | `[x] DONE` |
+| **WBS-S4-08** | Ký duyệt Release Sprint 4 | Gate 7 | `po` / `tech-lead` | - | Biên bản Gate 7 & Git Tag `v0.4.0-auth-onboarding-e2e` | `[x] DONE` |
 
----
-
-## 🎨 3. Gói Mở Rộng Hệ Thống UI Kit & 3D Assets (Phase 1 + Phase 2 — CR-013: 26 SP) — `COMPLETED`
-
+### Gói Mở Rộng Hệ Thống UI Kit & 3D Assets (Phase 1 + Phase 2 — CR-013: 26 SP) — `COMPLETED`
 | Task ID | Hạng Mục Công Việc | Cổng | Sub-Agent Phụ Trách | SP | Tiêu Chuẩn Hoàn Thành (DoD) | Trạng Thái |
 | :---: | :--- | :---: | :---: | :---: | :--- | :---: |
 | **WBS-UI1-01** | Spec & Tokens cho `ClayDialog` + `ClayButton.secondary` (Việt hóa `AppStrings`) | Gate 0-1 | `tech-lead` / `ba` | 1 | 0 magic numbers, 0 raw colors, 0 hard text | `[x] DONE` |
@@ -92,5 +84,24 @@
 | **WBS-UI1-03** | Thiết kế & thực thi bộ Test Matrix chống tràn `360×640` + `textScaler: 1.5x` | Gate 3 | `qa-tester` | 4 | Bao phủ cả 3 Modal, FilterBar, Header, ListTile, Badges | `[x] DONE` |
 | **WBS-UI1-04** | Triển khai `ClayDialog`, `ClayButton.secondary` & `compact`, đấu nối `HomeScreen` Logout/Empty Sessions | Gate 4A | `flutter-core-dev` | 5 | Mọi file `< 200 dòng`, `RepaintBoundary`, xóa sạch `TokenStorage` | `[x] DONE` |
 | **WBS-UI2-03** | Chuẩn hóa `ClayBottomNav` 5-tab (`Profile`) về `shared/ui_kit/navigation/`, xây dựng `ClayScreenHeader`, `ClayFilterBar`, `ClayListTile`, `StarCounterBadge.custom` | Gate 4A | `flutter-core-dev` | 6 | Tái sử dụng trực tiếp tại `HomeScreen`, `HomeUpcomingSessionCard`, `TodayLearningGoalScreen` | `[x] DONE` |
-| **WBS-UI2-05** | Ponytail Git Diff Review, Visual QA (`flutter-preview`), `flutter test` (82/82 Pass) & Continuous Doc-Sync | Gate 5-6 | `code-reviewer` / `qa-tester` | 5 | `flutter analyze` 0 lỗi, 82/82 tests pass, cập nhật đủ `docs/` & `graphify` | `[x] DONE` |
+| **WBS-UI2-05** | Ponytail Git Diff Review, Visual QA (`flutter-preview`), `flutter test` (83/83 Pass) & Continuous Doc-Sync | Gate 5-6 | `code-reviewer` / `qa-tester` | 5 | `flutter analyze` 0 lỗi, 83/83 tests pass, cập nhật đủ `docs/` & `graphify` | `[x] DONE` |
 
+---
+
+## 🚀 2. Kế Hoạch Sprint 5: Courses Hub, Discovery & Curriculum Details (20 SP)
+*Theo phê duyệt tại [EPIC-06](file:///Users/nguyenduytrang/flutter_project/kiddora/docs/00-roadmap/epics-backlog.md) & [EPIC-07](file:///Users/nguyenduytrang/flutter_project/kiddora/docs/00-roadmap/epics-backlog.md)*
+
+* **Sprint Goal**: *"Hiện thực hóa Phân hệ Khám phá Khóa học (Courses Hub & Smart Discovery) và Chi tiết Khóa học (Course Detail & Curriculum), tích hợp bộ lọc môn học ClayFilterBar, thẻ bài học xúc giác 3D, đồng bộ Mock & REST API danh mục khóa học chuẩn Freezed."*
+* **Tổng Story Points**: **20 SP**
+* **Trạng thái**: `PLANNING_AND_READY`
+
+| Task ID | Hạng Mục Công Việc | Cổng | Sub-Agent Phụ Trách | SP | Tiêu Chuẩn Hoàn Thành (DoD) | Trạng Thái |
+| :---: | :--- | :---: | :---: | :---: | :--- | :---: |
+| **WBS-S5-01** | [KZN-01] Xây dựng Data Models `Course`, `Lesson`, `Subject` Freezed & Seed Data | Gate 0 | `tech-lead` / `backend-dev` | 3 | Entities chuẩn Freezed, Alembic migration 0002 cho courses/lessons, Mock Repository | `[ ] READY` |
+| **WBS-S5-02** | Đồng bộ PRD, BDD Gherkin & Data Dictionary cho Khám phá Khóa học | Gate 1 | `ba` / `po` | 2 | Cập nhật `06-courses-discovery-and-hub`, Given-When-Then, 0 drift | `[ ] READY` |
+| **WBS-S5-03** | Màn hình Khám Phá Khóa Học (Courses Hub, ClaySearchBar, Subject ClayFilterBar, CourseGrid) | Gate 4A | `flutter-core-dev` | 5 | Tái sử dụng UI Kit v2, 60 FPS, touch targets >= 48dp, 0 magic numbers | `[ ] READY` |
+| **WBS-S5-04** | Màn hình Chi Tiết Khóa Học (Course Detail: Hero 3D Card, 3 Tabs: Lessons, About, Reviews) | Gate 4A | `flutter-core-dev` | 4 | Danh sách bài học xúc giác, nút Bắt đầu học, rating sao | `[ ] READY` |
+| **WBS-S5-05** | FastAPI REST Endpoints (`GET /api/v1/courses`, `GET /api/v1/courses/{id}`, `/subjects`) | Gate 4B | `backend-dev` | 3 | Pydantic response models, filtering theo subject/age, Pytest suite | `[ ] READY` |
+| **WBS-S5-06** | Ponytail Git Diff Review (Tối giản code, không tạo abstraction thừa) | Gate 5 | `code-reviewer` | 1 | File < 200 dòng, không magic numbers, 100% AppStrings/AppColors | `[ ] READY` |
+| **WBS-S5-07** | Automated Widget Tests & Visual QA Matrix (Chống tràn 360×640, text scale 1.5x) | Gate 6 | `qa-tester` | 2 | 100% tests pass, 0 overflow, 60 FPS | `[ ] READY` |
+| **WBS-S5-08** | Nghiệm thu và Ký duyệt Release Sprint 5 (v0.5.0-courses-hub) | Gate 7 | `po` / `tech-lead` | - | Biên bản Gate 7 & Release Tag `v0.5.0-courses-hub` | `[ ] READY` |

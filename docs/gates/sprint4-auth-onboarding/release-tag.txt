@@ -1,0 +1,24 @@
+================================================================================
+KIDDORA MOBILE APP — SPRINT 4 RELEASE SIGN-OFF
+================================================================================
+Release Tag: v0.4.0-auth-onboarding-e2e
+Sprint Goal: Hiện thực hóa trọn gói luồng Fullstack End-to-End: Đăng ký, Đăng nhập, Onboarding và Hồ sơ bé, đồng bộ REST API FastAPI với PostgreSQL Database (Alembic Migration), hỗ trợ chế độ Khách (Guest) và chuyển đổi tài khoản.
+Approved By: Sub-Agent Product Owner (PO) — "The Strategic Tyrant"
+Co-Signed By: Sub-Agent Scrum Master (SM), Tech Lead, PM, QA Lead
+
+Chữ ký phê duyệt các cổng chất lượng (Quality Gates):
+- Gate 0 (Tech Lead Spike & Alembic 0001 Migration): APPROVED [X]
+- Gate 1 (BA PRD & BDD Given-When-Then Zero-Drift): APPROVED [X]
+- Gate 2 (UI/UX Tactile Clay 3D Assets & Spec)     : APPROVED [X]
+- Gate 3 (QA Master Test Plan & Traceability)      : APPROVED [X]
+- Gate 4A (Dev FE Flutter Clean Architecture)       : COMPLETED [X]
+- Gate 4B (Dev BE FastAPI Modular Monolith & Pytest): COMPLETED [X]
+- Gate 5 (Code Reviewer Ponytail Guardian)         : APPROVED [X]
+- Gate 6 (QA Verify & Visual QA)                   : APPROVED [X] (83/83 Flutter tests, 13/13 Pytest)
+- Gate 6.5 (Security Auditor AppSec & COPPA Guard) : APPROVED [X]
+- Gate 7 (Supreme Release Board & PO Approval)     : APPROVED [X]
+
+Phán quyết phát hành:
+Sprint 4 đạt 100% mục tiêu cam kết kỹ thuật (15 SP) và mở rộng vượt bậc với Shared UI Kit v2 (26 SP) cùng kiến trúc Hybrid Dev Host Server (CR-008). Toàn bộ 83 automated tests Flutter và 13 Pytest backend đều chạy pass thực tế, 0 lỗi render overflow, 0 cảnh báo lint.
+Sản phẩm chính thức được phê chuẩn phát hành phiên bản v0.4.0-auth-onboarding-e2e!
+================================================================================
