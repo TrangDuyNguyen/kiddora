@@ -362,6 +362,8 @@ class AppStrings {
   static const String minSuffix = 'min';
   static const String completeLessonsBadgeBanner =
       'Complete all lessons\nto earn a special badge!';
+  static const String lessonDemoNotice =
+      'Bài học này đang ở chế độ xem thử. Nội dung đầy đủ sẽ sớm ra mắt!';
   static const String lessonLockedAlert =
       'Con hãy hoàn thành các bài học trước để mở khóa bài này nhé!';
 }

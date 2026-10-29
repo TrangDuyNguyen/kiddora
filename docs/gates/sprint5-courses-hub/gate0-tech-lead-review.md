@@ -131,3 +131,10 @@ Qua quá trình đối sánh từng pixel trên 6 file ảnh chuẩn Dribbble v�
 
 ### 3.4. Đính chính
 Bản Gherkin, `AppStrings` và API spec soạn ở vòng trước **chưa đối chiếu ảnh benchmark** (sai: filter chỉ 3 nhóm, thiếu nút tim, search/filter đặt sai chỗ). Toàn bộ đã được viết lại ở vòng review này; các bản cũ không còn hiệu lực.
+
+### 3.5. Cập Nhật Sau Quyết Định Của PO (29/10)
+- Bài học và asset ở mức **demo**; sản xuất nội dung/asset thật dời sang các Sprint sau.
+- `RSK-012` hạ từ blocker xuống **ACCEPTED**: dùng asset sẵn có làm placeholder.
+- `RSK-013` **RESOLVED**; 3 câu hỏi mở ở PRD FEAT-07 đã chốt theo đề xuất Tech Lead.
+- Tech Lead đề nghị mở một Epic riêng "Lesson Content & Asset Production" trong backlog để chi phí này hiện rõ và không bị che trong Sprint 6 trở đi.
+- **Trạng thái Gate 0: APPROVED để giao Dev**, còn lại cảnh báo ước lượng US-16/US-18 (mục 3.3) và `RSK-011`, `RSK-014`.

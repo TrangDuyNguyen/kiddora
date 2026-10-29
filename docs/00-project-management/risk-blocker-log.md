@@ -19,6 +19,6 @@
 | `RSK-009` | Major | `ui-ux-designer` | Vùng chạm nút `Close (×)`, `Filter Pill`, `Compact Button` nhỏ hơn `48×48dp` | Bọc ngoài bằng `SizedBox`/`ConstrainedBox` `48×48dp` với `HitTestBehavior.opaque` | 🟢 RESOLVED |
 | `RSK-010` | Major | `pm` / `ba` | Trôi lệch tài liệu khi mở rộng `shared/ui_kit/` và đổi Tab 5 sang `Profile` | Đồng bộ đầy đủ `DESIGN.md`, `CR-013`, PRD `FEAT-04`, WBS & `graphify update .` | 🟢 RESOLVED |
 | `RSK-011` | Medium | `tech-lead` | `HomeScreen` có nguy cơ vượt 200 dòng khi thêm tab Courses | Tách `HomeDashboardBody` trước khi thêm `CoursesHubBody` | 🟡 OPEN |
-| `RSK-012` | Major | `ui-ux-designer` | Thiếu asset 3D runtime cho ảnh khóa học/bài học (chỉ có `course_dino.png`) | UI/UX tạo/tách asset trước Gate 4A; placeholder phải gắn nhãn rõ | 🔴 OPEN (chặn 1:1) |
-| `RSK-013` | Medium | `tech-lead` | Tab About/Reviews không có benchmark | PO chốt theo PRD FEAT-07 mục 3 | 🟡 OPEN |
+| `RSK-012` | Major | `ui-ux-designer` | Thiếu asset 3D runtime cho ảnh khóa học/bài học (chỉ có `course_dino.png`) | PO chốt 29/10: nội dung bài học và asset chỉ ở mức demo, dùng asset sẵn có làm placeholder; sản xuất asset thật dời sang các Sprint sau | 🟢 ACCEPTED (không còn chặn) |
+| `RSK-013` | Medium | `tech-lead` | Tab About/Reviews không có benchmark | PO đã chốt: làm tối giản, dữ liệu demo | 🟢 RESOLVED |
 | `RSK-014` | Medium | `qa-tester` | Thêm tab Courses có thể làm vỡ điều hướng tab Tests hiện tại | Test hồi quy bắt buộc | 🟡 OPEN |

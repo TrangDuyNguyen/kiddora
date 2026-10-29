@@ -61,3 +61,17 @@ Feature: Course Detail Overview & 3-Tab Lessons Curriculum (1:1 Benchmark)
     Given the user is viewing the Lessons tab
     When the user taps on locked lesson 3 "Food and Eating Habits"
     Then the app should show a friendly message "Con hãy hoàn thành các bài học trước để mở khóa bài này nhé!"
+
+  @course_curriculum @tap_unlocked_lesson_demo
+  Scenario: Tapping an unlocked lesson shows demo notice (lesson player is out of scope)
+    Given the user is viewing the Lessons tab
+    When the user taps on unlocked lesson 2 "Animals and Their Habitats"
+    Then haptic feedback should be triggered
+    And the app should show the demo notice "Bài học này đang ở chế độ xem thử. Nội dung đầy đủ sẽ sớm ra mắt!"
+    And no video player should open
+
+  @visual_qa @placeholder_assets
+  Scenario: Illustrations may be placeholders but layout must match benchmark
+    Given course and lesson thumbnails use placeholder assets
+    Then layout, spacing, labels and states must match the benchmark
+    And a different illustration must not be counted as a visual defect

@@ -43,10 +43,18 @@ Khi chọn khóa học từ Hub, trẻ và phụ huynh cần thấy tổng quan 
 
 ---
 
-## 3. Điểm Mở Cần PO Quyết Định (Open Questions)
+## 3. Quyết Định Của PO (29/10/2026) — Đã Chốt
 
-| # | Câu hỏi | Mặc định Tech Lead đề xuất |
+> **Nguyên tắc**: Phần **bài học chỉ ở mức DEMO**. Thiết kế nội dung bài học và sản xuất asset minh họa là một hạng mục rất lớn, sẽ lập kế hoạch riêng trong các Sprint sau.
+
+| # | Vấn đề | Quyết định |
 | :---: | :--- | :--- |
-| 1 | `Start Learning` đi đâu khi Lesson Player (Domain 06) chưa làm? | Mở màn `CourseCurriculum` (05_02). Chạm bài đang mở chỉ phát haptic + snackbar, chưa phát video. |
-| 2 | Tab `About` và `Reviews` **không có ảnh benchmark**. | Làm tối giản: `About` dùng lại mô tả + 4 ô tính năng; `Reviews` hiển thị điểm tổng, ghi rõ dữ liệu mẫu. Không thiết kế mới ngoài benchmark. |
-| 3 | Trạng thái tiến độ (bài 1 hoàn thành, bài 2 mở) lấy từ đâu? | Sprint 5: dữ liệu seed tĩnh. Bảng `user_progress` cá nhân hóa dời sang Sprint 6. |
+| 1 | `Start Learning` đi đâu | Mở màn `CourseCurriculum` (05_02). Chạm bài đang mở chỉ phát haptic và hiện thông báo demo (`lessonDemoNotice`); **không phát video**. |
+| 2 | Tab `About` / `Reviews` | Làm tối giản, dữ liệu demo. `About` dùng lại mô tả khóa học; `Reviews` hiển thị điểm tổng. Không thiết kế thêm ngoài benchmark. |
+| 3 | Trạng thái tiến độ bài học | Dữ liệu seed tĩnh (bài 1 hoàn thành, bài 2 mở, bài 3–5 khóa). Bảng `user_progress` dời sang Sprint sau. |
+| 4 | Ảnh khóa học / bài học | Dùng asset sẵn có trong `assets/images/` làm **placeholder**, không sản xuất asset 3D mới trong Sprint 5. |
+
+### Hệ quả cho phạm vi "1:1"
+- Đối sánh 1:1 áp dụng cho **bố cục, token màu/kích thước, nhãn chữ và hành vi tương tác**.
+- **Không** áp dụng cho nội dung hình minh họa (khủng long, phi hành gia...) và nội dung bài giảng thật.
+- Dev không được báo "hoàn thành asset"; QA không fail vì khác hình minh họa, chỉ fail nếu vỡ layout.
