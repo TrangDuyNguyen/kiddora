@@ -20,7 +20,11 @@
 
 ## 2. Tech Stack & Dependencies
 
-- **Flutter / Dart**: Flutter 3.x, Dart `>=3.0.0 <4.0.0`
+- **Flutter / Dart Baseline**: Flutter `3.29.x` (Channel `stable`), Dart `3.7.x` (`>=3.7.0 <4.0.0`).
+- **Dependency Locking Policy (SSOT)**:
+  - `pubspec.lock` và `backend/requirements.txt` là duy nhất và bắt buộc đồng bộ 100% giữa mọi máy (macOS Client & Windows Host Server).
+  - **Cấm tuyệt đối**: Không tự ý chạy `flutter pub upgrade` hoặc cài đặt thư viện đòi hỏi Dart SDK vượt quá baseline (`3.7.x`).
+  - Mọi máy đều phải sử dụng chung kênh Flutter `stable`. Khi kéo code về chỉ dùng `flutter pub get`.
 - **State Management**: `flutter_riverpod: ^2.6.1`, `riverpod_annotation: ^2.6.1`, `riverpod_generator: ^2.6.3`
 - **Routing**: `auto_route: ^9.2.2`, `auto_route_generator: ^9.0.0`
 - **Data Modeling**: `freezed: ^3.0.2`, `json_serializable: ^6.9.4`

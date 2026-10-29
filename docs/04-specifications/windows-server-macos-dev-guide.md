@@ -111,6 +111,11 @@ Mở ứng dụng **Tailscale** trên thanh Menu Bar của Mac và đăng nhập
 ### Bước 2: Clone Source Code & Chạy Flutter Trỏ Về Máy Chủ Windows
 Trên máy Mac, bạn **không cần bật Docker hay PostgreSQL** (tiết kiệm 100% RAM/Pin cho iOS Simulator và Xcode):
 
+> [!IMPORTANT]
+> **Quy Chuẩn Đồng Bộ SDK & Thư Viện (Zero-Drift Policy)**:
+> - Cả 2 máy Windows và macOS **bắt buộc dùng cùng kênh `flutter channel stable` (Flutter 3.29.x / Dart 3.7.x)**.
+> - File `pubspec.lock` và `backend/requirements.txt` là Single Source of Truth (SSOT). **Chỉ chạy `flutter pub get`**, tuyệt đối **không chạy `flutter pub upgrade`** làm lệch phiên bản giữa các máy.
+
 ```bash
 git clone <repo-url> kiddora
 cd kiddora
