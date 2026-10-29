@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import '../../../../core/constants/app_strings.dart';
 import '../../../../core/network/api_client.dart';
 import '../../domain/models/auth_models.dart';
 import 'package:kiddora/features/onboarding/domain/models/kid_profile.dart';
@@ -10,6 +11,14 @@ class AuthRemoteDataSource {
   final ApiClient _client;
 
   AuthRemoteDataSource(this._client);
+
+  AuthSession _parseSession(dynamic data) {
+    final session = AuthSession.fromMap(data as Map<String, dynamic>);
+    if (session.accessToken.isEmpty) {
+      throw ApiException(AppStrings.unexpectedResponse);
+    }
+    return session;
+  }
 
   Future<AuthSession> register({
     required String email,
@@ -25,12 +34,16 @@ class AuthRemoteDataSource {
           'full_name': fullName?.trim(),
         },
       );
-      return AuthSession.fromMap(res.data as Map<String, dynamic>);
+      return _parseSession(res.data);
     } on DioException catch (e) {
       if (e.error is ApiException) {
         throw e.error!;
       }
-      throw ApiException('Không thể đăng ký tài khoản');
+      throw ApiException(AppStrings.unknownError, e.response?.statusCode);
+    } on TypeError {
+      throw ApiException(AppStrings.unexpectedResponse);
+    } on FormatException {
+      throw ApiException(AppStrings.unexpectedResponse);
     }
   }
 
@@ -46,12 +59,16 @@ class AuthRemoteDataSource {
           'password': password,
         },
       );
-      return AuthSession.fromMap(res.data as Map<String, dynamic>);
+      return _parseSession(res.data);
     } on DioException catch (e) {
       if (e.error is ApiException) {
         throw e.error!;
       }
-      throw ApiException('Đăng nhập thất bại');
+      throw ApiException(AppStrings.unknownError, e.response?.statusCode);
+    } on TypeError {
+      throw ApiException(AppStrings.unexpectedResponse);
+    } on FormatException {
+      throw ApiException(AppStrings.unexpectedResponse);
     }
   }
 
@@ -74,7 +91,11 @@ class AuthRemoteDataSource {
       if (e.error is ApiException) {
         throw e.error!;
       }
-      throw ApiException('Không thể lưu hồ sơ bé');
+      throw ApiException(AppStrings.unknownError, e.response?.statusCode);
+    } on TypeError {
+      throw ApiException(AppStrings.unexpectedResponse);
+    } on FormatException {
+      throw ApiException(AppStrings.unexpectedResponse);
     }
   }
 

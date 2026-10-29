@@ -1,6 +1,9 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import '../../../../core/constants/app_strings.dart';
 import '../../../../core/constants/app_values.dart';
+import '../../../../core/network/api_client.dart';
 import '../../../../core/network/token_storage.dart';
 import '../../../auth/data/repositories/auth_repository_impl.dart';
 import '../../../auth/domain/repositories/i_auth_repository.dart';
@@ -41,6 +44,7 @@ class OnboardingState {
     this.isLoading = false,
     this.isCompleted = false,
     this.profile,
+    this.errorMessage,
   });
 
 
@@ -51,6 +55,7 @@ class OnboardingState {
   final bool isLoading;
   final bool isCompleted;
   final KidProfile? profile;
+  final String? errorMessage;
 
   bool get isProfileValid => nickname.trim().length >= 2;
 
@@ -62,6 +67,7 @@ class OnboardingState {
     bool? isLoading,
     bool? isCompleted,
     KidProfile? profile,
+    String? errorMessage,
   }) {
     return OnboardingState(
       currentSlideIndex: currentSlideIndex ?? this.currentSlideIndex,
@@ -71,6 +77,7 @@ class OnboardingState {
       isLoading: isLoading ?? this.isLoading,
       isCompleted: isCompleted ?? this.isCompleted,
       profile: profile ?? this.profile,
+      errorMessage: errorMessage,
     );
   }
 }
@@ -111,7 +118,7 @@ class OnboardingController extends StateNotifier<OnboardingState> {
   Future<bool> completeOnboarding() async {
     if (!state.isProfileValid) return false;
 
-    state = state.copyWith(isLoading: true);
+    state = state.copyWith(isLoading: true, errorMessage: null);
     try {
       final token = await _tokenStorage?.getAccessToken();
       KidProfile profile;
@@ -144,8 +151,13 @@ class OnboardingController extends StateNotifier<OnboardingState> {
         profile: profile,
       );
       return true;
-    } catch (_) {
-      state = state.copyWith(isLoading: false);
+    } catch (e) {
+      debugPrint('[ONBOARDING-ERR] $e');
+      state = state.copyWith(
+        isLoading: false,
+        errorMessage:
+            e is ApiException ? e.message : AppStrings.saveKidProfileFailed,
+      );
       return false;
     }
   }

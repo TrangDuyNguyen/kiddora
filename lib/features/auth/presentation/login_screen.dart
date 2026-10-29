@@ -232,6 +232,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                                       ),
                                     ],
                                   ),
+                                  ClayErrorText(state.errorMessage),
                                   const SizedBox(height: AppValues.space7),
 
                                   // Log In Primary Tactile Button with Trailing Arrow

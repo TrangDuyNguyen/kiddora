@@ -191,3 +191,15 @@ async def test_create_kid_profile():
         assert data["streak_days"] == 1
 
     app.dependency_overrides.clear()
+
+
+@pytest.mark.asyncio
+async def test_validation_error_returns_string_detail():
+    """422 phải trả `detail` là chuỗi để FE chỉ hiển thị."""
+    app.dependency_overrides[get_db] = lambda: AsyncMock()
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        res = await client.post("/api/v1/auth/login", json={"email": "x"})
+    app.dependency_overrides.clear()
+    assert res.status_code == 422
+    assert isinstance(res.json()["detail"], str)

@@ -240,6 +240,17 @@ class AppStrings {
   static const String exploreAsGuest = 'Trải nghiệm thử không cần tài khoản';
   static const String loginToSync = 'Đã có tài khoản? Đăng nhập';
   static const String networkError = 'Không thể kết nối đến máy chủ. Vui lòng kiểm tra lại mạng.';
+  static const String networkTimeout = 'Máy chủ phản hồi quá chậm. Vui lòng thử lại sau.';
+  static const String serverUnavailable = 'Máy chủ đang gặp sự cố. Vui lòng thử lại sau.';
+  static const String badCertificate = 'Kết nối không an toàn tới máy chủ.';
+  static const String requestCancelled = 'Yêu cầu đã bị hủy.';
+  static const String unexpectedResponse = 'Phản hồi từ máy chủ không hợp lệ.';
+  static const String unknownError = 'Đã có lỗi xảy ra. Vui lòng thử lại.';
+  static const String loginFailed = 'Đăng nhập thất bại';
+  static const String registerFailed = 'Không thể đăng ký tài khoản';
+  static const String saveKidProfileFailed = 'Không thể lưu hồ sơ bé';
+  static const String passwordTooShort = 'Mật khẩu phải từ 6 ký tự trở lên';
+  static const String loginEmptyFields = 'Vui lòng nhập Email và Mật khẩu';
 
   // Network Debug Inspector & Logging
   static const String networkInspectorTitle = 'Nhật ký mạng (Network Inspector)';

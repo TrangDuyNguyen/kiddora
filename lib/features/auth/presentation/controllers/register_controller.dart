@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../core/constants/app_strings.dart';
 import '../../../../core/network/api_client.dart';
@@ -100,7 +101,7 @@ class RegisterController extends StateNotifier<RegisterState> {
     }
 
     if (state.password.length < 6) {
-      state = state.copyWith(errorMessage: 'Mật khẩu phải từ 6 ký tự trở lên');
+      state = state.copyWith(errorMessage: AppStrings.passwordTooShort);
       return false;
     }
 
@@ -124,7 +125,8 @@ class RegisterController extends StateNotifier<RegisterState> {
       state = state.copyWith(isLoading: false);
       return true;
     } catch (e) {
-      final msg = e is ApiException ? e.message : 'Đăng ký tài khoản thất bại';
+      debugPrint('[REGISTER-ERR] $e');
+      final msg = e is ApiException ? e.message : AppStrings.registerFailed;
       state = state.copyWith(isLoading: false, errorMessage: msg);
       return false;
     }

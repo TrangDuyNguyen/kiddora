@@ -2,7 +2,9 @@
 Kiddora Backend — FastAPI Entry Point (Feature-First Clean Architecture)
 """
 from contextlib import asynccontextmanager
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
+from fastapi.exceptions import RequestValidationError
+from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.core.database import engine, Base
@@ -40,6 +42,24 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+
+@app.exception_handler(RequestValidationError)
+async def validation_error_handler(request: Request, exc: RequestValidationError):
+    """Luôn trả `detail` dạng chuỗi để FE chỉ cần hiển thị."""
+    first = exc.errors()[0] if exc.errors() else {}
+    field = ".".join(str(p) for p in first.get("loc", ()) if p != "body")
+    msg = first.get("msg", "Dữ liệu không hợp lệ")
+    detail = f"Dữ liệu không hợp lệ ({field}): {msg}" if field else f"Dữ liệu không hợp lệ: {msg}"
+    return JSONResponse(status_code=422, content={"detail": detail})
+
+
+@app.exception_handler(Exception)
+async def unhandled_error_handler(request: Request, exc: Exception):
+    return JSONResponse(
+        status_code=500,
+        content={"detail": "Máy chủ gặp lỗi. Vui lòng thử lại sau."},
+    )
 
 
 @app.get("/health", tags=["Health"])

@@ -9,6 +9,7 @@ import '../../../../core/constants/app_values.dart';
 import '../../../../core/router/app_router.gr.dart';
 import '../../../../shared/ui_kit/buttons/clay_button.dart';
 import '../../../../shared/ui_kit/buttons/clay_icon_button.dart';
+import '../../../../shared/ui_kit/indicators/clay_error_text.dart';
 import '../../../../shared/ui_kit/surfaces/clay_card.dart';
 import '../../domain/models/avatar_presets.dart';
 import '../controllers/onboarding_controller.dart';
@@ -332,6 +333,9 @@ class _KidProfileSetupScreenState extends ConsumerState<KidProfileSetupScreen> {
                 }).toList(),
               ),
               const SizedBox(height: AppValues.space10),
+
+              ClayErrorText(state.errorMessage),
+              const SizedBox(height: AppValues.space4),
 
               // Section 4: Primary CTA Button
               SizedBox(

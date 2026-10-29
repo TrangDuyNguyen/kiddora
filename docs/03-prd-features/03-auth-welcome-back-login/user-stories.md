@@ -38,3 +38,34 @@
 - **Given** form đăng ký chưa được điền thông tin.
 - **When** người dùng nhấn nút `Sign Up`.
 - **Then** hệ thống chặn submit và hiển thị thông báo lỗi rõ ràng bên dưới các trường còn thiếu.
+
+## Bổ sung CR-009: Lỗi mạng khi đăng nhập
+
+```gherkin
+Scenario: Máy chủ không khả dụng
+  Given phụ huynh nhập email và mật khẩu hợp lệ
+  When máy chủ backend tắt hoặc không kết nối được
+  Then màn Login ngừng loading và hiển thị "Không thể kết nối đến máy chủ. Vui lòng kiểm tra lại mạng."
+
+Scenario: Máy chủ phản hồi quá chậm
+  When request vượt AppValues.apiTimeout
+  Then hiển thị thông báo timeout và cho phép thử lại
+
+Scenario: Phản hồi 200 thiếu token
+  Then hiển thị "Phản hồi từ máy chủ không hợp lệ." và không lưu phiên đăng nhập
+```
+
+## Bổ sung CR-010: BE là nguồn thông báo lỗi
+
+```gherkin
+Scenario: Hiển thị nguyên văn lỗi từ BE
+  When BE trả HTTP 4xx/5xx với {"detail": "<thông báo>"}
+  Then Login, Register và Kid Profile hiển thị đúng "<thông báo>" (ClayErrorText)
+
+Scenario: Dữ liệu gửi lên không hợp lệ
+  When BE trả 422
+  Then detail là chuỗi dạng "Dữ liệu không hợp lệ (<trường>): <lý do>"
+
+Scenario: Không có phản hồi từ BE
+  Then FE hiển thị thông báo mất kết nối/timeout cục bộ
+```

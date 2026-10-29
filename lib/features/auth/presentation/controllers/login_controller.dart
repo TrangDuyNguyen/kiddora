@@ -1,4 +1,6 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../../../../core/constants/app_strings.dart';
 import '../../../../core/network/api_client.dart';
 import '../../data/repositories/auth_repository_impl.dart';
 import '../../domain/repositories/i_auth_repository.dart';
@@ -62,7 +64,7 @@ class LoginController extends StateNotifier<LoginState> {
 
   Future<bool> login() async {
     if (state.email.trim().isEmpty || state.password.trim().isEmpty) {
-      state = state.copyWith(errorMessage: 'Vui lòng nhập Email và Mật khẩu');
+      state = state.copyWith(errorMessage: AppStrings.loginEmptyFields);
       return false;
     }
 
@@ -75,7 +77,8 @@ class LoginController extends StateNotifier<LoginState> {
       state = state.copyWith(isLoading: false);
       return true;
     } catch (e) {
-      final msg = e is ApiException ? e.message : 'Đăng nhập không thành công';
+      debugPrint('[LOGIN-ERR] $e');
+      final msg = e is ApiException ? e.message : AppStrings.loginFailed;
       state = state.copyWith(isLoading: false, errorMessage: msg);
       return false;
     }

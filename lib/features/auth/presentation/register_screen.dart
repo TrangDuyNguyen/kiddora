@@ -274,18 +274,7 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
                                   ),
 
                                   // Error Message
-                                  if (state.errorMessage != null) ...[
-                                    const SizedBox(height: AppValues.space4),
-                                    Text(
-                                      state.errorMessage!,
-                                      style: GoogleFonts.quicksand(
-                                        fontSize: AppValues.fontLabelMd,
-                                        fontWeight: FontWeight.w600,
-                                        color: AppColors.feedbackError,
-                                      ),
-                                      textAlign: TextAlign.center,
-                                    ),
-                                  ],
+                                  ClayErrorText(state.errorMessage),
 
                                   const SizedBox(height: AppValues.space8),
 
