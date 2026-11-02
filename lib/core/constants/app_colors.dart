@@ -47,6 +47,7 @@ class AppColors {
   static const Color borderDefault = Color(0xFFE2E8F0);
   static const Color borderFocus = Color(0xFF6366F1); // WCAG 3px Focus Ring
   static const Color feedbackError = Color(0xFFBA1A1A); // Gentle Coral Alert
+  static const Color stateError = feedbackError;
 
   // Tactile Claymorphism Tokens (DESIGN.md Section 2.5)
   static const Color clayHighlight =
@@ -196,4 +197,21 @@ class AppColors {
   static const Color clayFilterActiveShadow = Color(0x474648D4);
   static const Color clayBadgePrimaryBorder = Color(0x40FFFFFF);
   static const Color shadowAmberSubtle = Color(0x1FF59E0B);
+
+  // Domain 04 & 05 Semantic Tokens (Courses & Curriculum)
+  static const Color featureVideosBg = Color(0xFFF3E8FF);
+  static const Color featureVideosIcon = Color(0xFF9333EA);
+  static const Color featureQuizzesBg = Color(0xFFFEF3C7);
+  static const Color featureQuizzesIcon = Color(0xFFD97706);
+  static const Color featureSheetsBg = Color(0xFFD1FAE5);
+  static const Color featureSheetsIcon = Color(0xFF059669);
+  static const Color featureBadgesBg = Color(0xFFFCE7F3);
+  static const Color featureBadgesIcon = Color(0xFFDB2777);
+  static const Color ratingStarGold = Color(0xFFF59E0B);
+  static const Color favoriteHeartRed = Color(0xFFEF4444);
+  static const Color favoriteHeartBg = Color(0xFFFFFFFF);
+  static const Color badgeBannerBg = Color(0xFFFFFBEB);
+  static const Color badgeBannerBorder = Color(0xFFFDE68A);
+  static const Color courseHeroGradTop = Color(0xFF818CF8);
+  static const Color courseHeroGradBottom = Color(0xFF4F46E5);
 }

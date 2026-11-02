@@ -12,8 +12,10 @@ class LessonItemResponse(BaseModel):
     order_index: int
     title: str
     duration_mins: int
+    thumbnail_url: Optional[str] = None
     video_url: Optional[str] = None
     is_completed: bool = False
+    is_unlocked: bool = False
 
 
 class CourseCardResponse(BaseModel):
@@ -25,6 +27,7 @@ class CourseCardResponse(BaseModel):
     category: str
     min_age: int
     max_age: int
+    level: str = "beginner"
     total_lessons: int
     rating: float
     review_count: int
@@ -33,10 +36,5 @@ class CourseCardResponse(BaseModel):
 
 
 class CourseDetailResponse(CourseCardResponse):
+    subtitle: Optional[str] = None
     lessons: List[LessonItemResponse] = []
-
-
-class CourseFilterParams(BaseModel):
-    category: Optional[str] = None
-    age: Optional[int] = None
-    search: Optional[str] = None

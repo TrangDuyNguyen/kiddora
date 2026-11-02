@@ -44,4 +44,8 @@ class AppAssets {
       'assets/images/avatar_coach_sarah.png';
   static const String mascotBoyThumbsUp =
       'assets/images/mascot_boy_thumbs_up.png';
+  static const String mascotBoyWaving = 'assets/images/mascot_boy_waving.png';
+  static const String mascotStarGoal = 'assets/images/mascot_star_goal.png';
+  static const String mascotBoyCrown = 'assets/images/mascot_boy_crown.png';
+  static const String courseDino = 'assets/images/course_dino.png';
 }

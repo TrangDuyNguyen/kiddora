@@ -290,15 +290,23 @@ class AppStrings {
 
   // Courses Hub & Smart Discovery (Domain 04 — Chuẩn Tiếng Việt & Sẵn sàng i18n)
   static const String coursesHubTitle = 'Khóa học';
+  static const String coursesHubSubtitle = 'Khám phá, Học tập & Lớn khôn!';
   static const String coursesHubExploreHero = 'Khám phá, Học tập & Lớn khôn!';
+  static const String brighterFutureTitle = 'Tương lai tươi sáng bắt đầu từ đây!';
+  static const String brighterFutureSubtitle =
+      'Học tương tác, khám phá và trưởng thành mỗi ngày';
   static const String coursesHeroBannerText =
       'Tương lai\ntươi sáng\nbắt đầu\ntừ đây!';
   static const String coursesSearchHint = 'Tìm khóa học, chủ đề...';
   static const String filterTooltip = 'Lọc khóa học';
   static const String popularCourses = 'Khóa học nổi bật';
+  static const String popularCoursesTitle = 'Khóa học nổi bật';
   static const String allCourses = 'Tất cả khóa học';
+  static const String allCoursesTitle = 'Tất cả khóa học';
   static const String allCoursesSubtitle =
       'Khám phá và tìm kiếm khóa học con yêu thích!';
+  static const String genericError = unknownError;
+
   static const String lessonsCountSuffix = 'Bài học';
   static const String agesPrefix = 'Tuổi';
 

@@ -231,4 +231,11 @@ class AppValues {
   static const double lerpShade = 0.08;
   static const double badgeInsetOffset = 2.0;
   static const double badgeInsetBlur = 3.0;
+
+  // Domain 04 & 05 Tokens (Courses & Curriculum)
+  static const double sizeCourseCardH = 220.0;
+  static const double sizeCourseDetailHeroH = 220.0;
+  static const double sizeCourseDetailThumb = 64.0;
+  static const double sizeLessonTileH = 72.0;
+  static const Duration durationDebounce = Duration(milliseconds: 300);
 }

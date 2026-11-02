@@ -102,3 +102,17 @@ Chi tiết từng bài học con thuộc một khóa học cụ thể.
 | **LiveSession** | `live_sessions` | `id (VARCHAR)` | `coach_id -> users(id)` | Liên kết `livekit_channel` để học sinh join WebRTC |
 | **Participant** | `session_participants`| `id (UUID)` | `session_id`, `user_id`| Theo dõi hiện diện real-time |
 | **Badge / Reward** | `badges`, `user_badges`| `id (VARCHAR)` | `user_id`, `badge_id` | Tự động trao thưởng qua Celery queue |
+
+---
+
+## 7. Value Object `CourseFilter` (Bộ Lọc Đa Tiêu Chí Client)
+Đối tượng bất biến `@freezed` lưu trạng thái bộ lọc 4 chiều tại `CourseFilterSheet` & `CoursesController`.
+
+| Tên trường | Kiểu dữ liệu | Mặc định | Mô tả & Ràng buộc giá trị |
+| :--- | :--- | :---: | :--- |
+| `category` | String | `'all'` | `'all'`, `'science'`, `'math'`, `'language'`, `'arts'`, `'technology'`, `'life_skills'` |
+| `ageRange` | String | `'all'` | `'all'`, `'7-8'`, `'9-10'`, `'11-12'` |
+| `level` | String | `'all'` | `'all'`, `'beginner'`, `'intermediate'`, `'advanced'` |
+| `duration` | String | `'all'` | `'all'`, `'short'`, `'medium'`, `'long'` |
+| `searchQuery` | String | `''` | Từ khóa tìm kiếm khóa học |
+

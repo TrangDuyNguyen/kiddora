@@ -17,9 +17,21 @@ class CourseService:
         self,
         category: Optional[str] = None,
         age: Optional[int] = None,
+        min_age: Optional[int] = None,
+        max_age: Optional[int] = None,
+        level: Optional[str] = None,
+        duration: Optional[str] = None,
         search: Optional[str] = None,
     ) -> List[CourseCardResponse]:
-        courses = await self.repo.list_courses(category=category, age=age, search=search)
+        courses = await self.repo.list_courses(
+            category=category,
+            age=age,
+            min_age=min_age,
+            max_age=max_age,
+            level=level,
+            duration=duration,
+            search=search,
+        )
         return [
             CourseCardResponse(
                 id=c.id,
@@ -28,6 +40,7 @@ class CourseService:
                 category=c.category,
                 min_age=c.min_age,
                 max_age=c.max_age,
+                level=c.level or "beginner",
                 total_lessons=len(c.lessons),
                 rating=c.rating,
                 review_count=c.review_count,
@@ -51,8 +64,10 @@ class CourseService:
                 order_index=l.order_index,
                 title=l.title,
                 duration_mins=l.duration_mins,
+                thumbnail_url=l.thumbnail_url,
                 video_url=l.video_url,
-                is_completed=False,
+                is_completed=bool(l.is_completed),
+                is_unlocked=bool(l.is_unlocked),
             )
             for l in c.lessons
         ]
@@ -60,10 +75,12 @@ class CourseService:
         return CourseDetailResponse(
             id=c.id,
             title=c.title,
+            subtitle=c.subtitle,
             description=c.description,
             category=c.category,
             min_age=c.min_age,
             max_age=c.max_age,
+            level=c.level or "beginner",
             total_lessons=len(lessons),
             rating=c.rating,
             review_count=c.review_count,

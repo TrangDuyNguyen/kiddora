@@ -8,13 +8,9 @@ import '../../../core/constants/app_values.dart';
 import '../../../core/network/token_storage.dart';
 import '../../../core/router/app_router.gr.dart';
 import '../../../shared/ui_kit/ui_kit.dart';
+import '../../exploration/presentation/courses_hub_body.dart';
 import '../../onboarding/presentation/controllers/onboarding_controller.dart';
-import 'widgets/guest_claim_banner.dart';
-import 'widgets/home_continue_learning_card.dart';
-import 'widgets/home_header.dart';
-import 'widgets/home_hero_banner.dart';
-import 'widgets/home_quick_stats_grid.dart';
-import 'widgets/home_upcoming_session_card.dart';
+import 'widgets/home_dashboard_body.dart';
 
 @RoutePage()
 class HomeScreen extends ConsumerStatefulWidget {
@@ -70,55 +66,19 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     return Scaffold(
       backgroundColor: AppColors.surface,
       body: SafeArea(
-        child: SingleChildScrollView(
-          padding: const EdgeInsets.symmetric(horizontal: AppValues.space7),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const SizedBox(height: AppValues.space4),
-
-              // Header: Kid's Avatar, Greeting, Notification Badge & Logout Modal Trigger
-              HomeHeader(
-                kidName: nickname,
-                onNotificationTap: () => _showSnack(AppStrings.notificationsAlert),
-                onLogoutTap: _handleLogoutTap,
-              ),
-              const SizedBox(height: AppValues.space6),
-
-              // Guest Claim Banner (shown only when in guest mode)
-              const GuestClaimBanner(),
-
-              // Hero Banner "Keep Learning Keep Growing!"
-              HomeHeroBanner(
-                onActionTap: () {
-                  context.router.push(const TodayLearningGoalRoute());
-                },
-              ),
-              const SizedBox(height: AppValues.space7),
-
-              // Quick Actions 2x2 Grid (My Progress -> TodayLearningGoalScreen)
-              HomeQuickStatsGrid(
-                onMyProgressTap: () {
-                  context.router.push(const TodayLearningGoalRoute());
-                },
-              ),
-              const SizedBox(height: AppValues.space7),
-
-              // Continue Learning Section (Amazing Animals Science)
-              HomeContinueLearningCard(
-                onTap: () {
-                  context.router.push(const TodayLearningGoalRoute());
-                },
-              ),
-              const SizedBox(height: AppValues.space7),
-
-              // Upcoming Session Section (Math Fun with Numbers - Coach Sarah)
-              HomeUpcomingSessionCard(
-                onJoinTap: () => _showSnack(AppStrings.joiningSessionAlert),
-              ),
-              const SizedBox(height: AppValues.space9),
-            ],
-          ),
+        child: IndexedStack(
+          index: _currentNavIndex,
+          children: [
+            HomeDashboardBody(
+              nickname: nickname,
+              onLogoutTap: _handleLogoutTap,
+              onSnack: _showSnack,
+            ),
+            const CoursesHubBody(),
+            const SizedBox.shrink(),
+            const SizedBox.shrink(),
+            const SizedBox.shrink(),
+          ],
         ),
       ),
       bottomNavigationBar: ClayBottomNav(

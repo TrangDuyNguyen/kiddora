@@ -14,14 +14,26 @@ router = APIRouter(prefix="/courses", tags=["Courses"])
 
 @router.get("", response_model=List[CourseCardResponse])
 async def list_courses(
-    category: Optional[str] = Query(None, description="Lọc theo môn: math, science, arts, language"),
+    category: Optional[str] = Query(None, description="Lọc theo môn: math, science, arts, language, technology"),
     age: Optional[int] = Query(None, description="Lọc theo độ tuổi bé (6-12)"),
+    min_age: Optional[int] = Query(None, description="Lọc theo tuổi tối thiểu (7, 9, 11)"),
+    max_age: Optional[int] = Query(None, description="Lọc theo tuổi tối đa (8, 10, 12)"),
+    level: Optional[str] = Query(None, description="Lọc theo cấp độ: beginner, intermediate, advanced"),
+    duration: Optional[str] = Query(None, description="Lọc theo thời lượng: short, medium, long"),
     search: Optional[str] = Query(None, description="Tìm kiếm theo tiêu đề khóa học"),
     db: AsyncSession = Depends(get_db),
 ):
-    """Lấy danh sách khóa học (dành cho màn hình Courses Hub & Home Popular Courses)"""
+    """Lấy danh sách khóa học (dành cho màn hình Courses Hub, Search, Filter & All Courses Grid)"""
     service = CourseService(db)
-    return await service.get_courses(category=category, age=age, search=search)
+    return await service.get_courses(
+        category=category,
+        age=age,
+        min_age=min_age,
+        max_age=max_age,
+        level=level,
+        duration=duration,
+        search=search,
+    )
 
 
 @router.get("/{course_id}", response_model=CourseDetailResponse)
