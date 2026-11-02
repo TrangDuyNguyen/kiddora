@@ -209,6 +209,7 @@ class AppStrings {
   static const String navSessions = 'Sessions';
   static const String navTests = 'Tests';
   static const String navProfile = 'Profile';
+  static const String navMore = 'More';
   static const String notificationsAlert =
       '3 thông báo mới từ Coach Sarah & Math Fun!';
   static const String joiningSessionAlert =
@@ -288,35 +289,35 @@ class AppStrings {
   static const String modalRetry = 'Thử lại';
   static const String modalGoOffline = 'Học chế độ ngoại tuyến';
 
-  // Courses Hub & Smart Discovery (Domain 04 — Chuẩn Tiếng Việt & Sẵn sàng i18n)
-  static const String coursesHubTitle = 'Khóa học';
-  static const String coursesHubSubtitle = 'Khám phá, Học tập & Lớn khôn!';
-  static const String coursesHubExploreHero = 'Khám phá, Học tập & Lớn khôn!';
-  static const String brighterFutureTitle = 'Tương lai tươi sáng bắt đầu từ đây!';
+  // Courses Hub & Smart Discovery (Domain 04 — 1:1 Reference Image 2 Benchmark)
+  static const String coursesHubTitle = 'Courses';
+  static const String coursesHubSubtitle = 'Explore, Learn and Grow!';
+  static const String coursesHubExploreHero = 'Explore, Learn and Grow!';
+  static const String brighterFutureTitle = 'A Brighter Future Starts Here!';
   static const String brighterFutureSubtitle =
-      'Học tương tác, khám phá và trưởng thành mỗi ngày';
+      'Explore, interact and grow everyday';
   static const String coursesHeroBannerText =
-      'Tương lai\ntươi sáng\nbắt đầu\ntừ đây!';
-  static const String coursesSearchHint = 'Tìm khóa học, chủ đề...';
-  static const String filterTooltip = 'Lọc khóa học';
-  static const String popularCourses = 'Khóa học nổi bật';
-  static const String popularCoursesTitle = 'Khóa học nổi bật';
-  static const String allCourses = 'Tất cả khóa học';
-  static const String allCoursesTitle = 'Tất cả khóa học';
+      'A Brighter\nFuture\nStarts\nHere!';
+  static const String coursesSearchHint = 'Search courses, topics...';
+  static const String filterTooltip = 'Filter courses';
+  static const String popularCourses = 'Popular Courses';
+  static const String popularCoursesTitle = 'Popular Courses';
+  static const String allCourses = 'All Courses';
+  static const String allCoursesTitle = 'All Courses';
   static const String allCoursesSubtitle =
-      'Khám phá và tìm kiếm khóa học con yêu thích!';
+      'Explore and find your favorite courses!';
   static const String genericError = unknownError;
 
-  static const String lessonsCountSuffix = 'Bài học';
-  static const String agesPrefix = 'Tuổi';
+  static const String lessonsCountSuffix = 'Lessons';
+  static const String agesPrefix = 'Ages';
 
   // Subject Category Chips (1:1 Benchmark)
-  static const String subjectAll = 'Tất cả';
-  static const String subjectScience = 'Khoa học';
-  static const String subjectMath = 'Toán học';
-  static const String subjectMathematics = 'Toán tư duy';
-  static const String subjectLanguage = 'Ngôn ngữ';
-  static const String subjectArts = 'Nghệ thuật';
+  static const String subjectAll = 'All';
+  static const String subjectScience = 'Science';
+  static const String subjectMath = 'Math';
+  static const String subjectMathematics = 'Mathematics';
+  static const String subjectLanguage = 'Language';
+  static const String subjectArts = 'Arts';
   static const String subjectArtsCreativity = 'Mỹ thuật & Sáng tạo';
   static const String subjectTechnology = 'Công nghệ';
   static const String subjectLifeSkills = 'Kỹ năng sống';

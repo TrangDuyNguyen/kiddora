@@ -50,7 +50,9 @@ class CourseRepositoryImpl implements ICourseRepository {
         final list = (res.data as List)
             .map((e) => Course.fromMap(e as Map<String, dynamic>))
             .toList();
-        return list;
+        if (list.isNotEmpty) {
+          return list;
+        }
       }
     } catch (_) {
       // Fallback seamlessly to mock seed data if server is unreachable

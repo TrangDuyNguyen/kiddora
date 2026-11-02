@@ -5,6 +5,7 @@ import 'package:kiddora/core/constants/app_strings.dart';
 import 'package:kiddora/features/exploration/data/datasources/mock_course_datasource.dart';
 import 'package:kiddora/features/exploration/data/repositories/course_repository_impl.dart';
 import 'package:kiddora/features/exploration/presentation/courses_hub_body.dart';
+import 'package:kiddora/features/exploration/presentation/widgets/course_category_card.dart';
 
 void main() {
   testWidgets('CoursesHubBody renders header, hero banner, category chips and popular courses',
@@ -38,11 +39,11 @@ void main() {
     expect(find.text(AppStrings.brighterFutureSubtitle), findsOneWidget);
 
     // 3. Category cards
-    expect(find.text(AppStrings.subjectAll), findsOneWidget);
-    expect(find.text(AppStrings.subjectScience), findsOneWidget);
-    expect(find.text(AppStrings.subjectMath), findsOneWidget);
-    expect(find.text(AppStrings.subjectLanguage), findsOneWidget);
-    expect(find.text(AppStrings.subjectArts), findsOneWidget);
+    expect(find.widgetWithText(CourseCategoryCard, AppStrings.subjectAll), findsOneWidget);
+    expect(find.widgetWithText(CourseCategoryCard, AppStrings.subjectScience), findsOneWidget);
+    expect(find.widgetWithText(CourseCategoryCard, AppStrings.subjectMath), findsOneWidget);
+    expect(find.widgetWithText(CourseCategoryCard, AppStrings.subjectLanguage), findsOneWidget);
+    expect(find.widgetWithText(CourseCategoryCard, AppStrings.subjectArts), findsOneWidget);
 
     // 4. Popular Courses section header
     expect(find.text(AppStrings.popularCoursesTitle), findsOneWidget);
@@ -53,7 +54,7 @@ void main() {
     expect(find.text('Space Exploration'), findsOneWidget);
 
     // 6. Test Category Filter tap
-    await tester.tap(find.text(AppStrings.subjectMath));
+    await tester.tap(find.widgetWithText(CourseCategoryCard, AppStrings.subjectMath));
     await tester.pumpAndSettle();
     expect(find.text('Math Fun with Numbers'), findsOneWidget);
   });

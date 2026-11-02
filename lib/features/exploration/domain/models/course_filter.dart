@@ -50,7 +50,12 @@ class CourseFilter {
 
   bool matches(Course course) {
     if (category != 'all' && category.isNotEmpty) {
-      if (course.category.toLowerCase() != category.toLowerCase()) {
+      final cCat = course.category.toLowerCase();
+      final fCat = category.toLowerCase();
+      final matchesCat = cCat == fCat ||
+          (fCat == 'math' && cCat.startsWith('math')) ||
+          (fCat == 'arts' && cCat.startsWith('art'));
+      if (!matchesCat) {
         return false;
       }
     }

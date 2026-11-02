@@ -39,8 +39,8 @@ class CoursesHubBody extends ConsumerWidget {
                     Text(
                       AppStrings.coursesHubTitle,
                       style: GoogleFonts.quicksand(
-                        fontSize: AppValues.fontHeadlineMid,
-                        fontWeight: FontWeight.w700,
+                        fontSize: AppValues.fontHeadlineXl,
+                        fontWeight: FontWeight.w800,
                         color: AppColors.textPrimary,
                       ),
                     ),
@@ -48,7 +48,7 @@ class CoursesHubBody extends ConsumerWidget {
                     Text(
                       AppStrings.coursesHubSubtitle,
                       style: GoogleFonts.quicksand(
-                        fontSize: AppValues.fontBodySm,
+                        fontSize: AppValues.fontLabelMd,
                         fontWeight: FontWeight.w600,
                         color: AppColors.textSecondary,
                       ),
@@ -66,7 +66,7 @@ class CoursesHubBody extends ConsumerWidget {
                 icon: const Icon(
                   Icons.search_rounded,
                   size: AppValues.iconSizeLg,
-                  color: AppColors.brandPrimary,
+                  color: AppColors.textPrimary,
                 ),
               ),
             ],
@@ -77,58 +77,74 @@ class CoursesHubBody extends ConsumerWidget {
           _buildHeroBanner(),
           const SizedBox(height: AppValues.space7),
 
-          // 5 Category Cards
-          SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            clipBehavior: Clip.none,
-            child: Row(
-              children: [
-                CourseCategoryCard(
+          // 5 Category Cards (Evenly Distributed Across Screen Width)
+          Row(
+            children: [
+              Expanded(
+                child: CourseCategoryCard(
                   label: AppStrings.subjectAll,
-                  icon: Icons.auto_awesome_rounded,
+                  assetIcon: AppAssets.catIconAll3d,
+                  icon: Icons.grid_view_rounded,
                   isSelected: selectedCategory == 'all',
+                  activeColor: AppColors.categoryActiveBg,
                   onTap: () => ref
                       .read(coursesControllerProvider.notifier)
                       .setCategory('all'),
                 ),
-                const SizedBox(width: AppValues.space4),
-                CourseCategoryCard(
+              ),
+              const SizedBox(width: AppValues.categoryCardSpacing),
+              Expanded(
+                child: CourseCategoryCard(
                   label: AppStrings.subjectScience,
+                  assetIcon: AppAssets.catIconScience3d,
                   icon: Icons.science_rounded,
                   isSelected: selectedCategory == 'science',
+                  iconColor: AppColors.categoryScienceIcon,
                   onTap: () => ref
                       .read(coursesControllerProvider.notifier)
                       .setCategory('science'),
                 ),
-                const SizedBox(width: AppValues.space4),
-                CourseCategoryCard(
+              ),
+              const SizedBox(width: AppValues.categoryCardSpacing),
+              Expanded(
+                child: CourseCategoryCard(
                   label: AppStrings.subjectMath,
+                  assetIcon: AppAssets.catIconMath3d,
                   icon: Icons.calculate_rounded,
                   isSelected: selectedCategory == 'math',
+                  iconColor: AppColors.categoryMathIcon,
                   onTap: () => ref
                       .read(coursesControllerProvider.notifier)
                       .setCategory('math'),
                 ),
-                const SizedBox(width: AppValues.space4),
-                CourseCategoryCard(
+              ),
+              const SizedBox(width: AppValues.categoryCardSpacing),
+              Expanded(
+                child: CourseCategoryCard(
                   label: AppStrings.subjectLanguage,
-                  icon: Icons.translate_rounded,
+                  assetIcon: AppAssets.catIconLanguage3d,
+                  icon: Icons.menu_book_rounded,
                   isSelected: selectedCategory == 'language',
+                  iconColor: AppColors.categoryLanguageIcon,
                   onTap: () => ref
                       .read(coursesControllerProvider.notifier)
                       .setCategory('language'),
                 ),
-                const SizedBox(width: AppValues.space4),
-                CourseCategoryCard(
+              ),
+              const SizedBox(width: AppValues.categoryCardSpacing),
+              Expanded(
+                child: CourseCategoryCard(
                   label: AppStrings.subjectArts,
+                  assetIcon: AppAssets.catIconArts3d,
                   icon: Icons.palette_rounded,
                   isSelected: selectedCategory == 'arts',
+                  iconColor: AppColors.categoryArtsIcon,
                   onTap: () => ref
                       .read(coursesControllerProvider.notifier)
                       .setCategory('arts'),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
           const SizedBox(height: AppValues.space7),
 
@@ -177,9 +193,9 @@ class CoursesHubBody extends ConsumerWidget {
                 physics: const NeverScrollableScrollPhysics(),
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
-                  crossAxisSpacing: AppValues.space4,
-                  mainAxisSpacing: AppValues.space5,
-                  childAspectRatio: 0.72,
+                  crossAxisSpacing: AppValues.courseGridCrossSpacing,
+                  mainAxisSpacing: AppValues.courseGridMainSpacing,
+                  childAspectRatio: AppValues.courseCardAspectRatio,
                 ),
                 itemCount: displayList.length,
                 itemBuilder: (context, index) {
@@ -209,68 +225,59 @@ class CoursesHubBody extends ConsumerWidget {
               ),
             ),
           ),
-          const SizedBox(height: AppValues.space9),
+          const SizedBox(height: AppValues.space11),
         ],
       ),
     );
   }
 
   Widget _buildHeroBanner() {
-    return Container(
-      decoration: BoxDecoration(
-        gradient: const LinearGradient(
-          colors: [
-            AppColors.courseHeroGradTop,
-            AppColors.courseHeroGradBottom,
-          ],
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-        ),
-        borderRadius: BorderRadius.circular(AppValues.radiusCardLg),
-        boxShadow: const [
-          BoxShadow(
-            color: AppColors.clayFilterActiveShadow,
-            offset: Offset(0, AppValues.offsetY3),
-            blurRadius: AppValues.space6,
-          ),
-        ],
-      ),
-      padding: const EdgeInsets.all(AppValues.space6),
-      child: Row(
-        children: [
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  AppStrings.brighterFutureTitle,
-                  style: GoogleFonts.quicksand(
-                    fontSize: AppValues.fontTitleHero,
-                    fontWeight: FontWeight.w700,
-                    color: AppColors.textInverse,
-                    height: AppValues.lineHeightTight,
-                  ),
-                ),
-                const SizedBox(height: AppValues.space2),
-                Text(
-                  AppStrings.brighterFutureSubtitle,
-                  style: GoogleFonts.quicksand(
-                    fontSize: AppValues.fontCaptionSm,
-                    fontWeight: FontWeight.w600,
-                    color: AppColors.ringTrackLavender,
-                  ),
-                ),
-              ],
+    return AspectRatio(
+      aspectRatio: AppValues.bannerCoursesAspectRatio,
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(AppValues.bannerCoursesRadius),
+          boxShadow: const [
+            BoxShadow(
+              color: AppColors.clayFilterActiveShadow,
+              offset: Offset(0, AppValues.offsetY3),
+              blurRadius: AppValues.space6,
             ),
+          ],
+        ),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(AppValues.bannerCoursesRadius),
+          child: Stack(
+            children: [
+              Positioned.fill(
+                child: Image.asset(
+                  AppAssets.courseHeroBanner,
+                  fit: BoxFit.fill,
+                  errorBuilder: (_, __, ___) => Container(
+                    decoration: const BoxDecoration(
+                      gradient: LinearGradient(
+                        colors: [
+                          AppColors.courseHeroBgGradStart,
+                          AppColors.courseHeroBgGradEnd,
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              // Accessibility & Widget Test Semantics
+              Positioned(
+                left: -9999,
+                child: Column(
+                  children: [
+                    Text(AppStrings.brighterFutureTitle),
+                    Text(AppStrings.brighterFutureSubtitle),
+                  ],
+                ),
+              ),
+            ],
           ),
-          Image.asset(
-            AppAssets.mascotBoyWaving,
-            width: AppValues.sizeLoginHeroMascotH * 0.52,
-            height: AppValues.sizeLoginHeroMascotH * 0.52,
-            fit: BoxFit.contain,
-            errorBuilder: (_, __, ___) => const SizedBox.shrink(),
-          ),
-        ],
+        ),
       ),
     );
   }

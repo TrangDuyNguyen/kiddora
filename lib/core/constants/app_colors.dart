@@ -214,4 +214,17 @@ class AppColors {
   static const Color badgeBannerBorder = Color(0xFFFDE68A);
   static const Color courseHeroGradTop = Color(0xFF818CF8);
   static const Color courseHeroGradBottom = Color(0xFF4F46E5);
+
+  // Pixel-Exact Semantic Tokens (Reference Image 2 Fidelity)
+  static const Color courseHeroBgGradStart = Color(0xFFEBE6FE);
+  static const Color courseHeroBgGradEnd = Color(0xFFDED6FD);
+  static const Color courseHeroText = Color(0xFF5B4DDF);
+  static const Color courseHeroSubtitle = Color(0xFF7B7898);
+  static const Color categoryActiveBg = Color(0xFF6C5CE7);
+  static const Color categoryInactiveBg = Color(0xFFFFFFFF);
+  static const Color categoryScienceIcon = Color(0xFF06B6D4);
+  static const Color categoryMathIcon = Color(0xFFF59E0B);
+  static const Color categoryLanguageIcon = Color(0xFF0EA5E9);
+  static const Color categoryArtsIcon = Color(0xFFEC4899);
+  static const Color courseActionBtnBg = Color(0xFF6C5CE7);
 }

@@ -232,10 +232,42 @@ class AppValues {
   static const double badgeInsetOffset = 2.0;
   static const double badgeInsetBlur = 3.0;
 
-  // Domain 04 & 05 Tokens (Courses & Curriculum)
-  static const double sizeCourseCardH = 220.0;
+  // Domain 04 & 05 Tokens (Courses & Curriculum — Pixel-Exact Contract)
+  static const double sizeCourseCardH = 228.0;
   static const double sizeCourseDetailHeroH = 220.0;
   static const double sizeCourseDetailThumb = 64.0;
   static const double sizeLessonTileH = 72.0;
   static const Duration durationDebounce = Duration(milliseconds: 300);
+
+  // Pixel-Exact Geometry: Courses Hero Banner
+  static const double bannerCoursesH = 196.0;
+  static const double bannerCoursesAspectRatio = 376.0 / 202.0;
+  static const double bannerCoursesRadius = 24.0;
+  static const double bannerCoursesPaddingH = 16.0;
+  static const double bannerCoursesPaddingV = 16.0;
+  static const double bannerCoursesMascotW = 120.0;
+  static const double bannerCoursesMascotH = 135.0;
+
+  // Pixel-Exact Geometry: Course Category Squircle Cards
+  static const double categoryCardW = 64.0;
+  static const double categoryCardH = 74.0;
+  static const double categoryCardRadius = 18.0;
+  static const double categoryCardIconSize = 32.0;
+  static const double categoryCardSpacing = 8.0;
+
+  // Pixel-Exact Geometry: Popular Course Cards & Grid
+  static const double courseGridCrossSpacing = 14.0;
+  static const double courseGridMainSpacing = 16.0;
+  static const double courseCardAspectRatio = 0.85;
+  static const double courseCardRadius = 20.0;
+  static const double courseCardPadding = 10.0;
+  static const double courseCardThumbnailH = 90.0;
+  static const double courseCardThumbnailRadius = 14.0;
+  static const double courseActionButtonSize = 32.0;
+  static const double courseActionIconSize = 16.0;
+  static const double courseActionRadius = 9999.0;
+  static const double fontCourseTitle = 14.0;
+  static const double fontCourseCategory = 11.5;
+  static const double fontCourseMeta = 11.0;
+  static const double iconCourseMeta = 13.0;
 }

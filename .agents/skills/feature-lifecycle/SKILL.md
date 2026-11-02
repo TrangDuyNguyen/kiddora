@@ -156,6 +156,7 @@ Hội đồng thẩm định sẽ **LẬP TỨC REJECT VÀ TRẢ VỀ** nếu:
 - ❌ Vi phạm lưới 4pt/8pt (padding 3pt, 5pt, 7pt, 10pt...) hoặc Touch Target nhỏ hơn `48x48dp` (khuyến nghị `56x56dp` cho trẻ em).
 - ❌ BA đối soát thấy sót dù chỉ 1 User Story từ Gate 1 mà không có màn hình/dialog thể hiện.
 - ❌ Thiếu mockup visual trực quan hoặc cấu trúc layout (sinh từ Google Stitch MCP hoặc blueprint) để Dev FE bám theo.
+- ❌ **Thiếu Bảng Hợp Đồng Thông Số Kỹ Thuật Pixel-Exact (Component Spec Matrix)**: Bắt buộc liệt kê 100% kích thước ($W \times H$, aspect ratio), padding/margin 4pt, bo góc radius, typography, tokens `AppColors.*`, kích thước ảnh/asset 3D và màu sắc icon từng bộ môn. Cấm tuyệt đối để Dev FE tự đoán mò thông số.
 
 ### 🚪 Chốt Chặn 3: QC Thẩm Định Gate 3 (Test Design) — Cấm Du Di!
 QC sẽ **TỪ CHỐI BÀN GIAO CHO DEV** nếu:
@@ -214,7 +215,7 @@ Khi người dùng ra lệnh: *"Hãy triển khai tính năng X theo quy trình 
 7. **PM phân rã WBS & Scrum Master điều phối Sprint** (Tier 3): PM chấm Story Points và lập bảng WBS ánh xạ các Gate. SM chuẩn bị agenda Planning, tính Capacity thực tế và bảo vệ Sprint Goal.
 8. **QC thiết kế kiểm thử Gate 3** (Tier 1/S): Viết Manual TCs và kịch bản BDD `.feature`.
 9. **Dev Team thực thi Gate 4** (Tier 1 hoặc Tier 2 tùy SP): 
-   - Nhận mockup visual + cấu trúc layout từ Stitch và spec BDD từ BA để code chuẩn xác, không đoán mò giao diện.
+   - Nhận mockup visual + cấu trúc layout từ Stitch, Bảng Hợp Đồng Thông Số Pixel-Exact từ Designer và spec BDD từ BA để code chuẩn xác 100%, nghiêm cấm đoán mò giao diện hay tự ý dùng magic numbers.
    - Điều phối chính xác theo chuyên môn:
      - `flutter-core-dev` / `flutter-expert`: Clean Architecture, Riverpod 2.x, Tactile Claymorphism UI 60 FPS, Visual TDD (`flutter-preview:preview_widget`).
      - `backend-dev`: FastAPI (Python 3.12+), SQLAlchemy 2.0 Async, PostgreSQL, Redis, LiveKit WebRTC, MinIO.

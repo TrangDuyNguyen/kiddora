@@ -6,23 +6,35 @@ import '../../../../core/constants/app_values.dart';
 
 class CourseCategoryCard extends StatelessWidget {
   final String label;
-  final IconData icon;
+  final IconData? icon;
+  final String? assetIcon;
   final bool isSelected;
+  final Color? activeColor;
+  final Color? iconColor;
   final VoidCallback onTap;
+  final double? width;
 
   const CourseCategoryCard({
     super.key,
     required this.label,
-    required this.icon,
+    this.icon,
+    this.assetIcon,
     required this.isSelected,
+    this.activeColor,
+    this.iconColor,
     required this.onTap,
+    this.width,
   });
 
   @override
   Widget build(BuildContext context) {
-    final bg = isSelected ? AppColors.brandPrimary : AppColors.surfaceContainer;
+    final bg = isSelected
+        ? (activeColor ?? AppColors.categoryActiveBg)
+        : AppColors.categoryInactiveBg;
     final fg = isSelected ? AppColors.textInverse : AppColors.textPrimary;
-    final iconColor = isSelected ? AppColors.textInverse : AppColors.brandPrimary;
+    final resolvedIconColor = isSelected
+        ? AppColors.textInverse
+        : (iconColor ?? AppColors.brandPrimary);
 
     return Semantics(
       button: true,
@@ -34,13 +46,11 @@ class CourseCategoryCard extends StatelessWidget {
           onTap();
         },
         child: Container(
-          width: AppValues.minTouchTarget + AppValues.space9,
-          constraints: const BoxConstraints(
-            minHeight: AppValues.minTouchTarget + AppValues.space8,
-          ),
+          width: width,
+          height: AppValues.categoryCardH,
           decoration: BoxDecoration(
             color: bg,
-            borderRadius: BorderRadius.circular(AppValues.radiusCardLg),
+            borderRadius: BorderRadius.circular(AppValues.categoryCardRadius),
             boxShadow: isSelected
                 ? const [
                     BoxShadow(
@@ -53,33 +63,52 @@ class CourseCategoryCard extends StatelessWidget {
                     BoxShadow(
                       color: AppColors.shadowCardAmbient,
                       offset: Offset(0, AppValues.offsetY2),
-                      blurRadius: AppValues.space2,
+                      blurRadius: AppValues.space3,
                     ),
                   ],
           ),
           padding: const EdgeInsets.symmetric(
-            vertical: AppValues.space4,
-            horizontal: AppValues.space2,
+            vertical: AppValues.space2,
+            horizontal: AppValues.borderWidthThick,
           ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             mainAxisSize: MainAxisSize.min,
             children: [
-              Icon(
-                icon,
-                color: iconColor,
-                size: AppValues.iconSizeLg,
-              ),
+              if (assetIcon != null)
+                Image.asset(
+                  assetIcon!,
+                  width: AppValues.categoryCardIconSize,
+                  height: AppValues.categoryCardIconSize,
+                  fit: BoxFit.contain,
+                  errorBuilder: (_, __, ___) => Icon(
+                    icon ?? Icons.category_rounded,
+                    color: resolvedIconColor,
+                    size: AppValues.categoryCardIconSize,
+                  ),
+                )
+              else if (icon != null)
+                Icon(
+                  icon!,
+                  color: resolvedIconColor,
+                  size: AppValues.categoryCardIconSize,
+                ),
               const SizedBox(height: AppValues.space2),
-              Text(
-                label,
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-                textAlign: TextAlign.center,
-                style: GoogleFonts.quicksand(
-                  fontSize: AppValues.fontBodySm,
-                  fontWeight: isSelected ? FontWeight.w700 : FontWeight.w600,
-                  color: fg,
+              FittedBox(
+                fit: BoxFit.scaleDown,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: AppValues.borderWidthThin),
+                  child: Text(
+                    label,
+                    maxLines: 1,
+                    textAlign: TextAlign.center,
+                    style: GoogleFonts.quicksand(
+                      fontSize: AppValues.fontCaptionSm,
+                      letterSpacing: -0.2,
+                      fontWeight: isSelected ? FontWeight.w700 : FontWeight.w600,
+                      color: fg,
+                    ),
+                  ),
                 ),
               ),
             ],

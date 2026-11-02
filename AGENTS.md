@@ -99,6 +99,13 @@ lib/
   - Touch targets: Minimum **48×48dp** (recommended **56×56dp** for primary actions).
   - High-visibility focus indicator: `3px solid #6366F1` with `2px` offset.
   - 7 explicit component states: `default`, `hover`, `focus-visible`, `active`, `disabled`, `loading`, `error`.
+- **Ràng Buộc Sinh Asset & Icon 3D Tactile Clay (The Clay Crown Benchmark)**:
+  - Mọi 3D asset/icon/mascot tạo mới bắt buộc tuân theo chuẩn Vương miện đất nặn (`assets/images/icon_crown_3d.png`): Chất liệu đất nặn polymer clay (Play-Doh style), viền cong phồng hữu cơ (puffy rounded shape), không có góc nhọn $90^\circ$, bề mặt mờ mềm (matte finish with soft specular highlights), tuyệt đối cấm metallic/chrome bóng loáng hoặc flat 2D, chiếu sáng studio 3 điểm (Key light $45^\circ$, soft fill $45^\circ$, ambient contact shadow), góc chụp isometric/orthographic $15^\circ$–$20^\circ$, xuất file PNG nền trong suốt ($1024\times1024\text{px}$).
+- **Hợp Đồng Kích Thước Bắt Buộc (Pixel-Exact Geometry Contract)**:
+  - Mọi màn hình khám phá khóa học bắt buộc tuân theo các kích thước chuẩn hóa từ `AppValues`:
+    - **Hero Banner**: Tỷ lệ chuẩn `AppValues.bannerCoursesAspectRatio` ($378 / 204 \approx 1.853$, cao $\approx 194\text{dp}$), bo góc `AppValues.bannerCoursesRadius` ($24\text{dp}$), hiển thị trọn vẹn $100\%$ không bị cắt cụt mép trên (`BoxFit.fill`).
+    - **Category Squircle Card**: Rộng `AppValues.categoryCardW` ($64\text{dp}$) × Cao `AppValues.categoryCardH` ($74\text{dp}$), bo góc `AppValues.categoryCardRadius` ($18\text{dp}$), icon $26\text{dp}$ phía trên, nhãn chữ $11.5\text{dp}$ phía dưới bọc `FittedBox(fit: BoxFit.scaleDown)` chống cắt cụt `Langua...`, icon mang màu sắc riêng biệt theo môn (Science: Cyan, Math: Orange, Language: Blue, Arts: Pink).
+    - **Course Card**: Lưới 2 cột tỷ lệ `AppValues.courseCardAspectRatio` ($0.85$), bo góc `AppValues.courseCardRadius` ($20\text{dp}$), khung ảnh 3D `AppValues.courseCardThumbnailH` ($90\text{dp}$, tỷ lệ $2:1$ sạch $100\%$ không dính text thừa), nút tròn tím hành động `AppValues.courseActionButtonSize` ($32\times32\text{dp}$).
 
 ---
 
@@ -130,7 +137,7 @@ All feature development follows the **Four-Eyes Principle** with 12 specialized 
 - **Gate 0: Tech Lead**: Architecture spikes, ADR, SLAs (Cold start <= 1.8s, 60 FPS, 0 memory leak).
 - **Gate 0 & Operations: DevOps & Infra (`devops-infra`)**: Docker Compose 6 services, Caddy v2 SSL/TLS reverse proxy, PostgreSQL backups, LiveKit SFU ports, MinIO buckets, VPS deployment readiness.
 - **Gate 1: BA**: PRD, User Stories BDD (Given-When-Then), Data Dictionary synchronization.
-- **Gate 2: UI/UX Designer**: Tactile Claymorphism, Google Stitch MCP screens, 5 UI states, 4pt grid.
+- **Gate 2: UI/UX Designer**: Tactile Claymorphism, Google Stitch MCP screens, 5 UI states, lưới 4pt, và **BẮT BUỘC lập Bảng Hợp Đồng Thông Số Pixel-Exact (Component Spec Matrix)** cho 100% màn hình để Dev FE bám theo (W×H, padding, radius, font, tokens, asset specs). Cấm tuyệt đối đoán mò.
 - **Gate 3: QA Tester & Visual QA**: Test design, BDD Gherkin scenarios, 100% Traceability, Visual Test Matrix.
 - **Gate 4A: Dev FE (`flutter-expert` / `flutter-core-dev`)**: Flutter Clean Architecture, Riverpod, Ponytail code, widget tests.
 - **Gate 4B: Dev BE (`backend-dev`)**: FastAPI (Python 3.12+), Feature-First Modular Monolith (`backend/app/modules/`), SQLAlchemy 2.0 Async ORM, Alembic migrations, Redis caching, Celery worker, MinIO S3, LiveKit WebRTC, Pytest suite.
@@ -151,7 +158,7 @@ All feature development follows the **Four-Eyes Principle** with 12 specialized 
 > [!IMPORTANT]
 > **Code đổi là Doc phải đổi (Backward Sync)**: Mỗi khi có bất kỳ sự thay đổi nào về tính năng (logic nghiệp vụ, giao diện UI, route điều hướng, trạng thái Riverpod, data model thực thể, validation rules hoặc phạm vi scope), BẮT BUỘC $100\%$ phải cập nhật đồng thời vào hệ thống tài liệu `docs/` ngay trong cùng commit / task:
 >
-> 1. **Doc Tính Năng (`docs/03-prd-features/<feature-name>/`)**: Bắt buộc cập nhật `prd-*.md`, `user-stories.md` (BDD Given-When-Then) và `ui-ux-screen-specs.md` (5 UI states & tokens).
+> 1. **Doc Tính Năng (`docs/03-prd-features/<feature-name>/`)**: Bắt buộc cập nhật `prd-*.md`, `user-stories.md` (BDD Given-When-Then) và `ui-ux-screen-specs.md` (5 UI states, tokens & Bảng Hợp Đồng Thông Số Pixel-Exact).
 > 2. **Sổ Yêu Cầu Thay Đổi (`docs/05-change-management/change-request-log.md`)**: Ghi nhận mã CR mới với lý do và tác động.
 > 3. **Từ Điển Dữ Liệu (`docs/04-specifications/data-dictionary.md`)**: Cập nhật ngay khi thay đổi, thêm hoặc xóa trường dữ liệu entity.
 > 4. **Quản Lý Vận Hành (`docs/00-project-management/`)**: Cập nhật trạng thái `wbs-task-matrix.md` và `sprint-backlog.md` nếu phạm vi hoặc Definition of Done (DoD) thay đổi.

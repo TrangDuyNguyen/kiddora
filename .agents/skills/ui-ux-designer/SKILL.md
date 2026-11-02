@@ -134,6 +134,18 @@ Mọi thiết kế của Sub-Agent `ui-ux-designer` **bắt buộc** phải tuâ
 - Kiểm tra toàn bộ các touch targets bảo đảm `>= 48x48dp` (ưu tiên `56x56dp` cho trẻ em).
 - Đặc tả chi tiết **5 trạng thái giao diện**: Default, Skeleton Shimmer, Empty, Error, Offline.
 
+### Bước 4b: BẮT BUỘC — Lập Bảng Hợp Đồng Thông Số Pixel-Exact (Component Spec Matrix)
+> [!IMPORTANT]
+> **Cấm tuyệt đối để Dev FE đoán mò thông số**: Mọi màn hình trước khi bàn giao Gate 2 bắt buộc phải có **Bảng Hợp Đồng Thông Số Kỹ Thuật Chi Tiết (Pixel-Exact Screen Spec Matrix)** lưu trực tiếp trong tài liệu đặc tả `ui-ux-screen-specs.md` hoặc `gate2-ui-ux-spec.md`. Dev FE chỉ việc bám sát 100% từng dòng của bảng này:
+
+```markdown
+| Cấp bậc / Thành phần UI | Kích thước (W × H / Aspect Ratio) | Khoảng cách (Padding & Margin) | Bo góc (Radius) | Kiểu chữ (Font, Size, Weight, LineHeight) | Màu sắc & Chiều sâu (Tokens AppColors) | Icon / 3D Asset (Tên, Size W×H, Color, BoxFit) | Hành vi Responsive & Tràn chữ (maxLines, overflow) |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| **Hero Banner** | `double.infinity` × `140dp` (minHeight) | Margin `16dp`, Padding trong `16dp` | `24dp` (`radiusCardXl`) | Quicksand Bold 800, `18dp`, LH `1.2` | Gradient `#EBE6FE` → `#DED6FD`, Text `#5B4DDF` | `mascot_boy_waving.png`, `120×135dp`, `BoxFit.contain` | 2-3 dòng, không body text phụ |
+| **Category Card** | Rộng `62dp` × Cao `74dp` | Margin ngang `8dp`, Padding `6dp` | `18dp` (`categoryCardRadius`) | Quicksand Bold 700, `11.5dp` | Thẻ trắng clay Level 1, Active: `#6C5CE7` | Icon `26dp` trên, màu riêng từng môn (Cyan, Cam, Xanh, Hồng) | `maxLines: 1`, `ellipsis`, chữ ngắn không cắt cụt |
+| **Course Clay Card**| Lưới 2 cột, Aspect Ratio `0.75` (~`172×228dp`)| Padding trong `10dp`, Gutter `14dp` / `16dp` | `20dp` (`courseCardRadius`) | Title: `14dp` Bold 800; Subtitle: `11.5dp` Med | Nền trắng `#FFFFFF`, Level 1 ambient shadow | Thumbnail: `100dp` chiều cao, `14dp` radius, `BoxFit.cover` | Title `maxLines: 1`, action button tròn tím `32×32dp` |
+```
+
 ### Bước 5: Ánh Xạ Token Tactile Clay & Trình Duyệt Gate 2 Sign-off
 - Lập bảng ánh xạ cụ thể từng thành phần UI sang biến Flutter `AppColors.*`, `AppValues.*` và Theme tokens.
 - Liệt kê các Shared Widgets có thể tái sử dụng từ `shared/ui_kit/`: `ClayCard`, `ClayButton`, `ClayBuzzerButton`, `ClaySheet`, `StarCounterBadge`, `StreakFlame`, `ClayProgressBar`, `ClayBottomNav`.

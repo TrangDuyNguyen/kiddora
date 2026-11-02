@@ -251,6 +251,32 @@ box-shadow:
 - `motion.duration.normal = 200ms`: Screen transitions, card expansion.
 - `motion.easing.bouncy = cubic-bezier(0.34, 1.56, 0.64, 1)`: Signature cartoon springiness.
 
+### 2.7 Quy Chuẩn Sinh Asset & Icon 3D Tactile Clay (The Clay Crown Benchmark)
+
+Mọi icon 3D, huy hiệu, mascot và hình minh họa khóa học tạo mới cho Kiddora bắt buộc phải tuân theo chuẩn **Polymer Clay Play-Doh Benchmark** (minh chứng: thẻ Vương miện đất nặn vàng 3D `assets/images/icon_crown_3d.png`):
+
+1. **Hình Thái Học & Điêu Khắc (Geometry & Sculpting)**:
+   - Phong cách đất nặn thủ công (Handmade Plasticine / Polymer Clay), hình khối phồng tròn trịa (puffy, soft bevels, squishy volume).
+   - Tuyệt đối không có góc nhọn $90^\circ$ hoặc góc đa giác sắc cạnh (Zero polygonal sharp corners).
+   - Giữ lại các viền lượn hữu cơ và vân xúc giác nhẹ nhàng như được nặn bằng tay (subtle organic ridges, faint fingerprint tactile texture).
+2. **Chất Liệu & Bề Mặt (Materials & Finish)**:
+   - Bề mặt chất liệu đất sét mờ dẻo (Matte polymer clay with soft diffused finish).
+   - Điểm phản xạ ánh sáng mờ mịn (Soft specular highlights), tuyệt đối không dùng chất liệu kim loại chói gắt (Metallic), bóng gương (Chrome), thủy tinh trong suốt (Glassmorphism), hay phẳng bệt 2D (Flat vector).
+3. **Ánh Sáng & Chiều Sâu (Studio Clay Lighting)**:
+   - Hệ thống chiếu sáng 3 điểm chuyên nghiệp:
+     - **Key Light**: Chiếu từ góc trên bên trái ($45^\circ$), tạo điểm sáng phản xạ chính.
+     - **Fill Light**: Chiếu từ góc dưới bên phải ($45^\circ$) với độ sáng $40\%$, làm dịu vùng tối mà không làm đen chi tiết.
+     - **Ambient Occlusion & Contact Shadow**: Đổ bóng mềm tự nhiên ngay dưới chân vật thể trên mặt phẳng trong suốt.
+4. **Góc Máy & Phối Cảnh (Camera & Perspective)**:
+   - Góc nhìn 3D trực diện nghiêng nhẹ (Isometric Front-View hoặc Orthographic $15^\circ$–$20^\circ$ từ trên xuống).
+   - Tiêu cự ống kính $85\text{mm}$ (chống méo hình, không dùng hiệu ứng mắt cá Fisheye).
+5. **Định Dạng & Độ Phân Giải (Export Format & Quality)**:
+   - File PNG xuất ra bắt buộc có **kênh trong suốt (Alpha channel transparent background)**, đường viền khử răng cưa sắc nét ($1024\times1024\text{px}$).
+6. **Mẫu Prompt Chuẩn Cho Sub-Agent `image-generator` & Designer**:
+   ```text
+   "3D cute tactile polymer clay [SUBJECT], handmade plasticine Play-Doh style, chunky rounded soft shapes, gentle thumb-pressed texture, studio lighting with soft specular highlights, matte finish, pastel and vibrant colors, isolated on transparent background, isometric front-view, 8k render, Unreal Engine 5 Claymation style, zero noise, high detail --no sharp edges, metallic, flat 2d"
+   ```
+
 ---
 
 ## 3. Component-Level Rules
@@ -319,6 +345,22 @@ Density Specifications:
   - `ClayFilterBar`: Horizontally scrollable pill tabs (`40dp` visual / `48dp` touch) with active 3D Indigo fill and inactive Porcelain White pill.
   - `ClayListTile` & `ClayButton.compact`: Composable tactile row (`>= 48dp` height) and compact `38dp` pill (`48dp` hit target) for Profile menus, Sessions, and Tests.
   - `ClayBottomNav`: 5-tab bar (`Home`, `Courses`, `Sessions`, `Tests`, `Profile`) in `lib/shared/ui_kit/navigation/clay_bottom_nav.dart`.
+
+### 3.6 Quy Chuẩn Hình Học & Kích Thước Bắt Buộc: Courses Hub (`04_courses_01`)
+Toàn bộ kích thước của màn hình Khám phá khóa học (Courses Hub) phải tuân thủ nghiêm ngặt bảng hợp đồng kích thước sau (100% ánh xạ từ `AppValues`):
+
+| Thành Phần UI | Kích Thước Chuẩn | Radius | Spacing & Padding | Token `AppValues` Ánh Xạ | Ghi Chú Visual (Khớp 1:1 Hình 2) |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| **Top Header** | Chiều cao $\approx 56\text{dp}$ | N/A | Margin ngang `16dp` | `AppValues.space7` | Tiêu đề *"Courses"* (`24dp` ExtraBold), phụ đề *"Explore, Learn and Grow!"* (`12.5dp`) |
+| **Nút Search Tròn** | $48\times48\text{dp}$ | Tròn `9999px` | Icon kính lúp `22dp` | `AppValues.sizeCircleButtonXl` | Thẻ clay tròn trắng nổi, bóng đổ Level 1, icon màu chàm |
+| **Hero Banner** | **Tỷ lệ $378 / 204$** ($\approx 1.853$, cao $\approx 194\text{dp}$) | **$24\text{dp}$** | Padding trong `16dp` | `AppValues.bannerCoursesAspectRatio`, `bannerCoursesRadius` | Hiển thị trọn vẹn $100\%$ chữ `"A Brighter Future Starts Here!"` và cánh tay bé vẫy, tuyệt đối không cắt cụt mép trên (`BoxFit.fill`) |
+| **Mascot Hero** | **$120\times135\text{dp}$** | N/A | Chiếm $45\%$ bên phải | `AppValues.bannerCoursesMascotW/H` | Bé trai 3D vẫy tay đeo balo + ngôi sao vàng vui vẻ, nổi bật trên nền tím |
+| **Thẻ Danh Mục (Squircle)** | **Rộng $64\text{dp}$ × Cao $74\text{dp}$** | **$18\text{dp}$** | Khoảng cách ngang `8dp` | `AppValues.categoryCardW/H/Radius` | **Khối vuông bo góc (Squircle 3D Clay)**: Icon `26dp` ở trên, nhãn chữ `11.5dp` bọc `FittedBox(fit: BoxFit.scaleDown)`. Cấm tuyệt đối cắt cụt `Langua...` |
+| **Section Title** | Cao $32\text{dp}$ | N/A | Margin trên `24dp`, dưới `10dp` | `AppValues.fontTitleHero`, `space5` | *"Popular Courses"* bên trái, *"See All"* bên phải màu tím |
+| **Lưới 2 Cột Khóa Học** | Tỷ lệ khung hình **$0.85$** ($172\times202\text{dp}$) | N/A | Ngang `14dp`, dọc `16dp` | `AppValues.courseCardAspectRatio`, `courseGridCross/MainSpacing` | Lưới 2 cột cân đối, triệt tiêu khoảng trắng thừa, nhịp điệu hiển thị chặt chẽ |
+| **Thẻ Khóa Học (`CourseClayCard`)** | Rộng $\approx 172\text{dp}$ × Cao $\approx 202\text{dp}$ | **$20\text{dp}$** | Padding trong `10dp` | `AppValues.courseCardRadius`, `courseCardPadding` | Nền trắng clay, bóng đổ Level 1 nhẹ nhàng |
+| **Thumbnail 3D Khóa Học** | **Cao $90\text{dp}$** (chuẩn $180\times90\text{px}$, tỷ lệ $2:1$) | **$14\text{dp}$** | Chiếm $\approx 45\%$ chiều cao | `AppValues.courseCardThumbnailH`, `courseCardThumbnailRadius` | Minh họa 3D sắc nét, bo góc mềm mại, tuyệt đối không dính text thừa từ ảnh gốc |
+| **Nút Tròn Hành Động** | **$32\times32\text{dp}$** | Tròn `9999px` | Icon mũi tên `>` `16dp` | `AppValues.courseActionButtonSize`, `courseActionIconSize` | Nút tròn tím clay (`#6C5CE7`) ở góc dưới phải thẻ |
 
 ---
 

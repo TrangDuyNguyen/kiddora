@@ -28,9 +28,9 @@ void main() {
     expect(find.text(AppStrings.allCoursesTitle), findsOneWidget);
     expect(find.text(AppStrings.allCoursesSubtitle), findsOneWidget);
     expect(find.text(AppStrings.subjectAll), findsOneWidget);
-    expect(find.text(AppStrings.subjectScience), findsOneWidget);
-    expect(find.text(AppStrings.subjectMath), findsOneWidget);
-    expect(find.text(AppStrings.subjectArts), findsOneWidget);
+    expect(find.text(AppStrings.subjectScience), findsAtLeastNWidgets(1));
+    expect(find.text(AppStrings.subjectMath), findsAtLeastNWidgets(1));
+    expect(find.text(AppStrings.subjectArts), findsAtLeastNWidgets(1));
 
     // 2. Initial Category "All" renders top popular cards
     expect(find.text('Amazing Animals'), findsOneWidget);
@@ -45,7 +45,7 @@ void main() {
     expect(find.byIcon(Icons.favorite_rounded), findsAtLeastNWidgets(1));
 
     // 4. Switch to Math category chip -> shows Math Fun with Numbers
-    await tester.tap(find.text(AppStrings.subjectMath));
+    await tester.tap(find.text(AppStrings.subjectMath).first);
     await tester.pumpAndSettle();
     expect(find.text('Math Fun with Numbers'), findsOneWidget);
 

@@ -48,4 +48,18 @@ class AppAssets {
   static const String mascotStarGoal = 'assets/images/mascot_star_goal.png';
   static const String mascotBoyCrown = 'assets/images/mascot_boy_crown.png';
   static const String courseDino = 'assets/images/course_dino.png';
+
+  // Benchmark Course 3D Thumbnails (1:1 Reference Image 2)
+  static const String courseAmazingAnimals = 'assets/images/course_amazing_animals.png';
+  static const String courseSpaceExploration = 'assets/images/course_space_exploration.png';
+  static const String courseMathFun = 'assets/images/course_math_fun.png';
+  static const String courseCreativeDrawing = 'assets/images/course_creative_drawing.png';
+  static const String courseHeroBanner = 'assets/images/course_hero_banner.png';
+
+  // Benchmark 3D Tactile Clay Category Icons (1:1 Reference Image 2)
+  static const String catIconAll3d = 'assets/images/cat_icon_all_3d.png';
+  static const String catIconScience3d = 'assets/images/cat_icon_science_3d.png';
+  static const String catIconMath3d = 'assets/images/cat_icon_math_3d.png';
+  static const String catIconLanguage3d = 'assets/images/cat_icon_language_3d.png';
+  static const String catIconArts3d = 'assets/images/cat_icon_arts_3d.png';
 }
