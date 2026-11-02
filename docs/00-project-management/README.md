@@ -9,6 +9,7 @@ Thư mục này do **Sub-Agent Project Manager (PM) — *"The Clockwork Discipli
 1. [`sprint-backlog.md`](./sprint-backlog.md): Bảng theo dõi Sprint hiện tại (Kanban thời gian thực), mục tiêu Sprint, phân bổ năng lực và lịch sử tích lũy Story Points.
 2. [`wbs-task-matrix.md`](./wbs-task-matrix.md): Ma trận phân rã công việc (Work Breakdown Structure) chi tiết theo 6 Cổng Chất Lượng, gán nhiệm vụ cho từng Sub-Agent chuyên trách.
 3. [`risk-blocker-log.md`](./risk-blocker-log.md): Sổ theo dõi rủi ro và điểm nghẽn kỹ thuật, cập nhật phương án giảm thiểu và trạng thái xử lý liên tục.
+4. [`plans/`](./plans/): Thư mục lưu trữ các kế hoạch triển khai kỹ thuật (Implementation Plans) chi tiết cho từng phân hệ (VD: [`2026-11-02-thematic-5e-lesson-template-and-game-design-plan.md`](./plans/2026-11-02-thematic-5e-lesson-template-and-game-design-plan.md)).
 
 ---
 
