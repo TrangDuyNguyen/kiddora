@@ -120,3 +120,4 @@ flowchart TD
 2. Trẻ hoàn thành trọn vẹn 1 bài học từ Chặng 1 đến Chặng 5 mà không bị crash hay tràn viền.
 3. $100\%$ tests (Unit test, Widget test, Pytest BE) vượt qua thành công.
 4. Tài liệu đặc tả và mã nguồn đồng bộ hoàn toàn (Zero Doc Drift).
+
