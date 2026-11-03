@@ -108,3 +108,26 @@
 | **WBS-S5-07** | Ponytail Git Diff Review (Zero Bloat) | Gate 5 | `code-reviewer` | 1 | File < 200 dòng, không magic numbers, 100% AppStrings/AppColors, tái sử dụng UI Kit v2 | `[x] DONE` |
 | **WBS-S5-08** | QA Automated Test Suite & Visual QA Matrix 6 màn hình (0 Overflow 360×640) | Gate 6 | `qa-tester` | 1 | 100% tests pass, 0 overflow 360×640 với text scale 1.5x, 60 FPS | `[x] DONE` |
 | **WBS-S5-09** | Ký duyệt Release Sprint 5 (v0.5.0-courses-hub) | Gate 7 | `po` / `tech-lead` | - | Biên bản Gate 7 & Release Tag `v0.5.0-courses-hub` | `[x] DONE` |
+
+---
+
+### 🚀 3. Kế Hoạch Sprint 6: Trình Phát Bài Học 5E & Hệ Thống Mini-Game Xúc Giác (25 SP) — `IN PROGRESS`
+*Theo phê duyệt tại [EPIC-08](file:///Users/nguyenduytrang/flutter_project/kiddora/docs/00-roadmap/epics-backlog.md) & [PLAN-20261102-LESSON-GAMEDESIGN](file:///Users/nguyenduytrang/flutter_project/kiddora/docs/00-project-management/plans/2026-11-02-thematic-5e-lesson-template-and-game-design-plan.md)*
+*Đối sánh trực tiếp 3 màn hình benchmark:* `06_learning_01` $\rightarrow$ `06_learning_03`
+* **Release Đích**: `v0.6.0-lesson-player`
+
+* **Sprint Goal**: *"Hiện thực hóa Trình phát bài học chuẩn Sư phạm 5E (Engage - Explore - Explain - Elaborate - Evaluate) tương thích 3 màn hình benchmark Domain 06 (Continue Lesson, Progress Tracker, Celebration), tích hợp bộ 5 Widget Mini-Game Xúc Giác Đất Nặn Play-Doh (ClayDragDropSorter, ClayScaleBalancer, ClayBubblePopper, MagicStrokeTracer, ClayCardFlipper), kịch bản JSON DSL Freezed và API Đồng bộ tiến độ (FastAPI UserProgress)."*
+* **Tổng Story Points**: **25 SP**
+* **Trạng thái**: `IN_PROGRESS`
+
+| Task ID | Hạng Mục Công Việc | Cổng | Sub-Agent Phụ Trách | SP | Tiêu Chuẩn Hoàn Thành (DoD) & Màn Hình Benchmark | Trạng Thái |
+| :---: | :--- | :---: | :---: | :---: | :--- | :---: |
+| **WBS-S6-01** | Data Models Freezed `LessonBlueprint`, `LessonStageConfig` & Parser DSL | Gate 0 / 4A | `tech-lead` / `flutter-core-dev` | 3 | Entities chuẩn `@freezed`, JSON Parser 4 Archetypes, Unit tests parser đạt 100% pass | `[ ] READY` |
+| **WBS-S6-02** | Soạn Kịch Bản 5E Seed Data & Assets 3D (*Amazing Animals*, *Math Fun*) | Gate 1 / 2 | `ui-ux-designer` / `ba` | 2 | 2 File kịch bản JSON DSL mẫu hoàn chỉnh, trọn bộ icon/asset 3D mini-game | `[ ] READY` |
+| **WBS-S6-03** | Xây dựng Bộ 5 Widget Mini-Game Xúc Giác Đất Nặn (`shared/ui_kit/games/`) | Gate 4A | `flutter-core-dev` | 5 | `ClayDragDropSorter`, `ClayScaleBalancer`, `ClayBubblePopper`, `MagicStrokeTracer`, `ClayCardFlipper`. Spring physics, Haptic, 60 FPS | `[ ] PENDING` |
+| **WBS-S6-04** | Trình Phát Bài Học 5E Engine & Bộ Điều Phối (`06_learning_01`) | Gate 4A | `flutter-core-dev` | 5 | `LessonPlayerScreen`, `LessonPlayerController` (`AsyncNotifier`), `LessonStageDispatcher`, `LessonProgressDots`, `ExitConfirmationDialog` | `[ ] PENDING` |
+| **WBS-S6-05** | Màn Hình Theo Dõi Tiến Độ & Màn Ăn Mừng Hoàn Thành (`06_learning_02`, `06_learning_03`) | Gate 4A | `flutter-core-dev` | 4 | `CourseProgressTrackerScreen`, `CourseCompletedCelebrationScreen`, hiệu ứng pháo hoa sao, thưởng $+10$ sao, streak flame | `[ ] PENDING` |
+| **WBS-S6-06** | Mở Rộng FastAPI Endpoints (Blueprint JSONB & Đồng Bộ Tiến Độ) | Gate 4B | `backend-dev` | 3 | Cột `blueprint_json (JSONB)` bảng `lessons`, Alembic 0003, `GET /lessons/{id}/blueprint`, `POST /lessons/{id}/complete`, Pytest 100% pass | `[ ] PENDING` |
+| **WBS-S6-07** | Ponytail Git Diff Review (Zero Bloat, Zero Hardcoded Values) | Gate 5 | `code-reviewer` | 1 | File $< 200$ dòng, 0 magic numbers, 0 raw hex colors, 100% `AppStrings`, tái sử dụng UI Kit v2 | `[ ] PENDING` |
+| **WBS-S6-08** | QA Automated, Visual QA & AppSec Security Audit | Gate 6 / 6.5 | `qa-tester` / `security-auditor` | 2 | 100% tests pass, 0 overflow 360×640 với text scale 1.5x, 60 FPS, xác thực an toàn dữ liệu trẻ em COPPA | `[ ] PENDING` |
+| **WBS-S6-09** | Ký duyệt Release Sprint 6 (v0.6.0-lesson-player) | Gate 7 | `po` / `tech-lead` | - | Biên bản Gate 7 & Release Tag `v0.6.0-lesson-player` | `[ ] PENDING` |

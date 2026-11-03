@@ -1,26 +1,26 @@
 # Sprint Backlog — Kiddora Mobile App
 
-* **Sprint Hiện Tại**: Sprint 5 (Tuần 7 & 8) — *Triển Khai Hoàn Tất (Phương Án A — 6 Màn Hình Benchmark)*
+* **Sprint Hiện Tại**: Sprint 6 (Tuần 9 & 10) — *Trình Phát Bài Học 5E & Hệ Thống Mini-Game Xúc Giác*
 * **Project Manager (PM)**: Sub-Agent Project Manager (PM) — *"The Clockwork Disciplinarian"*
 * **Scrum Master (SM)**: Sub-Agent Scrum Master (SM) — *"The Servant Leader & Agile Coach"*
-* **Sprint Goal**: *"Hiện thực hóa trọn gói 6 màn hình chuẩn 1:1 Design References Dribbble cho Phân hệ Khám phá Khóa học (Courses Hub, Search, Multi-criteria Filter) và Chi tiết Khóa học (Hero 3D, 3 Tabs, Giáo trình bài học), kết nối đồng bộ Mock Data Freezed và REST API FastAPI."*
-* **Tổng Story Points cam kết**: **23 SP**
-* **Trạng thái Sprint**: `RELEASED` (`v0.5.0-courses-hub`)
+* **Sprint Goal**: *"Hiện thực hóa Trình phát bài học chuẩn Sư phạm 5E (Engage - Explore - Explain - Elaborate - Evaluate) tương thích 3 màn hình benchmark Domain 06 (Continue Lesson, Progress Tracker, Celebration), tích hợp bộ 5 Widget Mini-Game Xúc Giác Đất Nặn Play-Doh (ClayDragDropSorter, ClayScaleBalancer, ClayBubblePopper, MagicStrokeTracer, ClayCardFlipper), kịch bản JSON DSL Freezed và API Đồng bộ tiến độ (FastAPI UserProgress)."*
+* **Tổng Story Points cam kết**: **25 SP**
+* **Trạng thái Sprint**: `IN_PROGRESS` (Khởi động Gate 0 & Gate 1)
 
 ---
 
-## 📊 Bảng Theo Dõi Kanban Thời Gian Thực (Sprint 5 — Phương Án A)
+## 📊 Bảng Theo Dõi Kanban Thời Gian Thực (Sprint 6 — v0.6.0-lesson-player)
 
 | Mã US | Hạng Mục / User Story | MoSCoW | SP | Gate Hiện Tại | Sub-Agent Phụ Trách | Trạng Thái |
 | :---: | :--- | :---: | :---: | :---: | :---: | :---: |
-| **US-15** | [KZN-01] Data Models Freezed `Course`, `Lesson`, `Subject` & Mock Seed Data | Must-have | 3 | Gate 0 / 4A | `tech-lead` / `flutter-core-dev` | 🟢 `[x] DONE` |
-| **US-20** | FastAPI REST Endpoints cho Courses, Alembic 0002 & Pytest Suite | Should-have | 3 | Gate 4B Backend Dev | `backend-dev` | 🟢 `[x] DONE` |
-| **US-16** | Courses Hub & Grid View (`04_courses_01`, `04_courses_04`) + tách `HomeScreen` thành body switcher | Must-have | 5 | Gate 4A Flutter Dev | `flutter-core-dev` | 🟢 `[x] DONE` |
-| **US-17** | Real-time Course Search Screen (`04_courses_02`) | Must-have | 3 | Gate 4A Flutter Dev | `flutter-core-dev` | 🟢 `[x] DONE` |
-| **US-18** | Multi-Criteria Filter Bottom Sheet (`04_courses_03`) | Must-have | 3 | Gate 4A Flutter Dev | `flutter-core-dev` | 🟢 `[x] DONE` |
-| **US-19** | Course Detail Screen & 3 Tabs Curriculum (`05_course_detail_01`, `05_course_detail_02`) | Must-have | 4 | Gate 4A Flutter Dev | `flutter-core-dev` | 🟢 `[x] DONE` |
-| **US-21** | Ponytail Git Diff Review (Zero Bloat, 100% AppStrings/AppColors) | Must-have | 1 | Gate 5 Reviewer | `code-reviewer` | 🟢 `[x] DONE` |
-| **US-22** | QA Automated Test Suite & Visual QA Matrix 6 màn hình (0 Overflow 360×640) | Must-have | 1 | Gate 6 QA Verify | `qa-tester` | 🟢 `[x] DONE` |
+| **US-23** | Data Models Freezed `LessonBlueprint`, `LessonStageConfig` & Parser | Must-have | 3 | Gate 0 / 4A | `tech-lead` / `flutter-core-dev` | 🟡 `[ ] READY` |
+| **US-28** | Kịch Bản Bài Học Mẫu Chuẩn 5E & Seed Data Minh Họa (*Amazing Animals*, *Math Fun*) | Should-have | 2 | Gate 1 & 2 | `ui-ux-designer` / `ba` | 🟡 `[ ] READY` |
+| **US-24** | Bộ Thư Viện 5 Widget Mini-Game Xúc Giác Đất Nặn (`shared/ui_kit/games/`) | Must-have | 5 | Gate 4A | `flutter-core-dev` | ⚪ `[ ] PENDING` |
+| **US-25** | Trình Phát Bài Học 5E Engine & Bộ Điều Phối (`06_learning_01`) | Must-have | 5 | Gate 4A | `flutter-core-dev` | ⚪ `[ ] PENDING` |
+| **US-26** | Màn Hình Tiến Độ & Ăn Mừng Hoàn Thành (`06_learning_02`, `06_learning_03`) | Must-have | 4 | Gate 4A | `flutter-core-dev` | ⚪ `[ ] PENDING` |
+| **US-27** | FastAPI Backend Endpoints cho Blueprint & Đồng Bộ Tiến Độ | Should-have | 3 | Gate 4B | `backend-dev` | ⚪ `[ ] PENDING` |
+| **US-29** | Ponytail Git Diff Review (Zero Bloat, Zero Hardcoded Values) | Must-have | 1 | Gate 5 | `code-reviewer` | ⚪ `[ ] PENDING` |
+| **US-30** | QA Automated & Visual QA Test Matrix (0 Overflow, 60 FPS, COPPA) | Must-have | 2 | Gate 6 & 6.5 | `qa-tester` / `security-auditor` | ⚪ `[ ] PENDING` |
 
 ---
 
@@ -35,7 +35,8 @@
 | **Sprint 4** | Fullstack E2E Auth, Onboarding & User Sync (PostgreSQL + FastAPI) | 15 SP | 15 SP | `RELEASED` | `v0.4.0-auth-onboarding-e2e` |
 | **UI Kit v2 (CR-013)** | Full Phase 1 + Phase 2 Tactile Clay Modal, Shared UI Kit & 7 3D Assets | 26 SP | 26 SP | `COMPLETED` | `CR-013` |
 | **Sprint 5** | Courses Hub, Discovery & Curriculum Details (6 Màn Hình Benchmark) | 23 SP | 23 SP | `RELEASED` | `v0.5.0-courses-hub` |
-| **Tổng Cộng** | **Lũy kế giá trị đã bàn giao** | **112 SP** | **112 SP** | **100% On-Track** | **5 Releases + CR-013** |
+| **Sprint 6** | Lesson Player 5E Engine, 5 Mini-Games & Progress Sync | 25 SP | 0 SP | `IN_PROGRESS` | *Đang triển khai* |
+| **Tổng Cộng Đã Bàn Giao** | **Lũy kế giá trị đã phát hành chính thức** | **112 SP** | **112 SP** | **100% On-Track** | **5 Releases + CR-013** |
 
 ---
 
@@ -47,3 +48,5 @@
 | **RSK-007** | 2026-10-29 | Assets | Lệch style 3D Clay hoặc dính viền trắng khi tách nền PNG | Cao | Tách nền flood-fill + color unmixing RGBA 32-bit | `ui-ux-designer` | 🟢 **RESOLVED** |
 | **RSK-008** | 2026-10-29 | UI-UX | RenderFlex overflow trong `ClayDialog` trên màn `360×640` | Nghiêm trọng | `ConstrainedBox(maxHeight)` + `SingleChildScrollView` | `qa-tester` / `dev` | 🟢 **RESOLVED** |
 | **RSK-010** | 2026-10-29 | Doc-Sync | Trôi lệch tài liệu khi mở rộng `shared/ui_kit/` | Cao | Đồng bộ toàn diện `DESIGN.md`, PRD, WBS và chạy `graphify update .` | `ba` / `sm` | 🟢 **RESOLVED** |
+| **RSK-011** | 2026-11-03 | Performance | Độ trễ Spring Simulation & Haptic trong Mini-Game trên thiết bị yếu | Cao | Sử dụng `RepaintBoundary` cho từng vật phẩm kéo thả, tối ưu CustomPainter | `tech-lead` / `flutter-core-dev` | 🟡 **MONITORING** |
+| **RSK-012** | 2026-11-03 | Schema | Trôi lệch schema JSON DSL kịch bản bài học giữa FE và BE | Trung bình | Dùng chung JSON Schema chuẩn hóa, kiểm định chặt chẽ bằng Unit Tests | `tech-lead` / `backend-dev` | 🟡 **MONITORING** |
