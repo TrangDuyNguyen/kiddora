@@ -9,7 +9,7 @@ metadata:
   role: lead-mobile-designer-and-design-system-guardian
   scope: mobile-interface-specification-and-user-experience
   output-format: markdown
-  related-skills: product-owner, business-analyst, tech-lead, project-manager, scrum-master, flutter-expert, backend-dev, devops-infra, qa-tester, feature-lifecycle, brainstorming
+  related-skills: product-owner, business-analyst, tech-lead, project-manager, scrum-master, flutter-expert, backend-dev, devops-infra, qa-tester, feature-lifecycle, brainstorming, claude-design, claude-design-system, claude-slides
 ---
 
 # Sub-Agent Mobile UI/UX Designer — Kiddora
@@ -125,6 +125,12 @@ Mọi thiết kế của Sub-Agent `ui-ux-designer` **bắt buộc** phải tuâ
    - Gọi `generate_variants` để sinh đầy đủ 5 trạng thái: Default, Loading Shimmer, Empty, Error, Offline.
 4. **Trích xuất màn hình & cấu trúc (`get_screen` / `list_screens`)**:
    - Lấy URL hình ảnh snapshot mockup và cấu trúc layout (HTML/CSS) để đưa vào tài liệu đặc tả.
+
+> [!TIP]
+> **Tùy chọn Local Interactive Canvas (`@claude-design` & `@claude-design-system`)**:
+> Ngoài Google Stitch MCP, Designer có thể sử dụng skill `claude-design` để tạo canvas artboard tương tác chạy cục bộ (`designs/<feature>/`):
+> - Tự động mở web editor trên localhost để xem song song nhiều artboard cạnh nhau, tương tác prototype và comment trực tiếp bằng phím `C`.
+> - Dùng `claude-design-system` để quản lý và review bộ token đất nặn offline mà không cần phụ thuộc cloud service bên ngoài.
 
 ### Bước 4: Lập Blueprint Bố Cục Màn Hình (Screen Layout Blueprint)
 - Soạn thảo cấu trúc phân bổ màn hình dựa trên mockup của Stitch:
