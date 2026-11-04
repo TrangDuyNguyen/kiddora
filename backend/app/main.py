@@ -9,7 +9,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from app.core.database import engine, Base
 from app.modules.auth.router import router as auth_router
-from app.modules.courses.router import router as courses_router
+from app.modules.courses.router import router as courses_router, lessons_router
 from app.modules.classroom.router import router as classroom_router
 from app.modules.gamification.router import router as gamification_router
 from app.modules.storage.router import router as storage_router
@@ -78,6 +78,7 @@ API_V1_PREFIX = "/api/v1"
 
 app.include_router(auth_router, prefix=API_V1_PREFIX)
 app.include_router(courses_router, prefix=API_V1_PREFIX)
+app.include_router(lessons_router, prefix=API_V1_PREFIX)
 app.include_router(classroom_router, prefix=API_V1_PREFIX)
 app.include_router(gamification_router, prefix=API_V1_PREFIX)
 app.include_router(storage_router, prefix=API_V1_PREFIX)

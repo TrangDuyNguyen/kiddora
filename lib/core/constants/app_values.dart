@@ -270,4 +270,39 @@ class AppValues {
   static const double fontCourseCategory = 11.5;
   static const double fontCourseMeta = 11.0;
   static const double iconCourseMeta = 13.0;
+
+  // Mini-Game Tactile Engine Tokens (5E Interactive Games)
+  static const double gameTouchScale = 1.06;
+  static const double gameBasketWidth = 140.0;
+  static const double gameBasketHeight = 130.0;
+  static const double gameBasketRadius = 24.0;
+  static const double gameBasketBorderWidth = 3.0;
+  static const double gameItemSize = 72.0;
+  static const double gameItemRadius = 20.0;
+  static const double gameScaleBeamWidth = 260.0;
+  static const double gameScaleBeamHeight = 12.0;
+  static const double gameScalePanSize = 84.0;
+  static const double gameScalePillarHeight = 110.0;
+  static const double gameBubbleSize = 76.0;
+  static const double gameCardWidth = 88.0;
+  static const double gameCardHeight = 116.0;
+  static const double gameCardRadius = 18.0;
+  static const double gameStrokeWidth = 14.0;
+  static const int gameAnimDurationMs = 300;
+  static const int gameSmartHintSeconds = 15;
+
+  // Lesson Player 5E Engine Tokens
+  static const double lessonDotActiveWidth = 28.0;
+  static const double lessonDotInactiveWidth = 10.0;
+  static const double lessonDotHeight = 8.0;
+  static const double lessonDotRadius = 9999.0;
+  static const double lessonDotSpacing = 6.0;
+
+  // Progress Tracker & Celebration Tokens
+  static const double celebrationMascotSize = 140.0;
+  static const double celebrationBadgeSize = 80.0;
+  static const double trackerStepNodeSize = 44.0;
+  static const double trackerTimelineLineWidth = 4.0;
 }
+
+

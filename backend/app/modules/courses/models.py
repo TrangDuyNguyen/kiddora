@@ -3,7 +3,7 @@ Module Courses — SQLAlchemy Models
 """
 import uuid
 from datetime import datetime, timezone
-from sqlalchemy import Column, String, DateTime, Integer, Float, Boolean, ForeignKey, Text
+from sqlalchemy import Column, String, DateTime, Integer, Float, Boolean, ForeignKey, Text, JSON
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import relationship
 
@@ -48,8 +48,22 @@ class Lesson(Base):
     video_url = Column(String(500), nullable=True)  # URL trỏ tới MinIO storage
     is_unlocked = Column(Boolean, default=False, nullable=False)
     is_completed = Column(Boolean, default=False, nullable=False)
+    blueprint_json = Column(JSON, nullable=True)
 
     created_at = Column(DateTime(timezone=True), default=lambda: datetime.now(timezone.utc), nullable=False)
 
     # Relationship
     course = relationship("Course", back_populates="lessons")
+
+
+class UserLessonProgress(Base):
+    """Bảng ghi nhận tiến độ học tập từng bài của học sinh"""
+    __tablename__ = "user_lesson_progress"
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    user_id = Column(UUID(as_uuid=True), ForeignKey("users.id", ondelete="CASCADE"), nullable=False, index=True)
+    lesson_id = Column(String(50), ForeignKey("lessons.id", ondelete="CASCADE"), nullable=False, index=True)
+    is_completed = Column(Boolean, default=False, nullable=False)
+    score = Column(Integer, default=0, nullable=False)
+    stars_earned = Column(Integer, default=0, nullable=False)
+    completed_at = Column(DateTime(timezone=True), default=lambda: datetime.now(timezone.utc), nullable=False)

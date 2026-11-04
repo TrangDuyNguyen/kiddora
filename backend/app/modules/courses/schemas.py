@@ -38,3 +38,28 @@ class CourseCardResponse(BaseModel):
 class CourseDetailResponse(CourseCardResponse):
     subtitle: Optional[str] = None
     lessons: List[LessonItemResponse] = []
+
+
+class LessonBlueprintResponse(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
+    lesson_id: str
+    course_id: str
+    title: str
+    archetype: str
+    target_age_group: str
+    estimated_duration_mins: int
+    stages: List[dict] = []
+
+
+class LessonCompleteRequest(BaseModel):
+    score: int = 100
+    stars_earned: int = 10
+
+
+class LessonCompleteResponse(BaseModel):
+    status: str = "success"
+    lesson_id: str
+    stars_earned: int
+    total_stars: int
+    streak_days: int

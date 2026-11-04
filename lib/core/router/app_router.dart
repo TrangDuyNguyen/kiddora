@@ -21,5 +21,8 @@ class AppRouter extends RootStackRouter {
         AutoRoute(page: AllCoursesGridRoute.page),
         AutoRoute(page: CourseDetailRoute.page),
         AutoRoute(page: CourseCurriculumRoute.page),
+        AutoRoute(page: LessonPlayerRoute.page),
+        AutoRoute(page: CourseProgressTrackerRoute.page),
+        AutoRoute(page: CourseCompletedCelebrationRoute.page),
       ];
 }

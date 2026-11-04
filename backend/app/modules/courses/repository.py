@@ -1,12 +1,14 @@
 """
 Module Courses — Repository (DB Queries)
 """
+import uuid
 from typing import List, Optional
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.future import select
 from sqlalchemy.orm import selectinload
 
-from app.modules.courses.models import Course, Lesson
+from app.modules.courses.models import Course, Lesson, UserLessonProgress
+from app.modules.auth.models import KidProfile
 
 
 class CourseRepository:
@@ -59,3 +61,30 @@ class CourseRepository:
         stmt = select(Course).options(selectinload(Course.lessons)).where(Course.id == course_id)
         res = await self.db.execute(stmt)
         return res.scalars().first()
+
+    async def get_lesson_by_id(self, lesson_id: str) -> Optional[Lesson]:
+        stmt = select(Lesson).where(Lesson.id == lesson_id)
+        res = await self.db.execute(stmt)
+        return res.scalars().first()
+
+    async def get_kid_profile_by_user_id(self, user_id: uuid.UUID) -> Optional[KidProfile]:
+        stmt = select(KidProfile).where(KidProfile.user_id == user_id)
+        res = await self.db.execute(stmt)
+        return res.scalars().first()
+
+    async def record_lesson_progress(
+        self,
+        user_id: uuid.UUID,
+        lesson_id: str,
+        score: int,
+        stars_earned: int,
+    ) -> UserLessonProgress:
+        progress = UserLessonProgress(
+            user_id=user_id,
+            lesson_id=lesson_id,
+            is_completed=True,
+            score=score,
+            stars_earned=stars_earned,
+        )
+        self.db.add(progress)
+        return progress

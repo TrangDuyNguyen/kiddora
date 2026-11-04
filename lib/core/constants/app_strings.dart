@@ -375,5 +375,55 @@ class AppStrings {
       'Bài học này đang ở chế độ xem thử. Nội dung đầy đủ sẽ sớm ra mắt!';
   static const String lessonLockedAlert =
       'Con hãy hoàn thành các bài học trước để mở khóa bài này nhé!';
+
+  // Mini-Game Tactile Engine Strings
+  static const String gameAwesome = 'Tuyệt vời lắm!';
+  static const String gameTryAgain = 'Thử lại nào!';
+  static const String gameCorrect = 'Chính xác rồi!';
+  static const String gameCompleted = 'Xuất sắc! Bé đã hoàn thành thử thách!';
+  static const String gameSmartHint = 'Gợi ý cho bé nè!';
+  static const String dragDropInstruction = 'Kéo thả các bạn về đúng ngôi nhà nhé!';
+  static const String scaleBalanceInstruction = 'Chọn quả cân đúng để bàn cân thăng bằng nhé!';
+  static const String bubblePopInstruction = 'Chạm vào bong bóng có đáp án đúng!';
+  static const String strokeTraceInstruction = 'Dùng ngón tay ma thuật tô theo đường nét nhé!';
+  static const String cardFlipInstruction = 'Lật thẻ và tìm các cặp tương ứng nhé!';
+
+  // Lesson Player 5E Engine Strings
+  static const String exitLessonTitle = 'Tạm dừng bài học?';
+  static const String exitLessonMessage =
+      'Tiến độ của con sẽ được lưu lại để học tiếp bất cứ lúc nào!';
+  static const String btnKeepLearning = 'Học tiếp';
+  static const String btnSaveAndExit = 'Lưu & Thoát';
+  static const String stageEngageTitle = 'Khơi gợi';
+  static const String stageExploreTitle = 'Khám phá';
+  static const String stageExplainTitle = 'Giải thích';
+  static const String stageElaborateTitle = 'Vận dụng';
+  static const String stageEvaluateTitle = 'Đánh giá';
+  static const String btnNextStage = 'Tiếp tục';
+  static const String btnCompleteLesson = 'Hoàn thành bài học';
+  static const String lessonCompletedCelebrate = 'Chúc mừng con đã hoàn thành bài học!';
+  static const String earnedTenStars = '+10 Ngôi sao vàng';
+
+  // Course Progress Tracker & Celebration
+  static const String progressTrackerTitle = 'Tiến độ học tập';
+  static const String overallProgressLabel = 'Tiến độ khóa học';
+  static const String lessonsCompletedStat = 'Bài học đã xong';
+  static const String starsEarnedStat = 'Ngôi sao đạt được';
+  static const String streakDaysStat = 'Ngày streak';
+  static const String statusCompleted = 'Đã hoàn thành';
+  static const String statusInProgress = 'Đang học';
+  static const String statusLocked = 'Chưa mở khóa';
+  static const String btnContinueCurrentLesson = 'Học tiếp ngay';
+  static const String celebrationTitle = 'Tuyệt đỉnh!';
+  static const String courseCompletedHeading = 'Chúc mừng con đã hoàn thành khóa học!';
+  static const String courseCompletedSubheading =
+      'Con đã tích lũy thêm nhiều kiến thức bổ ích và rèn luyện tư duy xuất sắc!';
+  static const String starsRewardTotal = '+50 Ngôi sao vinh danh';
+  static const String streakBonusText = 'Duy trì chuỗi học tập liên tiếp!';
+  static const String badgeEarnedTitle = 'Huy hiệu Nhà Thám Hiểm Tài Ba';
+  static const String btnBackToHome = 'Về trang chủ';
+  static const String btnViewProgressTracker = 'Xem bảng thành tích';
 }
+
+
 

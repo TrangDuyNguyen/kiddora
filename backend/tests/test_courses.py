@@ -2,12 +2,14 @@
 Unit & Integration Tests for Module Courses (FastAPI)
 """
 from unittest.mock import AsyncMock, MagicMock
+import uuid
 import pytest
 from httpx import ASGITransport, AsyncClient
 
 from app.main import app
-from app.core.deps import get_db
+from app.core.deps import get_db, get_current_user_id
 from app.modules.courses.models import Course, Lesson
+from app.modules.auth.models import KidProfile
 
 
 def create_sample_courses():
@@ -162,4 +164,104 @@ async def test_get_course_detail_not_found():
         assert data["detail"] == "Khóa học không tồn tại"
 
     app.dependency_overrides.clear()
+
+
+@pytest.mark.asyncio
+async def test_get_lesson_blueprint_success():
+    sample_courses = create_sample_courses()
+    mock_db = AsyncMock()
+    mock_result = MagicMock()
+    mock_result.scalars.return_value.first.return_value = sample_courses[0].lessons[0]
+    mock_db.execute.return_value = mock_result
+
+    app.dependency_overrides[get_db] = lambda: mock_db
+
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        res = await client.get("/api/v1/lessons/lesson_anim_01/blueprint")
+        assert res.status_code == 200
+        data = res.json()
+        assert data["lesson_id"] == "lesson_anim_01"
+        assert "stages" in data
+        assert len(data["stages"]) == 5
+        assert data["stages"][0]["stage_5e"] == "engage"
+
+    app.dependency_overrides.clear()
+
+
+@pytest.mark.asyncio
+async def test_get_lesson_blueprint_not_found():
+    mock_db = AsyncMock()
+    mock_result = MagicMock()
+    mock_result.scalars.return_value.first.return_value = None
+    mock_db.execute.return_value = mock_result
+
+    app.dependency_overrides[get_db] = lambda: mock_db
+
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        res = await client.get("/api/v1/lessons/lesson_unknown/blueprint")
+        assert res.status_code == 404
+        data = res.json()
+        assert data["detail"] == "Bài học không tồn tại"
+
+    app.dependency_overrides.clear()
+
+
+@pytest.mark.asyncio
+async def test_complete_lesson_authenticated_success():
+    sample_courses = create_sample_courses()
+    test_user_id = uuid.uuid4()
+    profile = KidProfile(
+        user_id=test_user_id,
+        nickname="Bé Na",
+        age=8,
+        star_points=10,
+        streak_days=1,
+    )
+
+    mock_db = AsyncMock()
+
+    async def mock_execute(stmt):
+        mock_res = MagicMock()
+        stmt_str = str(stmt)
+        if "FROM lessons" in stmt_str:
+            mock_res.scalars.return_value.first.return_value = sample_courses[0].lessons[0]
+        elif "FROM kid_profiles" in stmt_str:
+            mock_res.scalars.return_value.first.return_value = profile
+        else:
+            mock_res.scalars.return_value.first.return_value = None
+        return mock_res
+
+    mock_db.execute.side_effect = mock_execute
+
+    app.dependency_overrides[get_db] = lambda: mock_db
+    app.dependency_overrides[get_current_user_id] = lambda: str(test_user_id)
+
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        res = await client.post(
+            "/api/v1/lessons/lesson_anim_01/complete",
+            json={"score": 100, "stars_earned": 10},
+        )
+        assert res.status_code == 200
+        data = res.json()
+        assert data["status"] == "success"
+        assert data["lesson_id"] == "lesson_anim_01"
+        assert data["stars_earned"] == 10
+        assert data["total_stars"] == 20
+        assert data["streak_days"] == 2
+
+    app.dependency_overrides.clear()
+
+
+@pytest.mark.asyncio
+async def test_complete_lesson_unauthorized_fails():
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        res = await client.post(
+            "/api/v1/lessons/lesson_anim_01/complete",
+            json={"score": 100, "stars_earned": 10},
+        )
+        assert res.status_code == 401
 

@@ -1,15 +1,21 @@
 """
-Module Courses — Router Endpoints
+Module Courses & Lessons — Router Endpoints
 """
 from typing import List, Optional
 from fastapi import APIRouter, Depends, Query
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.core.deps import get_db
-from app.modules.courses.schemas import CourseCardResponse, CourseDetailResponse
+from app.core.deps import get_db, get_current_user_id
+from app.modules.courses.schemas import (
+    CourseCardResponse,
+    CourseDetailResponse,
+    LessonCompleteRequest,
+    LessonCompleteResponse,
+)
 from app.modules.courses.service import CourseService
 
 router = APIRouter(prefix="/courses", tags=["Courses"])
+lessons_router = APIRouter(prefix="/lessons", tags=["Lessons"])
 
 
 @router.get("", response_model=List[CourseCardResponse])
@@ -44,3 +50,34 @@ async def get_course_detail(
     """Lấy thông tin chi tiết khóa học kèm danh sách bài giảng (dành cho màn hình Course Detail)"""
     service = CourseService(db)
     return await service.get_course_detail(course_id)
+
+
+# ── Lessons Endpoints (5E Engine & Progress Sync) ───────────
+
+@lessons_router.get("/{lesson_id}/blueprint")
+@router.get("/lessons/{lesson_id}/blueprint")
+async def get_lesson_blueprint(
+    lesson_id: str,
+    db: AsyncSession = Depends(get_db),
+):
+    """Lấy kịch bản bài học chuẩn 5E DSL để nạp vào Lesson Player"""
+    service = CourseService(db)
+    return await service.get_lesson_blueprint(lesson_id)
+
+
+@lessons_router.post("/{lesson_id}/complete", response_model=LessonCompleteResponse)
+@router.post("/lessons/{lesson_id}/complete", response_model=LessonCompleteResponse)
+async def complete_lesson(
+    lesson_id: str,
+    req: LessonCompleteRequest,
+    user_id: str = Depends(get_current_user_id),
+    db: AsyncSession = Depends(get_db),
+):
+    """Ghi nhận hoàn thành bài học, thưởng +10 sao và cập nhật chuỗi streak"""
+    service = CourseService(db)
+    return await service.complete_lesson(
+        user_id_str=user_id,
+        lesson_id=lesson_id,
+        score=req.score,
+        stars_earned=req.stars_earned,
+    )

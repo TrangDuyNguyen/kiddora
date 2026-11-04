@@ -1,0 +1,73 @@
+{
+  "lesson_id": "lesson_math_01",
+  "course_id": "course_math_fun",
+  "title": "Bàn Cân Thần Kỳ & Phép Cộng Vui Nhộn",
+  "archetype": "arcade",
+  "target_age_group": "7-10",
+  "estimated_duration_mins": 8,
+  "stages": [
+    {
+      "step_order": 1,
+      "stage_5e": "engage",
+      "type": "mascot_hook",
+      "config": {
+        "mascot_id": "fox",
+        "greeting_text": "Todd đang có một câu đố hóc búa! Làm sao để cân bằng chiếc bập bênh số học này nhỉ?",
+        "action_cta": "Cùng Todd giải đố nào!"
+      }
+    },
+    {
+      "step_order": 2,
+      "stage_5e": "explore",
+      "type": "interactive_scale",
+      "config": {
+        "instruction": "Kéo thử các quả cân lên đĩa để xem bập bênh chuyển động",
+        "sample_weights": [1, 2, 3]
+      }
+    },
+    {
+      "step_order": 3,
+      "stage_5e": "explain",
+      "type": "concept_card_3d",
+      "config": {
+        "title": "Quy Tắc Thăng Bằng Số Học",
+        "key_takeaways": [
+          "Chiếc cân thăng bằng khi tổng hai vế bằng nhau",
+          "Ví dụ: 3 + 4 = 7"
+        ]
+      }
+    },
+    {
+      "step_order": 4,
+      "stage_5e": "elaborate",
+      "type": "tactile_mini_game",
+      "config": {
+        "mechanic": "clay_scale_balancer",
+        "instruction": "Chọn quả cân đúng để bàn cân thăng bằng nhé!",
+        "target_weight": 7,
+        "current_left_weight": 7,
+        "current_right_weight": 3,
+        "available_options": [2, 4, 6],
+        "correct_answer": 4
+      }
+    },
+    {
+      "step_order": 5,
+      "stage_5e": "evaluate",
+      "type": "bubble_quick_quiz",
+      "config": {
+        "star_reward": 10,
+        "badge_id": "badge_math_wizard",
+        "badge_title": "Junior Math Wizard",
+        "question": "Bấm vỡ bong bóng có phép tính đúng:",
+        "bubbles": [
+          {"id": "b1", "text": "2 + 2 = 5", "is_correct": false},
+          {"id": "b2", "text": "3 + 3 = 6", "is_correct": true},
+          {"id": "b3", "text": "4 + 1 = 6", "is_correct": false}
+        ],
+        "motivational_quote": "Tuyệt đỉnh tính nhẩm! Bé thật là thông minh!"
+      }
+    }
+  ]
+}
+

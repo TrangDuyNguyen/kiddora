@@ -6,6 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../core/constants/app_strings.dart';
 import '../../../core/constants/app_values.dart';
+import '../../../core/router/app_router.gr.dart';
 import '../../../shared/ui_kit/buttons/clay_icon_button.dart';
 import 'controllers/course_detail_controller.dart';
 import 'widgets/course_badge_banner.dart';
@@ -188,7 +189,20 @@ class CourseCurriculumScreen extends ConsumerWidget {
           for (final lesson in lessons)
             CourseLessonTile(
               lesson: lesson,
-              onTap: () => _showSnack(context, AppStrings.lessonDemoNotice),
+              onTap: () {
+                final hasRouter =
+                    context.findAncestorWidgetOfExactType<RouterScope>() != null;
+                if (hasRouter) {
+                  context.router.push(
+                    LessonPlayerRoute(
+                      lessonId: lesson.id,
+                      courseTitle: course.title,
+                    ),
+                  );
+                } else {
+                  _showSnack(context, AppStrings.lessonDemoNotice);
+                }
+              },
               onLockedTap: () => _showSnack(context, AppStrings.lessonLockedAlert),
             ),
           const SizedBox(height: AppValues.space5),

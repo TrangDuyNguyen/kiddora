@@ -5,7 +5,7 @@
 * **Scrum Master (SM)**: Sub-Agent Scrum Master (SM) — *"The Servant Leader & Agile Coach"*
 * **Sprint Goal**: *"Hiện thực hóa Trình phát bài học chuẩn Sư phạm 5E (Engage - Explore - Explain - Elaborate - Evaluate) tương thích 3 màn hình benchmark Domain 06 (Continue Lesson, Progress Tracker, Celebration), tích hợp bộ 5 Widget Mini-Game Xúc Giác Đất Nặn Play-Doh (ClayDragDropSorter, ClayScaleBalancer, ClayBubblePopper, MagicStrokeTracer, ClayCardFlipper), kịch bản JSON DSL Freezed và API Đồng bộ tiến độ (FastAPI UserProgress)."*
 * **Tổng Story Points cam kết**: **25 SP**
-* **Trạng thái Sprint**: `IN_PROGRESS` (Khởi động Gate 0 & Gate 1)
+* **Trạng thái Sprint**: `RELEASED` (Hoàn thành 100% — Ký duyệt Gate 7 `v0.6.0-lesson-player`)
 
 ---
 
@@ -13,14 +13,14 @@
 
 | Mã US | Hạng Mục / User Story | MoSCoW | SP | Gate Hiện Tại | Sub-Agent Phụ Trách | Trạng Thái |
 | :---: | :--- | :---: | :---: | :---: | :---: | :---: |
-| **US-23** | Data Models Freezed `LessonBlueprint`, `LessonStageConfig` & Parser | Must-have | 3 | Gate 0 / 4A | `tech-lead` / `flutter-core-dev` | 🟡 `[ ] READY` |
-| **US-28** | Kịch Bản Bài Học Mẫu Chuẩn 5E & Seed Data Minh Họa (*Amazing Animals*, *Math Fun*) | Should-have | 2 | Gate 1 & 2 | `ui-ux-designer` / `ba` | 🟡 `[ ] READY` |
-| **US-24** | Bộ Thư Viện 5 Widget Mini-Game Xúc Giác Đất Nặn (`shared/ui_kit/games/`) | Must-have | 5 | Gate 4A | `flutter-core-dev` | ⚪ `[ ] PENDING` |
-| **US-25** | Trình Phát Bài Học 5E Engine & Bộ Điều Phối (`06_learning_01`) | Must-have | 5 | Gate 4A | `flutter-core-dev` | ⚪ `[ ] PENDING` |
-| **US-26** | Màn Hình Tiến Độ & Ăn Mừng Hoàn Thành (`06_learning_02`, `06_learning_03`) | Must-have | 4 | Gate 4A | `flutter-core-dev` | ⚪ `[ ] PENDING` |
-| **US-27** | FastAPI Backend Endpoints cho Blueprint & Đồng Bộ Tiến Độ | Should-have | 3 | Gate 4B | `backend-dev` | ⚪ `[ ] PENDING` |
-| **US-29** | Ponytail Git Diff Review (Zero Bloat, Zero Hardcoded Values) | Must-have | 1 | Gate 5 | `code-reviewer` | ⚪ `[ ] PENDING` |
-| **US-30** | QA Automated & Visual QA Test Matrix (0 Overflow, 60 FPS, COPPA) | Must-have | 2 | Gate 6 & 6.5 | `qa-tester` / `security-auditor` | ⚪ `[ ] PENDING` |
+| **US-23** | Data Models Freezed `LessonBlueprint`, `LessonStageConfig` & Parser | Must-have | 3 | Gate 0 / 4A | `tech-lead` / `flutter-core-dev` | 🟢 `[x] DONE` |
+| **US-28** | Kịch Bản Bài Học Mẫu Chuẩn 5E & Seed Data Minh Họa (*Amazing Animals*, *Math Fun*) | Should-have | 2 | Gate 1 & 2 | `ui-ux-designer` / `ba` | 🟢 `[x] DONE` |
+| **US-24** | Bộ Thư Viện 5 Widget Mini-Game Xúc Giác Đất Nặn (`shared/ui_kit/games/`) | Must-have | 5 | Gate 4A | `flutter-core-dev` | 🟢 `[x] DONE` |
+| **US-25** | Trình Phát Bài Học 5E Engine & Bộ Điều Phối (`06_learning_01`) | Must-have | 5 | Gate 4A | `flutter-core-dev` | 🟢 `[x] DONE` |
+| **US-26** | Màn Hình Tiến Độ & Ăn Mừng Hoàn Thành (`06_learning_02`, `06_learning_03`) | Must-have | 4 | Gate 4A | `flutter-core-dev` | 🟢 `[x] DONE` |
+| **US-27** | FastAPI Backend Endpoints cho Blueprint & Đồng Bộ Tiến Độ | Should-have | 3 | Gate 4B | `backend-dev` | 🟢 `[x] DONE` |
+| **US-29** | Ponytail Git Diff Review (Zero Bloat, Zero Hardcoded Values) | Must-have | 1 | Gate 5 | `code-reviewer` | 🟢 `[x] DONE` |
+| **US-30** | QA Automated & Visual QA Test Matrix (0 Overflow, 60 FPS, COPPA) | Must-have | 2 | Gate 6 & 6.5 | `qa-tester` / `security-auditor` | 🟢 `[x] DONE` |
 
 ---
 
@@ -35,8 +35,8 @@
 | **Sprint 4** | Fullstack E2E Auth, Onboarding & User Sync (PostgreSQL + FastAPI) | 15 SP | 15 SP | `RELEASED` | `v0.4.0-auth-onboarding-e2e` |
 | **UI Kit v2 (CR-013)** | Full Phase 1 + Phase 2 Tactile Clay Modal, Shared UI Kit & 7 3D Assets | 26 SP | 26 SP | `COMPLETED` | `CR-013` |
 | **Sprint 5** | Courses Hub, Discovery & Curriculum Details (6 Màn Hình Benchmark) | 23 SP | 23 SP | `RELEASED` | `v0.5.0-courses-hub` |
-| **Sprint 6** | Lesson Player 5E Engine, 5 Mini-Games & Progress Sync | 25 SP | 0 SP | `IN_PROGRESS` | *Đang triển khai* |
-| **Tổng Cộng Đã Bàn Giao** | **Lũy kế giá trị đã phát hành chính thức** | **112 SP** | **112 SP** | **100% On-Track** | **5 Releases + CR-013** |
+| **Sprint 6** | Lesson Player 5E Engine, 5 Mini-Games & Progress Sync | 25 SP | 25 SP | `RELEASED` | `v0.6.0-lesson-player` |
+| **Tổng Cộng Đã Bàn Giao** | **Lũy kế giá trị đã phát hành chính thức** | **137 SP** | **137 SP** | **100% On-Track** | **6 Releases + CR-013** |
 
 ---
 

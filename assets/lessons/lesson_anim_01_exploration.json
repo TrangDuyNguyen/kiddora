@@ -1,0 +1,109 @@
+{
+  "lesson_id": "lesson_anim_01",
+  "course_id": "course_amazing_animals",
+  "title": "Gấu Bắc Cực & Bạn Băng Tuyết",
+  "archetype": "exploration",
+  "target_age_group": "7-10",
+  "estimated_duration_mins": 8,
+  "stages": [
+    {
+      "step_order": 1,
+      "stage_5e": "engage",
+      "type": "mascot_hook",
+      "config": {
+        "mascot_id": "lion",
+        "greeting_text": "Xin chào bạn nhỏ! Đố bạn biết loài vật nào có bộ lông trắng muốt thích bơi giữa làn nước băng giá?",
+        "action_cta": "Cùng Leo đi tìm nào!"
+      }
+    },
+    {
+      "step_order": 2,
+      "stage_5e": "explore",
+      "type": "peek_reveal",
+      "config": {
+        "tool": "magnifying_glass",
+        "scene_background": "assets/images/course_hero_banner.png",
+        "hidden_targets": [
+          {
+            "id": "polar_bear",
+            "name": "Gấu Bắc Cực",
+            "hitbox": [120, 240, 80, 80]
+          },
+          {
+            "id": "seal",
+            "name": "Hải Cẩu",
+            "hitbox": [280, 310, 60, 60]
+          }
+        ]
+      }
+    },
+    {
+      "step_order": 3,
+      "stage_5e": "explain",
+      "type": "concept_card_3d",
+      "config": {
+        "title": "Bí Mật Bộ Lông & Lớp Mỡ Dày",
+        "key_takeaways": [
+          "Lông trong suốt ngụy trang trong tuyết trắng",
+          "Lớp mỡ dày 10cm giúp giữ ấm cơ thể trong băng giá"
+        ]
+      }
+    },
+    {
+      "step_order": 4,
+      "stage_5e": "elaborate",
+      "type": "tactile_mini_game",
+      "config": {
+        "mechanic": "clay_drag_drop_sorter",
+        "instruction": "Hãy đưa các bạn thú về đúng ngôi nhà của mình nhé!",
+        "baskets": [
+          {
+            "id": "polar",
+            "title": "Băng Tuyết",
+            "theme_color": "sky_blue",
+            "icon": "ice_cube"
+          },
+          {
+            "id": "forest",
+            "title": "Rừng Rậm",
+            "theme_color": "meadow_mint",
+            "icon": "tree"
+          }
+        ],
+        "items": [
+          {
+            "id": "polar_bear",
+            "title": "Gấu Bắc Cực",
+            "target_basket": "polar",
+            "asset_url": "assets/images/course_amazing_animals.png"
+          },
+          {
+            "id": "monkey",
+            "title": "Khỉ Rừng",
+            "target_basket": "forest",
+            "asset_url": "assets/images/cat_icon_science_3d.png"
+          },
+          {
+            "id": "penguin",
+            "title": "Chim Cánh Cụt",
+            "target_basket": "polar",
+            "asset_url": "assets/images/course_amazing_animals.png"
+          }
+        ],
+        "max_hints": 3
+      }
+    },
+    {
+      "step_order": 5,
+      "stage_5e": "evaluate",
+      "type": "celebration_summary",
+      "config": {
+        "star_reward": 10,
+        "badge_id": "badge_polar_explorer",
+        "badge_title": "Brave Polar Explorer",
+        "motivational_quote": "Xuất sắc lắm! Bé đã hoàn thành chuyến thám hiểm Bắc Cực!"
+      }
+    }
+  ]
+}
+

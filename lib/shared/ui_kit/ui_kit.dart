@@ -7,7 +7,10 @@ export 'buttons/clay_button.dart';
 export 'buttons/clay_icon_button.dart';
 export 'indicators/star_counter_badge.dart';
 export 'indicators/clay_error_text.dart';
+export 'indicators/clay_progress_bar.dart';
 export 'inputs/clay_filter_bar.dart';
 export 'inputs/clay_text_field.dart';
 export 'navigation/clay_bottom_nav.dart';
 export 'navigation/clay_screen_header.dart';
+export 'games/games.dart';
+

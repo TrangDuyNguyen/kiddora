@@ -227,4 +227,14 @@ class AppColors {
   static const Color categoryLanguageIcon = Color(0xFF0EA5E9);
   static const Color categoryArtsIcon = Color(0xFFEC4899);
   static const Color courseActionBtnBg = Color(0xFF6C5CE7);
+
+  // Mini-Game Tactile Engine Colors
+  static const Color gameScaleBeam = Color(0xFFE2E8F0);
+  static const Color gameScaleFulcrum = Color(0xFF6366F1);
+  static const Color gameBubbleBg = Color(0xFFEEF2FF);
+  static const Color gameBubbleBorder = Color(0xFFA5B4FC);
+  static const Color gameMagicGlow = Color(0xFF818CF8);
+  static const Color gameCardBack = Color(0xFF6366F1);
+  static const Color gameCardFront = Color(0xFFFFFFFF);
 }
+
