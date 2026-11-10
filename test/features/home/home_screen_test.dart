@@ -3,8 +3,13 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:kiddora/core/constants/app_strings.dart';
+import 'package:kiddora/features/classroom/presentation/sessions_hub_body.dart';
+import 'package:kiddora/features/exploration/presentation/courses_hub_body.dart';
+import 'package:kiddora/features/exploration/presentation/practice_tests_hub_body.dart';
 import 'package:kiddora/features/home/presentation/home_screen.dart';
+import 'package:kiddora/features/home/presentation/widgets/home_dashboard_body.dart';
 import 'package:kiddora/features/onboarding/presentation/controllers/onboarding_controller.dart';
+import 'package:kiddora/features/parent_hub/presentation/student_profile_body.dart';
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
@@ -64,22 +69,38 @@ void main() {
       expect(find.text(AppStrings.navProfile), findsOneWidget);
     });
 
-    testWidgets('bottom navigation switches tab index and opens Empty Sessions modal',
+    testWidgets('bottom navigation switches smoothly across all 5 main tabs',
         (tester) async {
       await tester.pumpWidget(buildTestableWidget());
       await tester.pumpAndSettle();
 
+      // 1. Switch to Courses tab
+      await tester.tap(find.text(AppStrings.navCourses));
+      await tester.pumpAndSettle();
+      expect(find.byType(CoursesHubBody), findsOneWidget);
+
+      // 2. Switch to Sessions tab
       await tester.tap(find.text(AppStrings.navSessions));
       await tester.pumpAndSettle();
+      expect(find.byType(SessionsHubBody), findsOneWidget);
+      expect(find.text(AppStrings.sessionsHubTitle), findsOneWidget);
 
-      expect(find.text(AppStrings.modalNoSessionsTitle), findsOneWidget);
-      expect(find.text(AppStrings.modalExploreCourses), findsOneWidget);
-      expect(find.text(AppStrings.modalMaybeLater), findsOneWidget);
-
-      await tester.tap(find.text(AppStrings.modalExploreCourses));
+      // 3. Switch to Tests tab
+      await tester.tap(find.text(AppStrings.navTests));
       await tester.pumpAndSettle();
+      expect(find.byType(PracticeTestsHubBody), findsOneWidget);
+      expect(find.text(AppStrings.testsHubTitle), findsOneWidget);
 
-      expect(find.text(AppStrings.modalNoSessionsTitle), findsNothing);
+      // 4. Switch to Profile tab
+      await tester.tap(find.text(AppStrings.navProfile));
+      await tester.pumpAndSettle();
+      expect(find.byType(StudentProfileBody), findsOneWidget);
+      expect(find.text(AppStrings.profileTitle), findsOneWidget);
+
+      // 5. Switch back to Home tab
+      await tester.tap(find.text(AppStrings.navHome));
+      await tester.pumpAndSettle();
+      expect(find.byType(HomeDashboardBody), findsOneWidget);
     });
 
     testWidgets('logout icon opens Logout confirmation modal and cancels cleanly',

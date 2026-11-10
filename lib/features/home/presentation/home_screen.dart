@@ -8,8 +8,11 @@ import '../../../core/constants/app_values.dart';
 import '../../../core/network/token_storage.dart';
 import '../../../core/router/app_router.gr.dart';
 import '../../../shared/ui_kit/ui_kit.dart';
+import '../../classroom/presentation/sessions_hub_body.dart';
 import '../../exploration/presentation/courses_hub_body.dart';
+import '../../exploration/presentation/practice_tests_hub_body.dart';
 import '../../onboarding/presentation/controllers/onboarding_controller.dart';
+import '../../parent_hub/presentation/student_profile_body.dart';
 import 'widgets/home_dashboard_body.dart';
 
 @RoutePage()
@@ -41,18 +44,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     }
   }
 
-  Future<void> _handleTabChanged(int index) async {
+  void _handleTabChanged(int index) {
     setState(() => _currentNavIndex = index);
-    if (index == ClayNavTab.sessions.index) {
-      final explore = await ClayDialog.showEmptySessions(context);
-      if (explore == true && mounted) {
-        setState(() => _currentNavIndex = ClayNavTab.courses.index);
-      }
-      return;
-    }
-    if (index == ClayNavTab.tests.index) {
-      context.router.push(const TodayLearningGoalRoute());
-    }
   }
 
   @override
@@ -75,9 +68,14 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               onSnack: _showSnack,
             ),
             const CoursesHubBody(),
-            const SizedBox.shrink(),
-            const SizedBox.shrink(),
-            const SizedBox.shrink(),
+            SessionsHubBody(onSnack: _showSnack),
+            PracticeTestsHubBody(onSnack: _showSnack),
+            StudentProfileBody(
+              nickname: nickname,
+              age: profile?.age ?? 8,
+              onLogoutTap: _handleLogoutTap,
+              onSnack: _showSnack,
+            ),
           ],
         ),
       ),

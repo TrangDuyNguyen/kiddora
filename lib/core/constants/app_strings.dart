@@ -437,6 +437,76 @@ class AppStrings {
   static const String playgroundBannerSubtitle =
       'Chơi thử 5 trò chơi xúc giác đất nặn Play-Doh';
   static const String btnTryGamesNow = 'Chơi thử ngay';
+
+  // Sessions Hub (Domain 07)
+  static const String sessionsHubTitle = 'Lớp Học Trực Tuyến';
+  static const String sessionsHubSubtitle = 'Tham gia học cùng thầy cô và các bạn';
+  static const String liveNowBadge = 'ĐANG PHÁT';
+  static const String liveNowTitle = 'Khám Phá Hệ Mặt Trời & Các Hành Tinh';
+  static const String liveNowCoach = 'Cô Sarah';
+  static const String liveNowWatchingCount = '850 bạn đang xem';
+  static const String btnJoinLiveNow = 'Vào lớp ngay';
+  static const String tabToday = 'Hôm nay';
+  static const String tabTomorrow = 'Ngày mai';
+  static const String tabThursday = 'Thứ 5';
+  static const String tabFriday = 'Thứ 6';
+  static const String upcomingSessionsTitle = 'Buổi học sắp diễn ra';
+  static const String btnEnterWaitingRoom = 'Phòng chờ';
+  static const String sessionMathTitle = 'Toán Tư Duy: Đố Vui Phép Nhân';
+  static const String sessionMathCoach = 'Thầy Nam';
+  static const String sessionMathTime = '14:00 - 14:45';
+  static const String sessionStemTitle = 'Thí Nghiệm Núi Lửa & Dung Nham';
+  static const String sessionStemCoach = 'Cô Minh';
+  static const String sessionStemTime = '16:30 - 17:15';
+  static const String sessionArtTitle = 'Học Vẽ Động Vật Biển Sáng Tạo';
+  static const String sessionArtCoach = 'Cô Linh';
+  static const String sessionArtTime = '19:00 - 19:45';
+
+  // Practice Tests Hub (Domain 08)
+  static const String testsHubTitle = 'Trung Tâm Luyện Đề';
+  static const String testsHubSubtitle = 'Thử sức với các bài quiz trắc nghiệm vui nhộn';
+  static const String statCompletedTests = 'Đã hoàn thành';
+  static const String statCompletedTestsValue = '12 bài';
+  static const String statHighestScore = 'Điểm cao nhất';
+  static const String statHighestScoreValue = '100%';
+  static const String statAverageScore = 'Điểm trung bình';
+  static const String statAverageScoreValue = '88%';
+  static const String testCategoryTitle = 'Môn thi thử';
+  static const String categoryMath = 'Toán Tư Duy';
+  static const String categoryStem = 'Khoa Học';
+  static const String categoryLogic = 'Đố Vui Logic';
+  static const String categoryLanguage = 'Tiếng Anh';
+  static const String recommendedTestsTitle = 'Đề thi nổi bật cho con';
+  static const String testAnimalsTitle = 'Thử Thách Động Vật Hoang Dã';
+  static const String testAnimalsMeta = '10 câu hỏi • 15 phút • Cấp độ Dễ';
+  static const String testMathRiddleTitle = 'Toán Đố Vui Cho Bé 7-8 Tuổi';
+  static const String testMathRiddleMeta = '10 câu hỏi • 15 phút • Cấp độ Vừa';
+  static const String testSpaceOceanTitle = 'Giải Mã Bí Ẩn Đại Dương';
+  static const String testSpaceOceanMeta = '15 câu hỏi • 20 phút • Nâng cao';
+  static const String btnStartTest = 'Làm bài';
+
+  // Student Profile Body (Domain 12)
+  static const String profileTitle = 'Hồ Sơ Của Bé';
+  static const String profileSubtitle = 'Theo dõi hành trình học tập & thành tích';
+  static const String kidLevelBadge = 'Cấp độ 2 • Nhà Khám Phá';
+  static const String statStarPoints = 'Điểm sao';
+  static const String statStarPointsValue = '1,250';
+  static const String statStreakDays = 'Ngày streak';
+  static const String statStreakDaysValue = '7 ngày';
+  static const String statActiveCourses = 'Khóa học';
+  static const String statActiveCoursesValue = '4 khóa';
+  static const String statBadgesEarned = 'Huy hiệu';
+  static const String statBadgesEarnedValue = '6 cúp';
+  static const String parentGateCardTitle = 'Cổng Phụ Huynh';
+  static const String parentGateCardSubtitle =
+      'Báo cáo học tập, thời gian dùng màn hình & cài đặt';
+  static const String btnUnlockParentGate = 'Mở khóa';
+  static const String settingsSectionTitle = 'Cài đặt ứng dụng';
+  static const String settingSoundHaptics = 'Âm thanh & Rung phản hồi';
+  static const String settingNotifications = 'Thông báo lịch học';
+  static const String settingCompanion = 'Đổi bạn đồng hành 3D';
+  static const String settingHelpCenter = 'Trợ giúp & Hỗ trợ';
+  static const String settingLogout = 'Đăng xuất tài khoản';
 }
 
 
