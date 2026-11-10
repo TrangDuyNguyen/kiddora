@@ -156,7 +156,11 @@ class AppValues {
   static const double sizeButtonPrimaryH = 54.0;
   static const double sizeLoginLogoH = 48.0;
   static const double sizeLoginHeroMascotH = 145.0;
-  static const double sizeHomeHeroH = 155.0;
+  static const double sizeHomeHeroH = 166.0;
+  static const double sizeHomeHeroMascotW = 132.0;
+  static const double sizeHeroDotActiveW = 20.0;
+  static const double sizeHeroDotInactiveW = 7.0;
+  static const double sizeHeroDotH = 7.0;
   static const double sizeGoalProgressBox = 220.0;
   static const double sizeGoalRing = 180.0;
   static const double sizeGoalMascotStar = 52.0;

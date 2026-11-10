@@ -66,6 +66,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               nickname: nickname,
               onLogoutTap: _handleLogoutTap,
               onSnack: _showSnack,
+              onSwitchTab: _handleTabChanged,
             ),
             const CoursesHubBody(),
             SessionsHubBody(onSnack: _showSnack),

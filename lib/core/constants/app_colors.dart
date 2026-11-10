@@ -181,6 +181,12 @@ class AppColors {
   static const Color heroGradientStart = Color(0xFFC084FC);
   static const Color heroGradientMid = Color(0xFFA855F7);
   static const Color heroGradientEnd = Color(0xFF8B5CF6);
+  static const Color heroGameGradStart = Color(0xFFF472B6);
+  static const Color heroGameGradMid = Color(0xFFEC4899);
+  static const Color heroGameGradEnd = Color(0xFFF59E0B);
+  static const Color heroQuestGradStart = Color(0xFF34D399);
+  static const Color heroQuestGradMid = Color(0xFF10B981);
+  static const Color heroQuestGradEnd = Color(0xFF0EA5E9);
   static const Color ringTrackLavender = Color(0xFFEDE9FE);
   static const Color ringArcPurple = Color(0xFF818CF8);
   static const Color ringArcIndigo = Color(0xFF4F46E5);

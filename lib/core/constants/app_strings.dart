@@ -436,6 +436,12 @@ class AppStrings {
   static const String playgroundBannerTitle = 'Phòng Thử Nghiệm Mini-Game';
   static const String playgroundBannerSubtitle =
       'Chơi thử 5 trò chơi xúc giác đất nặn Play-Doh';
+  static const String playgroundBannerTitleEn = 'Mini-Game Playground';
+  static const String playgroundBannerSubtitleEn =
+      'Play 5 tactile Play-Doh learning games';
+  static const String heroSlideQuestTitle = 'Amazing Animals\nScience Quest!';
+  static const String heroSlideQuestSubtitle =
+      'Explore wild habitats\nwith Dino today!';
   static const String btnTryGamesNow = 'Chơi thử ngay';
 
   // Sessions Hub (Domain 07)

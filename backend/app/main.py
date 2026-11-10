@@ -12,6 +12,7 @@ from app.modules.auth.router import router as auth_router
 from app.modules.courses.router import router as courses_router, lessons_router
 from app.modules.classroom.router import router as classroom_router
 from app.modules.gamification.router import router as gamification_router
+from app.modules.home.router import router as home_router
 from app.modules.storage.router import router as storage_router
 
 
@@ -77,6 +78,7 @@ async def health_check():
 API_V1_PREFIX = "/api/v1"
 
 app.include_router(auth_router, prefix=API_V1_PREFIX)
+app.include_router(home_router, prefix=API_V1_PREFIX)
 app.include_router(courses_router, prefix=API_V1_PREFIX)
 app.include_router(lessons_router, prefix=API_V1_PREFIX)
 app.include_router(classroom_router, prefix=API_V1_PREFIX)

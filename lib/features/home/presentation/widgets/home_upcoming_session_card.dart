@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../../../../core/constants/app_assets.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/app_strings.dart';
 import '../../../../core/constants/app_values.dart';
@@ -9,10 +8,22 @@ import '../../../../shared/ui_kit/ui_kit.dart';
 
 class HomeUpcomingSessionCard extends StatelessWidget {
   final VoidCallback onJoinTap;
+  final VoidCallback? onSeeAllTap;
+  final VoidCallback? onCardTap;
+  final String title;
+  final String coachName;
+  final String coachAvatar;
+  final String scheduledTime;
 
   const HomeUpcomingSessionCard({
     super.key,
     required this.onJoinTap,
+    this.onSeeAllTap,
+    this.onCardTap,
+    this.title = AppStrings.mathFunWithNumbers,
+    this.coachName = AppStrings.coachSarah,
+    this.coachAvatar = 'assets/images/avatar_coach_sarah.png',
+    this.scheduledTime = AppStrings.sessionTodayTime,
   });
 
   Widget _buildSessionDetails() => Expanded(
@@ -20,16 +31,18 @@ class HomeUpcomingSessionCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              AppStrings.mathFunWithNumbers,
+              title,
               style: GoogleFonts.quicksand(
                 fontSize: AppValues.fontLabelMd,
                 fontWeight: FontWeight.w700,
                 color: AppColors.textDarkIndigo,
               ),
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
             ),
             const SizedBox(height: AppValues.borderWidthThin),
             Text(
-              AppStrings.coachSarah,
+              coachName,
               style: GoogleFonts.quicksand(
                 fontSize: AppValues.fontCaptionSm,
                 fontWeight: FontWeight.w600,
@@ -46,7 +59,7 @@ class HomeUpcomingSessionCard extends StatelessWidget {
                 ),
                 const SizedBox(width: AppValues.radiusXs),
                 Text(
-                  AppStrings.sessionTodayTime,
+                  scheduledTime,
                   style: GoogleFonts.quicksand(
                     fontSize: AppValues.fontCaptionXs,
                     fontWeight: FontWeight.w600,
@@ -75,7 +88,10 @@ class HomeUpcomingSessionCard extends StatelessWidget {
               ),
             ),
             GestureDetector(
-              onTap: HapticFeedback.lightImpact,
+              onTap: () {
+                HapticFeedback.lightImpact();
+                onSeeAllTap?.call();
+              },
               child: Text(
                 AppStrings.seeAll,
                 style: GoogleFonts.quicksand(
@@ -88,27 +104,23 @@ class HomeUpcomingSessionCard extends StatelessWidget {
           ],
         ),
         const SizedBox(height: AppValues.space4),
-        Container(
+        ClayCard(
+          onTap: onCardTap ?? onJoinTap,
           padding: const EdgeInsets.all(AppValues.space4),
-          decoration: BoxDecoration(
-            color: AppColors.surfaceContainer,
-            borderRadius: BorderRadius.circular(AppValues.radiusXl),
-            boxShadow: const [
-              BoxShadow(
-                color: AppColors.shadowIndigoSubtle,
-                offset: Offset(0, AppValues.radiusXs),
-                blurRadius: AppValues.radiusTaskTile,
-              ),
-            ],
-          ),
           child: Row(
             children: [
               ClipOval(
                 child: Image.asset(
-                  AppAssets.avatarCoachSarah,
+                  coachAvatar,
                   width: AppValues.sizeAvatarMd,
                   height: AppValues.sizeAvatarMd,
                   fit: BoxFit.cover,
+                  errorBuilder: (_, __, ___) => Image.asset(
+                    'assets/images/avatar_coach_sarah.png',
+                    width: AppValues.sizeAvatarMd,
+                    height: AppValues.sizeAvatarMd,
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ),
               const SizedBox(width: AppValues.radiusTaskTile),

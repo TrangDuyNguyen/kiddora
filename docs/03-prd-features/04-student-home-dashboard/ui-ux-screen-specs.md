@@ -8,11 +8,15 @@
 
 ## 🎨 1. Bố Cục Lưới 4pt & Tokens Thành Phần
 
-- **Top Bar**: Avatar bé tròn đường kính $44\text{ dp}$ có viền vàng, chuông thông báo có chấm đỏ, huy hiệu sao vàng tích lũy $120\text{ Stars}$.
-- **Welcome Card**: Nền tím pastel `#EEF2FF`, vương miện đất sét vàng 3D, tiêu đề $20\text{ sp}$ đậm.
-- **3 Summary Cards**: Kích thước chiều cao $84\text{ dp}$, bo góc $18\text{ dp}$, nền trắng tinh `#FFFFFF`, icon 3D nổi bật.
-- **Continue Learning Card**: Banner hình ảnh động vật vui nhộn, thanh tiến độ xanh mint Meadow Mint `#10B981` dày $8\text{ dp}$.
-- **Bottom Navigation Bar**: Chiều cao $72\text{ dp}$, nền trắng, bóng đổ ngược phía trên, icon chuyển tab có hiệu ứng chuyển màu và nảy nhẹ.
+- **Top Bar (`HomeHeader`)**: Avatar bé tròn đường kính $48\text{ dp}$ (nhấn để chuyển sang Tab 4 Profile), huy hiệu sao tích lũy `StarCounterBadge` ($140\text{ Stars}$), chuông thông báo có chấm đỏ và nút đăng xuất.
+- **3-Slide Tactile Clay Hero Carousel (`HomeHeroBanner`)**: Chiều cao `AppValues.sizeHomeHeroH` ($166\text{ dp}$), bo góc `AppValues.radiusXl` ($24\text{ dp}$), bố cục `Row` tỷ lệ `6:4` (trái: Tiêu đề + Mô tả + Nút tròn trắng + Pill Dots chỉ báo trang; phải: Nhân vật 3D đất nặn RGBA 32-bit trong suốt `BoxFit.contain`):
+  - **Slide 1 (Daily Goal)**: Gradient tím Lavender (`heroGradientStart/Mid/End`), nhân vật `mascot_boy_crown.png` không viền hộp, mở `TodayLearningGoalRoute`.
+  - **Slide 2 (Mini-Game Playground)**: Gradient xanh Indigo-Cyan (`heroGameGradStart/Mid/End`), icon `icon_test_bag_3d.png`, gộp trực tiếp `HomeMiniGameBanner` vào carousel giúp tiết kiệm $90\text{ dp}$ chiều dọc, mở `MiniGamePlaygroundRoute`.
+  - **Slide 3 (Science Quest)**: Gradient xanh Emerald-Teal (`heroQuestGradStart/Mid/End`), mascot `avatar_dino.png`, mở trực tiếp `LessonPlayerRoute`.
+- **Quick Stats 2x2 Grid (`HomeQuickStatsGrid`)**: 4 thẻ `ClayCard` tương tác xúc giác (`My Progress` -> `TodayLearningGoalRoute`, `Current Courses` -> Tab 1, `Upcoming Session` -> Tab 2, `My Badges` -> Tab 4).
+- **Continue Learning Card (`HomeContinueLearningCard`)**: Bọc `ClayCard`, ảnh `course_dino.png` RGBA sạch không dính chữ cắt cụt, thanh tiến độ `ClayProgressBar`, nhấn mở `LessonPlayerRoute`.
+- **Upcoming Session Card (`HomeUpcomingSessionCard`)**: Bọc `ClayCard`, avatar giáo viên 3D `avatar_coach_sarah.png` RGBA sạch, nhấn mở Tab 2 (`Sessions`).
+- **Bottom Navigation Bar**: Chiều cao $72\text{ dp}$, nền trắng, bóng đổ ngược phía trên, 5 tab chính (`Home`, `Courses`, `Sessions`, `Tests`, `Profile`).
 
 ---
 

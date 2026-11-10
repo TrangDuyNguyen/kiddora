@@ -38,7 +38,7 @@ class HomeMiniGameBanner extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  AppStrings.playgroundBannerTitle,
+                  AppStrings.playgroundBannerTitleEn,
                   style: GoogleFonts.quicksand(
                     fontSize: AppValues.fontTitleMd,
                     fontWeight: FontWeight.bold,
@@ -47,7 +47,7 @@ class HomeMiniGameBanner extends StatelessWidget {
                 ),
                 const SizedBox(height: AppValues.space1),
                 Text(
-                  AppStrings.playgroundBannerSubtitle,
+                  AppStrings.playgroundBannerSubtitleEn,
                   style: GoogleFonts.quicksand(
                     fontSize: AppValues.fontCourseMeta,
                     color: AppColors.textSecondary,
@@ -75,4 +75,3 @@ class HomeMiniGameBanner extends StatelessWidget {
     }
   }
 }
-

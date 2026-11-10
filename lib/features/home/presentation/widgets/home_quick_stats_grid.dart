@@ -1,20 +1,40 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/app_strings.dart';
 import '../../../../core/constants/app_values.dart';
+import '../../../../shared/ui_kit/ui_kit.dart';
 
 class HomeQuickStatsGrid extends StatelessWidget {
   final VoidCallback onMyProgressTap;
+  final VoidCallback? onCurrentCoursesTap;
+  final VoidCallback? onUpcomingSessionTap;
+  final VoidCallback? onMyBadgesTap;
+  final int activeCoursesCount;
+  final String? upcomingSessionSubtitle;
+  final int earnedBadgesCount;
 
   const HomeQuickStatsGrid({
     super.key,
     required this.onMyProgressTap,
+    this.onCurrentCoursesTap,
+    this.onUpcomingSessionTap,
+    this.onMyBadgesTap,
+    this.activeCoursesCount = 3,
+    this.upcomingSessionSubtitle,
+    this.earnedBadgesCount = 5,
   });
 
   @override
   Widget build(BuildContext context) {
+    final coursesSubtitle = activeCoursesCount == 3
+        ? AppStrings.currentCoursesSubtitle
+        : '$activeCoursesCount Active Courses';
+    final badgesSubtitle = earnedBadgesCount == 5
+        ? AppStrings.myBadgesSubtitle
+        : '$earnedBadgesCount Badges Earned';
+    final sessionSub = upcomingSessionSubtitle ?? AppStrings.upcomingSessionSubtitle;
+
     return Column(
       children: [
         Row(
@@ -36,8 +56,8 @@ class HomeQuickStatsGrid extends StatelessWidget {
                 iconBg: AppColors.brandSkyContainer,
                 iconColor: AppColors.brandSky,
                 title: AppStrings.currentCourses,
-                subtitle: AppStrings.currentCoursesSubtitle,
-                onTap: () {},
+                subtitle: coursesSubtitle,
+                onTap: onCurrentCoursesTap ?? () {},
               ),
             ),
           ],
@@ -51,8 +71,8 @@ class HomeQuickStatsGrid extends StatelessWidget {
                 iconBg: AppColors.brandPinkContainer,
                 iconColor: AppColors.brandTertiary,
                 title: AppStrings.upcomingSession,
-                subtitle: AppStrings.upcomingSessionSubtitle,
-                onTap: () {},
+                subtitle: sessionSub,
+                onTap: onUpcomingSessionTap ?? () {},
               ),
             ),
             const SizedBox(width: AppValues.space4),
@@ -62,8 +82,8 @@ class HomeQuickStatsGrid extends StatelessWidget {
                 iconBg: AppColors.brandAmberContainer,
                 iconColor: AppColors.brandSecondary,
                 title: AppStrings.myBadges,
-                subtitle: AppStrings.myBadgesSubtitle,
-                onTap: () {},
+                subtitle: badgesSubtitle,
+                onTap: onMyBadgesTap ?? () {},
               ),
             ),
           ],
@@ -80,74 +100,59 @@ class HomeQuickStatsGrid extends StatelessWidget {
     required String subtitle,
     required VoidCallback onTap,
   }) {
-    return GestureDetector(
-      onTap: () {
-        HapticFeedback.lightImpact();
-        onTap();
-      },
-      child: Container(
-        padding: const EdgeInsets.all(AppValues.space5),
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(AppValues.radiusXl),
-          boxShadow: [
-            BoxShadow(
-              color: AppColors.shadowIndigoSubtle,
-              offset: const Offset(0, 3),
-              blurRadius: AppValues.space5,
-            ),
-          ],
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Container(
-              width: AppValues.sizeCircleButtonSm,
-              height: AppValues.sizeCircleButtonSm,
-              decoration: BoxDecoration(
-                color: iconBg,
-                shape: BoxShape.circle,
-              ),
-              alignment: Alignment.center,
-              child: Icon(
-                icon,
-                size: AppValues.iconSizeLg,
-                color: iconColor,
-              ),
-            ),
-            const SizedBox(height: AppValues.space5),
-            Text(
-              title,
-              style: GoogleFonts.quicksand(
-                fontSize: AppValues.fontLabelMd,
-                fontWeight: FontWeight.w700,
-                color: AppColors.textDarkIndigo,
-              ),
-            ),
-            const SizedBox(height: AppValues.borderWidthThick),
-            Row(
-              children: [
-                Expanded(
-                  child: Text(
-                    subtitle,
-                    style: GoogleFonts.quicksand(
-                      fontSize: AppValues.fontCaptionXs,
-                      fontWeight: FontWeight.w600,
-                      color: AppColors.textSlate,
-                    ),
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                  ),
+    return ClayCard(
+      onTap: onTap,
+      padding: const EdgeInsets.all(AppValues.space5),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Container(
+                width: AppValues.sizeCircleButtonSm,
+                height: AppValues.sizeCircleButtonSm,
+                decoration: BoxDecoration(
+                  color: iconBg,
+                  borderRadius: BorderRadius.circular(AppValues.radiusMd),
                 ),
-                const Icon(
-                  Icons.chevron_right_rounded,
-                  size: AppValues.iconSizeSm,
-                  color: AppColors.textMuted,
+                alignment: Alignment.center,
+                child: Icon(
+                  icon,
+                  size: AppValues.iconSizeMd,
+                  color: iconColor,
                 ),
-              ],
+              ),
+              const Icon(
+                Icons.arrow_forward_ios_rounded,
+                size: AppValues.iconSizeCompact,
+                color: AppColors.textMuted,
+              ),
+            ],
+          ),
+          const SizedBox(height: AppValues.space4),
+          Text(
+            title,
+            style: GoogleFonts.quicksand(
+              fontSize: AppValues.fontBodyMd,
+              fontWeight: FontWeight.w700,
+              color: AppColors.textDarkIndigo,
             ),
-          ],
-        ),
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+          ),
+          const SizedBox(height: AppValues.radiusXs),
+          Text(
+            subtitle,
+            style: GoogleFonts.quicksand(
+              fontSize: AppValues.fontCaptionSm,
+              fontWeight: FontWeight.w500,
+              color: AppColors.textSlate,
+            ),
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+          ),
+        ],
       ),
     );
   }

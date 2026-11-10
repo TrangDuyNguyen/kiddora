@@ -120,5 +120,24 @@ void main() {
 
       expect(find.text(AppStrings.modalLogoutTitle), findsNothing);
     });
+
+    testWidgets('hero banner carousel swipes across all 3 slides smoothly',
+        (tester) async {
+      await tester.pumpWidget(buildTestableWidget());
+      await tester.pumpAndSettle();
+
+      // Slide 1: Daily Goal
+      expect(find.text(AppStrings.keepLearningHeroTitle), findsOneWidget);
+
+      // Swipe left to Slide 2: Mini-Game Playground
+      await tester.drag(find.byType(PageView), const Offset(-500, 0));
+      await tester.pumpAndSettle();
+      expect(find.text(AppStrings.playgroundBannerTitleEn), findsOneWidget);
+
+      // Swipe left to Slide 3: Science Quest
+      await tester.drag(find.byType(PageView), const Offset(-500, 0));
+      await tester.pumpAndSettle();
+      expect(find.text(AppStrings.heroSlideQuestTitle), findsOneWidget);
+    });
   });
 }
