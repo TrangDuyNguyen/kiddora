@@ -423,6 +423,20 @@ class AppStrings {
   static const String badgeEarnedTitle = 'Huy hiệu Nhà Thám Hiểm Tài Ba';
   static const String btnBackToHome = 'Về trang chủ';
   static const String btnViewProgressTracker = 'Xem bảng thành tích';
+
+  // Mini-Game Playground Strings
+  static const String playgroundTitle = 'Phòng Thử Nghiệm Game';
+  static const String playgroundSubtitle = 'Trải nghiệm 5 cơ chế xúc giác Play-Doh';
+  static const String gameTabSorter = 'Kéo thả';
+  static const String gameTabBalancer = 'Cân số';
+  static const String gameTabPopper = 'Bóng nổ';
+  static const String gameTabTracer = 'Nét vẽ';
+  static const String gameTabFlipper = 'Lật thẻ';
+  static const String btnPlayAgain = 'Chơi lại';
+  static const String playgroundBannerTitle = 'Phòng Thử Nghiệm Mini-Game';
+  static const String playgroundBannerSubtitle =
+      'Chơi thử 5 trò chơi xúc giác đất nặn Play-Doh';
+  static const String btnTryGamesNow = 'Chơi thử ngay';
 }
 
 

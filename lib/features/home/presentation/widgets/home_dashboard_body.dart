@@ -7,6 +7,7 @@ import 'guest_claim_banner.dart';
 import 'home_continue_learning_card.dart';
 import 'home_header.dart';
 import 'home_hero_banner.dart';
+import 'home_mini_game_banner.dart';
 import 'home_quick_stats_grid.dart';
 import 'home_upcoming_session_card.dart';
 
@@ -42,6 +43,8 @@ class HomeDashboardBody extends StatelessWidget {
               context.router.push(const TodayLearningGoalRoute());
             },
           ),
+          const SizedBox(height: AppValues.space7),
+          const HomeMiniGameBanner(),
           const SizedBox(height: AppValues.space7),
           HomeQuickStatsGrid(
             onMyProgressTap: () {

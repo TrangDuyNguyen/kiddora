@@ -11,6 +11,7 @@ class AppColors {
       Color(0xFF6366F1); // Lighter Indigo accent
   static const Color brandSecondary =
       Color(0xFFF59E0B); // Joyful Amber: Stars, Streaks & Live Buzzer
+  static const Color brandAmber = brandSecondary;
   static const Color brandAmberLight = Color(0xFFFBBF24); // Sunny glow
   static const Color brandTertiary =
       Color(0xFFEC4899); // Bubblegum Pink: STEM Discovery & Labs

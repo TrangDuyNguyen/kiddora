@@ -292,6 +292,35 @@ class LessonStageDispatcher extends StatelessWidget {
       );
     }
 
+    if (mechanic == 'magic_stroke_tracer') {
+      return MagicStrokeTracer(
+        lessonId: lessonId,
+        instruction: stage.config['instruction'] as String? ??
+            AppStrings.strokeTraceInstruction,
+        guidePoints: const [
+          Offset(0.2, 0.5),
+          Offset(0.5, 0.2),
+          Offset(0.8, 0.5),
+        ],
+        onCompleted: onGameCompleted,
+      );
+    }
+
+    if (mechanic == 'clay_card_flipper') {
+      return ClayCardFlipper(
+        lessonId: lessonId,
+        instruction: stage.config['instruction'] as String? ??
+            AppStrings.cardFlipInstruction,
+        cards: const [
+          FlipCardItem(id: 'c1', pairKey: 'bear', title: 'Gấu', icon: Icons.pets),
+          FlipCardItem(id: 'c2', pairKey: 'bear', title: 'Gấu', icon: Icons.pets),
+          FlipCardItem(id: 'c3', pairKey: 'rabbit', title: 'Thỏ', icon: Icons.cruelty_free),
+          FlipCardItem(id: 'c4', pairKey: 'rabbit', title: 'Thỏ', icon: Icons.cruelty_free),
+        ],
+        onCompleted: onGameCompleted,
+      );
+    }
+
     // Default: ClayBubblePopper
     return ClayBubblePopper(
       lessonId: lessonId,
